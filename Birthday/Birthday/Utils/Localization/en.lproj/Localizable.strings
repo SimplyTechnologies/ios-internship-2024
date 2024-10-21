@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Birthday
+
+  Created by Narek on 21.10.24.
+  
+*/
+
+// Button
+
+"button_login" = "Login";

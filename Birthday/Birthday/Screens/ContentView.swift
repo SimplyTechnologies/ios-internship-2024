@@ -13,7 +13,11 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text(String.Button.login)
+                .foregroundStyle(.black)
+                .padding()
+                .background(Color.lightGreen)
+                .cornerRadius(radius: 12, corners: [.bottomLeft, .bottomRight])
         }
         .padding()
     }
