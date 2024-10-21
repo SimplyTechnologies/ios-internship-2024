@@ -11,11 +11,11 @@ import Apollo
 
 class GraphQLRepository {
     let apollo: ApolloClient
-
+    
     init(apollo: ApolloClient) {
         self.apollo = apollo
     }
-
+    
     func performQuery<T: GraphQLQuery>(query: T, completion: @escaping (Result<T.Data, Error>) -> Void) {
         apollo.fetch(query: query) { result in
             switch result {
@@ -30,7 +30,7 @@ class GraphQLRepository {
             }
         }
     }
-
+    
     func performMutation<T: GraphQLMutation>(mutation: T, completion: @escaping (Result<T.Data, Error>) -> Void) {
         apollo.perform(mutation: mutation) { result in
             switch result {
