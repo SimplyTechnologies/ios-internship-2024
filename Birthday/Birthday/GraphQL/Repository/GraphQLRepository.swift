@@ -10,6 +10,7 @@ import ApolloAPI
 import Apollo
 
 class GraphQLRepository {
+    
     let apollo: ApolloClient
     
     init(apollo: ApolloClient) {
@@ -45,4 +46,5 @@ class GraphQLRepository {
             }
         }
     }
+    
 }
