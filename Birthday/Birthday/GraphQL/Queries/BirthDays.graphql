@@ -1,5 +1,0 @@
-query GetBirthDays {
-    birthdays {
-    id
-  }
-}

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,8 +17,9 @@
 		F3C8CB542CC65C7A002DE72A /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB532CC65C7A002DE72A /* ApolloSQLite */; };
 		F3C8CB562CC65C7A002DE72A /* ApolloTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB552CC65C7A002DE72A /* ApolloTestSupport */; };
 		F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */; };
-		F3C8CB682CC66BA0002DE72A /* BirthDays.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB672CC66BA0002DE72A /* BirthDays.graphql */; };
-		F3C8CB692CC66FDC002DE72A /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB632CC668A8002DE72A /* schema.json */; };
+		F3C8CB6F2CC67A03002DE72A /* BirthDayAPI in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB6E2CC67A03002DE72A /* BirthDayAPI */; };
+		F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */; };
+		F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB752CC682C9002DE72A /* GraphQLRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +29,8 @@
 		F3C8CB422CC658C9002DE72A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3C8CB452CC658C9002DE72A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppoloClient.swift; sourceTree = "<group>"; };
-		F3C8CB632CC668A8002DE72A /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		F3C8CB672CC66BA0002DE72A /* BirthDays.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = BirthDays.graphql; sourceTree = "<group>"; };
+		F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetBirthdays.graphql; sourceTree = "<group>"; };
+		F3C8CB752CC682C9002DE72A /* GraphQLRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C8CB6F2CC67A03002DE72A /* BirthDayAPI in Frameworks */,
 				F3C8CB522CC65C7A002DE72A /* ApolloAPI in Frameworks */,
 				F3C8CB562CC65C7A002DE72A /* ApolloTestSupport in Frameworks */,
 				F3C8CB542CC65C7A002DE72A /* ApolloSQLite in Frameworks */,
@@ -53,6 +55,7 @@
 			children = (
 				F3C8CB3D2CC658C6002DE72A /* Birthday */,
 				F3C8CB3C2CC658C6002DE72A /* Products */,
+				F3C8CB702CC67A5D002DE72A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,19 +90,12 @@
 		F3C8CB572CC65F15002DE72A /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				F3C8CB712CC67E5F002DE72A /* Repository */,
+				F3C8CB722CC6807C002DE72A /* Mutations */,
 				F3C8CB5E2CC6607E002DE72A /* Queries */,
 				F3C8CB5B2CC66036002DE72A /* Client */,
-				F3C8CB582CC65F1C002DE72A /* Schema */,
-				F3C8CB632CC668A8002DE72A /* schema.json */,
 			);
 			path = GraphQL;
-			sourceTree = "<group>";
-		};
-		F3C8CB582CC65F1C002DE72A /* Schema */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Schema;
 			sourceTree = "<group>";
 		};
 		F3C8CB5B2CC66036002DE72A /* Client */ = {
@@ -113,9 +109,31 @@
 		F3C8CB5E2CC6607E002DE72A /* Queries */ = {
 			isa = PBXGroup;
 			children = (
-				F3C8CB672CC66BA0002DE72A /* BirthDays.graphql */,
+				F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */,
 			);
 			path = Queries;
+			sourceTree = "<group>";
+		};
+		F3C8CB702CC67A5D002DE72A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F3C8CB712CC67E5F002DE72A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CB752CC682C9002DE72A /* GraphQLRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F3C8CB722CC6807C002DE72A /* Mutations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mutations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +158,7 @@
 				F3C8CB512CC65C7A002DE72A /* ApolloAPI */,
 				F3C8CB532CC65C7A002DE72A /* ApolloSQLite */,
 				F3C8CB552CC65C7A002DE72A /* ApolloTestSupport */,
+				F3C8CB6E2CC67A03002DE72A /* BirthDayAPI */,
 			);
 			productName = Birthday;
 			productReference = F3C8CB3B2CC658C6002DE72A /* Birthday.app */;
@@ -171,6 +190,7 @@
 			mainGroup = F3C8CB322CC658C6002DE72A;
 			packageReferences = (
 				F3C8CB4C2CC65C7A002DE72A /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				F3C8CB6D2CC67A03002DE72A /* XCLocalSwiftPackageReference "BirthDayAPI" */,
 			);
 			productRefGroup = F3C8CB3C2CC658C6002DE72A /* Products */;
 			projectDirPath = "";
@@ -186,9 +206,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3C8CB692CC66FDC002DE72A /* schema.json in Resources */,
+				F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */,
 				F3C8CB462CC658C9002DE72A /* Preview Assets.xcassets in Resources */,
-				F3C8CB682CC66BA0002DE72A /* BirthDays.graphql in Resources */,
 				F3C8CB432CC658C9002DE72A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C8CB412CC658C6002DE72A /* ContentView.swift in Sources */,
+				F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */,
 				F3C8CB3F2CC658C6002DE72A /* BirthdayApp.swift in Sources */,
 				F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */,
 			);
@@ -409,6 +429,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		F3C8CB6D2CC67A03002DE72A /* XCLocalSwiftPackageReference "BirthDayAPI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = BirthDayAPI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		F3C8CB4C2CC65C7A002DE72A /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -445,6 +472,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F3C8CB4C2CC65C7A002DE72A /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = ApolloTestSupport;
+		};
+		F3C8CB6E2CC67A03002DE72A /* BirthDayAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BirthDayAPI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
