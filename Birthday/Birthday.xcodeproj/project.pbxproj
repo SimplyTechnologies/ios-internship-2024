@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F3C8CB3F2CC658C6002DE72A /* BirthdayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB3E2CC658C6002DE72A /* BirthdayApp.swift */; };
-		F3C8CB412CC658C6002DE72A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB402CC658C6002DE72A /* ContentView.swift */; };
-		F3C8CB432CC658C9002DE72A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB422CC658C9002DE72A /* Assets.xcassets */; };
-		F3C8CB462CC658C9002DE72A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB452CC658C9002DE72A /* Preview Assets.xcassets */; };
 		F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */; };
 		F3C8CB6F2CC67A03002DE72A /* BirthDayAPI in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB6E2CC67A03002DE72A /* BirthDayAPI */; };
 		F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */; };
@@ -18,17 +14,28 @@
 		F3C8CB792CC68E90002DE72A /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB782CC68E90002DE72A /* Apollo */; };
 		F3C8CB7B2CC68E90002DE72A /* ApolloAPI in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB7A2CC68E90002DE72A /* ApolloAPI */; };
 		F3C8CB7D2CC68E90002DE72A /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB7C2CC68E90002DE72A /* ApolloSQLite */; };
+		F3C8CB9B2CC6A5F2002DE72A /* BirthdayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB9A2CC6A5F2002DE72A /* BirthdayApp.swift */; };
+		F3C8CB9E2CC6A612002DE72A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB9D2CC6A612002DE72A /* Preview Assets.xcassets */; };
+		F3C8CBAB2CC6A61D002DE72A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA02CC6A61D002DE72A /* ContentView.swift */; };
+		F3C8CBAC2CC6A61D002DE72A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CBA22CC6A61D002DE72A /* Assets.xcassets */; };
+		F3C8CBAD2CC6A61D002DE72A /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */; };
+		F3C8CBAE2CC6A61D002DE72A /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA62CC6A61D002DE72A /* Texts.swift */; };
+		F3C8CBAF2CC6A61D002DE72A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CBA82CC6A61D002DE72A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F3C8CB3B2CC658C6002DE72A /* Birthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3C8CB3E2CC658C6002DE72A /* BirthdayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayApp.swift; sourceTree = "<group>"; };
-		F3C8CB402CC658C6002DE72A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F3C8CB422CC658C9002DE72A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F3C8CB452CC658C9002DE72A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppoloClient.swift; sourceTree = "<group>"; };
 		F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetBirthdays.graphql; sourceTree = "<group>"; };
 		F3C8CB752CC682C9002DE72A /* GraphQLRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLRepository.swift; sourceTree = "<group>"; };
+		F3C8CB9A2CC6A5F2002DE72A /* BirthdayApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirthdayApp.swift; sourceTree = "<group>"; };
+		F3C8CB9D2CC6A612002DE72A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F3C8CBA02CC6A61D002DE72A /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F3C8CBA22CC6A61D002DE72A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		F3C8CBA62CC6A61D002DE72A /* Texts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
+		F3C8CBA92CC6A61D002DE72A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F3C8CBAA2CC6A61D002DE72A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,21 +73,14 @@
 		F3C8CB3D2CC658C6002DE72A /* Birthday */ = {
 			isa = PBXGroup;
 			children = (
+				F3C8CB992CC6A5F2002DE72A /* App */,
 				F3C8CB572CC65F15002DE72A /* GraphQL */,
-				F3C8CB3E2CC658C6002DE72A /* BirthdayApp.swift */,
-				F3C8CB402CC658C6002DE72A /* ContentView.swift */,
-				F3C8CB422CC658C9002DE72A /* Assets.xcassets */,
-				F3C8CB442CC658C9002DE72A /* Preview Content */,
+				F3C8CB9C2CC6A612002DE72A /* Preview Content */,
+				F3C8CBA12CC6A61D002DE72A /* Resources */,
+				F3C8CB9F2CC6A61D002DE72A /* Screens */,
+				F3C8CBA32CC6A61D002DE72A /* Utils */,
 			);
 			path = Birthday;
-			sourceTree = "<group>";
-		};
-		F3C8CB442CC658C9002DE72A /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				F3C8CB452CC658C9002DE72A /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		F3C8CB572CC65F15002DE72A /* GraphQL */ = {
@@ -132,6 +132,64 @@
 			path = Mutations;
 			sourceTree = "<group>";
 		};
+		F3C8CB992CC6A5F2002DE72A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CB9A2CC6A5F2002DE72A /* BirthdayApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F3C8CB9C2CC6A612002DE72A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CB9D2CC6A612002DE72A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F3C8CB9F2CC6A61D002DE72A /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBA02CC6A61D002DE72A /* ContentView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F3C8CBA12CC6A61D002DE72A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBA22CC6A61D002DE72A /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F3C8CBA32CC6A61D002DE72A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBA42CC6A61D002DE72A /* Extensions */,
+				F3C8CBA72CC6A61D002DE72A /* Localization */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F3C8CBA42CC6A61D002DE72A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */,
+				F3C8CBA62CC6A61D002DE72A /* Texts.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F3C8CBA72CC6A61D002DE72A /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBA82CC6A61D002DE72A /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,6 +238,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = F3C8CB322CC658C6002DE72A;
 			packageReferences = (
@@ -200,9 +259,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C8CB9E2CC6A612002DE72A /* Preview Assets.xcassets in Resources */,
+				F3C8CBAF2CC6A61D002DE72A /* Localizable.strings in Resources */,
+				F3C8CBAC2CC6A61D002DE72A /* Assets.xcassets in Resources */,
 				F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */,
-				F3C8CB462CC658C9002DE72A /* Preview Assets.xcassets in Resources */,
-				F3C8CB432CC658C9002DE72A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,14 +273,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3C8CB412CC658C6002DE72A /* ContentView.swift in Sources */,
+				F3C8CBAE2CC6A61D002DE72A /* Texts.swift in Sources */,
 				F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */,
-				F3C8CB3F2CC658C6002DE72A /* BirthdayApp.swift in Sources */,
 				F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */,
+				F3C8CBAB2CC6A61D002DE72A /* ContentView.swift in Sources */,
+				F3C8CBAD2CC6A61D002DE72A /* String+Ext.swift in Sources */,
+				F3C8CB9B2CC6A5F2002DE72A /* BirthdayApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F3C8CBA82CC6A61D002DE72A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3C8CBA92CC6A61D002DE72A /* en */,
+				F3C8CBAA2CC6A61D002DE72A /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F3C8CB472CC658C9002DE72A /* Debug */ = {
@@ -228,6 +302,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -291,6 +366,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -358,13 +434,18 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Mekhak.Birthday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Birthday.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -387,13 +468,18 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Mekhak.Birthday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Birthday.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
