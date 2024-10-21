@@ -8,7 +8,9 @@
 import Foundation
 
 extension String {
-    enum Button {
-        static var login: String { "button_login".localized }
-    }
+  
+  enum Button {
+    static var login: String { "button_login".localized }
+  }
+  
 }
