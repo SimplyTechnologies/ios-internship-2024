@@ -9,7 +9,7 @@ import Foundation
 
 import SwiftUI
 
-enum TabModel: Int, Codable, CaseIterable {
+enum TabModel {
   
   case home
   case shops
