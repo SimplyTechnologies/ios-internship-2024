@@ -52,7 +52,7 @@ private struct SignInFields: View {
     
     var body: some View {
         VStack(spacing: 15.0) {
-            VStack(spacing: 5) {
+            VStack(spacing: 20) {
                 ValidationTextField(placeholder: "email_text".localized,
                                     inputText: $viewModel.email,
                                     errorText: viewModel.emailErrorText,
@@ -89,6 +89,7 @@ private struct SignInButton: View {
         .buttonStyle(EnabledButton(isDisable: isDisabled))
         .padding(.horizontal, 62)
         .padding(.bottom, 50)
+        .padding(.top, 30)
     }
 }
 

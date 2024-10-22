@@ -34,11 +34,13 @@ struct ValidationTextField: View {
                         SecureField(placeholder, text: $inputText)
                     }
                 }
+                .placeholder(when: inputText.isEmpty) {Text(placeholder)}
                 .textFieldStyle()
                 
                 if isSecure {
                     Button(action: { isPasswordHidden.toggle() }) {
                         Image(isPasswordHidden ? "show.password" : "hide.password")
+                            .frame(width: 15, height: 15)
                     }
                     .padding(.trailing, 12)
                 }
