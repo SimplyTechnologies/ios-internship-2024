@@ -21,6 +21,13 @@
 		F3C8CBAD2CC6A61D002DE72A /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */; };
 		F3C8CBAE2CC6A61D002DE72A /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA62CC6A61D002DE72A /* Texts.swift */; };
 		F3C8CBAF2CC6A61D002DE72A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CBA82CC6A61D002DE72A /* Localizable.strings */; };
+		F3C8CBB42CC7845F002DE72A /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBB32CC7845F002DE72A /* TabModel.swift */; };
+		F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBB62CC78681002DE72A /* TabView.swift */; };
+		F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBB82CC78830002DE72A /* TabBarView.swift */; };
+		F3C8CBC32CC789AA002DE72A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBC22CC789AA002DE72A /* HomeView.swift */; };
+		F3C8CBC52CC789D0002DE72A /* ShopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBC42CC789D0002DE72A /* ShopsView.swift */; };
+		F3C8CBC72CC789EE002DE72A /* AddBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBC62CC789EE002DE72A /* AddBirthdayView.swift */; };
+		F3C8CBC92CC78A12002DE72A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBC82CC78A12002DE72A /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +43,13 @@
 		F3C8CBA62CC6A61D002DE72A /* Texts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
 		F3C8CBA92CC6A61D002DE72A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F3C8CBAA2CC6A61D002DE72A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F3C8CBB32CC7845F002DE72A /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
+		F3C8CBB62CC78681002DE72A /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		F3C8CBB82CC78830002DE72A /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		F3C8CBC22CC789AA002DE72A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F3C8CBC42CC789D0002DE72A /* ShopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopsView.swift; sourceTree = "<group>"; };
+		F3C8CBC62CC789EE002DE72A /* AddBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBirthdayView.swift; sourceTree = "<group>"; };
+		F3C8CBC82CC78A12002DE72A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +87,7 @@
 		F3C8CB3D2CC658C6002DE72A /* Birthday */ = {
 			isa = PBXGroup;
 			children = (
+				F3C8CBB02CC78417002DE72A /* Modules */,
 				F3C8CB992CC6A5F2002DE72A /* App */,
 				F3C8CB572CC65F15002DE72A /* GraphQL */,
 				F3C8CB9C2CC6A612002DE72A /* Preview Content */,
@@ -190,6 +205,108 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		F3C8CBB02CC78417002DE72A /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBBD2CC7894F002DE72A /* Profile */,
+				F3C8CBBC2CC7893B002DE72A /* AddBirthday */,
+				F3C8CBBB2CC78934002DE72A /* Shops */,
+				F3C8CBBA2CC7892E002DE72A /* Home */,
+				F3C8CBB12CC7841E002DE72A /* Tabbar */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		F3C8CBB12CC7841E002DE72A /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBB52CC78674002DE72A /* View */,
+				F3C8CBB22CC7844C002DE72A /* Model */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		F3C8CBB22CC7844C002DE72A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBB32CC7845F002DE72A /* TabModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F3C8CBB52CC78674002DE72A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBB62CC78681002DE72A /* TabView.swift */,
+				F3C8CBB82CC78830002DE72A /* TabBarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F3C8CBBA2CC7892E002DE72A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBC12CC7898A002DE72A /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F3C8CBBB2CC78934002DE72A /* Shops */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBC02CC78986002DE72A /* View */,
+			);
+			path = Shops;
+			sourceTree = "<group>";
+		};
+		F3C8CBBC2CC7893B002DE72A /* AddBirthday */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBBF2CC78981002DE72A /* View */,
+			);
+			path = AddBirthday;
+			sourceTree = "<group>";
+		};
+		F3C8CBBD2CC7894F002DE72A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBBE2CC78979002DE72A /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F3C8CBBE2CC78979002DE72A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBC82CC78A12002DE72A /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F3C8CBBF2CC78981002DE72A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBC62CC789EE002DE72A /* AddBirthdayView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F3C8CBC02CC78986002DE72A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBC42CC789D0002DE72A /* ShopsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F3C8CBC12CC7898A002DE72A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8CBC22CC789AA002DE72A /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -274,10 +391,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C8CBAE2CC6A61D002DE72A /* Texts.swift in Sources */,
+				F3C8CBC92CC78A12002DE72A /* ProfileView.swift in Sources */,
+				F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */,
 				F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */,
+				F3C8CBC32CC789AA002DE72A /* HomeView.swift in Sources */,
+				F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */,
+				F3C8CBC52CC789D0002DE72A /* ShopsView.swift in Sources */,
 				F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */,
 				F3C8CBAB2CC6A61D002DE72A /* ContentView.swift in Sources */,
+				F3C8CBC72CC789EE002DE72A /* AddBirthdayView.swift in Sources */,
 				F3C8CBAD2CC6A61D002DE72A /* String+Ext.swift in Sources */,
+				F3C8CBB42CC7845F002DE72A /* TabModel.swift in Sources */,
 				F3C8CB9B2CC6A5F2002DE72A /* BirthdayApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
