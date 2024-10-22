@@ -5,8 +5,6 @@
 //  Created by MEKHAK GHAPANTSYAN on 22.10.24.
 //
 
-import Foundation
-
 import SwiftUI
 
 enum TabModel {
