@@ -9,3 +9,5 @@
 // Button
 
 "button_login" = "Login";
+"button_signin" = "Sign In";
+"button_register" = "Register";
