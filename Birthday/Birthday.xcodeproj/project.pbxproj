@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7BD1C662CC7CD1700EC70FE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */; };
+		E7BD1C692CC7CD4800EC70FE /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C682CC7CD4800EC70FE /* SignInView.swift */; };
+		E7BD1C6D2CC7CDA200EC70FE /* Extension + View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C6C2CC7CD9600EC70FE /* Extension + View.swift */; };
+		E7BD1C6F2CC7CDB700EC70FE /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C6E2CC7CDB200EC70FE /* ValidationTextField.swift */; };
+		E7BD1C712CC7CDD300EC70FE /* CustomNavBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C702CC7CDD200EC70FE /* CustomNavBarModifier.swift */; };
+		E7BD1C742CC7CE0200EC70FE /* EnabledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C732CC7CE0100EC70FE /* EnabledButton.swift */; };
 		F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */; };
 		F3C8CB6F2CC67A03002DE72A /* BirthDayAPI in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB6E2CC67A03002DE72A /* BirthDayAPI */; };
 		F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */; };
@@ -31,6 +37,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		E7BD1C682CC7CD4800EC70FE /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		E7BD1C6C2CC7CD9600EC70FE /* Extension + View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + View.swift"; sourceTree = "<group>"; };
+		E7BD1C6E2CC7CDB200EC70FE /* ValidationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
+		E7BD1C702CC7CDD200EC70FE /* CustomNavBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarModifier.swift; sourceTree = "<group>"; };
+		E7BD1C732CC7CE0100EC70FE /* EnabledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnabledButton.swift; sourceTree = "<group>"; };
 		F3C8CB3B2CC658C6002DE72A /* Birthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppoloClient.swift; sourceTree = "<group>"; };
 		F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetBirthdays.graphql; sourceTree = "<group>"; };
@@ -67,6 +79,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E7BD1C642CC7CCFC00EC70FE /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				E7BD1C672CC7CD3000EC70FE /* View */,
+				E7BD1C6A2CC7CD5F00EC70FE /* ViewModel */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		E7BD1C672CC7CD3000EC70FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E7BD1C682CC7CD4800EC70FE /* SignInView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E7BD1C6A2CC7CD5F00EC70FE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E7BD1C6B2CC7CD8500EC70FE /* Extension + View */ = {
+			isa = PBXGroup;
+			children = (
+				E7BD1C702CC7CDD200EC70FE /* CustomNavBarModifier.swift */,
+				E7BD1C6E2CC7CDB200EC70FE /* ValidationTextField.swift */,
+				E7BD1C6C2CC7CD9600EC70FE /* Extension + View.swift */,
+			);
+			path = "Extension + View";
+			sourceTree = "<group>";
+		};
+		E7BD1C722CC7CDF300EC70FE /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				E7BD1C732CC7CE0100EC70FE /* EnabledButton.swift */,
+			);
+			path = Shape;
+			sourceTree = "<group>";
+		};
 		F3C8CB322CC658C6002DE72A = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +246,8 @@
 		F3C8CBA42CC6A61D002DE72A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E7BD1C6B2CC7CD8500EC70FE /* Extension + View */,
+				E7BD1C722CC7CDF300EC70FE /* Shape */,
 				F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */,
 				F3C8CBA62CC6A61D002DE72A /* Texts.swift */,
 			);
@@ -208,6 +265,7 @@
 		F3C8CBB02CC78417002DE72A /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E7BD1C642CC7CCFC00EC70FE /* SignIn */,
 				F3C8CBBD2CC7894F002DE72A /* Profile */,
 				F3C8CBBC2CC7893B002DE72A /* AddBirthday */,
 				F3C8CBBB2CC78934002DE72A /* Shops */,
@@ -392,16 +450,22 @@
 			files = (
 				F3C8CBAE2CC6A61D002DE72A /* Texts.swift in Sources */,
 				F3C8CBC92CC78A12002DE72A /* ProfileScreen.swift in Sources */,
+				E7BD1C6D2CC7CDA200EC70FE /* Extension + View.swift in Sources */,
 				F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */,
 				F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */,
+				E7BD1C712CC7CDD300EC70FE /* CustomNavBarModifier.swift in Sources */,
 				F3C8CBC32CC789AA002DE72A /* HomeScreen.swift in Sources */,
 				F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */,
 				F3C8CBC52CC789D0002DE72A /* ShopsScreen.swift in Sources */,
 				F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */,
+				E7BD1C662CC7CD1700EC70FE /* SignInViewModel.swift in Sources */,
+				E7BD1C692CC7CD4800EC70FE /* SignInView.swift in Sources */,
+				E7BD1C6F2CC7CDB700EC70FE /* ValidationTextField.swift in Sources */,
 				F3C8CBAB2CC6A61D002DE72A /* ContentView.swift in Sources */,
 				F3C8CBC72CC789EE002DE72A /* AddBirthdayScreen.swift in Sources */,
 				F3C8CBAD2CC6A61D002DE72A /* String+Ext.swift in Sources */,
 				F3C8CBB42CC7845F002DE72A /* TabModel.swift in Sources */,
+				E7BD1C742CC7CE0200EC70FE /* EnabledButton.swift in Sources */,
 				F3C8CB9B2CC6A5F2002DE72A /* BirthdayApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
