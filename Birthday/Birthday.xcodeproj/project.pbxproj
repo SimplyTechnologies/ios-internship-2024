@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,11 @@
 		CE98D2A92CC65CA60017E477 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2A82CC65CA60017E477 /* Localize.swift */; };
 		CE98D2AB2CC65CC50017E477 /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2AA2CC65CC50017E477 /* Texts.swift */; };
 		CE98D2AE2CC65CEF0017E477 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE98D2AC2CC65CEF0017E477 /* Localizable.strings */; };
+		E7488D4A2CC7AAF200345154 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7488D492CC7AAEC00345154 /* View.swift */; };
+		E7666F2B2CC68577009C2FC5 /* EnabledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7666F2A2CC68557009C2FC5 /* EnabledButton.swift */; };
+		E7666F2D2CC687EA009C2FC5 /* CustomNavBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7666F2C2CC68793009C2FC5 /* CustomNavBarModifier.swift */; };
+		E7911F592CC667CC00ADF52F /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7911F582CC667CC00ADF52F /* SignInView.swift */; };
+		E7BCB52B2CC66D27007D497F /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCB52A2CC66D27007D497F /* ValidationTextField.swift */; };
 		F3C8CB3F2CC658C6002DE72A /* BirthdayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB3E2CC658C6002DE72A /* BirthdayApp.swift */; };
 		F3C8CB412CC658C6002DE72A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB402CC658C6002DE72A /* ContentView.swift */; };
 		F3C8CB432CC658C9002DE72A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB422CC658C9002DE72A /* Assets.xcassets */; };
@@ -22,12 +27,21 @@
 		CE98D2A82CC65CA60017E477 /* Localize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		CE98D2AA2CC65CC50017E477 /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
 		CE98D2AD2CC65CEF0017E477 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E7488D492CC7AAEC00345154 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		E7666F2A2CC68557009C2FC5 /* EnabledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnabledButton.swift; sourceTree = "<group>"; };
+		E7666F2C2CC68793009C2FC5 /* CustomNavBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarModifier.swift; sourceTree = "<group>"; };
+		E7911F582CC667CC00ADF52F /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		E7BCB52A2CC66D27007D497F /* ValidationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
 		F3C8CB3B2CC658C6002DE72A /* Birthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C8CB3E2CC658C6002DE72A /* BirthdayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayApp.swift; sourceTree = "<group>"; };
 		F3C8CB402CC658C6002DE72A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F3C8CB422CC658C9002DE72A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3C8CB452CC658C9002DE72A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E7BCB5262CC66C8D007D497F /* ViewModels */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ViewModels; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F3C8CB382CC658C6002DE72A /* Frameworks */ = {
@@ -62,13 +76,6 @@
 			path = NetworkLayer;
 			sourceTree = "<group>";
 		};
-		CE98D29F2CC65BFD0017E477 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		CE98D2A02CC65C050017E477 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,18 +87,12 @@
 		CE98D2A12CC65C100017E477 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E7666F2E2CC687F2009C2FC5 /* Extension + View */,
 				CE98D2A52CC65C490017E477 /* Shape */,
 				CE98D2A42CC65C2D0017E477 /* Localization */,
 				CE98D2A32CC65C250017E477 /* Extensions */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		CE98D2A22CC65C160017E477 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		CE98D2A32CC65C250017E477 /* Extensions */ = {
@@ -114,6 +115,7 @@
 		CE98D2A52CC65C490017E477 /* Shape */ = {
 			isa = PBXGroup;
 			children = (
+				E7666F2A2CC68557009C2FC5 /* EnabledButton.swift */,
 				CE98D2A62CC65C640017E477 /* RoundedCornersShape.swift */,
 			);
 			path = Shape;
@@ -125,6 +127,24 @@
 				F3C8CB422CC658C9002DE72A /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E7666F2E2CC687F2009C2FC5 /* Extension + View */ = {
+			isa = PBXGroup;
+			children = (
+				E7488D492CC7AAEC00345154 /* View.swift */,
+				E7BCB52A2CC66D27007D497F /* ValidationTextField.swift */,
+				E7666F2C2CC68793009C2FC5 /* CustomNavBarModifier.swift */,
+			);
+			path = "Extension + View";
+			sourceTree = "<group>";
+		};
+		E7911F3D2CC6674900ADF52F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7911F582CC667CC00ADF52F /* SignInView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F3C8CB322CC658C6002DE72A = {
@@ -146,11 +166,11 @@
 		F3C8CB3D2CC658C6002DE72A /* Birthday */ = {
 			isa = PBXGroup;
 			children = (
+				E7BCB5262CC66C8D007D497F /* ViewModels */,
+				E7911F3D2CC6674900ADF52F /* Views */,
 				CE98D29C2CC65BE10017E477 /* App */,
-				CE98D2A22CC65C160017E477 /* Views */,
 				CE98D2A12CC65C100017E477 /* Utils */,
 				CE98D2A02CC65C050017E477 /* Screens */,
-				CE98D29F2CC65BFD0017E477 /* ViewModels */,
 				CE98D29E2CC65BF70017E477 /* NetworkLayer */,
 				CE98D29D2CC65BE60017E477 /* Models */,
 				CE98D2AF2CC65DEA0017E477 /* Resources */,
@@ -181,6 +201,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E7BCB5262CC66C8D007D497F /* ViewModels */,
 			);
 			name = Birthday;
 			productName = Birthday;
@@ -239,10 +262,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE98D2A92CC65CA60017E477 /* Localize.swift in Sources */,
+				E7666F2D2CC687EA009C2FC5 /* CustomNavBarModifier.swift in Sources */,
+				E7BCB52B2CC66D27007D497F /* ValidationTextField.swift in Sources */,
+				E7911F592CC667CC00ADF52F /* SignInView.swift in Sources */,
 				CE98D2A72CC65C640017E477 /* RoundedCornersShape.swift in Sources */,
 				F3C8CB412CC658C6002DE72A /* ContentView.swift in Sources */,
 				CE98D2AB2CC65CC50017E477 /* Texts.swift in Sources */,
 				F3C8CB3F2CC658C6002DE72A /* BirthdayApp.swift in Sources */,
+				E7488D4A2CC7AAF200345154 /* View.swift in Sources */,
+				E7666F2B2CC68577009C2FC5 /* EnabledButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,3 +9,10 @@
 // Button
 
 "button_login" = "Login";
+"button_signIn" = "Sign In";
+"email_text" = "Email";
+"passwrod_text" = "Password";
+"email_error_text" = "Please Write Correct Email";
+"password_error_text" = "Short Password!";
+
+
