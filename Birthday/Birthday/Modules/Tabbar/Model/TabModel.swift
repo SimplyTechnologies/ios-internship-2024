@@ -17,15 +17,11 @@ enum TabModel: Int, Codable, CaseIterable {
   case profile
   
   var image: Image {
-    return switch self {
-    case .home:
-      Image(.homeTab)
-    case .shops:
-      Image(.shopTab)
-    case .addBirthday:
-      Image(.addTab)
-    case .profile:
-      Image(.profileTab)
+    switch self {
+      case .home: Image(.homeTab)
+      case .shops: Image(.shopTab)
+      case .addBirthday: Image(.addTab)
+      case .profile: Image(.profileTab)
     }
   }
   
