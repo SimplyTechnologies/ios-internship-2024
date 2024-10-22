@@ -1,0 +1,146 @@
+"""
+A directive used by the Apollo iOS client to annotate operations or fragments that should be used exclusively for generating local cache mutations instead of as standard operations.
+"""
+directive @apollo_client_ios_localCacheMutation on QUERY | MUTATION | SUBSCRIPTION | FRAGMENT_DEFINITION
+
+"""
+A directive used by the Apollo iOS code generation engine to generate custom import statements in operation or fragment definition files. An import statement to import a module with the name provided in the `module` argument will be added to the generated definition file.
+"""
+directive @import(
+  """The name of the module to import."""
+  module: String!
+) repeatable on QUERY | MUTATION | SUBSCRIPTION | FRAGMENT_DEFINITION
+
+"""
+Directs the executor to defer this fragment when the `if` argument is true or undefined.
+"""
+directive @defer(
+  """Deferred when true or undefined."""
+  if: Boolean
+
+  """Unique name"""
+  label: String
+) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+type AccessToken {
+  accessToken: String!
+}
+
+input AvgPriceFilter {
+  gte: Int
+  lte: Int
+}
+
+type Birthday {
+  createdAt: DateTime!
+  date: DateTime!
+  id: Int!
+  image: String
+  message: String
+  name: String!
+  relation: String!
+  upcomingAge: Int
+  upcomingBirthday: DateTime!
+  updatedAt: DateTime!
+  userId: Int!
+}
+
+input CreateBirthdayInput {
+  date: DateTime!
+  image: String
+  message: String
+  name: String!
+  relation: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  addShopToFavorite(shopId: Int!): UserFavoriteShop!
+  changePassword: Boolean!
+  createBirthday(createBirthdayInput: CreateBirthdayInput!): Birthday!
+  deleteBirthday(id: Int!): Birthday!
+  forgotPassword: Boolean!
+  login(loginInput: LoginInput!): AccessToken!
+  refreshToken: Boolean!
+  removeShopFromFavorite(shopId: Int!): UserFavoriteShop!
+  resetPassword: Boolean!
+  signUp(signUpInput: SignUpInput!): User!
+  updateBirthday(id: Int!, updateBirthdayInput: UpdateBirthdayInput!): Birthday!
+  updateProfile(updateProfileInput: UpdateProfileInput!): User!
+}
+
+type Query {
+  birthday(id: Int!): Birthday!
+  birthdays: [Birthday!]!
+  shops(filter: ShopFilter!): [Shop!]!
+}
+
+input RateFilter {
+  gte: Int
+  lte: Int
+}
+
+type Shop {
+  address: String!
+  avgPrice: Int
+  id: Int!
+  image: String!
+  isFavorite: Boolean!
+  name: String!
+  phone: String
+  rate: Float
+  url: String
+}
+
+input ShopFilter {
+  avgPrice: AvgPriceFilter
+  rate: RateFilter
+}
+
+input SignUpInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+}
+
+input Token {
+  accessToken: String!
+}
+
+input UpdateBirthdayInput {
+  date: DateTime
+  image: String
+  message: String
+  name: String
+  relation: String
+}
+
+input UpdateProfileInput {
+  firstName: String
+  image: String
+  lastName: String
+}
+
+type User {
+  email: String!
+  firstName: String!
+  id: Int!
+  image: String
+  lastName: String!
+}
+
+type UserFavoriteShop {
+  createdAt: DateTime!
+  shopId: Int!
+  userId: Int!
+}
