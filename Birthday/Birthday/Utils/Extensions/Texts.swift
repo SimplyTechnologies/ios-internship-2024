@@ -13,4 +13,16 @@ extension String {
     static var login: String { "button_login".localized }
   }
   
+  func toFormattedDate() -> String? {
+    let inputFormatter = DateFormatter()
+    inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    guard let date = inputFormatter.date(from: self) else {
+      return nil
+    }
+    let outputFormatter = DateFormatter()
+    outputFormatter.dateFormat = "dd.MM.yyyy"
+    
+    return outputFormatter.string(from: date)
+  }
+  
 }

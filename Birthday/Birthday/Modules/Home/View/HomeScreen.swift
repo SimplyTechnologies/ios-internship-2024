@@ -7,10 +7,43 @@
 
 import SwiftUI
 
-struct HomeScreen: View {
+struct HomeScreen<T: HomeViewModeling>: View {
+  
+  @ObservedObject var viewModel: T
   
   var body: some View {
-    Text("Home View")
+    content
+      .onLoad {
+        viewModel.getBirthDays()
+      }
+  }
+  
+}
+
+extension HomeScreen {
+  
+  private var content: some View {
+    VStack {
+      image
+      list
+    }
+    .background(Color.lightPink)
+  }
+  
+  private var list: some View {
+    ScrollView {
+      LazyVStack(spacing: 18) {
+        ForEach(viewModel.birthDays, id: \.id) { birthday in
+          BirthDayCell(model: birthday)
+        }
+      }
+    }
+    .padding(.horizontal, 24)
+    .scrollIndicators(.hidden)
+  }
+  
+  private var image: some View {
+    Image(.birth)
   }
   
 }
