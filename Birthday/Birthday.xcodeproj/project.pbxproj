@@ -24,10 +24,10 @@
 		F3C8CBB42CC7845F002DE72A /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBB32CC7845F002DE72A /* TabModel.swift */; };
 		F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBB62CC78681002DE72A /* TabView.swift */; };
 		F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBB82CC78830002DE72A /* TabBarView.swift */; };
-		F3C8CBC32CC789AA002DE72A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBC22CC789AA002DE72A /* HomeView.swift */; };
-		F3C8CBC52CC789D0002DE72A /* ShopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBC42CC789D0002DE72A /* ShopsView.swift */; };
-		F3C8CBC72CC789EE002DE72A /* AddBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBC62CC789EE002DE72A /* AddBirthdayView.swift */; };
-		F3C8CBC92CC78A12002DE72A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBC82CC78A12002DE72A /* ProfileView.swift */; };
+		F3C8CBC32CC789AA002DE72A /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBC22CC789AA002DE72A /* HomeScreen.swift */; };
+		F3C8CBC52CC789D0002DE72A /* ShopsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBC42CC789D0002DE72A /* ShopsScreen.swift */; };
+		F3C8CBC72CC789EE002DE72A /* AddBirthdayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBC62CC789EE002DE72A /* AddBirthdayScreen.swift */; };
+		F3C8CBC92CC78A12002DE72A /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBC82CC78A12002DE72A /* ProfileScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,10 +46,10 @@
 		F3C8CBB32CC7845F002DE72A /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
 		F3C8CBB62CC78681002DE72A /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		F3C8CBB82CC78830002DE72A /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		F3C8CBC22CC789AA002DE72A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		F3C8CBC42CC789D0002DE72A /* ShopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopsView.swift; sourceTree = "<group>"; };
-		F3C8CBC62CC789EE002DE72A /* AddBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBirthdayView.swift; sourceTree = "<group>"; };
-		F3C8CBC82CC78A12002DE72A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F3C8CBC22CC789AA002DE72A /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		F3C8CBC42CC789D0002DE72A /* ShopsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopsScreen.swift; sourceTree = "<group>"; };
+		F3C8CBC62CC789EE002DE72A /* AddBirthdayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBirthdayScreen.swift; sourceTree = "<group>"; };
+		F3C8CBC82CC78A12002DE72A /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,7 +278,7 @@
 		F3C8CBBE2CC78979002DE72A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F3C8CBC82CC78A12002DE72A /* ProfileView.swift */,
+				F3C8CBC82CC78A12002DE72A /* ProfileScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -286,7 +286,7 @@
 		F3C8CBBF2CC78981002DE72A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F3C8CBC62CC789EE002DE72A /* AddBirthdayView.swift */,
+				F3C8CBC62CC789EE002DE72A /* AddBirthdayScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,7 +294,7 @@
 		F3C8CBC02CC78986002DE72A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F3C8CBC42CC789D0002DE72A /* ShopsView.swift */,
+				F3C8CBC42CC789D0002DE72A /* ShopsScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -302,7 +302,7 @@
 		F3C8CBC12CC7898A002DE72A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F3C8CBC22CC789AA002DE72A /* HomeView.swift */,
+				F3C8CBC22CC789AA002DE72A /* HomeScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -391,15 +391,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C8CBAE2CC6A61D002DE72A /* Texts.swift in Sources */,
-				F3C8CBC92CC78A12002DE72A /* ProfileView.swift in Sources */,
+				F3C8CBC92CC78A12002DE72A /* ProfileScreen.swift in Sources */,
 				F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */,
 				F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */,
-				F3C8CBC32CC789AA002DE72A /* HomeView.swift in Sources */,
+				F3C8CBC32CC789AA002DE72A /* HomeScreen.swift in Sources */,
 				F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */,
-				F3C8CBC52CC789D0002DE72A /* ShopsView.swift in Sources */,
+				F3C8CBC52CC789D0002DE72A /* ShopsScreen.swift in Sources */,
 				F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */,
 				F3C8CBAB2CC6A61D002DE72A /* ContentView.swift in Sources */,
-				F3C8CBC72CC789EE002DE72A /* AddBirthdayView.swift in Sources */,
+				F3C8CBC72CC789EE002DE72A /* AddBirthdayScreen.swift in Sources */,
 				F3C8CBAD2CC6A61D002DE72A /* String+Ext.swift in Sources */,
 				F3C8CBB42CC7845F002DE72A /* TabModel.swift in Sources */,
 				F3C8CB9B2CC6A5F2002DE72A /* BirthdayApp.swift in Sources */,

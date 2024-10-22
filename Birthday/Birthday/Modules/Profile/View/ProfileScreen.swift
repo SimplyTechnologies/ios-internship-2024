@@ -1,5 +1,5 @@
 //
-//  ShopsView.swift
+//  ProfileView.swift
 //  Birthday
 //
 //  Created by MEKHAK GHAPANTSYAN on 22.10.24.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ShopsView: View {
+struct ProfileScreen: View {
   
   var body: some View {
-    Text("ShopView")
+    Text("Profile")
   }
   
 }

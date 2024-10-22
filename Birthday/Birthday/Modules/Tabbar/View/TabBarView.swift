@@ -34,7 +34,7 @@ extension TabBarView {
   
   private var homeTab: some View {
     NavigationStack {
-      HomeView()
+      HomeScreen()
     }
     .tabItem { TabCellView(model: .home) }
     .tag(TabModel.home)
@@ -42,7 +42,7 @@ extension TabBarView {
   
   private var shopsTab: some View {
     NavigationStack {
-      ShopsView()
+      ShopsScreen()
     }
     .tabItem { TabCellView(model: .shops) }
     .tag(TabModel.shops)
@@ -50,7 +50,7 @@ extension TabBarView {
   
   private var addTab: some View {
     NavigationStack {
-      AddBirthdayView()
+      AddBirthdayScreen()
     }
     .tabItem { TabCellView(model: .addBirthday) }
     .tag(TabModel.addBirthday)
@@ -58,7 +58,7 @@ extension TabBarView {
   
   private var profileTab: some View {
     NavigationStack {
-      ProfileView()
+      ProfileScreen()
     }
     .tabItem { TabCellView(model: .profile) }
     .tag(TabModel.profile)

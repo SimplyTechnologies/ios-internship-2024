@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeScreen: View {
   
   var body: some View {
     Text("Home View")

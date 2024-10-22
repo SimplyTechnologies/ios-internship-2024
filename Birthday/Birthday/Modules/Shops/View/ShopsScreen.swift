@@ -1,5 +1,5 @@
 //
-//  AddBirthdayView.swift
+//  ShopsView.swift
 //  Birthday
 //
 //  Created by MEKHAK GHAPANTSYAN on 22.10.24.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct AddBirthdayView: View {
+struct ShopsScreen: View {
   
   var body: some View {
-    Text("AddView")
+    Text("ShopView")
   }
   
 }
