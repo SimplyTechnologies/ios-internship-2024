@@ -14,6 +14,8 @@ extension String {
     static var editAccount: String { "button_edit_account".localized }
     static var changePassword: String { "button_change_password".localized }
     static var signOut: String { "button_sign_out".localized }
+    static var signIn: String { "button_signin".localized }
+    static var register: String { "button_register".localized }
   }
 
   func toFormattedDate() -> String? {

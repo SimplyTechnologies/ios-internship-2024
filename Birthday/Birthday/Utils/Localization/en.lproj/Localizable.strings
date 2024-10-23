@@ -12,3 +12,5 @@
 "button_sign_out" = "Sign Out";
 "button_change_password" = "Change Password";
 "button_edit_account" = "Edit Account";
+"button_signin" = "Sign In";
+"button_register" = "Register";
