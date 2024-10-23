@@ -14,3 +14,5 @@
 "password_text" = "Password";
 "email_error_text" = "Please Write Correct Email";
 "password_error_text" = "Short Password!";
+"button_signin" = "Sign In";
+"button_register" = "Register";
