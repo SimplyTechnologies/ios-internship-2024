@@ -12,7 +12,7 @@ import BirthDayAPI
 struct ContentView: View {
   
     var body: some View {
-        SignInView()
+      TabBarView()
     }
   
 }
