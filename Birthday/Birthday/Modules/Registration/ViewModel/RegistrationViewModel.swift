@@ -171,23 +171,23 @@ class RegistrationViewModel: ObservableObject {
     isValidForm = isValidFullName && isValidEmail && isValidPasswords
   }
   
-  func validateName() {
+  private func validateName() {
     isValidName = name.isValidName
   }
   
-  func validateSurname() {
+  private func validateSurname() {
     isValidSurname = surname.isValidName
   }
   
-  func validateEmail() {
+  private func validateEmail() {
     isValidEmail = email.isValidEmail
   }
   
-  func validatePassword() {
+  private func validatePassword() {
     isValidPassword = password.isValidPassword
   }
   
-  func validateRepeatPassword() {
+  private func validateRepeatPassword() {
     isSamePasswords = password == repeatPassword
     isValidRepeatPassword = repeatPassword.isValidPassword && isSamePasswords
   }
