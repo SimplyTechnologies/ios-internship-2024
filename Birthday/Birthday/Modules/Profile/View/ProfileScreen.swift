@@ -14,16 +14,10 @@ struct ProfileScreen: View {
       Color.lightPink
         .ignoresSafeArea()
       VStack(spacing: 50) {
-        HStack {
-          Spacer()
-          Image(.birth)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 88, height: 40)
-        }
-        .padding(.horizontal, 24)
-        ProfileDetails() //The view with image, name, and gmail
-        ProfileButtons() //The view with buttons
+        logo
+          .padding(.horizontal, 24)
+        userDetails //The view with image, name, and gmail
+        buttons //The view with buttons
         Spacer()
       }
     }
@@ -31,9 +25,19 @@ struct ProfileScreen: View {
 
 }
 
-struct ProfileDetails: View {
+extension ProfileScreen {
 
-  var body: some View {
+  private var logo: some View {
+    HStack {
+      Spacer()
+      Image(.birth)
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .frame(width: 88, height: 40)
+    }
+  }
+
+  private var userDetails: some View {
     VStack(spacing: 30) {
       Image(.nk)
         .resizable()
@@ -44,70 +48,58 @@ struct ProfileDetails: View {
           .bold()
           .font(.system(size: 20))
         Text(verbatim: "ShirleyPeter01@gmail.com")
-            .textSelection(.disabled)
-            .foregroundStyle(.black)
-            .font(.system(size: 20))
-            .frame(maxWidth: .infinity)
-            .bold()
+          .textSelection(.disabled)
+          .foregroundStyle(.black)
+          .font(.system(size: 20))
+          .frame(maxWidth: .infinity)
+          .bold()
       }
     }
   }
 
-}
-
-struct ProfileButtons: View {
-  var body: some View {
+  private var buttons: some View {
     VStack(spacing: 11) {
-      Button {
-        print("Edit Account") //Navigation to Edit Accout screen
-      } label: {
-        HStack {
-          Text(String.Button.editAccount)
-            .foregroundStyle(.darkRed)
-            .bold()
-            .background(.white)
-            .font(.system(size: 20))
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .background(Color.white)
-        .cornerRadius(9)
-      }
-      Button {
-        print("Change Password") //Navigation to Change Password screen
-      } label: {
-        HStack {
-          Text(String.Button.changePassword)
-            .foregroundStyle(.darkRed)
-            .bold()
-            .background(.white)
-            .font(.system(size: 20))
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .background(Color.white)
-        .cornerRadius(9)
-      }
-      Button {
-        print("Sign Out") //Navigation to Sign Out screen
-      } label: {
-        HStack {
-          Text(String.Button.signOut)
-            .foregroundStyle(.darkRed)
-            .bold()
-            .background(.white)
-            .font(.system(size: 20))
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .background(Color.white)
-        .cornerRadius(9)
-      }
+      ProfileButton(
+        title: String.Button.editAccount,
+        action: {
+          print("Edit Account") // Navigation to Edit Account screen
+        })
+      ProfileButton(
+        title: String.Button.changePassword,
+        action: {
+          print("Change Password") // Navigation to Change Password screen
+        })
+      ProfileButton(
+        title: String.Button.signOut,
+        action: {
+          print("Sign Out") // Navigation to Sign Out screen
+        })
     }
     .padding(.horizontal, 16)
+  }
+
+}
+
+struct ProfileButton: View { //This struct should be in Models Group
+
+  let title: String
+  let action: () -> Void
+
+  var body: some View {
+    Button(action: action) {
+      HStack {
+        Text(title)
+          .foregroundStyle(.darkRed)
+          .bold()
+          .font(.system(size: 20))
+          .background(.white)
+      }
+      .frame(maxWidth: .infinity)
+      .padding(.horizontal, 16)
+      .padding(.vertical, 12)
+      .background(Color.white)
+      .cornerRadius(9)
+    }
   }
 
 }
