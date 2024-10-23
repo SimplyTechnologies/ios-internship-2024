@@ -27,6 +27,7 @@
 		CE98D2EA2CC7C2CD0017E477 /* FooterModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2E92CC7C2CD0017E477 /* FooterModifier.swift */; };
 		CE98D2EC2CC80BFB0017E477 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2EB2CC80BFB0017E477 /* NavigationRouter.swift */; };
 		CE98D2EF2CC80C7E0017E477 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2EE2CC80C7E0017E477 /* Console.swift */; };
+		CE98D2F42CC8ED2D0017E477 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */; };
 		F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */; };
 		F3C8CB6F2CC67A03002DE72A /* BirthDayAPI in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB6E2CC67A03002DE72A /* BirthDayAPI */; };
 		F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */; };
@@ -38,8 +39,6 @@
 		F3C8CB9E2CC6A612002DE72A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB9D2CC6A612002DE72A /* Preview Assets.xcassets */; };
 		F3C8CBAB2CC6A61D002DE72A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA02CC6A61D002DE72A /* ContentView.swift */; };
 		F3C8CBAC2CC6A61D002DE72A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CBA22CC6A61D002DE72A /* Assets.xcassets */; };
-		F3C8CBAD2CC6A61D002DE72A /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */; };
-		F3C8CBAE2CC6A61D002DE72A /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA62CC6A61D002DE72A /* Texts.swift */; };
 		F3C8CBAF2CC6A61D002DE72A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CBA82CC6A61D002DE72A /* Localizable.strings */; };
 		F3C8CBB42CC7845F002DE72A /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBB32CC7845F002DE72A /* TabModel.swift */; };
 		F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBB62CC78681002DE72A /* TabView.swift */; };
@@ -87,7 +86,6 @@
 		F3C8CBA02CC6A61D002DE72A /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F3C8CBA22CC6A61D002DE72A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
-		F3C8CBA62CC6A61D002DE72A /* Texts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
 		F3C8CBA92CC6A61D002DE72A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F3C8CBAA2CC6A61D002DE72A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F3C8CBB32CC7845F002DE72A /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
@@ -243,10 +241,8 @@
 				CE98D2C22CC777800017E477 /* NetworkLayer */,
 				F3C8CB9C2CC6A612002DE72A /* Preview Content */,
 				F3C8CBA12CC6A61D002DE72A /* Resources */,
-				CE98D2C42CC7778E0017E477 /* SubViews */,
 				F3C8CBA32CC6A61D002DE72A /* Utils */,
-				CE98D2C32CC7778E0017E477 /* ViewModels */,
-				CE98D2C42CC7778E0017E477 /* Views */,
+				CE98D2C42CC7778E0017E477 /* SubViews */,
 			);
 			path = Birthday;
 			sourceTree = "<group>";
@@ -345,7 +341,6 @@
 			isa = PBXGroup;
 			children = (
 				F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */,
-				F3C8CBA62CC6A61D002DE72A /* Texts.swift */,
 				CE98D2C72CC77C290017E477 /* Optional+Ext.swift */,
 				CE98D2CB2CC786390017E477 /* View+Ext.swift */,
 				CE98D2E22CC79D540017E477 /* UINavigationController+Ext.swift */,
@@ -576,7 +571,6 @@
 				CE98D2EA2CC7C2CD0017E477 /* FooterModifier.swift in Sources */,
 				CE98D2BF2CC775FB0017E477 /* RegistrationScreen.swift in Sources */,
 				CE98D2E82CC7C1920017E477 /* DisableBouncesModifier.swift in Sources */,
-				F3C8CBAE2CC6A61D002DE72A /* Texts.swift in Sources */,
 				CE98D2E32CC79D540017E477 /* UINavigationController+Ext.swift in Sources */,
 				CE98D2CA2CC77DFE0017E477 /* InputField.swift in Sources */,
 				CE98D2C62CC778780017E477 /* NavigationBar.swift in Sources */,
@@ -593,6 +587,7 @@
 				F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */,
 				F3C8CBF42CC7B5CE002DE72A /* View+Extension.swift in Sources */,
 				F3C8CBF22CC7B441002DE72A /* HomeViewModel.swift in Sources */,
+				CE98D2F42CC8ED2D0017E477 /* String+Ext.swift in Sources */,
 				F3C8CBC32CC789AA002DE72A /* HomeScreen.swift in Sources */,
 				F3C8CBF02CC7B3F0002DE72A /* HomeViewModeling.swift in Sources */,
 				F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */,
