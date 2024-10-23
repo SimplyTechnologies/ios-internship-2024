@@ -34,11 +34,6 @@ struct ContentView: View {
         }
       }
       .padding()
-      .onAppear {
-        GraphQLRepository(apollo: Network.shared.apollo).performQuery(query: GetBirthDayListQuery()) { res in
-          print(res)
-        }
-      }
       .navigationDestination(for: Screen.self) { screen in
         switch screen {
         case .login: Text("Login Screen")
