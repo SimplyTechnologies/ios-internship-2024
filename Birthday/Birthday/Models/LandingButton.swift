@@ -13,7 +13,7 @@ struct LandingButton: View {
   var textColor: Color
   var backgroundColor: Color
   var action: () -> Void
-  var cornerRadii: [CGFloat]
+  var cornerRadius: [CGFloat]
 
   var body: some View {
     Button(action: action) {
@@ -28,10 +28,10 @@ struct LandingButton: View {
       .background(backgroundColor)
       .clipShape(
         .rect(
-          topLeadingRadius: cornerRadii[0],
-          bottomLeadingRadius: cornerRadii[1],
-          bottomTrailingRadius: cornerRadii[2],
-          topTrailingRadius: cornerRadii[3]
+          topLeadingRadius: cornerRadius[0],
+          bottomLeadingRadius: cornerRadius[1],
+          bottomTrailingRadius: cornerRadius[2],
+          topTrailingRadius: cornerRadius[3]
         )
       )
     }
@@ -45,6 +45,6 @@ struct LandingButton: View {
     textColor: .lightPink,
     backgroundColor: .darkRed,
     action: { },
-    cornerRadii: [42, 0, 42, 42]
+    cornerRadius: [42, 0, 42, 42]
   )
 }

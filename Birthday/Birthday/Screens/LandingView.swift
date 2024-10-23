@@ -13,40 +13,53 @@ struct LandingView: View {
     ZStack {
       Color.lightPink
         .ignoresSafeArea()
-      EnteranceView()
+      enterance
         .padding(.horizontal, 67)
     }
   }
 
 }
 
-struct EnteranceView: View {
+extension LandingView {
 
-  var body: some View {
+  private var enterance: some View {
     VStack {
-      Image(.birth)
-        .imageScale(.large)
+      logo
       VStack(spacing: 8) {
-        LandingButton(
-          title: String.Button.signIn,
-          textColor: .darkRed,
-          backgroundColor: .mainPink,
-          action: { print("Navigation to Sign in page") },
-          cornerRadii: [42, 0, 42, 42]
-        )
-        LandingButton(
-          title: String.Button.register,
-          textColor: .mainPink,
-          backgroundColor: .darkRed,
-          action: { print("Navigation to Register page") },
-          cornerRadii: [42, 42, 42, 0]
-        )
+        login
+        register
       }
       .padding(.vertical, 50)
     }
   }
 
+  private var logo: some View {
+    Image(.birth)
+      .imageScale(.large)
+  }
+
+  private var login: some View {
+    LandingButton(
+      title: String.Button.signIn,
+      textColor: .darkRed,
+      backgroundColor: .mainPink,
+      action: { print("Navigation to Sign in page") },
+      cornerRadius: [42, 0, 42, 42]
+    )
+  }
+
+  private var register: some View {
+    LandingButton(
+      title: String.Button.register,
+      textColor: .mainPink,
+      backgroundColor: .darkRed,
+      action: { print("Navigation to Register page") },
+      cornerRadius: [42, 42, 42, 0]
+    )
+  }
+
 }
+
 #Preview {
   LandingView()
 }
