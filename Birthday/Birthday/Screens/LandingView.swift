@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LandingView: View {
 
+  private let radiusValue: CGFloat = 42 //Corner Radius value for the buttons
+
   var body: some View {
     ZStack {
       Color.lightPink
@@ -44,7 +46,12 @@ extension LandingView {
       textColor: .darkRed,
       backgroundColor: .mainPink,
       action: { print("Navigation to Sign in page") },
-      cornerRadius: [42, 0, 42, 42]
+      cornerRadius: [
+        radiusValue,
+        0,
+        radiusValue,
+        radiusValue
+      ]
     )
   }
 
@@ -54,7 +61,12 @@ extension LandingView {
       textColor: .mainPink,
       backgroundColor: .darkRed,
       action: { print("Navigation to Register page") },
-      cornerRadius: [42, 42, 42, 0]
+      cornerRadius: [
+        radiusValue,
+        radiusValue,
+        radiusValue,
+        0
+      ]
     )
   }
 
