@@ -24,10 +24,10 @@ final class HomeViewModel: HomeViewModeling {
     isLoading = true
     homeRepository.getBirthdays()
       .sink { [weak self] result in
+        self?.isLoading = false
         switch result {
         case .failure(let error):
           print(error)
-          self?.isLoading = false
         default: break
         }
       } receiveValue: { [weak self] birtdays in
