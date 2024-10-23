@@ -17,6 +17,8 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
   @State var newRelation: String = ""
   @State var relationshipData: [Relationship] = [.bestFriend,.mother,.father,.sister,.brother,.grandfather,.grandmother,.uncle,.friend]
   
+  @Environment(\.presentationMode) var presentationMode
+  
   var columns = [GridItem(.flexible()),GridItem(.flexible()),GridItem(.flexible())]
   
   var body: some View {
@@ -41,33 +43,30 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
 extension BirthdayDetailsScreen {
   
   private var content: some View {
-   
-      VStack(spacing: 0) {
-//        ScrollView {
-        HStack {
-          Spacer()
-          editButton
-        }
-        .padding(.bottom, 20)
-        image
-          .padding(.bottom, 12)
-        name
-          .padding(.bottom, 24)
-        date
-          .padding(.bottom, 10)
-        relationship
-          .padding(.bottom, 10)
-        zodiacSign
+    VStack(spacing: 0) {
+      HStack {
         Spacer()
-        HStack(spacing: 10) {
-          generateMessageButton
-          findGiftButton
-        }
+        editButton
       }
-      .padding(.top, 20)
-      .padding(.bottom, 60)
-      .padding(.horizontal, 24)
-
+      .padding(.bottom, 20)
+      image
+        .padding(.bottom, 12)
+      name
+        .padding(.bottom, 24)
+      date
+        .padding(.bottom, 10)
+      relationship
+        .padding(.bottom, 10)
+      zodiacSign
+      Spacer()
+      HStack(spacing: 10) {
+        generateMessageButton
+        findGiftButton
+      }
+    }
+    .padding(.top, 20)
+    .padding(.bottom, 60)
+    .padding(.horizontal, 24)
   }
   
   private var image: some View {
@@ -78,7 +77,7 @@ extension BirthdayDetailsScreen {
       } else if phase.error != nil {
         Image(systemName: "person")
           .resizable()
-          .foregroundStyle(.blue)
+          .foregroundStyle(Color.darkRed)
       } else {
         ProgressView()
           .progressViewStyle(.circular)
@@ -127,7 +126,7 @@ extension BirthdayDetailsScreen {
   
   private var generateMessageButton: some View {
     Button {
-      
+      //MARK: - implement generate Message
     } label: {
       Text("Generate Message")
         .padding(.vertical, 8)
@@ -206,8 +205,11 @@ extension BirthdayDetailsScreen {
   private var deleteButton: some View {
     Button {
       guard let id = birthdayData.id else { return }
-      viewModel.deleteBirthDay(id: id)
-      //MARK: - pop to previous page after delete
+      viewModel.deleteBirthDay(id: id) {
+        DispatchQueue.main.async {
+          self.presentationMode.wrappedValue.dismiss()
+        }
+      }
     } label: {
       Image(.delete)
     }
@@ -256,7 +258,7 @@ extension BirthdayDetailsScreen {
             date: birthdayData.date,
             message: birthdayData.message,
             relation: birthdayData.relation
-          )
+          ), birthday: birthdayData
       )
     } label: {
       Text("Done")
@@ -330,8 +332,9 @@ extension BirthdayDetailsScreen {
 
 #Preview {
   BirthdayDetailsScreen(
-    viewModel: BirthdayDetailsViewModel(
-      homeRepository: HomeDefaultRepository()),
+    viewModel: BirthdayDetailsViewModel(homeRepository: HomeDefaultRepository(), deleteAction: { print() }, updateAction: { _ in
+      print()
+    }),
     birthdayData:
       BirthdayModel(
         createdAt: "",

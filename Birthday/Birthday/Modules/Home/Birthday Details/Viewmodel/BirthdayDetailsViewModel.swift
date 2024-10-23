@@ -14,12 +14,16 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   
   private var homeRepository: HomeRepository
   private var cancelables = Set<AnyCancellable>()
+  var deleteAction: () -> ()
+  var updateAction: (BirthdayModel) -> ()
   
-  init(homeRepository: HomeRepository) {
+  init(homeRepository: HomeRepository,deleteAction: @escaping () -> (),updateAction: @escaping (BirthdayModel) -> () ) {
     self.homeRepository = homeRepository
+    self.deleteAction = deleteAction
+    self.updateAction = updateAction
   }
   
-  func updateBirthday(payload: BirthdayUpdatePayload) {
+  func updateBirthday(payload: BirthdayUpdatePayload, birthday: BirthdayModel) {
     isLoading = true
     homeRepository.updateBirhday(payload: payload)
       .sink { [weak self] result in
@@ -29,12 +33,12 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
           print(error)
         default: break
         }
-      } receiveValue: { update in
-        print(update)
+      } receiveValue: { [weak self] update in
+        self?.updateAction(birthday)
       }.store(in: &cancelables)
   }
   
-  func deleteBirthDay(id: Int) {
+  func deleteBirthDay(id: Int, complition: @escaping () -> ()) {
     isLoading = true
     homeRepository.deleteBirthday(id: id)
       .sink { [weak self] result in
@@ -44,8 +48,10 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
           print(error)
         default: break
         }
-      } receiveValue: { id in
+      } receiveValue: { [weak self] id in
         print(id)
+        self?.deleteAction()
+        complition()
       }.store(in: &cancelables)
   }
   

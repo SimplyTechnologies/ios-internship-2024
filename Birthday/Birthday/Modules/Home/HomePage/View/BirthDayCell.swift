@@ -21,7 +21,7 @@ extension BirthDayCell {
   private var content: some View {
     HStack(alignment: .center) {
       image
-      VStack {
+      VStack(alignment: .leading) {
         name
         date
       }
@@ -54,10 +54,12 @@ extension BirthDayCell {
   
   private var name: some View {
     Text(model.name ?? "")
+      .foregroundStyle(.black)
   }
   
   private var date: some View {
     Text(model.date?.toFormattedDate() ?? "")
+      .foregroundStyle(.black)
   }
   
 }

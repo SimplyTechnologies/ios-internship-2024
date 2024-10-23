@@ -10,8 +10,10 @@ import Foundation
 protocol  BirthDayDetailsViewModeling: ObservableObject {
   
   var isLoading: Bool { get set }
+  var deleteAction: () -> () { get set }
+  var updateAction: (BirthdayModel) -> () { get set}
   
-  func updateBirthday(payload: BirthdayUpdatePayload)
-  func deleteBirthDay(id: Int)
+  func updateBirthday(payload: BirthdayUpdatePayload, birthday: BirthdayModel)
+  func deleteBirthDay(id: Int, complition: @escaping () -> ())
   
 }
