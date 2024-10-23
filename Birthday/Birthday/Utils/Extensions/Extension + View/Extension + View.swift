@@ -8,21 +8,18 @@
 import SwiftUI
 
 extension View {
+  
   func signInCardStyle() -> some View {
     self.background(Color.white)
       .cornerRadius(24)
       .padding(.horizontal, 38)
       .offset(x: 0, y: 0)
   }
-}
-
-extension View {
+  
   func topView() -> some View {
     modifier(CustomNavBarModifier())
   }
-}
-
-extension View {
+  
   func placeholder<Content: View>(
     when shouldShow: Bool,
     alignment: Alignment = .leading,
@@ -33,9 +30,7 @@ extension View {
       self
     }
   }
-}
-
-extension View {
+  
   func textFieldStyle() -> some View {
     self
       .foregroundColor(.darkRed)
@@ -43,7 +38,7 @@ extension View {
       .autocorrectionDisabled()
       .frame(height: 41)
   }
-
+  
   func errorTextStyle() -> some View {
     self
       .font(.system(size: 12, design: .default).weight(.regular))

@@ -12,16 +12,17 @@ struct ValidationTextField: View {
   @Binding private var inputText: String
   @Binding private var isPasswordHidden: Bool
 
-  let placeholder: String
-  let errorText: String
-  let isSecure: Bool
+  private let placeholder: String
+  private let errorText: String
+  private let isSecure: Bool
 
-  init(placeholder: String,
-       inputText: Binding<String>,
-       errorText: String = "",
-       isPasswordHidden: Binding<Bool>,
-       isSecure: Bool = false)
-  {
+  init(
+    placeholder: String,
+    inputText: Binding<String>,
+    errorText: String = "",
+    isPasswordHidden: Binding<Bool>,
+    isSecure: Bool = false
+  ) {
     self.placeholder = placeholder
     self._inputText = inputText
     self.errorText = errorText

@@ -13,21 +13,20 @@ struct CustomNavBarModifier: ViewModifier {
 
   func body(content: Content) -> some View {
     ZStack {
-        Color.lightPink.ignoresSafeArea()
+      Color.lightPink.ignoresSafeArea()
       VStack {
         HStack {
           Button {
             presentationMode.wrappedValue.dismiss()
           } label: {
-              Image(.back)
+            Image(.back)
           }
           Spacer()
-            Image(.icon)
-        } .padding(.horizontal, 24)
+          Image(.icon)
+        }.padding(.horizontal, 24)
         content
       }
     }
     .navigationBarHidden(true)
   }
-  
 }

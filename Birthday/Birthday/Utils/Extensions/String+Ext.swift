@@ -8,12 +8,11 @@
 import Foundation
 
 extension String {
+  
   var localized: String {
     NSLocalizedString(self, comment: "")
   }
-}
 
-extension String {
   func isEmailValid() -> Bool {
     guard !self.isEmpty else {
       return false
@@ -29,4 +28,5 @@ extension String {
     }
     return self.count > 8
   }
+  
 }
