@@ -1,4 +1,5 @@
 {
+  "originHash" : "5752bd2e0e5d75f947f6e0bc3b892d1a9c736628b9ed72bb7a98f04aa1939ff3",
   "pins" : [
     {
       "identity" : "apollo-ios",
@@ -19,5 +20,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
