@@ -9,6 +9,7 @@ import Foundation
 import BirthDayAPI
 
 struct BirthdayModel {
+  
   let createdAt, date: String?
   let id: Int?
   let image: String?
@@ -17,7 +18,18 @@ struct BirthdayModel {
   let upcomingBirthday, updatedAt: String?
   let userId: Int?
   
-  init(createdAt: String?, date: String?, id: Int?, image: String?, message: String?, name: String?, relation: String?, upcomingAge: Int?, upcomingBirthday: String?, updatedAt: String?, userId: Int?) {
+  init(
+    createdAt: String?,
+    date: String?,
+    id: Int?,
+    image: String?, 
+    message: String?,
+    name: String?,
+    relation: String?,
+    upcomingAge: Int?, upcomingBirthday: String?,
+    updatedAt: String?,
+    userId: Int?
+    ) {
     self.createdAt = createdAt
     self.date = date
     self.id = id

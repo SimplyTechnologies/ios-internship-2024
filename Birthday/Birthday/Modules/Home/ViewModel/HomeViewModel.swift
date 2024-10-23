@@ -11,10 +11,9 @@ import Combine
 final class HomeViewModel: HomeViewModeling {
   
   @Published var isLoading: Bool = false
-  @Published var error: Error? = nil
-  @Published var birthDays: [BirthdayModel] = []
+  @Published var birthdayData: [BirthdayModel] = []
   
-  private var homeRepository: HomeRepository
+  private let homeRepository: HomeRepository
   private var cancelables = Set<AnyCancellable>()
   
   init(homeRepository: HomeRepository) {
@@ -30,10 +29,11 @@ final class HomeViewModel: HomeViewModeling {
           self?.isLoading = false
         case.failure(let error):
           print(error)
+          self?.isLoading = false
         }
       } receiveValue: { birtdays in
         birtdays.forEach {
-          self.birthDays.append(BirthdayModel(dto: $0))
+          self.birthdayData.append(BirthdayModel(dto: $0))
         }
       }.store(in: &cancelables)
   }

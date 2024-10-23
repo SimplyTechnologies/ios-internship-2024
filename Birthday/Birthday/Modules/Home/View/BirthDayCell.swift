@@ -9,10 +9,10 @@ import SwiftUI
 
 struct BirthDayCell: View {
   
-  var model: BirthdayModel
+  let model: BirthdayModel
   
   var body: some View {
-      content
+    content
   }
 }
 
@@ -32,18 +32,22 @@ extension BirthDayCell {
   }
   
   private var image: some View {
-    AsyncImage(url: URL(string: model.image ?? "")) { image in
-      image
-        .resizable()
-        .cornerRadius(50)
-        .frame(width: 70, height: 70)
-      
-    } placeholder: {
-      Circle()
-        .frame(width: 70, height: 70)
-        .foregroundColor(Color.gray)
-        .cornerRadius(50)
+    AsyncImage(url:URL(string: model.image ?? "") ) { phase in
+      if let image = phase.image {
+        image
+          .resizable()
+      } else if phase.error != nil {
+        Image(systemName: "photo.circle.fill")
+          .resizable()
+          .foregroundStyle(.lightPink)
+
+      } else {
+        ProgressView()
+          .progressViewStyle(.circular)
+      }
     }
+    .frame(width: 70, height: 70)
+    .cornerRadius(50)
     .padding(.leading, 16)
     .padding(.trailing, 44)
     .padding(.vertical, 20)
@@ -60,5 +64,16 @@ extension BirthDayCell {
 }
 
 #Preview {
-  BirthDayCell(model: BirthdayModel(createdAt: "", date: "1999-11-03T09:54:33.000Z", id: 1, image: "https://randomuser.me/api/portraits/med/women/19.jpg", message: "Be Happy", name: "John", relation: "Friend", upcomingAge: 12, upcomingBirthday: nil, updatedAt: nil, userId: 2))
+  BirthDayCell(
+    model: BirthdayModel(
+      createdAt: "",
+      date: "1999-11-03T09:54:33.000Z",
+      id: 1,
+      image: "https://randomuser.me/api/portraits/med/women/19.jpg",
+      message: "Be Happy",
+      name: "John", relation: "Friend",
+      upcomingAge: 12,
+      upcomingBirthday: nil,
+      updatedAt: nil, userId: 2)
+  )
 }

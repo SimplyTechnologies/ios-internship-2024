@@ -33,7 +33,7 @@ extension HomeScreen {
   private var list: some View {
     ScrollView {
       LazyVStack(spacing: 18) {
-        ForEach(viewModel.birthDays, id: \.id) { birthday in
+        ForEach(viewModel.birthdayData, id: \.id) { birthday in
           BirthDayCell(model: birthday)
         }
       }
