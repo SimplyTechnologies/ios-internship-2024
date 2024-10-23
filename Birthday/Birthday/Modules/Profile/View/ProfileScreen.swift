@@ -61,17 +61,17 @@ extension ProfileScreen {
       ProfileButton(
         title: String.Button.editAccount,
         action: {
-          print("Edit Account") // Navigation to Edit Account screen
+          print("Edit Account") // TODO: Navigation to Edit Account screen
         })
       ProfileButton(
         title: String.Button.changePassword,
         action: {
-          print("Change Password") // Navigation to Change Password screen
+          print("Change Password") // TODO: Navigation to Change Password screen
         })
       ProfileButton(
         title: String.Button.signOut,
         action: {
-          print("Sign Out") // Navigation to Sign Out screen
+          print("Sign Out") // TODO: Navigation to Sign Out screen
         })
     }
     .padding(.horizontal, 16)

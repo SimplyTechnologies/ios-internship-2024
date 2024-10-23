@@ -19,6 +19,9 @@ final class ProfileViewModel: ProfileViewModeling {
     lastName: ""
   )
 
+  private var profileRepository: ProfileRepository
+  private var cancelables = Set<AnyCancellable>()
+
   func getProfileData() {
     profileRepository.getProfile()
       .sink { result in
@@ -32,11 +35,9 @@ final class ProfileViewModel: ProfileViewModeling {
         self?.profileData = ProfileModel(dto: profile)
       }.store(in: &cancelables)
   }
-  private var profileRepository: ProfileRepository
-  private var cancelables = Set<AnyCancellable>()
-  
-  
+
   init( profileRepository: ProfileRepository) {
     self.profileRepository = profileRepository
   }
+
 }
