@@ -26,6 +26,3 @@ struct RoundedButtonStyle: ButtonStyle {
   }
   
 }
-
-//  .foregroundColor(configuration.isPressed ? .darkRed : (isDisable ? .mainPink : .darkRed))
-//  .background(configuration.isPressed ? .mainPink : (isDisable ? .darkRed : .mainPink))
