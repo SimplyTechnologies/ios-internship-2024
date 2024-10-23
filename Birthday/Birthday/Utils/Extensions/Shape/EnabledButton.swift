@@ -7,21 +7,25 @@
 
 import SwiftUI
 
-struct PrimaryButtonStyle: ButtonStyle {
+struct RoundedButtonStyle: ButtonStyle {
   
-  let isDisable: Bool
-  
+  @Environment(\.isEnabled) var isEnabled
+
+  @ViewBuilder
   func makeBody(configuration: Configuration) -> some View {
-    configuration
-      .label
-      .foregroundColor(configuration.isPressed ? .darkRed : (isDisable ? .mainPink : .darkRed))
-      .font(.system(size: 15, design: .default).weight(.bold))
-      .frame(height: 45)
-      .frame(maxWidth: .infinity)
-      .background(configuration.isPressed ? .mainPink : (isDisable ? .darkRed : .mainPink))
-      .cornerRadius(25)
-      .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
-      .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+    let backgroundColor = configuration.isPressed ? .mainPink : (isEnabled ? Color.mainPink : Color.darkRed)
+    let pressedColor = Color.mainPink
+    let background = configuration.isPressed ? pressedColor : backgroundColor
+    let tintColor = configuration.isPressed ? .darkRed : (isEnabled ? Color.darkRed : Color.mainPink)
+
+    configuration.label
+      .foregroundStyle(tintColor)
+      .frame(width: 194, height: 46)
+      .background(background)
+      .clipShape(Capsule())
   }
   
 }
+
+//  .foregroundColor(configuration.isPressed ? .darkRed : (isDisable ? .mainPink : .darkRed))
+//  .background(configuration.isPressed ? .mainPink : (isDisable ? .darkRed : .mainPink))

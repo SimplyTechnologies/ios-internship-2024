@@ -14,11 +14,12 @@ extension String {
     static var signIn: String { "button_signIn".localized }
   }
   
-  enum TextField{
+  enum TextField {
     static var email: String { "email_text".localized }
     static var password: String { "password_text".localized }
   }
-  enum Label{
+  
+  enum Label {
     static var emailErrorText: String { "email_text".localized }
     static var passErrorText: String { "password_error_text".localized }
   }
