@@ -9,6 +9,7 @@ import os
 import Foundation
 
 struct Console {
+  
     private init() {}
 
     static func log(_ items: Any..., separator: String = " ", terminator: String = "\n") {
@@ -16,4 +17,5 @@ struct Console {
         let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.Birthday.ios", category: "custom_console_logger")
         logger.log("This is a log message with a value: \(output)")
     }
+  
 }
