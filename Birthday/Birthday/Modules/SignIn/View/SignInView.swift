@@ -12,7 +12,6 @@ struct SignInView: View {
     @StateObject private var viewModel = SignInViewModel()
     @State private var isPasswordHide: Bool = true
     
-    
     var body: some View {
         ZStack{
             Color.lightPink
@@ -20,9 +19,8 @@ struct SignInView: View {
             VStack(spacing: 0){
                 Spacer()
                 VStack(spacing: 20.0){
-                    
                     SignInHeader()
-                    SignInFields(viewModel: viewModel, isPasswordHide: $isPasswordHide)
+                    signInFields
                     SignInButton(isDisabled: viewModel.buttonDisabledState) {
                         //TODO: Handle sign in action
                     }
@@ -34,23 +32,7 @@ struct SignInView: View {
         }
     }
     
-}
-
-private struct SignInHeader: View {
-    var body: some View {
-        Text("button_signIn".localized)
-            .font(.system(size: 20, design: .default).weight(.bold))
-            .foregroundColor(.darkRed)
-            .padding(.top, 20)
-    }
-}
-
-private struct SignInFields: View {
-    
-    @ObservedObject var viewModel: SignInViewModel
-    @Binding var isPasswordHide: Bool
-    
-    var body: some View {
+    private var signInFields: some View {
         VStack(spacing: 15.0) {
             VStack(spacing: 20) {
                 ValidationTextField(placeholder: "email_text".localized,
@@ -61,7 +43,6 @@ private struct SignInFields: View {
                 .onChange(of: viewModel.email) { _ in
                     viewModel.checkEmail()
                 }
-                
                 ValidationTextField(placeholder: "password_text".localized,
                                     inputText: $viewModel.password,
                                     errorText: viewModel.passErrorText,
@@ -76,7 +57,14 @@ private struct SignInFields: View {
     }
 }
 
-
+private struct SignInHeader: View {
+    var body: some View {
+        Text("button_signIn".localized)
+            .font(.system(size: 20, design: .default).weight(.bold))
+            .foregroundColor(.darkRed)
+            .padding(.top, 20)
+    }
+}
 
 private struct SignInButton: View {
     let isDisabled: Bool

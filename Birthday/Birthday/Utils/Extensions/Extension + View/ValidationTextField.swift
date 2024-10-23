@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ValidationTextField: View {
     
-    @Binding var inputText: String
-    @Binding var isPasswordHidden: Bool
+    @Binding private var inputText: String
+    @Binding private var isPasswordHidden: Bool
 
     let placeholder: String
     let errorText: String
@@ -27,7 +27,7 @@ struct ValidationTextField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
             ZStack(alignment: .trailing) {
-                Group {
+              VStack {
                     if !(isPasswordHidden && isSecure) {
                         TextField(placeholder, text: $inputText)
                     } else {
