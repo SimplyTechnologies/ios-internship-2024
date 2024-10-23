@@ -15,4 +15,16 @@ extension String {
     static var register: String { "button_register".localized }
   }
   
+  func toFormattedDate() -> String? {
+    let inputFormatter = DateFormatter()
+    inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    guard let date = inputFormatter.date(from: self) else {
+      return nil
+    }
+    let outputFormatter = DateFormatter()
+    outputFormatter.dateFormat = "dd.MM.yyyy"
+    
+    return outputFormatter.string(from: date)
+  }
+  
 }

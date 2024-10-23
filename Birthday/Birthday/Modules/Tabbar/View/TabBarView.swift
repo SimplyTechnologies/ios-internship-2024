@@ -34,7 +34,8 @@ extension TabBarView {
   
   private var homeTab: some View {
     NavigationStack {
-      HomeScreen()
+      HomeScreen(viewModel: HomeViewModel(homeRepository: HomeDefaultRepository()))
+        
     }
     .tabItem { TabCellView(model: .home) }
     .tag(TabModel.home)
