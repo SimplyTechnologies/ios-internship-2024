@@ -53,9 +53,7 @@ input CreateBirthdayInput {
   relation: String!
 }
 
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
+# A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 scalar DateTime
 
 input LoginInput {
@@ -81,7 +79,9 @@ type Mutation {
 type Query {
   birthday(id: Int!): Birthday!
   birthdays: [Birthday!]!
+  profile: User!
   shops(filter: ShopFilter!): [Shop!]!
+  users: [User!]!
 }
 
 input RateFilter {
@@ -144,3 +144,4 @@ type UserFavoriteShop {
   shopId: Int!
   userId: Int!
 }
+

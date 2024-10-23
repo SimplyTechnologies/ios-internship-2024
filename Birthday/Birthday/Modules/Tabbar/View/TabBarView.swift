@@ -59,7 +59,7 @@ extension TabBarView {
   
   private var profileTab: some View {
     NavigationStack {
-      ProfileScreen()
+      ProfileScreen(viewModel: ProfileViewModel(profileRepository: ProfileDefaultRepository()))
     }
     .tabItem { TabCellView(model: .profile) }
     .tag(TabModel.profile)

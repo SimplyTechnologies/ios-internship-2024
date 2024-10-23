@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9393CDE42CC9171C00D8DEA1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE32CC9171C00D8DEA1 /* ProfileViewModel.swift */; };
+		9393CDE72CC9174A00D8DEA1 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */; };
+		9393CDE92CC91F5D00D8DEA1 /* ProfileViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */; };
+		93DDE0BC2CC9144700F7FAA4 /* GetProfile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 93DDE0BB2CC9144700F7FAA4 /* GetProfile.graphql */; };
+		93DDE0BE2CC915F700F7FAA4 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDE0BD2CC915F700F7FAA4 /* ProfileRepository.swift */; };
 		F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */; };
 		F3C8CB6F2CC67A03002DE72A /* BirthDayAPI in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB6E2CC67A03002DE72A /* BirthDayAPI */; };
 		F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */; };
@@ -37,6 +42,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9393CDE32CC9171C00D8DEA1 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModeling.swift; sourceTree = "<group>"; };
+		93DDE0BB2CC9144700F7FAA4 /* GetProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetProfile.graphql; sourceTree = "<group>"; };
+		93DDE0BD2CC915F700F7FAA4 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		F3C8CB3B2CC658C6002DE72A /* Birthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppoloClient.swift; sourceTree = "<group>"; };
 		F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetBirthdays.graphql; sourceTree = "<group>"; };
@@ -79,6 +89,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9393CDE22CC9170200D8DEA1 /* Viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */,
+				9393CDE32CC9171C00D8DEA1 /* ProfileViewModel.swift */,
+			);
+			path = Viewmodel;
+			sourceTree = "<group>";
+		};
+		9393CDE52CC9173A00D8DEA1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F3C8CB322CC658C6002DE72A = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */,
+				93DDE0BB2CC9144700F7FAA4 /* GetProfile.graphql */,
 			);
 			path = Queries;
 			sourceTree = "<group>";
@@ -149,6 +177,7 @@
 			children = (
 				F3C8CB752CC682C9002DE72A /* GraphQLRepository.swift */,
 				F3C8CBE92CC7AAFC002DE72A /* HomeRepository.swift */,
+				93DDE0BD2CC915F700F7FAA4 /* ProfileRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -286,6 +315,8 @@
 		F3C8CBBD2CC7894F002DE72A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				9393CDE52CC9173A00D8DEA1 /* Model */,
+				9393CDE22CC9170200D8DEA1 /* Viewmodel */,
 				F3C8CBBE2CC78979002DE72A /* View */,
 			);
 			path = Profile;
@@ -410,6 +441,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93DDE0BC2CC9144700F7FAA4 /* GetProfile.graphql in Resources */,
 				F3C8CB9E2CC6A612002DE72A /* Preview Assets.xcassets in Resources */,
 				F3C8CBAF2CC6A61D002DE72A /* Localizable.strings in Resources */,
 				F3C8CBAC2CC6A61D002DE72A /* Assets.xcassets in Resources */,
@@ -427,13 +459,17 @@
 				F3C8CBF72CC7B9EF002DE72A /* BirthdayModel.swift in Sources */,
 				F3C8CBAE2CC6A61D002DE72A /* Texts.swift in Sources */,
 				F3C8CBC92CC78A12002DE72A /* ProfileScreen.swift in Sources */,
+				9393CDE72CC9174A00D8DEA1 /* ProfileModel.swift in Sources */,
+				93DDE0BE2CC915F700F7FAA4 /* ProfileRepository.swift in Sources */,
 				F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */,
 				F3C8CBF42CC7B5CE002DE72A /* View+Extension.swift in Sources */,
+				9393CDE42CC9171C00D8DEA1 /* ProfileViewModel.swift in Sources */,
 				F3C8CBF22CC7B441002DE72A /* HomeViewModel.swift in Sources */,
 				F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */,
 				F3C8CBC32CC789AA002DE72A /* HomeScreen.swift in Sources */,
 				F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */,
 				F3C8CBF02CC7B3F0002DE72A /* HomeViewModeling.swift in Sources */,
+				9393CDE92CC91F5D00D8DEA1 /* ProfileViewModeling.swift in Sources */,
 				F3C8CBC52CC789D0002DE72A /* ShopsScreen.swift in Sources */,
 				F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */,
 				F3C8CBEA2CC7AAFC002DE72A /* HomeRepository.swift in Sources */,

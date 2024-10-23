@@ -7,34 +7,33 @@
 
 import SwiftUI
 
-struct ProfileScreen: View {
+struct ProfileScreen<T: ProfileViewModeling>: View {
+
+  @ObservedObject var viewModel: T
 
   var body: some View {
-    ZStack {
-      Color.lightPink
-        .ignoresSafeArea()
       VStack(spacing: 50) {
         logo
           .padding(.horizontal, 24)
-        userDetails //The view with image, name, and gmail
-        buttons //The view with buttons
+        userDetails //image, name, gmail
+        buttons
         Spacer()
       }
+      .background(Color.lightPink)
+      .onLoad {
+        viewModel.getProfileData()
+      }
     }
-  }
 
 }
 
 extension ProfileScreen {
 
   private var logo: some View {
-    HStack {
-      Spacer()
       Image(.birth)
         .resizable()
         .aspectRatio(contentMode: .fit)
         .frame(width: 88, height: 40)
-    }
   }
 
   private var userDetails: some View {
@@ -44,10 +43,10 @@ extension ProfileScreen {
         .aspectRatio(contentMode: .fit)
         .frame(width: 100, height: 100)
       VStack(spacing: 15) {
-        Text("Shirley Peter")
+        Text(viewModel.profileData.fullname ?? "")
           .bold()
           .font(.system(size: 20))
-        Text(verbatim: "ShirleyPeter01@gmail.com")
+        Text(verbatim: viewModel.profileData.email ?? "")
           .textSelection(.disabled)
           .foregroundStyle(.black)
           .font(.system(size: 20))
@@ -102,8 +101,4 @@ struct ProfileButton: View { //This struct should be in Models Group
     }
   }
 
-}
-
-#Preview {
-  ProfileScreen()
 }
