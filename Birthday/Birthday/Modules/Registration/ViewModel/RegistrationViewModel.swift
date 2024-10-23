@@ -42,6 +42,10 @@ class RegistrationViewModel: ObservableObject {
   
   private var cancellables = Set<AnyCancellable>()
   
+  private var hasEmptyField: Bool {
+    name.isEmpty || surname.isEmpty || email.isEmpty || password.isEmpty || repeatPassword.isEmpty
+  }
+  
   init(router: any Routable) {
     self.router = router
     
@@ -59,6 +63,7 @@ class RegistrationViewModel: ObservableObject {
         guard let self else { return }
         if isNameFocused && !isFocused {
           validateName()
+          validateForm()
         }
       }
       .store(in: &cancellables)
@@ -68,6 +73,7 @@ class RegistrationViewModel: ObservableObject {
         guard let self else { return }
         if isSurnameFocused && !isFocused {
           validateSurname()
+          validateForm()
         }
       }
       .store(in: &cancellables)
@@ -77,6 +83,7 @@ class RegistrationViewModel: ObservableObject {
         guard let self else { return }
         if isEmailFocused && !isFocused {
           validateEmail()
+          validateForm()
         }
       }
       .store(in: &cancellables)
@@ -86,6 +93,7 @@ class RegistrationViewModel: ObservableObject {
         guard let self else { return }
         if isPasswordFocused && !isFocused {
           validatePassword()
+          validateForm()
         }
       }
       .store(in: &cancellables)
@@ -95,6 +103,7 @@ class RegistrationViewModel: ObservableObject {
         guard let self else { return }
         if isRepeatPasswordFocused && !isFocused {
           validateRepeatPassword()
+          validateForm()
         }
       }
       .store(in: &cancellables)
@@ -161,14 +170,16 @@ class RegistrationViewModel: ObservableObject {
   }
   
   private func validateForm() {
-    validateName()
-    validateSurname()
-    validateEmail()
-    validatePassword()
-    validateRepeatPassword()
-    let isValidFullName = isValidName && isValidSurname
-    let isValidPasswords = isValidPassword && isValidRepeatPassword && isSamePasswords
-    isValidForm = isValidFullName && isValidEmail && isValidPasswords
+    if !hasEmptyField {
+      validateName()
+      validateSurname()
+      validateEmail()
+      validatePassword()
+      validateRepeatPassword()
+      let isValidFullName = isValidName && isValidSurname
+      let isValidPasswords = isValidPassword && isValidRepeatPassword && isSamePasswords
+      isValidForm = isValidFullName && isValidEmail && isValidPasswords
+    }
   }
   
   private func validateName() {

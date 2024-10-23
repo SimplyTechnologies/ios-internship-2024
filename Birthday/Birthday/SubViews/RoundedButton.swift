@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct RoundedButton: View {
-  
-  @Environment(\.isEnabled) var isEnabled
-  
+    
   let name: String
   let action: () -> Void
 
@@ -20,7 +18,7 @@ struct RoundedButton: View {
     } label: {
       Text(name)
     }
-    .buttonStyle(RoundedButtonStyle(isEnabled))
+    .buttonStyle(RoundedButtonStyle())
   }
   
 }

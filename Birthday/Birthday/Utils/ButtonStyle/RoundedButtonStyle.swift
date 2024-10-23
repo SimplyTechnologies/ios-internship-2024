@@ -9,11 +9,7 @@ import SwiftUI
 
 struct RoundedButtonStyle: ButtonStyle {
   
-  let isEnabled: Bool
-
-  init(_ isEnabled: Bool) {
-    self.isEnabled = isEnabled
-  }
+  @Environment(\.isEnabled) var isEnabled
 
   @ViewBuilder
   func makeBody(configuration: Configuration) -> some View {
