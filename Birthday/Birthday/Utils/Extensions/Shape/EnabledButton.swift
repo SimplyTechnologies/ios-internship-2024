@@ -7,28 +7,21 @@
 
 import SwiftUI
 
-struct EnabledButton: ButtonStyle {
+struct PrimaryButtonStyle: ButtonStyle {
   
-  private let isDisable: Bool
-  
-  init(isDisable: Bool) {
-    self.isDisable = isDisable
-  }
+  let isDisable: Bool
   
   func makeBody(configuration: Configuration) -> some View {
     configuration
       .label
-      .foregroundColor(
-        isDisable ? .darkRed : .mainPink
-      )
+      .foregroundColor(configuration.isPressed ? .darkRed : (isDisable ? .mainPink : .darkRed))
       .font(.system(size: 15, design: .default).weight(.bold))
       .frame(height: 45)
       .frame(maxWidth: .infinity)
-      .background(
-        isDisable ? .mainPink : .darkRed
-      )
+      .background(configuration.isPressed ? .mainPink : (isDisable ? .darkRed : .mainPink))
       .cornerRadius(25)
-      .disabled(isDisable)
+      .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+      .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
   }
   
 }

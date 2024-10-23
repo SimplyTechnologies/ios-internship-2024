@@ -34,7 +34,9 @@ struct ValidationTextField: View {
                         SecureField(placeholder, text: $inputText)
                     }
                 }
-                .placeholder(when: inputText.isEmpty) {Text(placeholder)}
+              .placeholder(when: inputText.isEmpty) {
+                Text(placeholder)
+              }
                 .textFieldStyle()
                 
                 if isSecure {
@@ -58,7 +60,7 @@ struct ValidationTextField: View {
     }
 }
 
-//#Preview {
-//    ValidationTextField(placeholder: "ol", inputText: .constant(""), errorText: "error", isSecured: .constant(false))
-//}
+#Preview {
+  ValidationTextField(placeholder: "", inputText: .constant(""), isPasswordHidden: .constant(false))
+}
 

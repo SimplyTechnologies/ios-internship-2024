@@ -21,7 +21,7 @@ struct SignInView: View {
                 VStack(spacing: 20.0){
                     SignInHeader()
                     signInFields
-                    SignInButton(isDisabled: viewModel.buttonDisabledState) {
+                  SignInButton(isEnabled: viewModel.buttonDisabledState) {
                         //TODO: Handle sign in action
                     }
                 }
@@ -67,17 +67,18 @@ private struct SignInHeader: View {
 }
 
 private struct SignInButton: View {
-    let isDisabled: Bool
+    let isEnabled: Bool
     let action: () -> Void
     
     var body: some View {
         Button(action: action) {
             Text("button_signIn".localized)
         }
-        .buttonStyle(EnabledButton(isDisable: isDisabled))
+        .buttonStyle(PrimaryButtonStyle(isDisable: !isEnabled))
         .padding(.horizontal, 62)
         .padding(.bottom, 50)
         .padding(.top, 30)
+        .disabled(!isEnabled)
     }
 }
 
