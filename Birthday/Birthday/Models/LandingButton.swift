@@ -40,9 +40,11 @@ struct LandingButton: View {
 }
 
 #Preview {
-  LandingButton(title: String.Button.register,
-                textColor: .lightPink,
-                backgroundColor: .darkRed,
-                action: { },
-                cornerRadii: [42, 0, 42, 42])
+  LandingButton(
+    title: String.Button.register,
+    textColor: .lightPink,
+    backgroundColor: .darkRed,
+    action: { },
+    cornerRadii: [42, 0, 42, 42]
+  )
 }
