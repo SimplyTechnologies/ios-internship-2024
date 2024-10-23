@@ -8,6 +8,8 @@
 import Apollo
 import BirthDayAPI
 import SwiftUI
+import Apollo
+import BirthDayAPI
 
 struct ContentView: View {
   
