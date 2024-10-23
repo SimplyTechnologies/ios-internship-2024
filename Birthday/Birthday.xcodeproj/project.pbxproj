@@ -118,20 +118,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE98D2C12CC777800017E477 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		CE98D2C22CC777800017E477 /* NetworkLayer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NetworkLayer;
-			sourceTree = "<group>";
-		};
 		CE98D2C42CC7778E0017E477 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,7 +173,6 @@
 				CE98D2F32CC8EB650017E477 /* Model */,
 				CE98D2F22CC8EB550017E477 /* ViewModel */,
 				CE98D2F12CC8EB370017E477 /* View */,
-				CE98D2BE2CC775FB0017E477 /* RegistrationScreen.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -195,6 +180,7 @@
 		CE98D2F12CC8EB370017E477 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE98D2BE2CC775FB0017E477 /* RegistrationScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,9 +222,7 @@
 			children = (
 				F3C8CB992CC6A5F2002DE72A /* App */,
 				F3C8CB572CC65F15002DE72A /* GraphQL */,
-				CE98D2C12CC777800017E477 /* Models */,
 				F3C8CBB02CC78417002DE72A /* Modules */,
-				CE98D2C22CC777800017E477 /* NetworkLayer */,
 				F3C8CB9C2CC6A612002DE72A /* Preview Content */,
 				F3C8CBA12CC6A61D002DE72A /* Resources */,
 				F3C8CBA32CC6A61D002DE72A /* Utils */,

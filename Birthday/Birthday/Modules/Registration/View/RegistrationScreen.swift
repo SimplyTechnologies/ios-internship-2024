@@ -19,6 +19,14 @@ struct RegistrationScreen: View {
   @State private var coordinateSpaceName = UUID()
   
   var body: some View {
+    content
+  }
+  
+}
+
+extension RegistrationScreen {
+  
+  private var content: some View {
     ZStack {
       Color.snow.ignoresSafeArea()
       VStack(spacing: 0) {
@@ -44,23 +52,27 @@ struct RegistrationScreen: View {
     .navigationBarBackButtonHidden(true)
     .toolbar {
       ToolbarItem(placement: .keyboard) {
-        HStack(spacing: 8) {
-          Spacer()
-          Button {
-            goUp()
-          } label: {
-            Image(systemName: "chevron.up")
-          }
-          .disabled(focusedField == .name)
-          
-          Button {
-            goDown()
-          } label: {
-            Image(systemName: "chevron.down")
-          }
-          .disabled(focusedField == .repeatPassword)
-        }
+        keyboardButtons
       }
+    }
+  }
+  
+  private var keyboardButtons: some View {
+    HStack(spacing: 8) {
+      Spacer()
+      Button {
+        goUp()
+      } label: {
+        Image(systemName: "chevron.up")
+      }
+      .disabled(focusedField == .name)
+        
+      Button {
+        goDown()
+      } label: {
+        Image(systemName: "chevron.down")
+      }
+      .disabled(focusedField == .repeatPassword)
     }
   }
   

@@ -45,7 +45,7 @@ struct InputField: View {
         Spacer().frame(width: 8)
         hideButton
       }
-    } //: HSTACK
+    }
     .padding(.horizontal, 16)
     .frame(height: 44)
     .background(!isValidField ? Color.piggyPink : Color.snow)
