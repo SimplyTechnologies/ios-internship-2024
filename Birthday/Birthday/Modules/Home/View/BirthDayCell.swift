@@ -37,7 +37,7 @@ extension BirthDayCell {
         image
           .resizable()
       } else if phase.error != nil {
-        Image(systemName: "photo.circle.fill")
+        Image(systemName: "person")
           .resizable()
           .foregroundStyle(.lightPink)
 
