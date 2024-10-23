@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		931C201A2CC7E2A40087E7AD /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C20192CC7E2A40087E7AD /* LandingView.swift */; };
+		931C201F2CC7E9FD0087E7AD /* LandingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C201E2CC7E9FD0087E7AD /* LandingButton.swift */; };
 		F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */; };
 		F3C8CB6F2CC67A03002DE72A /* BirthDayAPI in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB6E2CC67A03002DE72A /* BirthDayAPI */; };
 		F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		931C20192CC7E2A40087E7AD /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		931C201E2CC7E9FD0087E7AD /* LandingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingButton.swift; sourceTree = "<group>"; };
 		F3C8CB3B2CC658C6002DE72A /* Birthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppoloClient.swift; sourceTree = "<group>"; };
 		F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetBirthdays.graphql; sourceTree = "<group>"; };
@@ -54,10 +56,6 @@
 		F3C8CBC82CC78A12002DE72A /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		931C201B2CC7E9DA0087E7AD /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		F3C8CB382CC658C6002DE72A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -73,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		931C20202CC7F6DA0087E7AD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				931C201E2CC7E9FD0087E7AD /* LandingButton.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F3C8CB322CC658C6002DE72A = {
 			isa = PBXGroup;
 			children = (
@@ -93,7 +99,7 @@
 		F3C8CB3D2CC658C6002DE72A /* Birthday */ = {
 			isa = PBXGroup;
 			children = (
-				931C201B2CC7E9DA0087E7AD /* Models */,
+				931C20202CC7F6DA0087E7AD /* Models */,
 				F3C8CBB02CC78417002DE72A /* Modules */,
 				F3C8CB992CC6A5F2002DE72A /* App */,
 				F3C8CB572CC65F15002DE72A /* GraphQL */,
@@ -330,9 +336,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				931C201B2CC7E9DA0087E7AD /* Models */,
-			);
 			name = Birthday;
 			packageProductDependencies = (
 				F3C8CB6E2CC67A03002DE72A /* BirthDayAPI */,
@@ -404,6 +407,7 @@
 				F3C8CBAE2CC6A61D002DE72A /* Texts.swift in Sources */,
 				F3C8CBC92CC78A12002DE72A /* ProfileScreen.swift in Sources */,
 				931C201A2CC7E2A40087E7AD /* LandingView.swift in Sources */,
+				931C201F2CC7E9FD0087E7AD /* LandingButton.swift in Sources */,
 				F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */,
 				F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */,
 				F3C8CBC32CC789AA002DE72A /* HomeScreen.swift in Sources */,
