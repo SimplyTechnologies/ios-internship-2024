@@ -25,15 +25,14 @@ final class HomeViewModel: HomeViewModeling {
     homeRepository.getBirthdays()
       .sink { [weak self] result in
         switch result {
-        case .finished:
-          self?.isLoading = false
-        case.failure(let error):
+        case .failure(let error):
           print(error)
           self?.isLoading = false
+        default: break
         }
-      } receiveValue: { birtdays in
+      } receiveValue: { [weak self] birtdays in
         birtdays.forEach {
-          self.birthdayData.append(BirthdayModel(dto: $0))
+          self?.birthdayData.append(BirthdayModel(dto: $0))
         }
       }.store(in: &cancelables)
   }
