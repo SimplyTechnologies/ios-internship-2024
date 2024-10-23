@@ -40,7 +40,6 @@ extension BirthDayCell {
         Image(systemName: "person")
           .resizable()
           .foregroundStyle(.lightPink)
-
       } else {
         ProgressView()
           .progressViewStyle(.circular)
