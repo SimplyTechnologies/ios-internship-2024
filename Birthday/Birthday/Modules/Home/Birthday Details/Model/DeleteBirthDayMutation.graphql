@@ -1,0 +1,5 @@
+mutation DeleteBirthDayMutation($id: Int!) {
+  deleteBirthday(id: $id) {
+    id
+  }
+}

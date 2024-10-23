@@ -22,6 +22,7 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     switch typename {
     case "Query": return BirthDayAPI.Objects.Query
     case "Birthday": return BirthDayAPI.Objects.Birthday
+    case "Mutation": return BirthDayAPI.Objects.Mutation
     default: return nil
     }
   }

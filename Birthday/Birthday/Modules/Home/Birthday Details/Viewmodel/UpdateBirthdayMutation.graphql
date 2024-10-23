@@ -1,0 +1,10 @@
+mutation UpdateBirthdayMutation($id: Int!, $updateBirthdayInput: UpdateBirthdayInput!) {
+  updateBirthday(id:$id, updateBirthdayInput: $updateBirthdayInput) {
+    id
+    date
+    image
+    message
+    name
+    relation
+  }
+}

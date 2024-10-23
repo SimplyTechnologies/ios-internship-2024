@@ -10,10 +10,10 @@ import BirthDayAPI
 
 struct BirthdayModel {
   
-  let createdAt, date: String?
+  var createdAt, date: String?
   let id: Int?
-  let image: String?
-  let message, name, relation: String?
+  var image: String?
+  var message, name, relation: String?
   let upcomingAge: Int?
   let upcomingBirthday, updatedAt: String?
   let userId: Int?
