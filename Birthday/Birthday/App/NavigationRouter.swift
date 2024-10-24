@@ -14,7 +14,7 @@ protocol Routable: ObservableObject {
     func push(_ screen: any Hashable)
     func pop()
     func popToRoot()
-  
+    func resetNavigation(with destinations: [any Hashable])
 }
 
 class NavigationRouter: Routable {

@@ -12,6 +12,7 @@ import SwiftUI
 class RegistrationViewModel: ObservableObject {
   
   @Published var router: any Routable
+  @Published var isLoading: Bool = false
 
   @Published var name: String = ""
   @Published var surname: String = ""
@@ -40,14 +41,16 @@ class RegistrationViewModel: ObservableObject {
   @Published var surnameErrorMessage: String = ""
   @Published var emailErrorMessage: String = ""
   
+  private let registrationRepository: RegistrationRepository
   private var cancellables = Set<AnyCancellable>()
   
   private var hasEmptyField: Bool {
     name.isEmpty || surname.isEmpty || email.isEmpty || password.isEmpty || repeatPassword.isEmpty
   }
   
-  init(router: any Routable) {
+  init(router: any Routable, registrationRepository: RegistrationRepository) {
     self.router = router
+    self.registrationRepository = registrationRepository
     
     $password
       .sink { [weak self] passwordText in
@@ -165,7 +168,27 @@ class RegistrationViewModel: ObservableObject {
   func register() {
     validateForm()
     if isValidForm {
-      // Register
+      isLoading = true
+      registrationRepository.singUp(
+        firstName: name,
+        lastName: surname,
+        email: email,
+        password: password
+      )
+      .sink { [weak self] result in
+        self?.isLoading = false
+        switch result {
+        case .failure(let error):
+          Console.log("❌ Error: \(error)")
+        default: break
+        }
+      } receiveValue: { [weak self] data in
+        guard let self else { return }
+        router.resetNavigation(with: [LandingScreen.Screen.signIn])
+        let user = User(dto: data.signUp)
+        Console.log("User is : \(user)")
+      }
+      .store(in: &cancellables)
     }
   }
   

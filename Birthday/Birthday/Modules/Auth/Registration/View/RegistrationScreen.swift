@@ -222,7 +222,10 @@ extension RegistrationScreen {
   }
   
   private var registerButton: some View {
-    RoundedButton(name: String.Button.register) {
+    RoundedButton(
+      name: String.Button.register,
+      isLoading: viewModel.isLoading
+    ) {
       viewModel.register()
     }
     .disabled(!viewModel.isValidForm)
@@ -245,5 +248,5 @@ extension RegistrationScreen {
 }
 
 #Preview {
-  RegistrationScreen(viewModel: RegistrationViewModel(router: NavigationRouter()))
+  RegistrationScreen(viewModel: RegistrationViewModel(router: NavigationRouter(), registrationRepository: RegistrationDefaultRepository()))
 }
