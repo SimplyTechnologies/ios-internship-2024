@@ -16,7 +16,6 @@ struct RegistrationScreen: View {
   @StateObject var viewModel: RegistrationViewModel
   @FocusState private var focusedField: Field?
   @State private var scrollProxy: ScrollViewProxy? = nil
-  @State private var coordinateSpaceName = UUID()
   
   var body: some View {
     content
@@ -42,7 +41,6 @@ extension RegistrationScreen {
             Spacer().frame(height: 40)
           }
           .disableBounces()
-          .coordinateSpace(name: coordinateSpaceName)
           .onAppear {
             self.scrollProxy = scrollReader
           }
@@ -82,7 +80,7 @@ extension RegistrationScreen {
 
       Text(String.Button.register)
         .foregroundStyle(Color.rouge)
-        .karmaFont(style: .bold30)
+        .karmaFont(style: .bold20)
       
       Spacer().frame(height: 30)
       
@@ -120,7 +118,7 @@ extension RegistrationScreen {
     .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .name)
     .modifier(
-      FooterModifier(
+      FieldErrorModifier(
         title: viewModel.nameErrorMessage,
         isHidden: viewModel.isValidName
       )
@@ -142,7 +140,7 @@ extension RegistrationScreen {
     .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .surname)
     .modifier(
-      FooterModifier(
+      FieldErrorModifier(
         title: viewModel.surnameErrorMessage,
         isHidden: viewModel.isValidSurname
       )
@@ -164,7 +162,7 @@ extension RegistrationScreen {
     .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .email)
     .modifier(
-      FooterModifier(
+      FieldErrorModifier(
         title: viewModel.emailErrorMessage,
         isHidden: viewModel.isValidEmail
       )
@@ -188,7 +186,7 @@ extension RegistrationScreen {
     .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .password)
     .modifier(
-      FooterModifier(
+      FieldErrorModifier(
         title: viewModel.passwordErrorMessage,
         isHidden: viewModel.isValidPassword
       )
@@ -212,7 +210,7 @@ extension RegistrationScreen {
     .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .repeatPassword)
     .modifier(
-      FooterModifier(
+      FieldErrorModifier(
         title: viewModel.repeatPasswordErrorMessage,
         isHidden: viewModel.isValidRepeatPassword
       )

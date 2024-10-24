@@ -31,6 +31,22 @@ extension String {
     return passwordPredicate.evaluate(with: self)
   }
   
+  func isEmailValid() -> Bool {
+    guard !self.isEmpty else {
+      return false
+    }
+    let emailFormat = "[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-_]+\\.[a-zA-z]{2,60}"
+    let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailFormat)
+    return emailPredicate.evaluate(with: self)
+  }
+
+  func isPassValid() -> Bool {
+    guard !self.isEmpty else {
+      return false
+    }
+    return self.count > 8
+  }
+  
   func toFormattedDate() -> String? {
     let inputFormatter = DateFormatter()
     inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
@@ -49,7 +65,7 @@ extension String {
   
   enum Button {
     
-    static var login: String { "button_login".localized }
+    static var signIn: String { "button_signIn".localized }
     static var register: String { "button_register".localized }
     
   }

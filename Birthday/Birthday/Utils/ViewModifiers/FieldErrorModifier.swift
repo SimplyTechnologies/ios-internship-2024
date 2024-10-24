@@ -1,5 +1,5 @@
 //
-//  FooterModifier.swift
+//  FieldErrorModifier.swift
 //  Birthday
 //
 //  Created by Narek on 22.10.24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FooterModifier: ViewModifier {
+struct FieldErrorModifier: ViewModifier {
   
   var title: String
   var isHidden: Bool = false

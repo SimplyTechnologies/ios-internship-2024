@@ -29,3 +29,21 @@ extension View {
   }
   
 }
+
+extension View {
+  
+  func onLoad(perform action: (() -> Void)? = nil) -> some View {
+    modifier(ViewDidLoadModifier(perform: action))
+  }
+  
+  @ViewBuilder func isLoading(_ flag: Bool) -> some View {
+    self.overlay {
+      if flag {
+        ProgressView()
+          .progressViewStyle(CircularProgressViewStyle(tint: .lightPink))
+          .controlSize(.large)
+      }
+    }
+    
+  }
+}
