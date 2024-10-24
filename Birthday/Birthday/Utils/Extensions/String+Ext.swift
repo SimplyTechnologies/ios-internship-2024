@@ -12,6 +12,9 @@ extension String {
   var localized: String {
     NSLocalizedString(self, comment: "")
   }
+  var toDate: Date? {
+    DateFormatter.iso8601Full.date(from: self)
+  }
 
   var isValidEmail: Bool {
     let emailRegEx =  #"[a-zA-Z0-9+._%\-+]{1,256}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9\-]{0,64}(\.[a-zA-Z0-9][a-zA-Z0-9\-]{0,25})+"#

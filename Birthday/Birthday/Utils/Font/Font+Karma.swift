@@ -69,8 +69,8 @@ enum CustomFontStyle {
   
   case regular16, regular14, regular12, regular10
   case medium16, medium14, medium12, medium10
-  case bold30, bold26, bold22, bold20, bold16, bold14, bold12, bold10
-  case semiBold16, semiBold14, semiBold12
+  case bold30, bold26, bold22, bold20, bold18, bold16, bold14, bold12, bold10
+  case semiBold20, semiBold18, semiBold16, semiBold14, semiBold12
   case light16, light14, light12
 
   var karmaFont: Font {
@@ -87,10 +87,13 @@ enum CustomFontStyle {
     case .bold26: .custom(KarmaFontStyle.bold.rawValue, size: 26)
     case .bold22: .custom(KarmaFontStyle.bold.rawValue, size: 22)
     case .bold20: .custom(KarmaFontStyle.bold.rawValue, size: 20)
+    case .bold18: .custom(KarmaFontStyle.bold.rawValue, size: 18)
     case .bold16: .custom(KarmaFontStyle.bold.rawValue, size: 16)
     case .bold14: .custom(KarmaFontStyle.bold.rawValue, size: 14)
     case .bold12: .custom(KarmaFontStyle.bold.rawValue, size: 12)
     case .bold10: .custom(KarmaFontStyle.bold.rawValue, size: 10)
+    case .semiBold20: .custom(KarmaFontStyle.semiBold.rawValue, size: 20)
+    case .semiBold18: .custom(KarmaFontStyle.semiBold.rawValue, size: 18)
     case .semiBold16: .custom(KarmaFontStyle.semiBold.rawValue, size: 16)
     case .semiBold14: .custom(KarmaFontStyle.semiBold.rawValue, size: 14)
     case .semiBold12: .custom(KarmaFontStyle.semiBold.rawValue, size: 12)
