@@ -11,6 +11,7 @@ protocol HomeViewModeling: ObservableObject {
   
   var isLoading: Bool { get set }
   var birthdayData: [BirthdayModel] { get set }
+  var router: any Routable { get set }
   
   func getBirthDays()
   

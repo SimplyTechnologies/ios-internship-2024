@@ -8,4 +8,24 @@
 
 // Button
 
-"button_login" = "Login";
+"button_signIn" = "Sign In";
+"button_register" = "Register";
+"button_register" = "Register";
+
+// Field
+
+"field_name" = "Name";
+"field_surname" = "Surname";
+"field_email" = "Email";
+"field_password" = "Password";
+"field_repeat_password" = "Repeat password";
+"field_empty_name" = "*Name field can't be empty.";
+"field_invalid_name" = "*Name field can't contain number or special character.";
+"field_empty_surname" = "*Surname field can't be empty.";
+"field_invalid_surname" = "*Surname field can't contain number or special character.";
+"field_empty_email" = "*Email field can't be empty.";
+"field_invalid_email" = "*Please enter a valid email address.";
+"field_empty_password" = "*Password field can't be empty.";
+"field_invalid_password" = "*Length: Minimum 8 characters, maximum 20 characters. Include uppercase, lowercase, number, special character.";
+"field_empty_repeat_password" = "*Repeat Password field can't be empty.";
+"field_invalid_repeat_password" = "*Passwords do not match.";

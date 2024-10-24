@@ -5,18 +5,18 @@
 //  Created by MEKHAK GHAPANTSYAN on 21.10.24.
 //
 
-import SwiftUI
 import Apollo
 import BirthDayAPI
+import SwiftUI
 
 struct ContentView: View {
-  
-    var body: some View {
-      TabBarView()
-    }
+
+  var body: some View {
+    TabBarView()
+  }
   
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }

@@ -10,14 +10,17 @@ import Combine
 
 final class HomeViewModel: HomeViewModeling {
   
+  @Published var router: any Routable
+  
   @Published var isLoading: Bool = false
   @Published var birthdayData: [BirthdayModel] = []
   
   private let homeRepository: HomeRepository
   private var cancelables = Set<AnyCancellable>()
   
-  init(homeRepository: HomeRepository) {
+  init(homeRepository: HomeRepository, router: any Routable) {
     self.homeRepository = homeRepository
+    self.router = router
   }
   
   func getBirthDays() {

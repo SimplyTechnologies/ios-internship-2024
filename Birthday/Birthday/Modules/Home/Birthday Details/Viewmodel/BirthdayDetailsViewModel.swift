@@ -10,6 +10,7 @@ import Combine
 
 final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   
+  @Published var router: any Routable
   @Published var isLoading: Bool = false
   
   private let homeRepository: HomeRepository
@@ -17,10 +18,11 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   var deleteAction: () -> ()
   var updateAction: (BirthdayModel) -> ()
   
-  init(homeRepository: HomeRepository, deleteAction: @escaping () -> (), updateAction: @escaping (BirthdayModel) -> ()) {
+  init(homeRepository: HomeRepository, router: any Routable, deleteAction: @escaping () -> (), updateAction: @escaping (BirthdayModel) -> ()) {
     self.homeRepository = homeRepository
     self.deleteAction = deleteAction
     self.updateAction = updateAction
+    self.router = router
   }
   
   func updateBirthday(payload: BirthdayUpdatePayload, birthday: BirthdayModel) {

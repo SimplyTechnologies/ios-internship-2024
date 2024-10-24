@@ -26,6 +26,7 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
     if isEditing {
       editingContnent
         .background(Color.lightPink)
+        .navigationBarBackButtonHidden(true)
     } else {
       content
         .background(Color.lightPink)
@@ -35,6 +36,7 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
             relationshipData.append(relationData)
           }
         }
+        .navigationBarBackButtonHidden(true)
     }
   }
   
@@ -43,30 +45,35 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
 extension BirthdayDetailsScreen {
   
   private var content: some View {
-    VStack(spacing: 0) {
-      HStack {
+    VStack {
+      NavigationBar() {
+        viewModel.router.pop()
+      }
+      VStack(spacing: 0) {
+        HStack {
+          Spacer()
+          editButton
+        }
+        .padding(.bottom, 20)
+        image
+          .padding(.bottom, 12)
+        name
+          .padding(.bottom, 24)
+        date
+          .padding(.bottom, 10)
+        relationship
+          .padding(.bottom, 10)
+        zodiacSign
         Spacer()
-        editButton
+        HStack(spacing: 10) {
+          generateMessageButton
+          findGiftButton
+        }
       }
-      .padding(.bottom, 20)
-      image
-        .padding(.bottom, 12)
-      name
-        .padding(.bottom, 24)
-      date
-        .padding(.bottom, 10)
-      relationship
-        .padding(.bottom, 10)
-      zodiacSign
-      Spacer()
-      HStack(spacing: 10) {
-        generateMessageButton
-        findGiftButton
-      }
+      .padding(.top, 20)
+      .padding(.bottom, 60)
+      .padding(.horizontal, 24)
     }
-    .padding(.top, 20)
-    .padding(.bottom, 60)
-    .padding(.horizontal, 24)
   }
   
   private var image: some View {
@@ -158,32 +165,37 @@ extension BirthdayDetailsScreen {
 extension BirthdayDetailsScreen {
   
   private var editingContnent: some View {
-    ScrollView {
-      VStack(spacing: 0) {
-        HStack {
-          Spacer()
-          deleteButton
-        }
-        .padding(.bottom, 20)
-        image
-          .padding(.bottom, 34)
-        editingName
-          .padding(.bottom, 20)
-        relationshipEdit
-          .padding(.bottom, 10)
-        addButton
-          .padding(.bottom, 34)
-        if isAddingRelation {
-          addRelationField
-            .padding(.bottom, 34)
-        }
-        calendar
-          .padding(.bottom, 50)
-        doneButton
+    VStack {
+      NavigationBar() {
+        viewModel.router.pop()
       }
-      .padding(.horizontal, 24)
-      .padding(.vertical, 20)
-    }.scrollIndicators(.hidden)
+      ScrollView {
+        VStack(spacing: 0) {
+          HStack {
+            Spacer()
+            deleteButton
+          }
+          .padding(.bottom, 20)
+          image
+            .padding(.bottom, 34)
+          editingName
+            .padding(.bottom, 20)
+          relationshipEdit
+            .padding(.bottom, 10)
+          addButton
+            .padding(.bottom, 34)
+          if isAddingRelation {
+            addRelationField
+              .padding(.bottom, 34)
+          }
+          calendar
+            .padding(.bottom, 50)
+          doneButton
+        }
+        .padding(.horizontal, 24)
+        .padding(.vertical, 20)
+      }.scrollIndicators(.hidden)
+    }
   }
   
   private var editingName: some View {
@@ -332,7 +344,7 @@ extension BirthdayDetailsScreen {
 
 #Preview {
   BirthdayDetailsScreen(
-    viewModel: BirthdayDetailsViewModel(homeRepository: HomeDefaultRepository(), deleteAction: { print() }, updateAction: { _ in
+    viewModel: BirthdayDetailsViewModel(homeRepository: HomeDefaultRepository(), router: NavigationRouter(), deleteAction: { print() }, updateAction: { _ in
       print()
     }),
     birthdayData:

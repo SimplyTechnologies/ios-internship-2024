@@ -11,7 +11,9 @@ import SwiftUI
 struct BirthdayApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          TabBarView()
+//          LandingScreen()
+//          HomeScreen(viewModel: HomeViewModel(homeRepository: HomeDefaultRepository()))
         }
     }
 }

@@ -11,6 +11,29 @@ struct TabBarView: View {
   
   @State var selectedTab: TabModel = .home
   
+  @StateObject var router = NavigationRouter()
+  
+  enum HomeScreens: Hashable {
+    
+    var id: Int {
+      switch self {
+      case .details(let viewmodel, let birthday):
+        return 1
+      }
+    }
+
+    case details(viewmodel:  BirthdayDetailsViewModel, birthday: BirthdayModel)
+    
+    static func == (lhs: TabBarView.HomeScreens, rhs: TabBarView.HomeScreens) -> Bool {
+      return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+      hasher.combine(self.id)
+    }
+
+  }
+  
   init() {
     customiseTabBar()
   }
@@ -33,8 +56,14 @@ extension TabBarView {
   }
   
   private var homeTab: some View {
-    NavigationStack {
-      HomeScreen(viewModel: HomeViewModel(homeRepository: HomeDefaultRepository()))
+    NavigationStack(path: $router.path) {
+      HomeScreen(viewModel: HomeViewModel(homeRepository: HomeDefaultRepository(), router: router))
+        .navigationDestination(for: HomeScreens.self) { screen in
+          switch screen {
+          case .details(let viewmodel, let birthday):
+            BirthdayDetailsScreen(viewModel: viewmodel, birthdayData: birthday)
+          }
+        }
         
     }
     .tabItem { TabCellView(model: .home) }
@@ -70,7 +99,7 @@ extension TabBarView {
     appearance.configureWithOpaqueBackground()
     appearance.backgroundColor = UIColor.mainPink
     
-    appearance.stackedLayoutAppearance.selected.iconColor = UIColor.darkRed
+    appearance.stackedLayoutAppearance.selected.iconColor = UIColor.rouge
     appearance.stackedLayoutAppearance.normal.iconColor = UIColor.lightPink
     
     UITabBar.appearance().standardAppearance = appearance
