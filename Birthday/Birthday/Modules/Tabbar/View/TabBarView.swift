@@ -35,7 +35,6 @@ extension TabBarView {
   private var homeTab: some View {
     NavigationStack {
       HomeScreen(viewModel: HomeViewModel(homeRepository: HomeDefaultRepository()))
-        
     }
     .tabItem { TabCellView(model: .home) }
     .tag(TabModel.home)
@@ -43,7 +42,7 @@ extension TabBarView {
   
   private var shopsTab: some View {
     NavigationStack {
-      ShopsScreen()
+      ShopScreen(viewModel: ShopViewModel(shopRepository: ShopDefaultRepository()))
     }
     .tabItem { TabCellView(model: .shops) }
     .tag(TabModel.shops)

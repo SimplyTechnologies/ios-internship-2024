@@ -1,0 +1,14 @@
+query GetShops {
+  shops {
+    id
+    image
+    address
+    id
+    image
+    isFavorite
+    name
+    phone
+    rate
+    url
+  }
+}

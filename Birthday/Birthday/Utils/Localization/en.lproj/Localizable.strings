@@ -29,3 +29,6 @@
 "field_invalid_password" = "*Length: Minimum 8 characters, maximum 20 characters. Include uppercase, lowercase, number, special character.";
 "field_empty_repeat_password" = "*Repeat Password field can't be empty.";
 "field_invalid_repeat_password" = "*Passwords do not match.";
+"field_search_no_result_title" = "Nothing Found";
+"field_search_no_result_description" = "Nothing matched your search terms. Please try again with different keywords.";
+"field_search" = "Search";

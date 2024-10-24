@@ -87,6 +87,9 @@ extension String {
     static var invalidPassword: String { "field_invalid_password".localized }
     static var emptyRepeatPassword: String { "field_empty_repeat_password".localized }
     static var invalidRepeatPassword: String { "field_invalid_repeat_password".localized }
+    static var searchNoResultTitle: String { "field_search_no_result_title".localized }
+    static var searchNoResultDescription: String { "field_search_no_result_description".localized }
+    static var search: String { "field_search".localized }
     
   }
   

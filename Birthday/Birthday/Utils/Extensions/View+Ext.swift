@@ -46,4 +46,24 @@ extension View {
     }
     
   }
+  
+}
+
+
+extension View {
+  
+  func skeletonEffect(
+    isLoading: Binding<Bool>,
+    gradient: Gradient = .init(colors: [.piggyPink, .bubblegumPink, .piggyPink]),
+    animation: Animation = Animation.linear(duration: 2).repeatForever(autoreverses: false)
+  ) -> some View {
+    modifier(
+      SkeletonEffect(
+        isLoading: isLoading,
+        gradient: gradient,
+        animation: animation
+      )
+    )
+  }
+  
 }

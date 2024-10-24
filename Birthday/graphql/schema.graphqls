@@ -80,7 +80,7 @@ type Query {
   birthday(id: Int!): Birthday!
   birthdays: [Birthday!]!
   profile: User!
-  shops(filter: ShopFilter!): [Shop!]!
+  shops(filter: ShopFilter): [Shop!]!
   users: [User!]!
 }
 
