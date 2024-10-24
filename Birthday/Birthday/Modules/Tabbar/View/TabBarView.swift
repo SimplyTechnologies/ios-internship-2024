@@ -68,7 +68,7 @@ extension TabBarView {
   private func customiseTabBar() {
     let appearance = UITabBarAppearance()
     appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = UIColor.mainPink
+    appearance.backgroundColor = UIColor.bubblegumPink
     
     appearance.stackedLayoutAppearance.selected.iconColor = UIColor.rouge
     appearance.stackedLayoutAppearance.normal.iconColor = UIColor.lightPink
