@@ -57,9 +57,11 @@ extension BirthDayEditCommonView {
     VStack(alignment: .leading,spacing: 0) {
       Text("Name")
         .foregroundStyle(Color.darkRed)
+        .karmaFont(style: .semiBold18)
         .padding(.bottom, 8)
       ZStack {
         TextField("", text: $birthdayData.name.toUnwrapped(defaultValue: ""))
+          .karmaFont(style: .semiBold18)
           .frame(height: 40)
           .padding(.horizontal,8)
       }
@@ -74,6 +76,7 @@ extension BirthDayEditCommonView {
       Text("Relationship")
         .padding(.leading, 26)
         .foregroundStyle(Color.darkRed)
+        .karmaFont(style: .semiBold18)
       LazyVGrid(
         columns: columns,
         content: {
@@ -94,6 +97,7 @@ extension BirthDayEditCommonView {
       Text(relationship.rawValue)
         .lineLimit(1)
         .foregroundStyle(birthdayData.relation == relationship ? .white : .black)
+        .karmaFont(style: .semiBold14)
     }
     .frame(width: 106,height: 40)
     .background(birthdayData.relation == relationship ? Color.darkRed : Color.white)
@@ -106,6 +110,7 @@ extension BirthDayEditCommonView {
     } label: {
       Text("Done")
         .foregroundStyle(.white)
+        .karmaFont(style: .semiBold18)
         .padding(.vertical, 8)
         .padding(.horizontal, 20)
         .background(Color.darkRed)
@@ -128,6 +133,7 @@ extension BirthDayEditCommonView {
     .colorInvert()
     .colorMultiply(Color.darkRed)
     .background(Color.white)
+    .karmaFont(style: .semiBold20)
     .cornerRadius(16)
   }
   
@@ -149,6 +155,7 @@ extension BirthDayEditCommonView {
   private var addRelationField: some View {
     HStack {
       TextField("New relationship", text: $newRelation)
+        .karmaFont(style: .semiBold18)
         .padding(.horizontal, 10)
       Button {
         withAnimation {
@@ -190,7 +197,7 @@ extension BirthDayEditCommonView {
         updatedAt: "",
         userId: 1
       ),
-    doneAction: {
+    doneAction: { _ in
       print()
     }
   )

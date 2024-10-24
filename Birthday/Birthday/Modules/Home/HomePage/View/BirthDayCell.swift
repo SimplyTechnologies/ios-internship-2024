@@ -56,11 +56,13 @@ extension BirthDayCell {
   private var name: some View {
     Text(model.name ?? "")
       .foregroundStyle(.black)
+      .karmaFont(style: .semiBold20)
   }
   
   private var date: some View {
     Text(model.date?.toFormattedDate() ?? "")
       .foregroundStyle(.black)
+      .karmaFont(style: .semiBold14)
   }
   
 }
