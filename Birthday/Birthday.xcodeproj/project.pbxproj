@@ -126,14 +126,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		931C20202CC7F6DA0087E7AD /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				931C201E2CC7E9FD0087E7AD /* LandingButton.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		CE42AAFD2CCA10230057ECFB /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +170,7 @@
 		CE98D2C42CC7778E0017E477 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				931C201E2CC7E9FD0087E7AD /* LandingButton.swift */,
 				CE98D2C52CC778780017E477 /* NavigationBar.swift */,
 				CE98D2C92CC77DFE0017E477 /* InputField.swift */,
 				CE98D2DB2CC792E30017E477 /* RoundedButton.swift */,
@@ -303,7 +296,6 @@
 		F3C8CB3D2CC658C6002DE72A /* Birthday */ = {
 			isa = PBXGroup;
 			children = (
-				931C20202CC7F6DA0087E7AD /* Models */,
 				F3C8CB992CC6A5F2002DE72A /* App */,
 				F3C8CB572CC65F15002DE72A /* GraphQL */,
 				F3C8CBB02CC78417002DE72A /* Modules */,
