@@ -11,18 +11,18 @@ struct TabBarView: View {
   
   @State var selectedTab: TabModel = .home
   
-  @StateObject var router = NavigationRouter()
+  @ObservedObject var router = NavigationRouter()
   
   enum HomeScreens: Hashable {
     
+    case details(viewmodel:  BirthdayDetailsViewModel, birthday: BirthdayModel)
+    
     var id: Int {
       switch self {
-      case .details(let viewmodel, let birthday):
+      case .details:
         return 1
       }
     }
-
-    case details(viewmodel:  BirthdayDetailsViewModel, birthday: BirthdayModel)
     
     static func == (lhs: TabBarView.HomeScreens, rhs: TabBarView.HomeScreens) -> Bool {
       return lhs.id == rhs.id
@@ -31,7 +31,7 @@ struct TabBarView: View {
     func hash(into hasher: inout Hasher) {
       hasher.combine(self.id)
     }
-
+    
   }
   
   init() {
@@ -57,14 +57,15 @@ extension TabBarView {
   
   private var homeTab: some View {
     NavigationStack(path: $router.path) {
-      HomeScreen(viewModel: HomeViewModel(homeRepository: HomeDefaultRepository(), router: router))
+      HomeScreen(viewModel: HomeViewModel(homeRepository: HomeDefaultRepository()))
+        .environmentObject(router)
         .navigationDestination(for: HomeScreens.self) { screen in
           switch screen {
           case .details(let viewmodel, let birthday):
             BirthdayDetailsScreen(viewModel: viewmodel, birthdayData: birthday)
+              .environmentObject(router)
           }
         }
-        
     }
     .tabItem { TabCellView(model: .home) }
     .tag(TabModel.home)

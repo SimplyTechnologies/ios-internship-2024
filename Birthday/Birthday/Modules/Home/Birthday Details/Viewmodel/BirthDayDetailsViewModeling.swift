@@ -12,7 +12,6 @@ protocol  BirthDayDetailsViewModeling: ObservableObject {
   var isLoading: Bool { get set }
   var deleteAction: () -> () { get set }
   var updateAction: (BirthdayModel) -> () { get set}
-  var router: any Routable { get set }
 
   
   func updateBirthday(payload: BirthdayUpdatePayload, birthday: BirthdayModel)

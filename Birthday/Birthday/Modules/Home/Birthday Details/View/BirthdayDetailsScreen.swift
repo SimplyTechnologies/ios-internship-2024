@@ -9,35 +9,17 @@ import SwiftUI
 
 struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
   
-  @ObservedObject var viewModel: T
+  @StateObject var viewModel: T
   
   @State var birthdayData: BirthdayModel
-  
   @State private var isEditing: Bool = false
-  @State private var isAddingRelation: Bool = false
-  @State private var newRelation: String = ""
-  @State private var relationshipData: [Relationship] = Relationship.allCases
   
-  @Environment(\.presentationMode) var presentationMode
-  
-  var columns = [GridItem(.flexible()),GridItem(.flexible()),GridItem(.flexible())]
+  @EnvironmentObject var router: NavigationRouter
   
   var body: some View {
-    if isEditing {
-      editingContnent
-        .background(Color.lightPink)
-        .navigationBarBackButtonHidden(true)
-    } else {
-      content
-        .background(Color.lightPink)
-        .onLoad {
-          guard let relationData = birthdayData.relation  else { return }
-          if !relationshipData.contains(relationData) {
-            relationshipData.append(relationData)
-          }
-        }
-        .navigationBarBackButtonHidden(true)
-    }
+    content
+      .background(Color.lightPink)
+      .navigationBarBackButtonHidden(true)
   }
   
 }
@@ -45,34 +27,51 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
 extension BirthdayDetailsScreen {
   
   private var content: some View {
-    VStack {
-      NavigationBar() {
-        viewModel.router.pop()
-      }
-      VStack(spacing: 0) {
-        HStack {
-          Spacer()
-          editButton
-        }
-        .padding(.bottom, 20)
+    VStack(spacing: 0) {
+      header
+      ScrollView {
         image
           .padding(.bottom, 12)
-        name
-          .padding(.bottom, 24)
-        date
-          .padding(.bottom, 10)
-        relationship
-          .padding(.bottom, 10)
-        zodiacSign
-        Spacer()
-        HStack(spacing: 10) {
-          generateMessageButton
-          findGiftButton
+        if isEditing {
+          BirthDayEditCommonView(birthdayData: birthdayData) { newBirthday in
+            doneAction(birthday: newBirthday)
+          }
+        } else {
+          name
+            .padding(.bottom, 24)
+          date
+            .padding(.bottom, 10)
+          relationship
+            .padding(.bottom, 10)
+          zodiacSign
+          Spacer()
+            .frame(minHeight: 200)
+          HStack(spacing: 10) {
+            generateMessageButton
+            findGiftButton
+          }
         }
       }
-      .padding(.top, 20)
-      .padding(.bottom, 60)
       .padding(.horizontal, 24)
+      .scrollIndicators(.hidden)
+    }
+    .padding(.top, 20)
+  }
+  
+  private var header: some View {
+    VStack(spacing: 10) {
+      NavigationBar() {
+        router.pop()
+      }
+      HStack {
+        Spacer()
+        if isEditing {
+          deleteButton
+        } else {
+          editButton
+        }
+      }
+      .padding(.horizontal, 20)
     }
   }
   
@@ -85,6 +84,7 @@ extension BirthdayDetailsScreen {
         Image(systemName: "person")
           .resizable()
           .foregroundStyle(Color.darkRed)
+          .padding(12)
       } else {
         ProgressView()
           .progressViewStyle(.circular)
@@ -116,7 +116,7 @@ extension BirthdayDetailsScreen {
   private var zodiacSign: some View {
     HStack {
       Text("Zodiac Sign: ")
-      Text(ZodiacSign.from(dateString: birthdayData.date ?? "")?.rawValue ?? "")
+      Text(ZodiacSign.from(dateString: birthdayData.date?.toFormattedDate() ?? "")?.rawValue ?? "")
         .foregroundStyle(Color.darkRed)
     }
   }
@@ -131,6 +131,19 @@ extension BirthdayDetailsScreen {
     }
   }
   
+  private var deleteButton: some View {
+    Button {
+      guard let id = birthdayData.id else { return }
+      viewModel.deleteBirthDay(id: id) {
+        DispatchQueue.main.async {
+          router.pop()
+        }
+      }
+    } label: {
+      Image(.delete)
+    }
+  }
+  
   private var generateMessageButton: some View {
     Button {
       //MARK: - implement generate Message
@@ -141,7 +154,6 @@ extension BirthdayDetailsScreen {
         .foregroundStyle(Color.darkRed)
         .background(Color.mainPink)
         .cornerRadius(16)
-      
     }
   }
   
@@ -155,198 +167,42 @@ extension BirthdayDetailsScreen {
         .foregroundStyle(Color.mainPink)
         .background(Color.darkRed)
         .cornerRadius(16)
-      
     }
   }
   
-}
-
-//MARK: - for edit
-extension BirthdayDetailsScreen {
-  
-  private var editingContnent: some View {
-    VStack {
-      NavigationBar() {
-        viewModel.router.pop()
-      }
-      ScrollView {
-        VStack(spacing: 0) {
-          HStack {
-            Spacer()
-            deleteButton
-          }
-          .padding(.bottom, 20)
-          image
-            .padding(.bottom, 34)
-          editingName
-            .padding(.bottom, 20)
-          relationshipEdit
-            .padding(.bottom, 10)
-          addButton
-            .padding(.bottom, 34)
-          if isAddingRelation {
-            addRelationField
-              .padding(.bottom, 34)
-          }
-          calendar
-            .padding(.bottom, 50)
-          doneButton
-        }
-        .padding(.horizontal, 24)
-        .padding(.vertical, 20)
-      }.scrollIndicators(.hidden)
+  private func doneAction(birthday: BirthdayModel) {
+    self.birthdayData = birthday
+    withAnimation {
+      isEditing = false
     }
-  }
-  
-  private var editingName: some View {
-    VStack(alignment: .leading,spacing: 0) {
-      Text("Name")
-        .foregroundStyle(Color.darkRed)
-        .padding(.bottom, 8)
-      ZStack {
-        TextField("", text: $birthdayData.name.toUnwrapped(defaultValue: ""))
-          .frame(height: 40)
-          .padding(.horizontal,8)
-      }
-      .background(Color.white)
-      .cornerRadius(16)
-    }
-    .padding(.horizontal, 26)
-  }
-  
-  private var deleteButton: some View {
-    Button {
-      guard let id = birthdayData.id else { return }
-      viewModel.deleteBirthDay(id: id) {
-        DispatchQueue.main.async {
-          self.presentationMode.wrappedValue.dismiss()
-        }
-      }
-    } label: {
-      Image(.delete)
-    }
-  }
-  
-  private var relationshipEdit: some View {
-    VStack (alignment: .leading){
-      Text("Relationship")
-        .padding(.leading, 26)
-        .foregroundStyle(Color.darkRed)
-      LazyVGrid(columns: columns, content: {
-        ForEach(relationshipData, id: \.self) { relation in
-          Button {
-            birthdayData.relation = relation
-          } label: {
-            relationshipChip(relationship: relation)
-          }
-        }
-      })
-    }
-  }
-  
-  private func relationshipChip(relationship: Relationship) -> some View {
-    ZStack {
-      Text(relationship.rawValue)
-        .lineLimit(1)
-        .foregroundStyle(birthdayData.relation == relationship ? .white : .black)
-    }
-    .frame(width: 106,height: 40)
-    .background(birthdayData.relation == relationship ? Color.darkRed : Color.white)
-    .cornerRadius(16)
-  }
-  
-  private var doneButton: some View {
-    Button {
-      withAnimation {
-        isEditing = false
-      }
-      guard let id = birthdayData.id else { return }
-      viewModel.updateBirthday(
-        payload:
-          BirthdayUpdatePayload(
-            id: id,
-            image: birthdayData.image,
-            name: birthdayData.name,
-            date: birthdayData.date,
-            message: birthdayData.message,
-            relation: birthdayData.relation?.rawValue
-          ), birthday: birthdayData
-      )
-    } label: {
-      Text("Done")
-        .foregroundStyle(.white)
-        .padding(.vertical, 8)
-        .padding(.horizontal, 20)
-        .background(Color.darkRed)
-        .cornerRadius(8)
-    }
-  }
-  
-  private var calendar: some View {
-    DatePicker(
-      "",
-      selection: Binding<Date>(
-        get: { birthdayData.date?.toDate ?? Date() },
-        set: { newDate in
-          birthdayData.date = newDate.toISO8601String
-        }
-      ),
-      displayedComponents: [.date]
+    guard let id = birthdayData.id else { return }
+    viewModel.updateBirthday(
+      payload:
+        BirthdayUpdatePayload(
+          id: id,
+          image: birthdayData.image,
+          name: birthdayData.name,
+          date: birthdayData.date,
+          message: birthdayData.message,
+          relation: birthdayData.relation?.rawValue
+        ),
+      birthday: birthdayData
     )
-    .datePickerStyle(GraphicalDatePickerStyle())
-    .colorInvert()
-    .colorMultiply(Color.darkRed)
-    .background(Color.white)
-    .cornerRadius(16)
-  }
-  
-  private var addButton: some View {
-    Button {
-      withAnimation {
-        isAddingRelation.toggle()
-        newRelation = ""
-      }
-    } label: {
-      Image(systemName: "plus.circle.fill")
-        .resizable()
-        .foregroundStyle(Color.darkRed)
-        .frame(width: 30, height: 30)
-        .rotationEffect(.degrees(isAddingRelation ? 45.0 :  0.0))
-    }
-  }
-  
-  private var addRelationField: some View {
-    HStack {
-      TextField("New relationship", text: $newRelation)
-        .padding(.horizontal, 10)
-      Button {
-        withAnimation {
-          isAddingRelation = false
-          if !newRelation.isEmpty {
-            guard let relation = Relationship(rawValue: newRelation) else { return }
-            relationshipData.append(relation)
-            newRelation = ""
-          }
-        }
-      } label: {
-        Image(systemName: "checkmark.circle.fill")
-          .resizable()
-          .foregroundStyle(Color.darkRed)
-          .frame(width: 24, height: 24)
-          .padding(16)
-      }
-    }
-    .background(Color.white)
-    .cornerRadius(16)
   }
   
 }
 
 #Preview {
   BirthdayDetailsScreen(
-    viewModel: BirthdayDetailsViewModel(homeRepository: HomeDefaultRepository(), router: NavigationRouter(), deleteAction: { print() }, updateAction: { _ in
-      print()
-    }),
+    viewModel: BirthdayDetailsViewModel(
+      homeRepository: HomeDefaultRepository(),
+      deleteAction: {
+        print()
+      },
+      updateAction: { _ in
+        print()
+      }
+    ),
     birthdayData:
       BirthdayModel(
         createdAt: "",

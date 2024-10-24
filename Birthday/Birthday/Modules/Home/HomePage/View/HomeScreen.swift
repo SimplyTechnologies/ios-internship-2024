@@ -9,11 +9,12 @@ import SwiftUI
 
 struct HomeScreen<T: HomeViewModeling>: View {
   
-  @ObservedObject var viewModel: T
+  @StateObject var viewModel: T
+  @EnvironmentObject var router: NavigationRouter
   
   var body: some View {
     content
-      .onAppear {
+      .onLoad {
         viewModel.getBirthDays()
       }
   }
@@ -35,18 +36,19 @@ extension HomeScreen {
       LazyVStack(spacing: 18) {
         ForEach(viewModel.birthdayData, id: \.id) { birthday in
           Button {
-            viewModel.router.push(
+            router.push(
               TabBarView.HomeScreens.details(
                 viewmodel: BirthdayDetailsViewModel(
                   homeRepository: HomeDefaultRepository(),
-                  router: viewModel.router, deleteAction: {
+                  deleteAction: {
                     viewModel.birthdayData.removeAll(where: {$0.id == birthday.id})
                   },
                   updateAction: { newBirthDay in
                     viewModel.birthdayData[viewModel.birthdayData.firstIndex(where: {$0.id == birthday.id}) ?? 0] = newBirthDay
                   }
                 ),
-                birthday: birthday)
+                birthday: birthday
+              )
             )
           } label: {
             BirthDayCell(model: birthday)

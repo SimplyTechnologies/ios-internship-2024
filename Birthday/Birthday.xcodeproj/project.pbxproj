@@ -37,6 +37,7 @@
 		F327AC252CC9819E0043A0EE /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F327AC242CC9819E0043A0EE /* Binding+Extension.swift */; };
 		F354FF202CC9ADCA00A3F6E4 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354FF1F2CC9ADCA00A3F6E4 /* Date+Extension.swift */; };
 		F354FF222CCA479600A3F6E4 /* ZodiacSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354FF212CCA479600A3F6E4 /* ZodiacSign.swift */; };
+		F354FF2B2CCADB2500A3F6E4 /* BirthDayEditCommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354FF2A2CCADB2500A3F6E4 /* BirthDayEditCommonView.swift */; };
 		F3978D152CC9840000FFF7F5 /* BirthDayDetailsViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3978D142CC9840000FFF7F5 /* BirthDayDetailsViewModeling.swift */; };
 		F3978D172CC9843800FFF7F5 /* BirthdayUpdatePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3978D162CC9843800FFF7F5 /* BirthdayUpdatePayload.swift */; };
 		F3978D192CC9857100FFF7F5 /* BirthdayDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3978D182CC9857100FFF7F5 /* BirthdayDetailsViewModel.swift */; };
@@ -100,6 +101,7 @@
 		F327AC242CC9819E0043A0EE /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
 		F354FF1F2CC9ADCA00A3F6E4 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		F354FF212CCA479600A3F6E4 /* ZodiacSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacSign.swift; sourceTree = "<group>"; };
+		F354FF2A2CCADB2500A3F6E4 /* BirthDayEditCommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDayEditCommonView.swift; sourceTree = "<group>"; };
 		F3978D142CC9840000FFF7F5 /* BirthDayDetailsViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDayDetailsViewModeling.swift; sourceTree = "<group>"; };
 		F3978D162CC9843800FFF7F5 /* BirthdayUpdatePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayUpdatePayload.swift; sourceTree = "<group>"; };
 		F3978D182CC9857100FFF7F5 /* BirthdayDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				F327AC222CC97FF90043A0EE /* BirthdayDetailsScreen.swift */,
+				F354FF2A2CCADB2500A3F6E4 /* BirthDayEditCommonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				CE98D2C62CC778780017E477 /* NavigationBar.swift in Sources */,
 				CE98D2DF2CC795B40017E477 /* RoundedButtonStyle.swift in Sources */,
 				CE98D2CF2CC787340017E477 /* Font+Karma.swift in Sources */,
+				F354FF2B2CCADB2500A3F6E4 /* BirthDayEditCommonView.swift in Sources */,
 				CE98D2EF2CC80C7E0017E477 /* Console.swift in Sources */,
 				CE98D2C82CC77C290017E477 /* Optional+Ext.swift in Sources */,
 				CE98D2CC2CC786390017E477 /* View+Ext.swift in Sources */,
