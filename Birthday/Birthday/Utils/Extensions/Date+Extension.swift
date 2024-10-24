@@ -21,8 +21,8 @@ extension DateFormatter {
 
 extension Date {
   
-  func toISO8601String() -> String {
-    return DateFormatter.iso8601Full.string(from: self)
+  var toISO8601String: String {
+    DateFormatter.iso8601Full.string(from: self)
   }
   
 }

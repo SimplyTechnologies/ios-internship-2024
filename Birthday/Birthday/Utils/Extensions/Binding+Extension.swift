@@ -5,7 +5,6 @@
 //  Created by MEKHAK GHAPANTSYAN on 23.10.24.
 //
 
-import Foundation
 import SwiftUI
 
 extension Binding {

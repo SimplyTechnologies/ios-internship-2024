@@ -7,9 +7,8 @@
 
 import Foundation
 
-
-enum Relationship: CaseIterable,Hashable {
-  
+enum Relationship: CaseIterable, Hashable {
+    
   case bestFriend
   case mother
   case father
@@ -71,6 +70,10 @@ enum Relationship: CaseIterable,Hashable {
     default:
       self = .custom(name: rawValue)
     }
+  }
+  
+  static func getAllCases() -> [Relationship] {
+    return Self.allCases
   }
   
 }

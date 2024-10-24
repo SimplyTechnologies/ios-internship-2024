@@ -12,10 +12,11 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
   @ObservedObject var viewModel: T
   
   @State var birthdayData: BirthdayModel
-  @State var isEditing: Bool = false
-  @State var isAddingRelation: Bool = false
-  @State var newRelation: String = ""
-  @State var relationshipData: [Relationship] = [.bestFriend,.mother,.father,.sister,.brother,.grandfather,.grandmother,.uncle,.friend]
+  
+  @State private var isEditing: Bool = false
+  @State private var isAddingRelation: Bool = false
+  @State private var newRelation: String = ""
+  @State private var relationshipData: [Relationship] = Relationship.getAllCases()
   
   @Environment(\.presentationMode) var presentationMode
   
@@ -30,9 +31,8 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
         .background(Color.lightPink)
         .onLoad {
           guard let relationData = birthdayData.relation  else { return }
-          guard let relation = Relationship(rawValue: relationData) else { return }
-          if !relationshipData.contains(relation) {
-            relationshipData.append(relation)
+          if !relationshipData.contains(relationData) {
+            relationshipData.append(relationData)
           }
         }
     }
@@ -98,7 +98,7 @@ extension BirthdayDetailsScreen {
   private var relationship: some View {
     HStack {
       Text("Relationship:")
-      Text(birthdayData.relation ?? "")
+      Text(birthdayData.relation?.rawValue ?? "")
         .padding(.vertical, 10)
         .padding(.horizontal, 16)
         .background(Color.white)
@@ -109,7 +109,7 @@ extension BirthdayDetailsScreen {
   private var zodiacSign: some View {
     HStack {
       Text("Zodiac Sign: ")
-      Text(birthdayData.date?.toFormattedDate()?.zodiacSign() ?? "Unknown")
+      Text(ZodiacSign.from(dateString: birthdayData.date ?? "")?.rawValue ?? "")
         .foregroundStyle(Color.darkRed)
     }
   }
@@ -223,18 +223,18 @@ extension BirthdayDetailsScreen {
       LazyVGrid(columns: columns, content: {
         ForEach(relationshipData, id: \.self) { relation in
           Button {
-            birthdayData.relation = relation.rawValue
+            birthdayData.relation = relation
           } label: {
-            relationshipChip(relationship: relation.rawValue)
+            relationshipChip(relationship: relation)
           }
         }
       })
     }
   }
   
-  private func relationshipChip(relationship: String) -> some View {
+  private func relationshipChip(relationship: Relationship) -> some View {
     ZStack {
-      Text(relationship)
+      Text(relationship.rawValue)
         .lineLimit(1)
         .foregroundStyle(birthdayData.relation == relationship ? .white : .black)
     }
@@ -257,7 +257,7 @@ extension BirthdayDetailsScreen {
             name: birthdayData.name,
             date: birthdayData.date,
             message: birthdayData.message,
-            relation: birthdayData.relation
+            relation: birthdayData.relation?.rawValue
           ), birthday: birthdayData
       )
     } label: {
@@ -274,9 +274,9 @@ extension BirthdayDetailsScreen {
     DatePicker(
       "",
       selection: Binding<Date>(
-        get: { birthdayData.date?.toDate() ?? Date() },
+        get: { birthdayData.date?.toDate ?? Date() },
         set: { newDate in
-          birthdayData.date = newDate.toISO8601String()
+          birthdayData.date = newDate.toISO8601String
         }
       ),
       displayedComponents: [.date]
@@ -343,7 +343,7 @@ extension BirthdayDetailsScreen {
         image: "https://randomuser.me/api/portraits/med/women/3.jpg",
         message: "Be happy",
         name: "John",
-        relation: "Brother",
+        relation: .brother,
         upcomingAge: 10,
         upcomingBirthday: "",
         updatedAt: "",

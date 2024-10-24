@@ -10,13 +10,15 @@ import BirthDayAPI
 
 struct BirthdayModel {
   
-  var createdAt, date: String?
+  private let createdAt: String?
+  var  date: String?
   let id: Int?
   var image: String?
-  var message, name, relation: String?
-  let upcomingAge: Int?
-  let upcomingBirthday, updatedAt: String?
-  let userId: Int?
+  var message, name: String?
+  var relation: Relationship?
+  private let upcomingAge: Int?
+  private let upcomingBirthday, updatedAt: String?
+  private let userId: Int?
   
   init(
     createdAt: String?,
@@ -25,8 +27,9 @@ struct BirthdayModel {
     image: String?, 
     message: String?,
     name: String?,
-    relation: String?,
-    upcomingAge: Int?, upcomingBirthday: String?,
+    relation: Relationship?,
+    upcomingAge: Int?,
+    upcomingBirthday: String?,
     updatedAt: String?,
     userId: Int?
     ) {
@@ -50,7 +53,7 @@ struct BirthdayModel {
     self.image = dto.image
     self.message = dto.message
     self.name = dto.name
-    self.relation = dto.relation
+    self.relation = Relationship(rawValue: dto.relation)
     self.upcomingAge = dto.upcomingAge
     self.upcomingBirthday = dto.upcomingBirthday
     self.updatedAt = dto.updatedAt

@@ -10,6 +10,7 @@
 		F327AC232CC97FF90043A0EE /* BirthdayDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F327AC222CC97FF90043A0EE /* BirthdayDetailsScreen.swift */; };
 		F327AC252CC9819E0043A0EE /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F327AC242CC9819E0043A0EE /* Binding+Extension.swift */; };
 		F354FF202CC9ADCA00A3F6E4 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354FF1F2CC9ADCA00A3F6E4 /* Date+Extension.swift */; };
+		F354FF222CCA479600A3F6E4 /* ZodiacSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354FF212CCA479600A3F6E4 /* ZodiacSign.swift */; };
 		F3978D152CC9840000FFF7F5 /* BirthDayDetailsViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3978D142CC9840000FFF7F5 /* BirthDayDetailsViewModeling.swift */; };
 		F3978D172CC9843800FFF7F5 /* BirthdayUpdatePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3978D162CC9843800FFF7F5 /* BirthdayUpdatePayload.swift */; };
 		F3978D192CC9857100FFF7F5 /* BirthdayDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3978D182CC9857100FFF7F5 /* BirthdayDetailsViewModel.swift */; };
@@ -49,6 +50,7 @@
 		F327AC222CC97FF90043A0EE /* BirthdayDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayDetailsScreen.swift; sourceTree = "<group>"; };
 		F327AC242CC9819E0043A0EE /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
 		F354FF1F2CC9ADCA00A3F6E4 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		F354FF212CCA479600A3F6E4 /* ZodiacSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacSign.swift; sourceTree = "<group>"; };
 		F3978D142CC9840000FFF7F5 /* BirthDayDetailsViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDayDetailsViewModeling.swift; sourceTree = "<group>"; };
 		F3978D162CC9843800FFF7F5 /* BirthdayUpdatePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayUpdatePayload.swift; sourceTree = "<group>"; };
 		F3978D182CC9857100FFF7F5 /* BirthdayDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				F3978D162CC9843800FFF7F5 /* BirthdayUpdatePayload.swift */,
 				F3F641462CC98C5C002D0EEB /* Relation.swift */,
+				F354FF212CCA479600A3F6E4 /* ZodiacSign.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				F3978D172CC9843800FFF7F5 /* BirthdayUpdatePayload.swift in Sources */,
 				F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */,
 				F3C8CBF02CC7B3F0002DE72A /* HomeViewModeling.swift in Sources */,
+				F354FF222CCA479600A3F6E4 /* ZodiacSign.swift in Sources */,
 				F3C8CBC52CC789D0002DE72A /* ShopsScreen.swift in Sources */,
 				F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */,
 				F354FF202CC9ADCA00A3F6E4 /* Date+Extension.swift in Sources */,

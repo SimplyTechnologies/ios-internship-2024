@@ -1,4 +1,5 @@
 mutation UpdateBirthdayMutation($id: Int!, $updateBirthdayInput: UpdateBirthdayInput!) {
+
   updateBirthday(id:$id, updateBirthdayInput: $updateBirthdayInput) {
     id
     date
@@ -7,4 +8,5 @@ mutation UpdateBirthdayMutation($id: Int!, $updateBirthdayInput: UpdateBirthdayI
     name
     relation
   }
+  
 }
