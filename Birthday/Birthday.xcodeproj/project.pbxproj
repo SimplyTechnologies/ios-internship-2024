@@ -106,6 +106,37 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9393CDEA2CC9446400D8DEA1 /* EditAccount */ = {
+			isa = PBXGroup;
+			children = (
+				9393CDED2CC9449300D8DEA1 /* View */,
+				9393CDEC2CC9448B00D8DEA1 /* ViewModel */,
+				9393CDEB2CC9448300D8DEA1 /* Model */,
+			);
+			path = EditAccount;
+			sourceTree = "<group>";
+		};
+		9393CDEB2CC9448300D8DEA1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9393CDEC2CC9448B00D8DEA1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9393CDED2CC9449300D8DEA1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F3C8CB322CC658C6002DE72A = {
 			isa = PBXGroup;
 			children = (
@@ -126,7 +157,6 @@
 		F3C8CB3D2CC658C6002DE72A /* Birthday */ = {
 			isa = PBXGroup;
 			children = (
-				931C20202CC7F6DA0087E7AD /* Models */,
 				F3C8CBB02CC78417002DE72A /* Modules */,
 				F3C8CB992CC6A5F2002DE72A /* App */,
 				F3C8CB572CC65F15002DE72A /* GraphQL */,
@@ -210,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				F3C8CBA02CC6A61D002DE72A /* ContentView.swift */,
-				931C20192CC7E2A40087E7AD /* LandingView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -317,6 +346,7 @@
 		F3C8CBBD2CC7894F002DE72A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				9393CDEA2CC9446400D8DEA1 /* EditAccount */,
 				9393CDE52CC9173A00D8DEA1 /* Model */,
 				9393CDE22CC9170200D8DEA1 /* Viewmodel */,
 				F3C8CBBE2CC78979002DE72A /* View */,
