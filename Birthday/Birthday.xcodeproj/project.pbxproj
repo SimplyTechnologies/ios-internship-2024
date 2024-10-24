@@ -10,6 +10,7 @@
 		9393CDE42CC9171C00D8DEA1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE32CC9171C00D8DEA1 /* ProfileViewModel.swift */; };
 		9393CDE72CC9174A00D8DEA1 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */; };
 		9393CDE92CC91F5D00D8DEA1 /* ProfileViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */; };
+		9393CDEF2CCA4BC200D8DEA1 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDEE2CCA4BC200D8DEA1 /* EditAccountView.swift */; };
 		93DDE0BC2CC9144700F7FAA4 /* GetProfile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 93DDE0BB2CC9144700F7FAA4 /* GetProfile.graphql */; };
 		93DDE0BE2CC915F700F7FAA4 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDE0BD2CC915F700F7FAA4 /* ProfileRepository.swift */; };
 		F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */; };
@@ -45,6 +46,7 @@
 		9393CDE32CC9171C00D8DEA1 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModeling.swift; sourceTree = "<group>"; };
+		9393CDEE2CCA4BC200D8DEA1 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 		93DDE0BB2CC9144700F7FAA4 /* GetProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetProfile.graphql; sourceTree = "<group>"; };
 		93DDE0BD2CC915F700F7FAA4 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		F3C8CB3B2CC658C6002DE72A /* Birthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +135,7 @@
 		9393CDED2CC9449300D8DEA1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9393CDEE2CCA4BC200D8DEA1 /* EditAccountView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				9393CDE72CC9174A00D8DEA1 /* ProfileModel.swift in Sources */,
 				93DDE0BE2CC915F700F7FAA4 /* ProfileRepository.swift in Sources */,
 				F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */,
+				9393CDEF2CCA4BC200D8DEA1 /* EditAccountView.swift in Sources */,
 				F3C8CBF42CC7B5CE002DE72A /* View+Extension.swift in Sources */,
 				9393CDE42CC9171C00D8DEA1 /* ProfileViewModel.swift in Sources */,
 				F3C8CBF22CC7B441002DE72A /* HomeViewModel.swift in Sources */,

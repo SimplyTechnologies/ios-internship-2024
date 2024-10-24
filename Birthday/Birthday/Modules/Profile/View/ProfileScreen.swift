@@ -14,7 +14,6 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
   var body: some View {
       VStack(spacing: 50) {
         logo
-          .padding(.horizontal, 24)
         userDetails //image, name, gmail
         buttons
         Spacer()
