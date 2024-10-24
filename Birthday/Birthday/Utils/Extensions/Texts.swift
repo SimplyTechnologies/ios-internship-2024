@@ -12,6 +12,7 @@ extension String {
   enum Button {
     static var login: String { "button_login".localized }
     static var signIn: String { "button_signIn".localized }
+    static var register: String { "button_register".localized }
   }
   
   enum TextField {
@@ -22,8 +23,6 @@ extension String {
   enum Label {
     static var emailErrorText: String { "email_text".localized }
     static var passErrorText: String { "password_error_text".localized }
-    static var signIn: String { "button_signin".localized }
-    static var register: String { "button_register".localized }
   }
   
   func toFormattedDate() -> String? {
