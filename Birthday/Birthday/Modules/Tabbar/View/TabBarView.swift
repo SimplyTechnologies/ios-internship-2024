@@ -70,7 +70,7 @@ extension TabBarView {
     appearance.configureWithOpaqueBackground()
     appearance.backgroundColor = UIColor.mainPink
     
-    appearance.stackedLayoutAppearance.selected.iconColor = UIColor.darkRed
+    appearance.stackedLayoutAppearance.selected.iconColor = UIColor.rouge
     appearance.stackedLayoutAppearance.normal.iconColor = UIColor.lightPink
     
     UITabBar.appearance().standardAppearance = appearance
