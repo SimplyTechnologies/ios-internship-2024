@@ -35,11 +35,19 @@ extension HomeScreen {
       LazyVStack(spacing: 18) {
         ForEach(viewModel.birthdayData, id: \.id) { birthday in
           Button {
-            viewModel.router.push(TabBarView.HomeScreens.details(viewmodel: BirthdayDetailsViewModel(homeRepository: HomeDefaultRepository(),router: viewModel.router, deleteAction: {
-              viewModel.birthdayData.removeAll(where: {$0.id == birthday.id})
-            }, updateAction: { newBirthDay in
-              viewModel.birthdayData[viewModel.birthdayData.firstIndex(where: {$0.id == birthday.id}) ?? 0] = newBirthDay
-            }), birthday: birthday))
+            viewModel.router.push(
+              TabBarView.HomeScreens.details(
+                viewmodel: BirthdayDetailsViewModel(
+                  homeRepository: HomeDefaultRepository(),
+                  router: viewModel.router, deleteAction: {
+                    viewModel.birthdayData.removeAll(where: {$0.id == birthday.id})
+                  },
+                  updateAction: { newBirthDay in
+                    viewModel.birthdayData[viewModel.birthdayData.firstIndex(where: {$0.id == birthday.id}) ?? 0] = newBirthDay
+                  }
+                ),
+                birthday: birthday)
+            )
           } label: {
             BirthDayCell(model: birthday)
           }

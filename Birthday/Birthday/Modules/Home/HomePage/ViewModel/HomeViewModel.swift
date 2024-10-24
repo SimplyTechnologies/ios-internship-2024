@@ -11,7 +11,6 @@ import Combine
 final class HomeViewModel: HomeViewModeling {
   
   @Published var router: any Routable
-  
   @Published var isLoading: Bool = false
   @Published var birthdayData: [BirthdayModel] = []
   

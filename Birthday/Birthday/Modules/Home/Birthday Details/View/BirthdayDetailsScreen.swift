@@ -359,6 +359,7 @@ extension BirthdayDetailsScreen {
         upcomingAge: 10,
         upcomingBirthday: "",
         updatedAt: "",
-        userId: 1)
+        userId: 1
+      )
   )
 }
