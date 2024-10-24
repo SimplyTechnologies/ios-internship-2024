@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		931C201A2CC7E2A40087E7AD /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C20192CC7E2A40087E7AD /* LandingView.swift */; };
+		931C201F2CC7E9FD0087E7AD /* LandingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C201E2CC7E9FD0087E7AD /* LandingButton.swift */; };
 		E7BD1C662CC7CD1700EC70FE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */; };
 		E7BD1C692CC7CD4800EC70FE /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C682CC7CD4800EC70FE /* SignInView.swift */; };
 		E7BD1C6D2CC7CDA200EC70FE /* Extension + View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C6C2CC7CD9600EC70FE /* Extension + View.swift */; };
 		E7BD1C6F2CC7CDB700EC70FE /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C6E2CC7CDB200EC70FE /* ValidationTextField.swift */; };
 		E7BD1C712CC7CDD300EC70FE /* CustomNavBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C702CC7CDD200EC70FE /* CustomNavBarModifier.swift */; };
 		E7BD1C742CC7CE0200EC70FE /* EnabledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C732CC7CE0100EC70FE /* EnabledButton.swift */; };
-		931C201A2CC7E2A40087E7AD /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C20192CC7E2A40087E7AD /* LandingView.swift */; };
-		931C201F2CC7E9FD0087E7AD /* LandingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C201E2CC7E9FD0087E7AD /* LandingButton.swift */; };
 		F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */; };
 		F3C8CB6F2CC67A03002DE72A /* BirthDayAPI in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB6E2CC67A03002DE72A /* BirthDayAPI */; };
 		F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */; };
@@ -45,14 +45,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		931C20192CC7E2A40087E7AD /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		931C201E2CC7E9FD0087E7AD /* LandingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingButton.swift; sourceTree = "<group>"; };
 		E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		E7BD1C682CC7CD4800EC70FE /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		E7BD1C6C2CC7CD9600EC70FE /* Extension + View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + View.swift"; sourceTree = "<group>"; };
 		E7BD1C6E2CC7CDB200EC70FE /* ValidationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
 		E7BD1C702CC7CDD200EC70FE /* CustomNavBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarModifier.swift; sourceTree = "<group>"; };
 		E7BD1C732CC7CE0100EC70FE /* EnabledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnabledButton.swift; sourceTree = "<group>"; };
-		931C20192CC7E2A40087E7AD /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
-		931C201E2CC7E9FD0087E7AD /* LandingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingButton.swift; sourceTree = "<group>"; };
 		F3C8CB3B2CC658C6002DE72A /* Birthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppoloClient.swift; sourceTree = "<group>"; };
 		F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetBirthdays.graphql; sourceTree = "<group>"; };
@@ -95,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		931C20202CC7F6DA0087E7AD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				931C201E2CC7E9FD0087E7AD /* LandingButton.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E7BD1C642CC7CCFC00EC70FE /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,12 +144,6 @@
 				E7BD1C732CC7CE0100EC70FE /* EnabledButton.swift */,
 			);
 			path = Shape;
-		931C20202CC7F6DA0087E7AD /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				931C201E2CC7E9FD0087E7AD /* LandingButton.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		F3C8CB322CC658C6002DE72A = {
@@ -668,7 +670,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = XAKAWHWK38;
+				DEVELOPMENT_TEAM = QAG24BGKCF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -702,7 +704,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = XAKAWHWK38;
+				DEVELOPMENT_TEAM = QAG24BGKCF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
