@@ -16,7 +16,7 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
   @State private var isEditing: Bool = false
   @State private var isAddingRelation: Bool = false
   @State private var newRelation: String = ""
-  @State private var relationshipData: [Relationship] = Relationship.getAllCases()
+  @State private var relationshipData: [Relationship] = Relationship.allCases
   
   @Environment(\.presentationMode) var presentationMode
   

@@ -72,8 +72,4 @@ enum Relationship: CaseIterable, Hashable {
     }
   }
   
-  static func getAllCases() -> [Relationship] {
-    return Self.allCases
-  }
-  
 }

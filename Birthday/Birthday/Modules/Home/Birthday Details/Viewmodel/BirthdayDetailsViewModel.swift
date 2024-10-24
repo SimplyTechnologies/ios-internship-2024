@@ -12,12 +12,12 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   
   @Published var isLoading: Bool = false
   
-  private var homeRepository: HomeRepository
+  private let homeRepository: HomeRepository
   private var cancelables = Set<AnyCancellable>()
   var deleteAction: () -> ()
   var updateAction: (BirthdayModel) -> ()
   
-  init(homeRepository: HomeRepository,deleteAction: @escaping () -> (),updateAction: @escaping (BirthdayModel) -> () ) {
+  init(homeRepository: HomeRepository, deleteAction: @escaping () -> (), updateAction: @escaping (BirthdayModel) -> ()) {
     self.homeRepository = homeRepository
     self.deleteAction = deleteAction
     self.updateAction = updateAction
