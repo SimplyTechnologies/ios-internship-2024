@@ -21,7 +21,7 @@ extension BirthDayCell {
   private var content: some View {
     HStack(alignment: .center) {
       image
-      VStack {
+      VStack(alignment: .leading) {
         name
         date
       }
@@ -40,6 +40,7 @@ extension BirthDayCell {
         Image(systemName: "person")
           .resizable()
           .foregroundStyle(.lightPink)
+          .padding(8)
       } else {
         ProgressView()
           .progressViewStyle(.circular)
@@ -54,10 +55,14 @@ extension BirthDayCell {
   
   private var name: some View {
     Text(model.name ?? "")
+      .foregroundStyle(.black)
+      .karmaFont(style: .semiBold20)
   }
   
   private var date: some View {
     Text(model.date?.toFormattedDate() ?? "")
+      .foregroundStyle(.black)
+      .karmaFont(style: .semiBold14)
   }
   
 }
@@ -70,7 +75,8 @@ extension BirthDayCell {
       id: 1,
       image: "https://randomuser.me/api/portraits/med/women/19.jpg",
       message: "Be Happy",
-      name: "John", relation: "Friend",
+      name: "John", 
+      relation: .friend,
       upcomingAge: 12,
       upcomingBirthday: nil,
       updatedAt: nil, userId: 2)
