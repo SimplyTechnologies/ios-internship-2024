@@ -5,8 +5,8 @@
 //  Created by Narek on 23.10.24.
 //
 
-import Foundation
 import BirthDayAPI
+import Foundation
 
 struct User {
   
@@ -16,7 +16,13 @@ struct User {
   let lastName: String?
   let email: String?
   
-  init(id: Int?, image: String?, firstName: String?, lastName: String?, email: String?) {
+  init(
+    id: Int?,
+    image: String?,
+    firstName: String?,
+    lastName: String?,
+    email: String?
+  ) {
     self.id = id
     self.image = image
     self.firstName = firstName

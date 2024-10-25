@@ -169,26 +169,28 @@ class RegistrationViewModel: ObservableObject {
     validateForm()
     if isValidForm {
       isLoading = true
-      registrationRepository.singUp(
+      let registrationPayload: RegistrationPayload = .init(
         firstName: name,
         lastName: surname,
         email: email,
         password: password
       )
-      .sink { [weak self] result in
-        self?.isLoading = false
-        switch result {
-        case .failure(let error):
-          Console.log("❌ Error: \(error)")
-        default: break
+      
+      registrationRepository.singUp(registrationPayload)
+        .sink { [weak self] result in
+          self?.isLoading = false
+          switch result {
+          case .failure(let error):
+            Console.log("❌ Error: \(error)")
+          default: break
+          }
+        } receiveValue: { [weak self] data in
+          guard let self else { return }
+          router.resetNavigation(with: [LandingScreen.Screen.signIn])
+          let user = User(dto: data.signUp)
+          Console.log("User is : \(user)")
         }
-      } receiveValue: { [weak self] data in
-        guard let self else { return }
-        router.resetNavigation(with: [LandingScreen.Screen.signIn])
-        let user = User(dto: data.signUp)
-        Console.log("User is : \(user)")
-      }
-      .store(in: &cancellables)
+        .store(in: &cancellables)
     }
   }
   

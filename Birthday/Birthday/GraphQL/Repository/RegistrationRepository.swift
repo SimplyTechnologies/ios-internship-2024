@@ -11,30 +11,20 @@ import BirthDayAPI
 
 protocol RegistrationRepository: GraphQLRepository {
   
-  func singUp(
-    firstName: String,
-    lastName: String,
-    email: String,
-    password: String
-  ) -> AnyPublisher<SignUpMutation.Data, Error>
+  func singUp(_ registrationPayload: RegistrationPayload) -> AnyPublisher<SignUpMutation.Data, Error>
   
 }
 
 final class RegistrationDefaultRepository: RegistrationRepository {
   
-  func singUp(
-    firstName: String,
-    lastName: String,
-    email: String,
-    password: String
-  ) -> AnyPublisher<BirthDayAPI.SignUpMutation.Data, any Error> {
+  func singUp(_ registrationPayload: RegistrationPayload) -> AnyPublisher<BirthDayAPI.SignUpMutation.Data, any Error> {
     performMutation(
       mutation: SignUpMutation(
         signUpInput: SignUpInput(
-          email: email,
-          firstName: firstName,
-          lastName: lastName,
-          password: password
+          email: registrationPayload.email,
+          firstName: registrationPayload.firstName,
+          lastName: registrationPayload.lastName,
+          password: registrationPayload.password
         )
       )
     )
