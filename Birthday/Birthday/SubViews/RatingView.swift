@@ -9,23 +9,54 @@ import SwiftUI
 
 struct RatingView: View {
   
-  @State private var rating: Double
-  
-  init(rating: Double) {
-    self.rating = rating
-  }
+  @Binding var rating: Double?
+
+  var maxRating: Int = 5
 
   var body: some View {
+    ZStack {
+      starsView
+        .overlay(
+          GeometryReader { geometry in
+            if let rating {
+              let width = rating / CGFloat(maxRating) * geometry.size.width
+              ZStack(alignment: .leading) {
+                Rectangle()
+                  .frame(width: width)
+                  .foregroundColor(.orangePeel)
+              }
+            }
+          }
+          .mask(starsView)
+        )
+        .foregroundStyle(.spanishGray)
+      starButtons
+    }
+  }
+  
+  private var starImage: some View {
+    Image(systemName: "star.fill")
+      .resizable()
+      .aspectRatio(contentMode: .fit)
+      .frame(width: 20, height: 20)
+  }
+
+  private var starsView: some View {
     HStack(spacing: 4) {
-      ForEach(1 ... 5, id: \.self) { index in
-        Button(action: {
+      ForEach(1 ... maxRating, id: \.self) { _ in
+        starImage
+      }
+    }
+  }
+
+  private var starButtons: some View {
+    HStack(spacing: 4) {
+      ForEach(1 ... maxRating, id: \.self) { index in
+        Button {
           rating = Double(index)
-        }) {
-          Image(systemName: "star.fill")
-            .renderingMode(.template)
-            .resizable()
-            .frame(width: 20, height: 20)
-            .foregroundColor(Double(index) <= rating ? .orangePeel : .spanishGray)
+        } label: {
+          starImage
+            .foregroundStyle(.clear)
         }
       }
     }
@@ -34,5 +65,5 @@ struct RatingView: View {
 }
 
 #Preview {
-  RatingView(rating: 4)
+  RatingView(rating: .constant(3.6), maxRating: 5)
 }

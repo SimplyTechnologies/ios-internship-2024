@@ -1,5 +1,5 @@
 //
-//  AppoloClient.swift
+//  ApolloClient.swift
 //  Birthday
 //
 //  Created by MEKHAK GHAPANTSYAN on 21.10.24.
@@ -54,7 +54,6 @@ class CustomInterceptorProvider: InterceptorProvider {
     
     self.interceptors = [
       AuthInterceptor(),
-      MaxRetryInterceptor(),
       CacheReadInterceptor(store: store),
       NetworkFetchInterceptor(client: sessionClient),
       ResponseCodeInterceptor(),
