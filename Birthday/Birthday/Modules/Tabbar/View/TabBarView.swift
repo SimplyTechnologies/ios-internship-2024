@@ -63,7 +63,6 @@ extension TabBarView {
             BirthdayDetailsScreen(viewModel: viewModel)
           }
         }
-      }
     }
     .environmentObject(router)
     .tabItem { TabCellView(model: .home) }

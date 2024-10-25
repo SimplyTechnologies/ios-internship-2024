@@ -19,11 +19,11 @@ extension View {
       self
     }
   }
-
+  
   func dismissKeyboard() -> some View {
     return modifier(ResignKeyboardOnDragModifier())
   }
-
+  
   func disableBounces() -> some View {
     modifier(DisableBouncesModifier())
   }
@@ -63,6 +63,10 @@ extension View {
         animation: animation
       )
     )
+  }
+  
+}
+
 extension View {
   
   func customAlert(isPresented: Binding<Bool>) -> some View {
