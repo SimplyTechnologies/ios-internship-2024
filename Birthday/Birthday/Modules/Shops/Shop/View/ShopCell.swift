@@ -25,13 +25,16 @@ extension ShopCell {
   
   private var content: some View {
     HStack(spacing: 0) {
-      Spacer().frame(width: 16)
+      Spacer()
+        .frame(width: 16)
       image
-      Spacer().frame(width: 14)
+      Spacer()
+        .frame(width: 14)
       name
       Spacer()
       favoriteButton
-      Spacer().frame(width: 16)
+      Spacer()
+        .frame(width: 16)
     }
     .padding(.vertical, 20)
     .background(Color.white)
