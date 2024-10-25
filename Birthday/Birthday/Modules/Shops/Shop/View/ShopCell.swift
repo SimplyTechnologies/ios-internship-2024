@@ -35,24 +35,7 @@ extension ShopCell {
   }
   
   private var image: some View {
-    AsyncImage(url: URL(string: model.image ?? "")) { phase in
-      if let image = phase.image {
-        image
-          .resizable()
-      } else if phase.error != nil {
-        Image(systemName: "gift.circle")
-          .resizable()
-          .foregroundStyle(.lightPink)
-      } else {
-        SkeletonView()
-      }
-    }
-    .frame(width: 70, height: 70)
-    .clipShape(Circle())
-    .background(
-      Circle()
-        .stroke(.spanishGray, lineWidth: 1)
-    )
+    CircularImage(imagePath: model.image ?? "")
   }
   
   private var name: some View {
@@ -76,16 +59,5 @@ extension ShopCell {
 }
 
 #Preview {
-  ShopCell(
-    model: .constant(Shop(
-      id: 1,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh2iqPBVW415Fm46oaLkdPKSp21VFDpm3Aug&s",
-      address: "8 Vahram Papazyan St, Yerevan 0012",
-      isFavorite: false,
-      name: "Rio Mall",
-      phone: "(011) 281888",
-      rate: 12,
-      url: "https://riomall.am/public/"
-    ))
-  )
+  ShopCell(model: .constant(Shop.mockShop))
 }

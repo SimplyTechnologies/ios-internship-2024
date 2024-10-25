@@ -32,3 +32,9 @@
 "field_search_no_result_title" = "Nothing Found";
 "field_search_no_result_description" = "Nothing matched your search terms. Please try again with different keywords.";
 "field_search" = "Search";
+
+// Shop
+
+"shop_phone" = "Phone:";
+"shop_address" = "Address:";
+"shop_website" = "Web Site";

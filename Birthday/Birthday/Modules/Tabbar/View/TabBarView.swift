@@ -10,6 +10,7 @@ import SwiftUI
 struct TabBarView: View {
   
   @State var selectedTab: TabModel = .home
+  @StateObject private var shopRouter = NavigationRouter()
   
   init() {
     customiseTabBar()
@@ -41,9 +42,15 @@ extension TabBarView {
   }
   
   private var shopsTab: some View {
-    NavigationStack {
+    NavigationStack(path: $shopRouter.path) {
       ShopScreen(viewModel: ShopViewModel(shopRepository: ShopDefaultRepository()))
+        .navigationDestination(for: TabBarView.ShopScreens.self) { screen in
+          switch screen {
+          case let .details(viewModel): ShopDetailsScreen(viewModel: viewModel)
+          }
+        }
     }
+    .environmentObject(shopRouter)
     .tabItem { TabCellView(model: .shops) }
     .tag(TabModel.shops)
   }
@@ -74,6 +81,31 @@ extension TabBarView {
     
     UITabBar.appearance().standardAppearance = appearance
     UITabBar.appearance().scrollEdgeAppearance = appearance
+  }
+  
+}
+
+extension TabBarView {
+  
+  enum ShopScreens: Hashable {
+    static func == (lhs: TabBarView.ShopScreens, rhs: TabBarView.ShopScreens) -> Bool {
+      lhs.id == rhs.id
+    }
+    
+    case details(viewModel: ShopDetailsViewModel)
+    
+    var id: UUID {
+      switch self {
+      case let .details(viewModel): viewModel.id
+      }
+    }
+    
+    func hash(into hasher: inout Hasher) {
+      switch self {
+      case let .details(viewModel):
+        hasher.combine(viewModel.id)
+      }
+    }
   }
   
 }

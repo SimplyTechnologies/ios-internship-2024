@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ShopScreen<T: ShopViewModeling>: View {
   
-  @ObservedObject var viewModel: T
+  @StateObject var viewModel: T
+  @EnvironmentObject var router: NavigationRouter
 
   var body: some View {
     content
@@ -47,6 +48,13 @@ extension ShopScreen {
             LazyVStack(spacing: 18) {
               ForEach($viewModel.filteredShops, id: \.id) { $shop in
                 ShopCell(model: $shop)
+                  .onTapGesture {
+                    let viewModel = ShopDetailsViewModel(
+                      shopRepository: ShopDefaultRepository(),
+                      shop: shop
+                    )
+                    router.push(TabBarView.ShopScreens.details(viewModel: viewModel))
+                  }
               }
             }
             .padding(.horizontal, 24)

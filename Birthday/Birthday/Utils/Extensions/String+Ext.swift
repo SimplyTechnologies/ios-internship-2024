@@ -93,4 +93,12 @@ extension String {
     
   }
   
+  enum Shop {
+    
+    static var phone: String { "shop_phone".localized }
+    static var address: String { "shop_address".localized }
+    static var website: String { "shop_website".localized }
+    
+  }
+  
 }

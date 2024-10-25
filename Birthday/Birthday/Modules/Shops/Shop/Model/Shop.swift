@@ -5,10 +5,10 @@
 //  Created by Narek on 24.10.24.
 //
 
-import Foundation
 import BirthDayAPI
+import Foundation
 
-struct Shop {
+struct Shop: Hashable {
   
   let id: Int?
   let image: String?
@@ -18,7 +18,7 @@ struct Shop {
   let phone: String?
   let rate: Double?
   let url: String?
-  
+
   init(
     id: Int?,
     image: String?,
@@ -49,5 +49,20 @@ struct Shop {
     self.rate = dto.rate
     self.url = dto.url
   }
+  
+}
+
+extension Shop {
+  
+  static let mockShop = Shop(
+    id: 1,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh2iqPBVW415Fm46oaLkdPKSp21VFDpm3Aug&s",
+    address: "8 Vahram Papazyan St, Yerevan 0012",
+    isFavorite: false,
+    name: "Rio Mall",
+    phone: "(011) 281888",
+    rate: 12,
+    url: "https://riomall.am/public/"
+  )
   
 }
