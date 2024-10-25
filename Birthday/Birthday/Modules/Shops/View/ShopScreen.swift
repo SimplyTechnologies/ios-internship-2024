@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShopScreen<T: ShopViewModeling>: View {
   
-  @ObservedObject var viewModel: T
+  @StateObject var viewModel: T
 
   var body: some View {
     content

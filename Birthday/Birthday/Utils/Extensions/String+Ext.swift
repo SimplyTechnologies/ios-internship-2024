@@ -12,6 +12,9 @@ extension String {
   var localized: String {
     NSLocalizedString(self, comment: "")
   }
+  var toDate: Date? {
+    DateFormatter.iso8601Full.date(from: self)
+  }
 
   var isValidEmail: Bool {
     let emailRegEx =  #"[a-zA-Z0-9+._%\-+]{1,256}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9\-]{0,64}(\.[a-zA-Z0-9][a-zA-Z0-9\-]{0,25})+"#
@@ -91,6 +94,18 @@ extension String {
     static var searchNoResultDescription: String { "field_search_no_result_description".localized }
     static var search: String { "field_search".localized }
     
+  }
+  
+  enum Birthday {
+    
+    static var name: String { "birthday_name".localized }
+    static var relationship: String { "birthday_relationship".localized }
+    static var zodiac: String { "birthday_zodiac".localized }
+    static var generate: String { "birthday_generate".localized }
+    static var gift: String { "birthday_gift".localized }
+    static var done: String { "birthday_done".localized }
+    static var newRelationship: String { "birthday_relationship_new".localized }
+
   }
   
 }

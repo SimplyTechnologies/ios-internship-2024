@@ -11,6 +11,28 @@ struct TabBarView: View {
   
   @State var selectedTab: TabModel = .home
   
+  @ObservedObject private var router = NavigationRouter()
+  
+  enum HomeScreens: Hashable {
+    
+    case details(viewModel:  BirthdayDetailsViewModel, birthday: BirthdayModel)
+    
+    var id: Int {
+      switch self {
+      case .details: 1
+      }
+    }
+    
+    static func == (lhs: TabBarView.HomeScreens, rhs: TabBarView.HomeScreens) -> Bool {
+      return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+      hasher.combine(self.id)
+    }
+    
+  }
+  
   init() {
     customiseTabBar()
   }
@@ -33,9 +55,16 @@ extension TabBarView {
   }
   
   private var homeTab: some View {
-    NavigationStack {
+    NavigationStack(path: $router.path) {
       HomeScreen(viewModel: HomeViewModel(homeRepository: HomeDefaultRepository()))
+        .navigationDestination(for: HomeScreens.self) { screen in
+          switch screen {
+          case .details(let viewModel, let birthday):
+            BirthdayDetailsScreen(viewModel: viewModel, birthdayData: birthday)
+          }
+        }
     }
+    .environmentObject(router)
     .tabItem { TabCellView(model: .home) }
     .tag(TabModel.home)
   }

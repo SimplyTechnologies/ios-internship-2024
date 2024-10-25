@@ -32,3 +32,13 @@
 "field_search_no_result_title" = "Nothing Found";
 "field_search_no_result_description" = "Nothing matched your search terms. Please try again with different keywords.";
 "field_search" = "Search";
+
+//Birthday
+
+"birthday_name" = "Name";
+"birthday_relationship" = "Relationship";
+"birthday_zodiac" = "Zodiac Sign: ";
+"birthday_generate" = "Generate Message";
+"birthday_gift" = "Find Gift";
+"birthday_done" = "Done";
+"birthday_relationship_new" = "New relationship";
