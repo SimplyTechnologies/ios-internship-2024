@@ -25,7 +25,7 @@ struct RatingView: View {
             .renderingMode(.template)
             .resizable()
             .frame(width: 20, height: 20)
-            .foregroundColor(Double(index) <= rating ? .orangePeel : .spanishGray)
+            .foregroundStyle(Double(index) <= rating ? .orangePeel : .spanishGray)
         }
       }
     }
