@@ -1,4 +1,5 @@
 mutation SignUp($signUpInput: SignUpInput!) {
+
   signUp(signUpInput: $signUpInput) {
     id
     email
@@ -6,4 +7,5 @@ mutation SignUp($signUpInput: SignUpInput!) {
     lastName
     image
   }
+  
 }

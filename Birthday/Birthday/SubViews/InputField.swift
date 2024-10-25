@@ -42,7 +42,8 @@ struct InputField: View {
         textField
       }
       if isSecureField {
-        Spacer().frame(width: 8)
+        Spacer()
+          .frame(width: 8)
         hideButton
       }
     }
