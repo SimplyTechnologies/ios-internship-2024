@@ -44,6 +44,14 @@ extension View {
           .controlSize(.large)
       }
     }
-    
   }
+  
+}
+
+extension View {
+  
+  func customAlert(isPresented: Binding<Bool>) -> some View {
+    self.modifier(AlertModifier(isPresented: isPresented))
+  }
+  
 }

@@ -1,0 +1,85 @@
+//
+//  GenerateMessageView.swift
+//  Birthday
+//
+//  Created by MEKHAK GHAPANTSYAN on 25.10.24.
+//
+
+import SwiftUI
+
+struct GenerateMessageView: View {
+  
+  @Binding var isPresented: Bool
+  
+  @State private var isSharePresented = false
+  @State private var message: String = ""
+  
+  var body: some View {
+    VStack(alignment: .trailing, spacing: 4) {
+      TextEditor(text: $message)
+        .padding(.horizontal, 10)
+        .scrollContentBackground(.hidden)
+        .foregroundStyle(Color.black)
+        .karmaFont(style: .bold14)
+        .background(Color.lightPink)
+        .cornerRadius(8)
+        .padding(.horizontal, 16)
+        .padding(.top, 16)
+      Button {
+        withAnimation {
+          isSharePresented = true
+        }
+      } label: {
+        Text(String.Birthday.send)
+          .foregroundStyle(Color.darkRed)
+          .padding(6)
+          .background(Color.lightPink)
+          .cornerRadius(8)
+          .padding(.horizontal, 16)
+          .padding(.bottom, 8)
+      }
+    }
+    .frame(width: 300, height: 200)
+    .background(Color.white)
+    .cornerRadius(16)
+    .shadow(radius: 10)
+    .transition(.scale)
+    .sheet(isPresented: $isSharePresented) {
+      ShareSheet(message: $message) { completed in
+        if completed {
+          isPresented = false
+        }
+        withAnimation {
+          isSharePresented = false
+        }
+      }
+    }
+  }
+  
+}
+
+struct ShareSheet: UIViewControllerRepresentable {
+  
+  @Binding var message: String
+  var completion: ((Bool) -> Void)?
+  
+  func makeUIViewController(context: Context) -> UIActivityViewController {
+    let controller = UIActivityViewController(
+      activityItems: [message],
+      applicationActivities: nil
+    )
+    controller.completionWithItemsHandler = { _, completed, _, _ in
+      completion?(completed)
+    }
+    return controller
+  }
+  
+  func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) { }
+  
+}
+
+#Preview {
+  GenerateMessageView(
+    isPresented: .constant(true)
+  )
+}

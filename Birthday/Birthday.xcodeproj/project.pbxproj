@@ -72,6 +72,8 @@
 		F3C8CBF92CC7BB4D002DE72A /* BirthDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBF82CC7BB4D002DE72A /* BirthDayCell.swift */; };
 		F3F641472CC98C5C002D0EEB /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F641462CC98C5C002D0EEB /* Relation.swift */; };
 		F3F641492CC9A6C5002D0EEB /* DeleteBirthDayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3F641482CC9A6C5002D0EEB /* DeleteBirthDayMutation.graphql */; };
+		F3FDEB962CCB9EFE0073BFED /* GenerateMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */; };
+		F3FDEB982CCBBB850073BFED /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB972CCBBB850073BFED /* AlertModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +141,8 @@
 		F3C8CBF82CC7BB4D002DE72A /* BirthDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDayCell.swift; sourceTree = "<group>"; };
 		F3F641462CC98C5C002D0EEB /* Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
 		F3F641482CC9A6C5002D0EEB /* DeleteBirthDayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = DeleteBirthDayMutation.graphql; path = "Birthday/Modules/Home/Birthday Details/Model/DeleteBirthDayMutation.graphql"; sourceTree = SOURCE_ROOT; };
+		F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMessageView.swift; sourceTree = "<group>"; };
+		F3FDEB972CCBBB850073BFED /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,8 @@
 		CE42AAFD2CCA10230057ECFB /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				F3978D1A2CC9862300FFF7F5 /* UpdateBirthdayMutation.graphql */,
+				F3F641482CC9A6C5002D0EEB /* DeleteBirthDayMutation.graphql */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 				CE98D2E72CC7C1920017E477 /* DisableBouncesModifier.swift */,
 				CE98D2E92CC7C2CD0017E477 /* FieldErrorModifier.swift */,
 				CE42AAFE2CCA12790057ECFB /* ViewDidLoadModifier.swift */,
+				F3FDEB972CCBBB850073BFED /* AlertModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -432,15 +439,6 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		F3C8CB722CC6807C002DE72A /* Mutations */ = {
-			isa = PBXGroup;
-			children = (
-				F3978D1A2CC9862300FFF7F5 /* UpdateBirthdayMutation.graphql */,
-				F3F641482CC9A6C5002D0EEB /* DeleteBirthDayMutation.graphql */,
-			);
-			path = Mutations;
-			sourceTree = "<group>";
-		};
 		F3C8CB992CC6A5F2002DE72A /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +542,7 @@
 		F3C8CBBA2CC7892E002DE72A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				F3FDEB932CCB9ECD0073BFED /* Message Generate */,
 				F327AC1E2CC97FBF0043A0EE /* Birthday Details */,
 				F327AC1D2CC97FB20043A0EE /* HomePage */,
 			);
@@ -622,6 +621,22 @@
 				F3C8CBF62CC7B9EF002DE72A /* BirthdayModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F3FDEB932CCB9ECD0073BFED /* Message Generate */ = {
+			isa = PBXGroup;
+			children = (
+				F3FDEB942CCB9EDA0073BFED /* View */,
+			);
+			path = "Message Generate";
+			sourceTree = "<group>";
+		};
+		F3FDEB942CCB9EDA0073BFED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -732,7 +747,9 @@
 				CE98D2E62CC7C1270017E477 /* ResignKeyboardOnDragModifier.swift in Sources */,
 				F3C8CBF72CC7B9EF002DE72A /* BirthdayModel.swift in Sources */,
 				F3F641472CC98C5C002D0EEB /* Relation.swift in Sources */,
+				F3FDEB962CCB9EFE0073BFED /* GenerateMessageView.swift in Sources */,
 				F3C8CBC92CC78A12002DE72A /* ProfileScreen.swift in Sources */,
+				F3FDEB982CCBBB850073BFED /* AlertModifier.swift in Sources */,
 				931C201F2CC7E9FD0087E7AD /* LandingButton.swift in Sources */,
 				F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */,
 				F3978D152CC9840000FFF7F5 /* BirthDayDetailsViewModeling.swift in Sources */,
@@ -915,7 +932,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = QAG24BGKCF;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
@@ -950,7 +967,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = QAG24BGKCF;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;

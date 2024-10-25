@@ -13,6 +13,7 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
   
   @State var birthdayData: BirthdayModel
   @State private var isEditing: Bool = false
+  @State private var isGeneratingMessage: Bool = false
   
   @EnvironmentObject var router: NavigationRouter
   
@@ -20,6 +21,7 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
     content
       .background(Color.lightPink)
       .navigationBarBackButtonHidden(true)
+      .customAlert(isPresented: $isGeneratingMessage)
   }
   
 }
@@ -157,7 +159,9 @@ extension BirthdayDetailsScreen {
   
   private var generateMessageButton: some View {
     Button {
-      //MARK: - implement generate Message
+      withAnimation {
+        isGeneratingMessage = true
+      }
     } label: {
       Text(String.Birthday.generate)
         .padding(.vertical, 8)
