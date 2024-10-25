@@ -25,7 +25,8 @@ extension ShopDetailsScreen {
       NavigationBar {
         router.pop()
       }
-      Spacer().frame(height: 26)
+      Spacer()
+        .frame(height: 26)
       shopInfoView
       Spacer()
     }
@@ -36,15 +37,20 @@ extension ShopDetailsScreen {
   private var shopInfoView: some View {
     VStack(spacing: 0) {
       image
-      Spacer().frame(height: 20)
+      Spacer()
+        .frame(height: 20)
       shopName
-      Spacer().frame(height: 18)
+      Spacer()
+        .frame(height: 18)
       rate
-      Spacer().frame(height: 20)
+      Spacer()
+        .frame(height: 20)
       phone
-      Spacer().frame(height: 10)
+      Spacer()
+        .frame(height: 10)
       address
-      Spacer().frame(height: 10)
+      Spacer()
+        .frame(height: 10)
       webSite
     }
     .padding(.horizontal, 24)

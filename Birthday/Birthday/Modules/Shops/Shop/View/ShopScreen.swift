@@ -26,10 +26,12 @@ extension ShopScreen {
   private var content: some View {
     VStack(spacing: 0) {
       Image(.birth)
-      Spacer().frame(height: 22)
+      Spacer()
+        .frame(height: 22)
       searchBar
         .padding(.horizontal, 24)
-      Spacer().frame(height: 10)
+      Spacer()
+        .frame(height: 10)
       list
     }
     .background(Color.lightPink)
@@ -44,7 +46,8 @@ extension ShopScreen {
           noSearchResultView
         } else {
           ScrollView {
-            Spacer().frame(height: 10)
+            Spacer()
+              .frame(height: 10)
             LazyVStack(spacing: 18) {
               ForEach($viewModel.filteredShops, id: \.id) { $shop in
                 ShopCell(model: $shop)
@@ -58,7 +61,8 @@ extension ShopScreen {
               }
             }
             .padding(.horizontal, 24)
-            Spacer().frame(height: 10)
+            Spacer()
+              .frame(height: 10)
           }
           .scrollIndicators(.hidden)
         }
@@ -81,12 +85,14 @@ extension ShopScreen {
         .resizable()
         .frame(width: 42, height: 42)
         .foregroundStyle(.black)
-      Spacer().frame(height: 12)
+      Spacer()
+        .frame(height: 12)
       Text(String.Field.searchNoResultTitle)
         .foregroundStyle(Color.black)
         .karmaFont(style: .bold26)
         .multilineTextAlignment(.center)
-      Spacer().frame(height: 12)
+      Spacer()
+        .frame(height: 12)
       Text(String.Field.searchNoResultDescription)
         .foregroundStyle(Color.spanishGray)
         .karmaFont(style: .regular14)
