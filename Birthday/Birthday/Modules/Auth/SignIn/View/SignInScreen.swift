@@ -65,13 +65,17 @@ extension SignInScreen {
   
   private var signInForm: some View {
     VStack(spacing: 0) {
-      Spacer().frame(height: 16)
+      Spacer()
+        .frame(height: 16)
       signInHeaderView
-      Spacer().frame(height: 24)
+      Spacer()
+        .frame(height: 24)
       fields
-      Spacer().frame(height: 50)
+      Spacer()
+        .frame(height: 50)
       signInButton
-      Spacer().frame(height: 64)
+      Spacer()
+        .frame(height: 64)
     }
     .padding(.horizontal, 30)
     .background(Color.white)

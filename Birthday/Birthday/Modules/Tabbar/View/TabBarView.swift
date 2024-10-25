@@ -63,6 +63,7 @@ extension TabBarView {
             BirthdayDetailsScreen(viewModel: viewModel)
           }
         }
+      }
     }
     .environmentObject(router)
     .tabItem { TabCellView(model: .home) }
@@ -71,7 +72,11 @@ extension TabBarView {
   
   private var shopsTab: some View {
     NavigationStack {
-      ShopsScreen()
+      ShopScreen(
+        viewModel: ShopViewModel(
+          shopRepository: ShopDefaultRepository()
+        )
+      )
     }
     .tabItem { TabCellView(model: .shops) }
     .tag(TabModel.shops)

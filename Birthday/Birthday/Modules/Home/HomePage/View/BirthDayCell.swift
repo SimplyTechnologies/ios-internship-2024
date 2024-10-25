@@ -21,7 +21,7 @@ extension BirthDayCell {
   private var content: some View {
     HStack(alignment: .center) {
       image
-      VStack(alignment: .leading) {
+      VStack(alignment: .leading, spacing: 0) {
         name
         date
       }
@@ -56,13 +56,13 @@ extension BirthDayCell {
   private var name: some View {
     Text(model.name ?? "")
       .foregroundStyle(.black)
-      .karmaFont(style: .semiBold20)
+      .karmaFont(style: .bold20)
   }
   
   private var date: some View {
     Text(model.date?.toFormattedDate() ?? "")
       .foregroundStyle(.black)
-      .karmaFont(style: .semiBold14)
+      .karmaFont(style: .bold14)
   }
   
 }
