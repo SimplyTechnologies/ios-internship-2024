@@ -163,7 +163,7 @@ extension BirthdayDetailsScreen {
         .padding(.vertical, 8)
         .padding(.horizontal, 20)
         .foregroundStyle(Color.darkRed)
-        .background(Color.mainPink)
+        .background(Color.bubblegumPink)
         .karmaFont(style: .semiBold18)
         .cornerRadius(16)
     }
@@ -176,7 +176,7 @@ extension BirthdayDetailsScreen {
       Text(String.Birthday.gift)
         .padding(.vertical, 8)
         .padding(.horizontal, 20)
-        .foregroundStyle(Color.mainPink)
+        .foregroundStyle(Color.bubblegumPink)
         .background(Color.darkRed)
         .karmaFont(style: .semiBold18)
         .cornerRadius(16)

@@ -10,6 +10,8 @@
 		931C201F2CC7E9FD0087E7AD /* LandingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C201E2CC7E9FD0087E7AD /* LandingButton.swift */; };
 		CE42AAFF2CCA12790057ECFB /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AAFE2CCA12790057ECFB /* ViewDidLoadModifier.swift */; };
 		CE42AB042CCA23B80057ECFB /* LandingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB032CCA23B80057ECFB /* LandingScreen.swift */; };
+		CE42AB082CCA36650057ECFB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB072CCA36650057ECFB /* User.swift */; };
+		CE42AB222CCB61560057ECFB /* RegistrationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB212CCB61560057ECFB /* RegistrationPayload.swift */; };
 		CE98D2BF2CC775FB0017E477 /* RegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2BE2CC775FB0017E477 /* RegistrationScreen.swift */; };
 		CE98D2C62CC778780017E477 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2C52CC778780017E477 /* NavigationBar.swift */; };
 		CE98D2C82CC77C290017E477 /* Optional+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2C72CC77C290017E477 /* Optional+Ext.swift */; };
@@ -31,6 +33,8 @@
 		CE98D2EC2CC80BFB0017E477 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2EB2CC80BFB0017E477 /* NavigationRouter.swift */; };
 		CE98D2EF2CC80C7E0017E477 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2EE2CC80C7E0017E477 /* Console.swift */; };
 		CE98D2F42CC8ED2D0017E477 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */; };
+		CE98D2F62CC936FC0017E477 /* RegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2F52CC936FC0017E477 /* RegistrationRepository.swift */; };
+		CE98D2FB2CC93B2D0017E477 /* SignUp.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE98D2FA2CC93B2D0017E477 /* SignUp.graphql */; };
 		E7BD1C662CC7CD1700EC70FE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */; };
 		E7BD1C692CC7CD4800EC70FE /* SignInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C682CC7CD4800EC70FE /* SignInScreen.swift */; };
 		F327AC232CC97FF90043A0EE /* BirthdayDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F327AC222CC97FF90043A0EE /* BirthdayDetailsScreen.swift */; };
@@ -74,6 +78,8 @@
 		931C201E2CC7E9FD0087E7AD /* LandingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingButton.swift; sourceTree = "<group>"; };
 		CE42AAFE2CCA12790057ECFB /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
 		CE42AB032CCA23B80057ECFB /* LandingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreen.swift; sourceTree = "<group>"; };
+		CE42AB072CCA36650057ECFB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CE42AB212CCB61560057ECFB /* RegistrationPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPayload.swift; sourceTree = "<group>"; };
 		CE98D2BE2CC775FB0017E477 /* RegistrationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationScreen.swift; sourceTree = "<group>"; };
 		CE98D2C52CC778780017E477 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		CE98D2C72CC77C290017E477 /* Optional+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Ext.swift"; sourceTree = "<group>"; };
@@ -95,6 +101,8 @@
 		CE98D2E92CC7C2CD0017E477 /* FieldErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldErrorModifier.swift; sourceTree = "<group>"; };
 		CE98D2EB2CC80BFB0017E477 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		CE98D2EE2CC80C7E0017E477 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
+		CE98D2F52CC936FC0017E477 /* RegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRepository.swift; sourceTree = "<group>"; };
+		CE98D2FA2CC93B2D0017E477 /* SignUp.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignUp.graphql; sourceTree = "<group>"; };
 		E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		E7BD1C682CC7CD4800EC70FE /* SignInScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInScreen.swift; sourceTree = "<group>"; };
 		F327AC222CC97FF90043A0EE /* BirthdayDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayDetailsScreen.swift; sourceTree = "<group>"; };
@@ -181,6 +189,15 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		CE42AB062CCA365A0057ECFB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE42AB072CCA36650057ECFB /* User.swift */,
+				CE42AB212CCB61560057ECFB /* RegistrationPayload.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CE98D2C42CC7778E0017E477 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +252,7 @@
 		CE98D2F02CC8EB270017E477 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				CE42AB062CCA365A0057ECFB /* Model */,
 				CE98D2F22CC8EB550017E477 /* ViewModel */,
 				CE98D2F12CC8EB370017E477 /* View */,
 			);
@@ -255,6 +273,14 @@
 				CE98D2E02CC79A600017E477 /* RegistrationViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE98D2F92CC93B0C0017E477 /* Mutations */ = {
+			isa = PBXGroup;
+			children = (
+				CE98D2FA2CC93B2D0017E477 /* SignUp.graphql */,
+			);
+			path = Mutations;
 			sourceTree = "<group>";
 		};
 		E7BD1C642CC7CCFC00EC70FE /* SignIn */ = {
@@ -366,7 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				F3C8CB712CC67E5F002DE72A /* Repository */,
-				F3C8CB722CC6807C002DE72A /* Mutations */,
+				CE98D2F92CC93B0C0017E477 /* Mutations */,
 				F3C8CB5E2CC6607E002DE72A /* Queries */,
 				F3C8CB5B2CC66036002DE72A /* Client */,
 			);
@@ -401,6 +427,7 @@
 			children = (
 				F3C8CB752CC682C9002DE72A /* GraphQLRepository.swift */,
 				F3C8CBE92CC7AAFC002DE72A /* HomeRepository.swift */,
+				CE98D2F52CC936FC0017E477 /* RegistrationRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -677,6 +704,7 @@
 				F3C8CBAF2CC6A61D002DE72A /* Localizable.strings in Resources */,
 				F3C8CBAC2CC6A61D002DE72A /* Assets.xcassets in Resources */,
 				F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */,
+				CE98D2FB2CC93B2D0017E477 /* SignUp.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,8 +736,10 @@
 				931C201F2CC7E9FD0087E7AD /* LandingButton.swift in Sources */,
 				F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */,
 				F3978D152CC9840000FFF7F5 /* BirthDayDetailsViewModeling.swift in Sources */,
+				CE42AB082CCA36650057ECFB /* User.swift in Sources */,
 				F3C8CBF22CC7B441002DE72A /* HomeViewModel.swift in Sources */,
 				F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */,
+				CE42AB222CCB61560057ECFB /* RegistrationPayload.swift in Sources */,
 				CE98D2F42CC8ED2D0017E477 /* String+Ext.swift in Sources */,
 				F3C8CBC32CC789AA002DE72A /* HomeScreen.swift in Sources */,
 				CE42AAFF2CCA12790057ECFB /* ViewDidLoadModifier.swift in Sources */,
@@ -717,6 +747,9 @@
 				CE42AB042CCA23B80057ECFB /* LandingScreen.swift in Sources */,
 				E7BD1C662CC7CD1700EC70FE /* SignInViewModel.swift in Sources */,
 				E7BD1C692CC7CD4800EC70FE /* SignInScreen.swift in Sources */,
+				F3C8CBEA2CC7AAFC002DE72A /* HomeRepository.swift in Sources */,
+				F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */,
+				CE98D2F62CC936FC0017E477 /* RegistrationRepository.swift in Sources */,
 				F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */,
 				F3978D172CC9843800FFF7F5 /* BirthdayUpdatePayload.swift in Sources */,
 				F3C8CBF02CC7B3F0002DE72A /* HomeViewModeling.swift in Sources */,

@@ -10,6 +10,7 @@ import SwiftUI
 struct RoundedButton: View {
     
   let name: String
+  var isLoading: Bool = false
   let action: () -> Void
 
   var body: some View {
@@ -18,12 +19,12 @@ struct RoundedButton: View {
     } label: {
       Text(name)
     }
-    .buttonStyle(RoundedButtonStyle())
+    .buttonStyle(RoundedButtonStyle(isLoading))
   }
   
 }
 
 #Preview {
-  RoundedButton(name: "Register") { }
+  RoundedButton(name: "Register", isLoading: true) { }
   .padding()
 }
