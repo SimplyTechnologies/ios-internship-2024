@@ -22,7 +22,7 @@ struct GenerateMessageView: View {
         .foregroundStyle(Color.black)
         .karmaFont(style: .bold14)
         .background(Color.lightPink)
-        .cornerRadius(8)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 16)
         .padding(.top, 16)
       Button {
@@ -34,14 +34,14 @@ struct GenerateMessageView: View {
           .foregroundStyle(Color.darkRed)
           .padding(6)
           .background(Color.lightPink)
-          .cornerRadius(8)
+          .clipShape(RoundedRectangle(cornerRadius: 8))
           .padding(.horizontal, 16)
           .padding(.bottom, 8)
       }
     }
     .frame(width: 300, height: 200)
     .background(Color.white)
-    .cornerRadius(16)
+    .clipShape(RoundedRectangle(cornerRadius: 16))
     .shadow(radius: 10)
     .transition(.scale)
     .sheet(isPresented: $isSharePresented) {

@@ -11,17 +11,13 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
   
   @StateObject var viewModel: T
   
-  @State var birthdayData: BirthdayModel
-  @State private var isEditing: Bool = false
-  @State private var isGeneratingMessage: Bool = false
-  
   @EnvironmentObject var router: NavigationRouter
   
   var body: some View {
     content
       .background(Color.lightPink)
       .navigationBarBackButtonHidden(true)
-      .customAlert(isPresented: $isGeneratingMessage)
+      .customAlert(isPresented: $viewModel.isGeneratingMessage)
   }
   
 }
@@ -34,8 +30,8 @@ extension BirthdayDetailsScreen {
       ScrollView {
         image
           .padding(.bottom, 12)
-        if isEditing {
-          BirthDayEditCommonView(birthdayData: birthdayData) { newBirthday in
+        if viewModel.isEditing {
+          BirthDayEditCommonView(birthdayData: viewModel.birthdayData) { newBirthday in
             doneAction(birthday: newBirthday)
           }
         } else {
@@ -67,7 +63,7 @@ extension BirthdayDetailsScreen {
       }
       HStack {
         Spacer()
-        if isEditing {
+        if viewModel.isEditing {
           deleteButton
         } else {
           editButton
@@ -78,7 +74,7 @@ extension BirthdayDetailsScreen {
   }
   
   private var image: some View {
-    AsyncImage(url:URL(string: birthdayData.image ?? "") ) { phase in
+    AsyncImage(url:URL(string: viewModel.birthdayData.image ?? "") ) { phase in
       if let image = phase.image {
         image
           .resizable()
@@ -97,13 +93,13 @@ extension BirthdayDetailsScreen {
   }
   
   private var name: some View {
-    Text(birthdayData.name ?? "")
+    Text(viewModel.birthdayData.name ?? "")
       .foregroundStyle(Color.black)
       .karmaFont(style: .semiBold20)
   }
   
   private var date: some View {
-    Text(birthdayData.date?.toFormattedDate() ?? "")
+    Text(viewModel.birthdayData.date?.toFormattedDate() ?? "")
       .foregroundStyle(Color.black)
       .karmaFont(style: .semiBold14)
   }
@@ -113,7 +109,7 @@ extension BirthdayDetailsScreen {
       Text(String.Birthday.relationship)
         .foregroundStyle(Color.black)
         .karmaFont(style: .bold14)
-      Text(birthdayData.relation?.rawValue ?? "")
+      Text(viewModel.birthdayData.relation?.rawValue ?? "")
         .padding(.vertical, 10)
         .padding(.horizontal, 16)
         .foregroundStyle(Color.black)
@@ -128,16 +124,18 @@ extension BirthdayDetailsScreen {
       Text(String.Birthday.zodiac)
         .foregroundStyle(Color.black)
         .karmaFont(style: .semiBold14)
-      Text(ZodiacSign.from(dateString: birthdayData.date?.toFormattedDate() ?? "")?.rawValue ?? "")
-        .foregroundStyle(Color.darkRed)
-        .karmaFont(style: .semiBold14)
+      Text(ZodiacSign.from(
+        dateString: viewModel.birthdayData.date?.toFormattedDate() ?? "")?.rawValue ?? ""
+      )
+      .foregroundStyle(Color.darkRed)
+      .karmaFont(style: .semiBold14)
     }
   }
   
   private var editButton: some View {
     Button {
       withAnimation {
-        isEditing = true
+        viewModel.isEditing = true
       }
     } label: {
       Image(.edit)
@@ -146,7 +144,7 @@ extension BirthdayDetailsScreen {
   
   private var deleteButton: some View {
     Button {
-      guard let id = birthdayData.id else { return }
+      guard let id = viewModel.birthdayData.id else { return }
       viewModel.deleteBirthDay(id: id) {
         DispatchQueue.main.async {
           router.pop()
@@ -160,7 +158,7 @@ extension BirthdayDetailsScreen {
   private var generateMessageButton: some View {
     Button {
       withAnimation {
-        isGeneratingMessage = true
+        viewModel.isGeneratingMessage = true
       }
     } label: {
       Text(String.Birthday.generate)
@@ -188,23 +186,11 @@ extension BirthdayDetailsScreen {
   }
   
   private func doneAction(birthday: BirthdayModel) {
-    self.birthdayData = birthday
+    viewModel.birthdayData = birthday
     withAnimation {
-      isEditing = false
+      viewModel.isEditing = false
     }
-    guard let id = birthdayData.id else { return }
-    viewModel.updateBirthday(
-      payload:
-        BirthdayUpdatePayload(
-          id: id,
-          image: birthdayData.image,
-          name: birthdayData.name,
-          date: birthdayData.date,
-          message: birthdayData.message,
-          relation: birthdayData.relation?.rawValue
-        ),
-      birthday: birthdayData
-    )
+    viewModel.updateBirthday()
   }
   
 }
@@ -213,15 +199,7 @@ extension BirthdayDetailsScreen {
   BirthdayDetailsScreen(
     viewModel: BirthdayDetailsViewModel(
       homeRepository: HomeDefaultRepository(),
-      deleteAction: {
-        print()
-      },
-      updateAction: { _ in
-        print()
-      }
-    ),
-    birthdayData:
-      BirthdayModel(
+      birthdayData: BirthdayModel(
         createdAt: "",
         date: "2021-03-10T00:00:00.000Z",
         id: 1,
@@ -233,6 +211,13 @@ extension BirthdayDetailsScreen {
         upcomingBirthday: "",
         updatedAt: "",
         userId: 1
-      )
+      ),
+      deleteAction: {
+        print()
+      },
+      updateAction: { _ in
+        print()
+      }
+    )
   )
 }

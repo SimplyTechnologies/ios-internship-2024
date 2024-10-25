@@ -60,7 +60,7 @@ extension TabBarView {
         .navigationDestination(for: HomeScreens.self) { screen in
           switch screen {
           case .details(let viewModel, let birthday):
-            BirthdayDetailsScreen(viewModel: viewModel, birthdayData: birthday)
+            BirthdayDetailsScreen(viewModel: viewModel)
           }
         }
     }

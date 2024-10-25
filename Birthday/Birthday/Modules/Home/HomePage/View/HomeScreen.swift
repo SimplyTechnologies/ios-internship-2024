@@ -40,11 +40,13 @@ extension HomeScreen {
               TabBarView.HomeScreens.details(
                 viewModel: BirthdayDetailsViewModel(
                   homeRepository: HomeDefaultRepository(),
+                  birthdayData: birthday,
                   deleteAction: {
                     viewModel.birthdayData.removeAll(where: { $0.id == birthday.id })
                   },
                   updateAction: { newBirthDay in
-                    viewModel.birthdayData[viewModel.birthdayData.firstIndex(where: { $0.id == birthday.id }) ?? 0] = newBirthDay
+                    guard let index = viewModel.birthdayData.firstIndex(where: { $0.id == birthday.id } ) else { return }
+                    viewModel.birthdayData[index] = newBirthDay
                   }
                 ),
                 birthday: birthday
