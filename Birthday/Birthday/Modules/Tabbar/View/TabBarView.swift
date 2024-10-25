@@ -56,13 +56,17 @@ extension TabBarView {
   
   private var homeTab: some View {
     NavigationStack(path: $router.path) {
-      HomeScreen(viewModel: HomeViewModel(homeRepository: HomeDefaultRepository()))
-        .navigationDestination(for: HomeScreens.self) { screen in
-          switch screen {
-          case .details(let viewModel, let birthday):
-            BirthdayDetailsScreen(viewModel: viewModel, birthdayData: birthday)
-          }
+      HomeScreen(
+        viewModel: HomeViewModel(
+          homeRepository: HomeDefaultRepository()
+        )
+      )
+      .navigationDestination(for: HomeScreens.self) { screen in
+        switch screen {
+        case .details(let viewModel, let birthday):
+          BirthdayDetailsScreen(viewModel: viewModel, birthdayData: birthday)
         }
+      }
     }
     .environmentObject(router)
     .tabItem { TabCellView(model: .home) }
@@ -71,7 +75,11 @@ extension TabBarView {
   
   private var shopsTab: some View {
     NavigationStack {
-      ShopScreen(viewModel: ShopViewModel(shopRepository: ShopDefaultRepository()))
+      ShopScreen(
+        viewModel: ShopViewModel(
+          shopRepository: ShopDefaultRepository()
+        )
+      )
     }
     .tabItem { TabCellView(model: .shops) }
     .tag(TabModel.shops)
