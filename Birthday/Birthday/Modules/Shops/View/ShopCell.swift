@@ -10,7 +10,7 @@ import SwiftUI
 struct ShopCell: View {
   
   @Binding var model: Shop
-  
+
   var body: some View {
     content
   }
@@ -21,19 +21,22 @@ extension ShopCell {
   
   private var content: some View {
     HStack(spacing: 0) {
-      Spacer().frame(width: 16)
+      Spacer()
+        .frame(width: 16)
       image
-      Spacer().frame(width: 14)
+      Spacer()
+        .frame(width: 14)
       name
       Spacer()
       favoriteButton
-      Spacer().frame(width: 16)
+      Spacer()
+        .frame(width: 16)
     }
     .padding(.vertical, 20)
     .background(Color.white)
     .clipShape(RoundedRectangle(cornerRadius: 24))
   }
-  
+
   private var image: some View {
     AsyncImage(url: URL(string: model.image ?? "")) { phase in
       if let image = phase.image {
@@ -54,14 +57,14 @@ extension ShopCell {
         .stroke(.spanishGray, lineWidth: 1)
     )
   }
-  
+
   private var name: some View {
     Text(model.name ?? "")
       .foregroundStyle(.black)
       .karmaFont(style: .bold20)
       .lineLimit(nil)
   }
-  
+
   private var favoriteButton: some View {
     Button {
       model.isFavorite?.toggle()
@@ -77,15 +80,17 @@ extension ShopCell {
 
 #Preview {
   ShopCell(
-    model: .constant(Shop(
-      id: 1,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh2iqPBVW415Fm46oaLkdPKSp21VFDpm3Aug&s",
-      address: "8 Vahram Papazyan St, Yerevan 0012",
-      isFavorite: false,
-      name: "Rio Mall",
-      phone: "(011) 281888",
-      rate: 12,
-      url: "https://riomall.am/public/"
-    ))
+    model: .constant(
+      Shop(
+        id: 1,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh2iqPBVW415Fm46oaLkdPKSp21VFDpm3Aug&s",
+        address: "8 Vahram Papazyan St, Yerevan 0012",
+        isFavorite: false,
+        name: "Rio Mall",
+        phone: "(011) 281888",
+        rate: 12,
+        url: "https://riomall.am/public/"
+      )
+    )
   )
 }
