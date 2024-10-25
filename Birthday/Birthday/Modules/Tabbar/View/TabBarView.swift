@@ -9,8 +9,10 @@ import SwiftUI
 
 struct TabBarView: View {
   
-  @State var selectedTab: TabModel = .home
+  @StateObject private var homeRouter = NavigationRouter()
   @StateObject private var shopRouter = NavigationRouter()
+  
+  @State var selectedTab: TabModel = .home
   
   init() {
     customiseTabBar()
@@ -34,21 +36,37 @@ extension TabBarView {
   }
   
   private var homeTab: some View {
-    NavigationStack {
-      HomeScreen(viewModel: HomeViewModel(homeRepository: HomeDefaultRepository()))
+    NavigationStack(path: $homeRouter.path) {
+      HomeScreen(
+        viewModel: HomeViewModel(
+          homeRepository: HomeDefaultRepository()
+        )
+      )
+      .navigationDestination(for: HomeScreens.self) { screen in
+        switch screen {
+        case .details(let viewModel, let birthday):
+          BirthdayDetailsScreen(viewModel: viewModel, birthdayData: birthday)
+        }
+      }
     }
+    .environmentObject(homeRouter)
     .tabItem { TabCellView(model: .home) }
     .tag(TabModel.home)
   }
   
   private var shopsTab: some View {
     NavigationStack(path: $shopRouter.path) {
-      ShopScreen(viewModel: ShopViewModel(shopRepository: ShopDefaultRepository()))
-        .navigationDestination(for: TabBarView.ShopScreens.self) { screen in
-          switch screen {
-          case let .details(viewModel): ShopDetailsScreen(viewModel: viewModel)
-          }
+      ShopScreen(
+        viewModel: ShopViewModel(
+          shopRepository: ShopDefaultRepository()
+        )
+      )
+      .navigationDestination(for: ShopScreens.self) { screen in
+        switch screen {
+        case .details(let viewModel):
+          ShopDetailsScreen(viewModel: viewModel)
         }
+      }
     }
     .environmentObject(shopRouter)
     .tabItem { TabCellView(model: .shops) }
@@ -87,10 +105,31 @@ extension TabBarView {
 
 extension TabBarView {
   
-  enum ShopScreens: Hashable {
-    static func == (lhs: TabBarView.ShopScreens, rhs: TabBarView.ShopScreens) -> Bool {
-      lhs.id == rhs.id
+  enum HomeScreens: Hashable {
+    
+    case details(viewModel:  BirthdayDetailsViewModel, birthday: BirthdayModel)
+    
+    var id: Int {
+      switch self {
+      case .details: 1
+      }
     }
+    
+    static func == (lhs: TabBarView.HomeScreens, rhs: TabBarView.HomeScreens) -> Bool {
+      return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+      hasher.combine(self.id)
+    }
+    
+  }
+  
+}
+
+extension TabBarView {
+  
+  enum ShopScreens: Hashable {
     
     case details(viewModel: ShopDetailsViewModel)
     
@@ -100,12 +139,17 @@ extension TabBarView {
       }
     }
     
+    static func == (lhs: TabBarView.ShopScreens, rhs: TabBarView.ShopScreens) -> Bool {
+      lhs.id == rhs.id
+    }
+    
     func hash(into hasher: inout Hasher) {
       switch self {
       case let .details(viewModel):
         hasher.combine(viewModel.id)
       }
     }
+    
   }
   
 }

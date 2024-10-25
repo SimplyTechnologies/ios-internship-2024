@@ -18,7 +18,8 @@ struct FieldErrorModifier: ViewModifier {
     } else {
       VStack(alignment: .leading, spacing: 0) {
         content
-        Spacer().frame(height: 8)
+        Spacer()
+          .frame(height: 8)
 
         Text(title)
           .foregroundStyle(Color.red)

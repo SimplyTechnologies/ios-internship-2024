@@ -20,7 +20,8 @@ final class ShopDefaultRepository: ShopRepository {
   func getShops() -> AnyPublisher<[BirthDayAPI.GetShopsQuery.Data.Shop], any Error> {
     performQuery(query: GetShopsQuery()).compactMap {
       $0.shops
-    }.eraseToAnyPublisher()
+    }
+    .eraseToAnyPublisher()
   }
   
 }

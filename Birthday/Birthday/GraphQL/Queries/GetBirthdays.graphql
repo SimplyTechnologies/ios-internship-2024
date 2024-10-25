@@ -1,4 +1,5 @@
 query GetBirthDayList {
+
   birthdays {
     createdAt
     date
@@ -12,4 +13,5 @@ query GetBirthDayList {
     updatedAt
     userId
   }
+  
 }

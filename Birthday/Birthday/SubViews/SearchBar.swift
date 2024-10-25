@@ -19,7 +19,8 @@ struct SearchBar: View {
       VStack(spacing: 0) {
         Spacer()
         HStack(spacing: 0) {
-          Spacer().frame(width: 8)
+          Spacer()
+            .frame(width: 8)
           textField
           if !searchText.isEmpty {
             clearButton

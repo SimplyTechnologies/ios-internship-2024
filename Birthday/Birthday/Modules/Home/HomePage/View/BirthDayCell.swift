@@ -40,6 +40,7 @@ extension BirthDayCell {
         Image(systemName: "person")
           .resizable()
           .foregroundStyle(.lightPink)
+          .padding(8)
       } else {
         ProgressView()
           .progressViewStyle(.circular)
@@ -74,7 +75,8 @@ extension BirthDayCell {
       id: 1,
       image: "https://randomuser.me/api/portraits/med/women/19.jpg",
       message: "Be Happy",
-      name: "John", relation: "Friend",
+      name: "John", 
+      relation: .friend,
       upcomingAge: 12,
       upcomingBirthday: nil,
       updatedAt: nil, userId: 2)
