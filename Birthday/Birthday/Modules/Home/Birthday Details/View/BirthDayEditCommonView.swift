@@ -55,7 +55,7 @@ extension BirthDayEditCommonView {
   
   private var editingName: some View {
     VStack(alignment: .leading,spacing: 0) {
-      Text("Name")
+      Text(String.Birthday.name)
         .foregroundStyle(Color.darkRed)
         .karmaFont(style: .semiBold18)
         .padding(.bottom, 8)
@@ -63,7 +63,7 @@ extension BirthDayEditCommonView {
         TextField("", text: $birthdayData.name.toUnwrapped(defaultValue: ""))
           .karmaFont(style: .semiBold18)
           .frame(height: 40)
-          .padding(.horizontal,8)
+          .padding(.horizontal, 8)
       }
       .background(Color.white)
       .cornerRadius(16)
@@ -73,7 +73,7 @@ extension BirthDayEditCommonView {
   
   private var relationshipEdit: some View {
     VStack (alignment: .leading){
-      Text("Relationship")
+      Text(String.Birthday.relationship)
         .padding(.leading, 26)
         .foregroundStyle(Color.darkRed)
         .karmaFont(style: .semiBold18)
@@ -99,7 +99,7 @@ extension BirthDayEditCommonView {
         .foregroundStyle(birthdayData.relation == relationship ? .white : .black)
         .karmaFont(style: .semiBold14)
     }
-    .frame(width: 106,height: 40)
+    .frame(width: 106, height: 40)
     .background(birthdayData.relation == relationship ? Color.darkRed : Color.white)
     .cornerRadius(16)
   }
@@ -108,7 +108,7 @@ extension BirthDayEditCommonView {
     Button {
       doneAction(birthdayData)
     } label: {
-      Text("Done")
+      Text(String.Birthday.done)
         .foregroundStyle(.white)
         .karmaFont(style: .semiBold18)
         .padding(.vertical, 8)
@@ -154,7 +154,7 @@ extension BirthDayEditCommonView {
   
   private var addRelationField: some View {
     HStack {
-      TextField("New relationship", text: $newRelation)
+      TextField(String.Birthday.newRelationship, text: $newRelation)
         .karmaFont(style: .semiBold18)
         .padding(.horizontal, 10)
       Button {

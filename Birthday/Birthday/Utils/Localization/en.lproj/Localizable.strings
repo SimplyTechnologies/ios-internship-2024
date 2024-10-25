@@ -29,3 +29,13 @@
 "field_invalid_password" = "*Length: Minimum 8 characters, maximum 20 characters. Include uppercase, lowercase, number, special character.";
 "field_empty_repeat_password" = "*Repeat Password field can't be empty.";
 "field_invalid_repeat_password" = "*Passwords do not match.";
+
+//Birthday
+
+"birthday_name" = "Name";
+"birthday_relationship" = "Relationship";
+"birthday_zodiac" = "Zodiac Sign: ";
+"birthday_generate" = "Generate Message";
+"birthday_gift" = "Find Gift";
+"birthday_done" = "Done";
+"birthday_relationship_new" = "New relationship";

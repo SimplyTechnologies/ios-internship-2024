@@ -93,4 +93,16 @@ extension String {
     
   }
   
+  enum Birthday {
+    
+    static var name: String { "birthday_name".localized }
+    static var relationship: String { "birthday_relationship".localized }
+    static var zodiac: String { "birthday_zodiac".localized }
+    static var generate: String { "birthday_generate".localized }
+    static var gift: String { "birthday_gift".localized }
+    static var done: String { "birthday_done".localized }
+    static var newRelationship: String { "birthday_relationship_new".localized }
+
+  }
+  
 }

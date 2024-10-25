@@ -38,13 +38,13 @@ extension HomeScreen {
           Button {
             router.push(
               TabBarView.HomeScreens.details(
-                viewmodel: BirthdayDetailsViewModel(
+                viewModel: BirthdayDetailsViewModel(
                   homeRepository: HomeDefaultRepository(),
                   deleteAction: {
-                    viewModel.birthdayData.removeAll(where: {$0.id == birthday.id})
+                    viewModel.birthdayData.removeAll(where: { $0.id == birthday.id })
                   },
                   updateAction: { newBirthDay in
-                    viewModel.birthdayData[viewModel.birthdayData.firstIndex(where: {$0.id == birthday.id}) ?? 0] = newBirthDay
+                    viewModel.birthdayData[viewModel.birthdayData.firstIndex(where: { $0.id == birthday.id }) ?? 0] = newBirthDay
                   }
                 ),
                 birthday: birthday

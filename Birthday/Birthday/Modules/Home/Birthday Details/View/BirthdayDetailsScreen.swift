@@ -108,7 +108,7 @@ extension BirthdayDetailsScreen {
   
   private var relationship: some View {
     HStack {
-      Text("Relationship:")
+      Text(String.Birthday.relationship)
         .foregroundStyle(Color.black)
         .karmaFont(style: .bold14)
       Text(birthdayData.relation?.rawValue ?? "")
@@ -123,7 +123,7 @@ extension BirthdayDetailsScreen {
   
   private var zodiacSign: some View {
     HStack {
-      Text("Zodiac Sign: ")
+      Text(String.Birthday.zodiac)
         .foregroundStyle(Color.black)
         .karmaFont(style: .semiBold14)
       Text(ZodiacSign.from(dateString: birthdayData.date?.toFormattedDate() ?? "")?.rawValue ?? "")
@@ -159,7 +159,7 @@ extension BirthdayDetailsScreen {
     Button {
       //MARK: - implement generate Message
     } label: {
-      Text("Generate Message")
+      Text(String.Birthday.generate)
         .padding(.vertical, 8)
         .padding(.horizontal, 20)
         .foregroundStyle(Color.darkRed)
@@ -173,7 +173,7 @@ extension BirthdayDetailsScreen {
     Button {
       //MARK: - implement find gift
     } label: {
-      Text("Find Gift")
+      Text(String.Birthday.gift)
         .padding(.vertical, 8)
         .padding(.horizontal, 20)
         .foregroundStyle(Color.mainPink)

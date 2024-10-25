@@ -22,22 +22,24 @@ final class HomeDefaultRepository: HomeRepository {
   func getBirthdays() -> AnyPublisher<[GetBirthDayListQuery.Data.Birthday], Error> {
     performQuery(query: GetBirthDayListQuery()).compactMap {
       $0.birthdays
-    }.eraseToAnyPublisher()
+    }
+    .eraseToAnyPublisher()
   }
   
   func updateBirhday(payload: BirthdayUpdatePayload) -> AnyPublisher<BirthDayAPI.UpdateBirthdayMutation.Data.UpdateBirthday, Error> {
-    let input = 
+    let input =
     UpdateBirthdayInput(
-      date: payload.date != nil ? GraphQLNullable(stringLiteral: payload.date!) : nil,
-      image: payload.image != nil ? GraphQLNullable(stringLiteral: payload.image!) : nil,
-      message: payload.message != nil ? GraphQLNullable(stringLiteral: payload.message!) : nil,
-      name: payload.name != nil ? GraphQLNullable(stringLiteral: payload.name!) : nil,
-      relation: payload.relation != nil ? GraphQLNullable(stringLiteral: payload.relation!) : nil)
+      date: makeNullable(from: payload.date) ?? nil,
+      image: makeNullable(from: payload.image) ?? nil,
+      message: makeNullable(from: payload.message) ?? nil,
+      name: makeNullable(from: payload.name) ?? nil,
+      relation: makeNullable(from: payload.relation) ?? nil
+    )
     return performMutation(mutation: UpdateBirthdayMutation(id: payload.id, updateBirthdayInput: input))
       .compactMap {
-      $0.updateBirthday
-    }
-    .eraseToAnyPublisher()
+        $0.updateBirthday
+      }
+      .eraseToAnyPublisher()
   }
   
   func deleteBirthday(id: Int) -> AnyPublisher<Int, Error> {
@@ -47,5 +49,9 @@ final class HomeDefaultRepository: HomeRepository {
     .eraseToAnyPublisher()
   }
   
+  private func makeNullable(from value: String?) -> GraphQLNullable<String>? {
+    guard let value = value else { return nil }
+    return GraphQLNullable(stringLiteral: value)
+  }
   
 }
