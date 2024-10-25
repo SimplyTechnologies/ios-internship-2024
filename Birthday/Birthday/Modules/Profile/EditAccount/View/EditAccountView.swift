@@ -6,24 +6,32 @@
 //
 
 import SwiftUI
+import Combine
 
-struct EditAccountView: View {
-  
-  @State private var name = ""
-  @State private var surname = ""
-  
+struct EditAccountView<T: EditAccountViewModeling>: View {
+
+  @ObservedObject var viewModel: T
+  @Environment(\.presentationMode) var presentationMode
+
+  @State private var model: EditAccountModel = .init(
+    firstName: "",
+    image: "",
+    lastName: ""
+  )
+
   var body: some View {
     VStack(spacing: 43) {
       logo
       image
       VStack(spacing: 7) {
-        InputField(label: "Name", text: $name, placeholder: "Enter your name")
-        InputField(label: "Surname", text: $surname, placeholder: "Enter your surname")
+        InputField(label: "Name", text: $model.firstName, placeholder: "Enter your name")
+        InputField(label: "Surname", text: $model.lastName, placeholder: "Enter your surname")
       }
       Spacer()
       buttonDone
     }
     .background(Color.lightPink)
+    .navigationBarBackButtonHidden(true)
   }
 }
 
@@ -35,7 +43,7 @@ extension EditAccountView {
       .aspectRatio(contentMode: .fit)
       .frame(width: 88, height: 40)
   }
-  
+
   private var image: some View {
     ZStack {
       Circle()
@@ -48,27 +56,30 @@ extension EditAccountView {
         .frame(width: 150, height: 150)
     }
   }
-  
+
   private var buttonDone: some View {
     Button(action: {
-      //TODO: Save the changes
+      viewModel.updateProfileData(model: model)
+      presentationMode.wrappedValue.dismiss()
     }) {
       Text("Done")
         .foregroundColor(.white)
         .padding()
-        .background(name.isEmpty || surname.isEmpty ? Color.mainPink : Color.darkRed)
+        .background(model.firstName.isEmpty || model.lastName.isEmpty ? Color.mainPink : Color.darkRed)
         .cornerRadius(8)
     }
-    .disabled(name.isEmpty || surname.isEmpty) // Disable button if fields are empty
+    .disabled(model.firstName.isEmpty || model.lastName.isEmpty) // Disable button if fields are empty
     .padding()
   }
+
 }
 
 struct InputField: View {
+
   let label: String
   @Binding var text: String
   let placeholder: String
-  
+
   var body: some View {
     VStack {
       HStack {
@@ -88,8 +99,5 @@ struct InputField: View {
     }
     .padding(.horizontal, 61)
   }
-}
 
-#Preview {
-  EditAccountView()
 }

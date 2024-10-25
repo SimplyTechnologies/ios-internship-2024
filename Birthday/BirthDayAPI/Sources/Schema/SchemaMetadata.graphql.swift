@@ -20,9 +20,10 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
 
   public static func objectType(forTypename typename: String) -> ApolloAPI.Object? {
     switch typename {
+    case "Mutation": return BirthDayAPI.Objects.Mutation
+    case "User": return BirthDayAPI.Objects.User
     case "Query": return BirthDayAPI.Objects.Query
     case "Birthday": return BirthDayAPI.Objects.Birthday
-    case "User": return BirthDayAPI.Objects.User
     default: return nil
     }
   }

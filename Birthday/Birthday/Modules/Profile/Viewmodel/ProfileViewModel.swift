@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 final class ProfileViewModel: ProfileViewModeling {
-
-  @Published var isLoading: Bool = false
+  
+  var isLoading: Bool = false
   @Published var profileData: ProfileModel = ProfileModel(
     email: "",
     firstName: "",
@@ -18,10 +18,10 @@ final class ProfileViewModel: ProfileViewModeling {
     image: "",
     lastName: ""
   )
-
+  
   private var profileRepository: ProfileRepository
   private var cancelables = Set<AnyCancellable>()
-
+  
   func getProfileData() {
     profileRepository.getProfile()
       .sink { result in
@@ -35,9 +35,9 @@ final class ProfileViewModel: ProfileViewModeling {
         self?.profileData = ProfileModel(dto: profile)
       }.store(in: &cancelables)
   }
-
+  
   init( profileRepository: ProfileRepository) {
     self.profileRepository = profileRepository
   }
-
+  
 }

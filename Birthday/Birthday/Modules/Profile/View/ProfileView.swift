@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct ProfileScreen<T: ProfileViewModeling>: View {
+struct ProfileView<T: ProfileViewModeling>: View {
 
   @ObservedObject var viewModel: T
+  @State private var showingEditAccount = false
 
   var body: some View {
       VStack(spacing: 50) {
@@ -26,15 +27,15 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
 
 }
 
-extension ProfileScreen {
-
+extension ProfileView {
+  
   private var logo: some View {
-      Image(.birth)
-        .resizable()
-        .aspectRatio(contentMode: .fit)
-        .frame(width: 88, height: 40)
+    Image(.birth)
+      .resizable()
+      .aspectRatio(contentMode: .fit)
+      .frame(width: 88, height: 40)
   }
-
+  
   private var userDetails: some View {
     VStack(spacing: 30) {
       Image(.nk)
@@ -54,50 +55,36 @@ extension ProfileScreen {
       }
     }
   }
-
+  
   private var buttons: some View {
-    VStack(spacing: 11) {
-      ProfileButton(
-        title: String.Button.editAccount,
-        action: {
-          print("Edit Account") // TODO: Navigation to Edit Account screen
-        })
-      ProfileButton(
-        title: String.Button.changePassword,
-        action: {
-          print("Change Password") // TODO: Navigation to Change Password screen
-        })
-      ProfileButton(
-        title: String.Button.signOut,
-        action: {
-          print("Sign Out") // TODO: Navigation to Sign Out screen
-        })
+      NavigationStack {
+        VStack(spacing: 11) {
+          // Navigation to EditAccountView
+          NavigationLink(destination: EditAccountView(viewModel: EditAccountViewModel(editAccountRepository: EditAccountDefaultRepository(), initialModel: EditAccountModel(firstName: "", image: "", lastName: "")))) {
+            ProfileButton(title: String.Button.editAccount)
+            
+          }
+          // TODO: Add other buttons
+        }
+        .padding(.horizontal, 16)
+      }
     }
-    .padding(.horizontal, 16)
   }
 
-}
+struct ProfileButton: View {
 
-struct ProfileButton: View { //This struct should be in Models Group
-
-  let title: String
-  let action: () -> Void
+  var title: String
 
   var body: some View {
-    Button(action: action) {
-      HStack {
-        Text(title)
-          .foregroundStyle(.darkRed)
-          .bold()
-          .font(.system(size: 20))
-          .background(.white)
-      }
+    Text(title)
       .frame(maxWidth: .infinity)
       .padding(.horizontal, 16)
       .padding(.vertical, 12)
       .background(Color.white)
       .cornerRadius(9)
-    }
+      .foregroundStyle(.darkRed)
+      .bold()
+      .font(.system(size: 20))
   }
 
 }
