@@ -49,9 +49,4 @@ final class HomeDefaultRepository: HomeRepository {
     .eraseToAnyPublisher()
   }
   
-  private func makeNullable(from value: String?) -> GraphQLNullable<String>? {
-    guard let value = value else { return nil }
-    return GraphQLNullable(stringLiteral: value)
-  }
-  
 }

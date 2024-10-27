@@ -6,11 +6,72 @@
 //
 
 import SwiftUI
+import PhotosUI
 
-struct AddBirthdayScreen: View {
+struct AddBirthdayScreen<T: CreateBirthdayViewModeling>: View {
+  
+  @StateObject var viewModel: T
   
   var body: some View {
-    Text("AddView")
+    content
   }
   
 }
+
+extension AddBirthdayScreen {
+  
+  private var content: some View {
+    VStack {
+      label
+      ScrollView {
+        image
+        editView
+      }
+      .scrollIndicators(.hidden)
+    }
+    .padding(.horizontal, 24)
+    .background(Color.lightPink)
+  }
+  
+  private var label: some View {
+    Image(.birth)
+      .frame(maxWidth: .infinity, alignment: .trailing)
+  }
+  
+  private var image: some View {
+    PhotosPicker(
+      selection: $viewModel.selectedItem,
+      matching: .images,
+      photoLibrary: .shared()
+    ) {
+      if let image = viewModel.selectedImage {
+        Image(uiImage: image)
+          .resizable()
+          .clipShape(Circle())
+          .frame(width: 100, height: 100)
+      } else {
+        Image(.addPicture)
+          .resizable()
+          .clipShape(Circle())
+          .frame(width: 100, height: 100)
+      }
+    }
+    .onChange(of: viewModel.selectedItem) { newItem in
+      Task {
+        await viewModel.convertImage(image: newItem)
+      }
+    }
+  }
+  
+  private var editView: some View {
+    BirthDayEditCommonView(
+      birthdayData: $viewModel.birtday,
+      isContentvalid: $viewModel.isContentValid
+    ) { _ in
+      viewModel.createBirthAay()
+    }
+  }
+  
+}
+
+
