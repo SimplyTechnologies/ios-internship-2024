@@ -60,4 +60,18 @@ struct BirthdayModel {
     self.userId = dto.userId
   }
   
+  init() {
+    createdAt = nil
+    date = nil
+    id = nil
+    image = nil
+    message = nil
+    name = nil
+    relation = nil
+    upcomingAge = nil
+    upcomingBirthday = nil
+    updatedAt = nil
+    userId = nil
+  }
+  
 }

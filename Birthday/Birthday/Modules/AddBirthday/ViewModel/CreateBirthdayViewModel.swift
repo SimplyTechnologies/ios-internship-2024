@@ -15,19 +15,7 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
   @Published var isLoading: Bool = false
   @Published var selectedImage: UIImage? = nil
   @Published var selectedItem: PhotosPickerItem? = nil
-  @Published var birtday: BirthdayModel = BirthdayModel(
-    createdAt: nil,
-    date: nil,
-    id: nil,
-    image: nil,
-    message: nil,
-    name: nil,
-    relation: nil,
-    upcomingAge: nil,
-    upcomingBirthday: nil,
-    updatedAt: nil,
-    userId: nil
-  )
+  @Published var birtday: BirthdayModel = BirthdayModel()
   
   private let newBirthdayRepository: NewBirthdayRepository
   private var cancelables = Set<AnyCancellable>()
@@ -60,25 +48,13 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
         self?.isLoading = false
         switch result {
         case .failure(let error):
-          print(error)
+          Console.log(error)
         default: break
         }
       } receiveValue: { [weak self] birthday in
         guard let self else { return }
         print(birthday)
-        self.birtday = BirthdayModel(
-          createdAt: nil,
-          date: nil,
-          id: nil,
-          image: nil,
-          message: nil,
-          name: nil,
-          relation: nil,
-          upcomingAge: nil,
-          upcomingBirthday: nil,
-          updatedAt: nil,
-          userId: nil
-        )
+        self.birtday = BirthdayModel()
       }.store(in: &cancelables)
   }
   
