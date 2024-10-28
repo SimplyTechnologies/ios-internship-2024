@@ -76,7 +76,11 @@ extension TabBarView {
   
   private var addTab: some View {
     NavigationStack {
-      AddBirthdayScreen()
+      AddBirthdayScreen(
+        viewModel: CreateBirthdayViewModel(
+          newBirthdayRepository: NewBirthdayDefaultRepository()
+        )
+      )
     }
     .tabItem { TabCellView(model: .addBirthday) }
     .tag(TabModel.addBirthday)
