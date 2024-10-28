@@ -16,7 +16,8 @@ struct GenerateMessageView: View {
   
   var body: some View {
     VStack(alignment: .trailing, spacing: 4) {
-      TextEditor(text: $message)
+      TextField("Add message...", text: $message, axis: .vertical)
+        .lineLimit(5...)
         .padding(.horizontal, 10)
         .scrollContentBackground(.hidden)
         .foregroundStyle(Color.black)
