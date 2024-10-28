@@ -11,7 +11,7 @@ struct ShopScreen<T: ShopViewModeling>: View {
   
   @StateObject var viewModel: T
   @EnvironmentObject var router: NavigationRouter
-
+  
   var body: some View {
     content
       .onLoad {
@@ -36,7 +36,7 @@ extension ShopScreen {
     }
     .background(Color.lightPink)
   }
-
+  
   private var list: some View {
     VStack(spacing: 0) {
       if viewModel.isLoading {
@@ -46,6 +46,9 @@ extension ShopScreen {
           noSearchResultView
         } else {
           ScrollView {
+            PullToRefresh(coordinateSpaceName: "pull") {
+              viewModel.getShops()
+            }
             Spacer()
               .frame(height: 10)
             LazyVStack(spacing: 18) {
@@ -67,18 +70,19 @@ extension ShopScreen {
               .frame(height: 10)
           }
           .scrollIndicators(.hidden)
+          .coordinateSpace(name: "pull")
         }
       }
     }
   }
-
+  
   private var searchBar: some View {
     SearchBar(
       searchText: $viewModel.searchText,
       isFocused: $viewModel.isFocused
     )
   }
-
+  
   private var noSearchResultView: some View {
     VStack(alignment: .center, spacing: 0) {
       Spacer()
@@ -103,7 +107,7 @@ extension ShopScreen {
     }
     .padding(.horizontal, 24)
   }
-
+  
   private var skeletonListView: some View {
     ScrollView {
       LazyVStack(spacing: 8) {

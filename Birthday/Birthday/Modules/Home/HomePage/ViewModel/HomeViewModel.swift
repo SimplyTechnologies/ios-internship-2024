@@ -27,10 +27,11 @@ final class HomeViewModel: HomeViewModeling {
         self?.isLoading = false
         switch result {
         case .failure(let error):
-          print(error)
+          Console.log(error)
         default: break
         }
       } receiveValue: { [weak self] birtdays in
+        self?.birthdayData = []
         birtdays.forEach {
           self?.birthdayData.append(BirthdayModel(dto: $0))
         }

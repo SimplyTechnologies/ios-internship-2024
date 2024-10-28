@@ -37,6 +37,9 @@ extension HomeScreen {
   
   private var list: some View {
     ScrollView {
+      PullToRefresh(coordinateSpaceName: "pull") {
+        viewModel.getBirthDays()
+      }
       LazyVStack(spacing: 18) {
         ForEach(viewModel.birthdayData, id: \.id) { birthday in
           Button {
@@ -61,9 +64,12 @@ extension HomeScreen {
           }
         }
       }
+      .padding(.bottom, 20)
     }
     .padding(.horizontal, 24)
     .scrollIndicators(.hidden)
+    .coordinateSpace(name: "pull")
+    
   }
   
   private var skeletonListView: some View {
