@@ -79,6 +79,8 @@ extension BirthDayCell {
       relation: .friend,
       upcomingAge: 12,
       upcomingBirthday: nil,
-      updatedAt: nil, userId: 2)
+      updatedAt: nil, 
+      userId: 2
+    )
   )
 }
