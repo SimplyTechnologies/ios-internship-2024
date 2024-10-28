@@ -52,7 +52,7 @@
 		9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModeling.swift; sourceTree = "<group>"; };
 		9393CDEE2CCA4BC200D8DEA1 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
-		9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = MutationProfile.graphql; path = Birthday/GraphQL/MutationProfile.graphql; sourceTree = SOURCE_ROOT; };
+		9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = MutationProfile.graphql; path = Birthday/GraphQL/Mutations/MutationProfile.graphql; sourceTree = SOURCE_ROOT; };
 		9393CE422CCA872700D8DEA1 /* EditAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountModel.swift; sourceTree = "<group>"; };
 		9393CE452CCA8BF500D8DEA1 /* EditAccountViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModeling.swift; sourceTree = "<group>"; };
 		9393CE472CCA8C2700D8DEA1 /* EditAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModel.swift; sourceTree = "<group>"; };
@@ -101,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		93343F532CCFBB4700ED7C2F /* Mutations */ = {
+			isa = PBXGroup;
+			children = (
+				9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */,
+			);
+			path = Mutations;
+			sourceTree = "<group>";
+		};
 		9393CDE22CC9170200D8DEA1 /* Viewmodel */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,14 +161,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		9393CE442CCA892B00D8DEA1 /* Mutations */ = {
-			isa = PBXGroup;
-			children = (
-				9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */,
-			);
-			path = Mutations;
-			sourceTree = "<group>";
-		};
 		F3C8CB322CC658C6002DE72A = {
 			isa = PBXGroup;
 			children = (
@@ -195,7 +195,7 @@
 		F3C8CB572CC65F15002DE72A /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				9393CE442CCA892B00D8DEA1 /* Mutations */,
+				93343F532CCFBB4700ED7C2F /* Mutations */,
 				F3C8CB712CC67E5F002DE72A /* Repository */,
 				F3C8CB5E2CC6607E002DE72A /* Queries */,
 				F3C8CB5B2CC66036002DE72A /* Client */,
