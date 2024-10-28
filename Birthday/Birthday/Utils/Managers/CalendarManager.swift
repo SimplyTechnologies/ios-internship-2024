@@ -7,47 +7,42 @@
 
 import Foundation
 import EventKit
+import SwiftUI
+import EventKitUI
 
-class CalendarManager {
+struct EventEditViewController: UIViewControllerRepresentable {
   
-  static let shared = CalendarManager()
+  @Environment( \.dismiss) var dismiss
+  @Binding var birthday: BirthdayModel
   
-  private init() { }
+  let eventStore: EKEventStore
   
-  func addEventAction(event: Eventable) {
-    let title = "\(event.name ?? "")'s Birthday"
-    let date = event.date?.toDate?.getNextOccurrence() ?? Date()
-    let duration = TimeInterval(integerLiteral: 3600 * 24)
-    requestCalendarAccess { granted in
-      if granted {
-        self.addEventToCalendar(title: title, date: date, duration: duration)
-      } else {
-        Console.log("Calendar access denied")
-      }
-    }
+  func makeUIViewController(context: Context) -> EKEventEditViewController {
+    let controller = EKEventEditViewController()
+    controller.eventStore = eventStore
+    var event = EKEvent(eventStore: eventStore)
+    event.startDate = birthday.date?.toDate?.getNextOccurrence()
+    event.endDate = birthday.date?.toDate?.getNextOccurrence()?.addingTimeInterval(TimeInterval(integerLiteral: 3600*24))
+    event.title = "\(birthday.name ?? "")'s Birthday"
+    controller.event = event
+    
+    controller.editViewDelegate = context.coordinator
+    return controller
   }
   
-  private func requestCalendarAccess(completion: @escaping (Bool) -> Void) {
-    let eventStore = EKEventStore()
-    eventStore.requestAccess(to: .event) { granted, error in
-      DispatchQueue.main.async {
-        completion(granted)
-      }
-    }
+  func updateUIViewController(_ uiViewController: EKEventEditViewController, context: Context) { }
+  
+  func makeCoordinator() -> Coordinator {
+    return Coordinator(self)
   }
   
-  private func addEventToCalendar(title: String, date: Date, duration: TimeInterval) {
-    let eventStore = EKEventStore()
-    let event = EKEvent(eventStore: eventStore)
-    event.title = title
-    event.startDate = date
-    event.endDate = date.addingTimeInterval(duration)
-    event.calendar = eventStore.defaultCalendarForNewEvents
-    do {
-      try eventStore.save(event, span: .thisEvent)
-      Console.log("Event added to calendar")
-    } catch let error {
-      Console.log("Error saving event: \(error)")
+  class Coordinator: NSObject, EKEventEditViewDelegate {
+    var parent: EventEditViewController
+    init(_ controller: EventEditViewController) {
+      self.parent = controller
+    }
+    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+      parent.dismiss ()
     }
   }
   

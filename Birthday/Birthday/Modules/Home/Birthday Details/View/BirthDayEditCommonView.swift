@@ -18,6 +18,7 @@ struct BirthDayEditCommonView: View {
   @State private var relationshipData: [Relationship] = Relationship.allCases
   @State private var newRelation: String = ""
   @State private var isAddingEvent: Bool = false
+  @State private var openCalendar: Bool = false
   
   var isCreating: Bool
   var doneAction: (BirthdayModel) -> ()
@@ -26,6 +27,9 @@ struct BirthDayEditCommonView: View {
   var body: some View {
     content
       .background(Color.lightPink)
+      .sheet(isPresented: $openCalendar, content: {
+        EventEditViewController(birthday: $birthdayData, eventStore: EKEventStore())
+      })
   }
   
 }
@@ -118,7 +122,8 @@ extension BirthDayEditCommonView {
     Button {
       doneAction(birthdayData)
       if isAddingEvent {
-        CalendarManager.shared.addEventAction(event: birthdayData)
+        openCalendar = true
+        isAddingEvent = false
       }
     } label: {
       Text(String.Birthday.done)
