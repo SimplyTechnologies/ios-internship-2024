@@ -12,6 +12,8 @@ import Foundation
 protocol ShopRepository: GraphQLRepository {
   
   func getShops() -> AnyPublisher<[GetShopsQuery.Data.Shop], Error>
+  func addToFavorite(_ shopId: Int) -> AnyPublisher<AddShopToFavoriteMutation.Data, Error>
+  func removeFromFavorites(_ shopId: Int) -> AnyPublisher<RemoveShopFromeFavoriteMutation.Data, Error>
   
 }
 
@@ -24,4 +26,18 @@ final class ShopDefaultRepository: ShopRepository {
     .eraseToAnyPublisher()
   }
   
+  func addToFavorite(_ shopId: Int) -> AnyPublisher<BirthDayAPI.AddShopToFavoriteMutation.Data, any Error> {
+    performMutation(
+      mutation: AddShopToFavoriteMutation(shopId: shopId)
+    )
+    .eraseToAnyPublisher()
+  }
+  
+  func removeFromFavorites(_ shopId: Int) -> AnyPublisher<BirthDayAPI.RemoveShopFromeFavoriteMutation.Data, any Error> {
+    performMutation(
+      mutation: RemoveShopFromeFavoriteMutation(shopId: shopId)
+    )
+    .eraseToAnyPublisher()
+  }
+
 }

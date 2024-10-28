@@ -10,6 +10,8 @@
 		931C201F2CC7E9FD0087E7AD /* LandingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C201E2CC7E9FD0087E7AD /* LandingButton.swift */; };
 		CE2DAEC92CCBA54400D5D591 /* UpdateBirthdayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2DAEC82CCBA54400D5D591 /* UpdateBirthdayMutation.graphql */; };
 		CE2DAECB2CCBA5A800D5D591 /* DeleteBirthDayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2DAECA2CCBA5A800D5D591 /* DeleteBirthDayMutation.graphql */; };
+		CE2DAECF2CCBBDB900D5D591 /* AddShopToFavorite.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2DAECE2CCBBDB900D5D591 /* AddShopToFavorite.graphql */; };
+		CE2DAED12CCBC13A00D5D591 /* RemoveShopFromFavorite.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2DAED02CCBC13A00D5D591 /* RemoveShopFromFavorite.graphql */; };
 		CE42AAFF2CCA12790057ECFB /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AAFE2CCA12790057ECFB /* ViewDidLoadModifier.swift */; };
 		CE42AB042CCA23B80057ECFB /* LandingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB032CCA23B80057ECFB /* LandingScreen.swift */; };
 		CE42AB082CCA36650057ECFB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB072CCA36650057ECFB /* User.swift */; };
@@ -62,7 +64,7 @@
 		F3978D152CC9840000FFF7F5 /* BirthDayDetailsViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3978D142CC9840000FFF7F5 /* BirthDayDetailsViewModeling.swift */; };
 		F3978D172CC9843800FFF7F5 /* BirthdayUpdatePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3978D162CC9843800FFF7F5 /* BirthdayUpdatePayload.swift */; };
 		F3978D192CC9857100FFF7F5 /* BirthdayDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3978D182CC9857100FFF7F5 /* BirthdayDetailsViewModel.swift */; };
-		F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */; };
+		F3C8CB5D2CC66048002DE72A /* ApolloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB5C2CC66048002DE72A /* ApolloClient.swift */; };
 		F3C8CB6F2CC67A03002DE72A /* BirthDayAPI in Frameworks */ = {isa = PBXBuildFile; productRef = F3C8CB6E2CC67A03002DE72A /* BirthDayAPI */; };
 		F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */; };
 		F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CB752CC682C9002DE72A /* GraphQLRepository.swift */; };
@@ -86,14 +88,14 @@
 		F3C8CBF72CC7B9EF002DE72A /* BirthdayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBF62CC7B9EF002DE72A /* BirthdayModel.swift */; };
 		F3C8CBF92CC7BB4D002DE72A /* BirthDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBF82CC7BB4D002DE72A /* BirthDayCell.swift */; };
 		F3F641472CC98C5C002D0EEB /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F641462CC98C5C002D0EEB /* Relation.swift */; };
+		F3FDEB962CCB9EFE0073BFED /* GenerateMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */; };
+		F3FDEB982CCBBB850073BFED /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB972CCBBB850073BFED /* AlertModifier.swift */; };
 		F3FDEB9A2CCC3C950073BFED /* NewBirthdayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB992CCC3C950073BFED /* NewBirthdayRepository.swift */; };
 		F3FDEB9C2CCC3E850073BFED /* CreateBirthdayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3FDEB9B2CCC3E850073BFED /* CreateBirthdayMutation.graphql */; };
 		F3FDEB9F2CCC407E0073BFED /* CreateBirthdayPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB9E2CCC407E0073BFED /* CreateBirthdayPayload.swift */; };
 		F3FDEBA22CCC463A0073BFED /* CreateBirthdayViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA12CCC463A0073BFED /* CreateBirthdayViewModeling.swift */; };
 		F3FDEBA42CCC46940073BFED /* CreateBirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA32CCC46940073BFED /* CreateBirthdayViewModel.swift */; };
 		F3FDEBA62CCE47C40073BFED /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA52CCE47C40073BFED /* UIImage+Ext.swift */; };
-		F3FDEB962CCB9EFE0073BFED /* GenerateMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */; };
-		F3FDEB982CCBBB850073BFED /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB972CCBBB850073BFED /* AlertModifier.swift */; };
 		F3FDEBC42CCF753D0073BFED /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +103,8 @@
 		931C201E2CC7E9FD0087E7AD /* LandingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingButton.swift; sourceTree = "<group>"; };
 		CE2DAEC82CCBA54400D5D591 /* UpdateBirthdayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdateBirthdayMutation.graphql; sourceTree = "<group>"; };
 		CE2DAECA2CCBA5A800D5D591 /* DeleteBirthDayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = DeleteBirthDayMutation.graphql; sourceTree = "<group>"; };
+		CE2DAECE2CCBBDB900D5D591 /* AddShopToFavorite.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AddShopToFavorite.graphql; sourceTree = "<group>"; };
+		CE2DAED02CCBC13A00D5D591 /* RemoveShopFromFavorite.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = RemoveShopFromFavorite.graphql; sourceTree = "<group>"; };
 		CE42AAFE2CCA12790057ECFB /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
 		CE42AB032CCA23B80057ECFB /* LandingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreen.swift; sourceTree = "<group>"; };
 		CE42AB072CCA36650057ECFB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -154,7 +158,7 @@
 		F3978D162CC9843800FFF7F5 /* BirthdayUpdatePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayUpdatePayload.swift; sourceTree = "<group>"; };
 		F3978D182CC9857100FFF7F5 /* BirthdayDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayDetailsViewModel.swift; sourceTree = "<group>"; };
 		F3C8CB3B2CC658C6002DE72A /* Birthday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birthday.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppoloClient.swift; sourceTree = "<group>"; };
+		F3C8CB5C2CC66048002DE72A /* ApolloClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloClient.swift; sourceTree = "<group>"; };
 		F3C8CB6B2CC6783F002DE72A /* GetBirthdays.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetBirthdays.graphql; sourceTree = "<group>"; };
 		F3C8CB752CC682C9002DE72A /* GraphQLRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLRepository.swift; sourceTree = "<group>"; };
 		F3C8CB9A2CC6A5F2002DE72A /* BirthdayApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirthdayApp.swift; sourceTree = "<group>"; };
@@ -176,14 +180,14 @@
 		F3C8CBF62CC7B9EF002DE72A /* BirthdayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayModel.swift; sourceTree = "<group>"; };
 		F3C8CBF82CC7BB4D002DE72A /* BirthDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDayCell.swift; sourceTree = "<group>"; };
 		F3F641462CC98C5C002D0EEB /* Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
+		F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMessageView.swift; sourceTree = "<group>"; };
+		F3FDEB972CCBBB850073BFED /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
 		F3FDEB992CCC3C950073BFED /* NewBirthdayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBirthdayRepository.swift; sourceTree = "<group>"; };
 		F3FDEB9B2CCC3E850073BFED /* CreateBirthdayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CreateBirthdayMutation.graphql; sourceTree = "<group>"; };
 		F3FDEB9E2CCC407E0073BFED /* CreateBirthdayPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBirthdayPayload.swift; sourceTree = "<group>"; };
 		F3FDEBA12CCC463A0073BFED /* CreateBirthdayViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBirthdayViewModeling.swift; sourceTree = "<group>"; };
 		F3FDEBA32CCC46940073BFED /* CreateBirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBirthdayViewModel.swift; sourceTree = "<group>"; };
 		F3FDEBA52CCE47C40073BFED /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
-		F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMessageView.swift; sourceTree = "<group>"; };
-		F3FDEB972CCBBB850073BFED /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
 		F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -381,6 +385,8 @@
 				CE2DAEC82CCBA54400D5D591 /* UpdateBirthdayMutation.graphql */,
 				CE2DAECA2CCBA5A800D5D591 /* DeleteBirthDayMutation.graphql */,
 				F3FDEB9B2CCC3E850073BFED /* CreateBirthdayMutation.graphql */,
+				CE2DAECE2CCBBDB900D5D591 /* AddShopToFavorite.graphql */,
+				CE2DAED02CCBC13A00D5D591 /* RemoveShopFromFavorite.graphql */,
 			);
 			path = Mutations;
 			sourceTree = "<group>";
@@ -503,7 +509,7 @@
 		F3C8CB5B2CC66036002DE72A /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				F3C8CB5C2CC66048002DE72A /* AppoloClient.swift */,
+				F3C8CB5C2CC66048002DE72A /* ApolloClient.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -725,6 +731,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F3FDEB932CCB9ECD0073BFED /* Message Generate */ = {
+			isa = PBXGroup;
+			children = (
+				F3FDEB942CCB9EDA0073BFED /* View */,
+			);
+			path = "Message Generate";
+			sourceTree = "<group>";
+		};
+		F3FDEB942CCB9EDA0073BFED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F3FDEB9D2CCC40650073BFED /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,22 +762,6 @@
 				F3FDEBA32CCC46940073BFED /* CreateBirthdayViewModel.swift */,
 			);
 			path = ViewModel;
-      sourceTree = "<group>";
-      };
-		F3FDEB932CCB9ECD0073BFED /* Message Generate */ = {
-			isa = PBXGroup;
-			children = (
-				F3FDEB942CCB9EDA0073BFED /* View */,
-			);
-			path = "Message Generate";
-			sourceTree = "<group>";
-		};
-		F3FDEB942CCB9EDA0073BFED /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -831,10 +837,12 @@
 				CE98D2D52CC787780017E477 /* Karma-Light.ttf in Resources */,
 				CE2DAEC92CCBA54400D5D591 /* UpdateBirthdayMutation.graphql in Resources */,
 				CE98D2D62CC787780017E477 /* Karma-Regular.ttf in Resources */,
+				CE2DAED12CCBC13A00D5D591 /* RemoveShopFromFavorite.graphql in Resources */,
 				CE98D2D72CC787780017E477 /* Karma-SemiBold.ttf in Resources */,
 				CE98D2D82CC787780017E477 /* Karma-Bold.ttf in Resources */,
 				CE98D2D92CC787780017E477 /* Karma-Medium.ttf in Resources */,
 				F3C8CBAF2CC6A61D002DE72A /* Localizable.strings in Resources */,
+				CE2DAECF2CCBBDB900D5D591 /* AddShopToFavorite.graphql in Resources */,
 				F3FDEB9C2CCC3E850073BFED /* CreateBirthdayMutation.graphql in Resources */,
 				CE42AB182CCA64BC0057ECFB /* GetShops.graphql in Resources */,
 				F3C8CBAC2CC6A61D002DE72A /* Assets.xcassets in Resources */,
@@ -898,7 +906,7 @@
 				CE42AAFF2CCA12790057ECFB /* ViewDidLoadModifier.swift in Sources */,
 				CE42AB1C2CCA703C0057ECFB /* SearchBar.swift in Sources */,
 				F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */,
-				F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */,
+				F3C8CB5D2CC66048002DE72A /* ApolloClient.swift in Sources */,
 				CE42AB122CCA55EF0057ECFB /* ShopRepository.swift in Sources */,
 				CE42AB042CCA23B80057ECFB /* LandingScreen.swift in Sources */,
 				F3FDEBA62CCE47C40073BFED /* UIImage+Ext.swift in Sources */,
@@ -908,13 +916,13 @@
 				CE42AB142CCA56550057ECFB /* Shop.swift in Sources */,
 				E7BD1C692CC7CD4800EC70FE /* SignInScreen.swift in Sources */,
 				F3C8CBEA2CC7AAFC002DE72A /* HomeRepository.swift in Sources */,
-				F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */,
+				F3C8CB5D2CC66048002DE72A /* ApolloClient.swift in Sources */,
 				CE98D2F62CC936FC0017E477 /* RegistrationRepository.swift in Sources */,
 				F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */,
 				F3978D172CC9843800FFF7F5 /* BirthdayUpdatePayload.swift in Sources */,
 				F3C8CBF02CC7B3F0002DE72A /* HomeViewModeling.swift in Sources */,
 				F354FF222CCA479600A3F6E4 /* ZodiacSign.swift in Sources */,
-				F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */,
+				F3C8CB5D2CC66048002DE72A /* ApolloClient.swift in Sources */,
 				F354FF202CC9ADCA00A3F6E4 /* Date+Extension.swift in Sources */,
 				F3C8CBEA2CC7AAFC002DE72A /* HomeRepository.swift in Sources */,
 				F327AC252CC9819E0043A0EE /* Binding+Extension.swift in Sources */,
@@ -1074,7 +1082,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QAG24BGKCF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
@@ -1109,7 +1117,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QAG24BGKCF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;

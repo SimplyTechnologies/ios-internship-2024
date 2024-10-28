@@ -22,14 +22,17 @@ final class ShopViewModel: ShopViewModeling {
   init(shopRepository: ShopRepository) {
     self.shopRepository = shopRepository
     
+    $shops
+      .sink { [weak self] shops in
+        guard let self else { return }
+        filterShops(searchText: searchText, shops: shops)
+      }
+      .store(in: &cancellables)
+    
     $searchText
       .sink { [weak self] searchText in
         guard let self else { return }
-        guard !searchText.isEmpty else {
-          filteredShops = shops
-          return
-        }
-        filteredShops = shops.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased()) }
+        filterShops(searchText: searchText, shops: shops)
       }
       .store(in: &cancellables)
   }
@@ -44,11 +47,78 @@ final class ShopViewModel: ShopViewModeling {
           print(error)
         default: break
         }
-      } receiveValue: { [weak self] shops in
-        shops.forEach {
-          self?.shops.append(Shop(dto: $0))
+      } receiveValue: { [weak self] shopsData in
+        guard let self else { return }
+        var shops: [Shop] = []
+        shopsData.forEach {
+          shops.append(Shop(dto: $0))
         }
-        self?.filteredShops = self?.shops ?? []
+        self.shops = shops
+      }
+      .store(in: &cancellables)
+  }
+  
+  func toggleFavorite(shop: Shop) {
+    if shop.isFavorite ?? false {
+      removeFromFavorite(shopId: shop.id ?? 0)
+    } else {
+      addToFavorite(shopId: shop.id ?? 0)
+    }
+  }
+
+  
+  private func filterShops(searchText: String, shops: [Shop]) {
+    guard !searchText.isEmpty else {
+      filteredShops = shops
+      return
+    }
+    filteredShops = shops.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased()) }
+  }
+  
+  private func addToFavorite(shopId: Int) {
+    guard let index = filteredShops.firstIndex(where: { $0.id == shopId }) else {
+      return
+    }
+    filteredShops[index].isLoading = true
+    
+    shopRepository.addToFavorite(shopId)
+      .sink { [weak self] result in
+        guard let self else { return }
+        filteredShops[index].isLoading = false
+        switch result {
+        case .failure(let error):
+          Console.log("❌ Error: \(error)")
+        default: break
+        }
+      } receiveValue: { [weak self] data in
+        guard let self else { return }
+        if shopId == data.addShopToFavorite.shopId {
+          filteredShops[index].isFavorite = true
+        }
+      }
+      .store(in: &cancellables)
+  }
+  
+  private func removeFromFavorite(shopId: Int) {
+    guard let index = filteredShops.firstIndex(where: { $0.id == shopId }) else {
+      return
+    }
+    filteredShops[index].isLoading = true
+    
+    shopRepository.removeFromFavorites(shopId)
+      .sink { [weak self] result in
+        guard let self else { return }
+        filteredShops[index].isLoading = false
+        switch result {
+        case .failure(let error):
+          Console.log("❌ Error: \(error)")
+        default: break
+        }
+      } receiveValue: { [weak self] data in
+        guard let self else { return }
+        if shopId == data.removeShopFromFavorite.shopId {
+          filteredShops[index].isFavorite = false
+        }
       }
       .store(in: &cancellables)
   }

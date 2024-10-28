@@ -1,0 +1,9 @@
+mutation AddShopToFavorite($shopId: Int!) {
+
+  addShopToFavorite(shopId: $shopId) {
+    createdAt
+    shopId
+    userId
+  }
+  
+}
