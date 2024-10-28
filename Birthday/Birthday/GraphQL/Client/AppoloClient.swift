@@ -54,7 +54,7 @@ class CustomInterceptorProvider: InterceptorProvider {
     
     self.interceptors = [
       AuthInterceptor(),
-      MaxRetryInterceptor(),
+//      MaxRetryInterceptor(),
       CacheReadInterceptor(store: store),
       NetworkFetchInterceptor(client: sessionClient),
       ResponseCodeInterceptor(),

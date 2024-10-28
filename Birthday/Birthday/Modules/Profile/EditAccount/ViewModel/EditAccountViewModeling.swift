@@ -11,7 +11,8 @@ protocol EditAccountViewModeling: ObservableObject {
 
   var isLoading: Bool { get set }
   var editAccountModel: EditAccountModel { get set }
+  var profileModel: ProfileModel { get set }
 
-  func updateProfileData(model: EditAccountModel)
+  func updateProfileData(model: EditAccountModel, completion: @escaping () -> Void)
 
 }

@@ -23,8 +23,10 @@ final class ProfileViewModel: ProfileViewModeling {
   private var cancelables = Set<AnyCancellable>()
   
   func getProfileData() {
+    isLoading = true
     profileRepository.getProfile()
-      .sink { result in
+      .sink { [weak self] result in
+        self?.isLoading = false
         switch result {
         case .finished:
           print("Succeed!")

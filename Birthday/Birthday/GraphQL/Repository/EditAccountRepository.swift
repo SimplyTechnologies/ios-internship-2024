@@ -10,18 +10,18 @@ import Combine
 import BirthDayAPI
 
 protocol EditAccountRepository: GraphQLRepository {
-  func updateProfile(input: UpdateProfileInput) -> AnyPublisher<UpdateProfileMutation.Data.UpdateProfile, Error>
+  func updateProfile(input: UpdateProfileInput) -> AnyPublisher<UpdateProfileMutation.Data, Error>
 }
 
 final class EditAccountDefaultRepository: EditAccountRepository {
   
-  func updateProfile(input: UpdateProfileInput) -> AnyPublisher<UpdateProfileMutation.Data.UpdateProfile, Error> {
+  func updateProfile(input: UpdateProfileInput) -> AnyPublisher<UpdateProfileMutation.Data, Error> {
     let mutation = UpdateProfileMutation(updateProfileInput: input)
 
     return performMutation(mutation: mutation)
-      .tryMap { result in
-        result.updateProfile
-      }
+//      .tryMap { result in
+//        result.updateProfile
+//      }
       .eraseToAnyPublisher()
   }
 

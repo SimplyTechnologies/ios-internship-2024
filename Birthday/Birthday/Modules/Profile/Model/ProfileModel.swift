@@ -11,15 +11,21 @@ import BirthDayAPI
 struct ProfileModel: Codable {
 
   let email: String?
-  let firstName: String?
+  var firstName: String
   let id: Int?
-  let image: String?
-  let lastName: String?
+  var image: String?
+  var lastName: String
   var fullname: String? {
-    "\(firstName ?? "") \(lastName ?? "")"
+    firstName + " " + lastName
   }
 
-  init(email: String?, firstName: String?, id: Int?, image: String?, lastName: String?) {
+  init(
+    email: String? = nil,
+    firstName: String,
+    id: Int? = nil,
+    image: String? = nil,
+    lastName: String
+  ) {
     self.email = email
     self.firstName = firstName
     self.id = id
