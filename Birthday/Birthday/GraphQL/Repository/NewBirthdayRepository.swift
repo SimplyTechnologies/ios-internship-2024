@@ -11,13 +11,13 @@ import BirthDayAPI
 
 protocol NewBirthdayRepository: GraphQLRepository {
   
-  func createBirthDay(payload: CreateBirthdayPayload) -> AnyPublisher<CreateBirthdayMutation.Data.CreateBirthday, Error>
+  func createBirthday(payload: CreateBirthdayPayload) -> AnyPublisher<CreateBirthdayMutation.Data.CreateBirthday, Error>
   
 }
 
 final class NewBirthdayDefaultRepository: NewBirthdayRepository {
   
-  func createBirthDay(payload: CreateBirthdayPayload) -> AnyPublisher<CreateBirthdayMutation.Data.CreateBirthday, Error> {
+  func createBirthday(payload: CreateBirthdayPayload) -> AnyPublisher<CreateBirthdayMutation.Data.CreateBirthday, Error> {
     let input = CreateBirthdayInput(
       date: payload.date,
       image: makeNullable(from: payload.image) ?? nil,

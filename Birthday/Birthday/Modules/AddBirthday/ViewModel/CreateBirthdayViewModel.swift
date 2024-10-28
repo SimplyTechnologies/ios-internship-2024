@@ -55,7 +55,7 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
       date: date,
       image: birtday.image
     )
-    newBirthdayRepository.createBirthDay(payload: payload)
+    newBirthdayRepository.createBirthday(payload: payload)
       .sink { [weak self] result in
         self?.isLoading = false
         switch result {
