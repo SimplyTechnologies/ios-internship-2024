@@ -16,7 +16,7 @@ protocol CreateBirthdayViewModeling: ObservableObject {
   var selectedImage: UIImage? { get set }
   var selectedItem: PhotosPickerItem? { get set }
   
-  func createBirthAay()
+  func createBirthday()
   func convertImage(image: PhotosPickerItem?) async
   
 }

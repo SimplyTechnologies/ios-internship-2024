@@ -68,7 +68,7 @@ extension AddBirthdayScreen {
       birthdayData: $viewModel.birtday,
       isContentvalid: $viewModel.isContentValid
     ) { _ in
-      viewModel.createBirthAay()
+      viewModel.createBirthday()
     }
   }
   

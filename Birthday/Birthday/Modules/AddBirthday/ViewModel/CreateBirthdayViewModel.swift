@@ -45,7 +45,7 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
       .assign(to: &$isContentValid)
   }
   
-  func createBirthAay() {
+  func createBirthday() {
     isLoading = true
     guard let name = birtday.name, let date = birtday.date, let relation = birtday.relation else { return }
     let payload = CreateBirthdayPayload(
@@ -89,12 +89,12 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
       let resizedImage = uiImage.resizeImage(targetSize: CGSize(width: 100, height: 100))
       if let jpegData = resizedImage.jpegData(compressionQuality: 0.1) {
         birtday.image = jpegData.base64EncodedString(options: .lineLength64Characters)
-        print("Base64 string created successfully.")
+        Console.log("Base64 string created successfully.")
       } else {
-        print("Failed to convert image to JPEG.")
+        Console.log("Failed to convert image to JPEG.")
       }
     } else {
-      print("Failed to convert image to data.")
+      Console.log("Failed to convert image to data.")
     }
   }
   

@@ -183,25 +183,27 @@ extension BirthDayEditCommonView {
 }
 
 
-//#Preview {
-//  BirthDayEditCommonView(
-//    birthdayData:
-//      BirthdayModel(
-//        createdAt: "",
-//        date: "2021-03-10T00:00:00.000Z",
-//        id: 1,
-//        image: "https://randomuser.me/api/portraits/med/women/3.jpg",
-//        message: "Be happy",
-//        name: "John",
-//        relation: .brother,
-//        upcomingAge: 10,
-//        upcomingBirthday: "",
-//        updatedAt: "",
-//        userId: 1
-//      ),
-//    isContentvalid: .constant(true),
-//    doneAction: { _ in
-//      print()
-//    }
-//  )
-//}
+#Preview {
+  BirthDayEditCommonView(
+    birthdayData:
+        .constant(
+          BirthdayModel(
+            createdAt: "",
+            date: "2021-03-10T00:00:00.000Z",
+            id: 1,
+            image: "https://randomuser.me/api/portraits/med/women/3.jpg",
+            message: "Be happy",
+            name: "John",
+            relation: .brother,
+            upcomingAge: 10,
+            upcomingBirthday: "",
+            updatedAt: "",
+            userId: 1
+          )
+        ),
+    isContentvalid: .constant(true),
+    doneAction: { _ in
+      print()
+    }
+  )
+}
