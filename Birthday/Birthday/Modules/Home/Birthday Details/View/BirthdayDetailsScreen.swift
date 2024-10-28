@@ -35,7 +35,8 @@ extension BirthdayDetailsScreen {
         if isEditing {
           BirthDayEditCommonView(
             birthdayData: $birthdayData,
-            isContentvalid: .constant(true)
+            isContentvalid: .constant(true),
+            isCreating: false
           ) { newBirthday in
             doneAction(birthday: newBirthday)
           }

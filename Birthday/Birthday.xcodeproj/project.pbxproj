@@ -92,6 +92,8 @@
 		F3FDEBA22CCC463A0073BFED /* CreateBirthdayViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA12CCC463A0073BFED /* CreateBirthdayViewModeling.swift */; };
 		F3FDEBA42CCC46940073BFED /* CreateBirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA32CCC46940073BFED /* CreateBirthdayViewModel.swift */; };
 		F3FDEBA62CCE47C40073BFED /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA52CCE47C40073BFED /* UIImage+Ext.swift */; };
+		F3FDEBC72CCFA39E0073BFED /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBC62CCFA39E0073BFED /* CalendarManager.swift */; };
+		F3FDEBCA2CCFA6580073BFED /* Eventable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBC92CCFA6580073BFED /* Eventable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -179,6 +181,8 @@
 		F3FDEBA12CCC463A0073BFED /* CreateBirthdayViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBirthdayViewModeling.swift; sourceTree = "<group>"; };
 		F3FDEBA32CCC46940073BFED /* CreateBirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBirthdayViewModel.swift; sourceTree = "<group>"; };
 		F3FDEBA52CCE47C40073BFED /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		F3FDEBC62CCFA39E0073BFED /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		F3FDEBC92CCFA6580073BFED /* Eventable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eventable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -558,6 +562,7 @@
 		F3C8CBA32CC6A61D002DE72A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F3FDEBC52CCFA3900073BFED /* Managers */,
 				CE98D2ED2CC80C710017E477 /* Logger */,
 				CE98D2E42CC7C1060017E477 /* ViewModifiers */,
 				CE98D2DD2CC795A40017E477 /* ButtonStyle */,
@@ -733,6 +738,23 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		F3FDEBC52CCFA3900073BFED /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F3FDEBC82CCFA6450073BFED /* Model */,
+				F3FDEBC62CCFA39E0073BFED /* CalendarManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F3FDEBC82CCFA6450073BFED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F3FDEBC92CCFA6580073BFED /* Eventable.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -854,6 +876,7 @@
 				F3978D152CC9840000FFF7F5 /* BirthDayDetailsViewModeling.swift in Sources */,
 				CE42AB082CCA36650057ECFB /* User.swift in Sources */,
 				F3C8CBF22CC7B441002DE72A /* HomeViewModel.swift in Sources */,
+				F3FDEBCA2CCFA6580073BFED /* Eventable.swift in Sources */,
 				F3FDEBA22CCC463A0073BFED /* CreateBirthdayViewModeling.swift in Sources */,
 				CE42AB0C2CCA54FC0057ECFB /* ShopViewModel.swift in Sources */,
 				CE42AB202CCA94220057ECFB /* SkeletonView.swift in Sources */,
@@ -879,6 +902,7 @@
 				E7BD1C662CC7CD1700EC70FE /* SignInViewModel.swift in Sources */,
 				CE42AB142CCA56550057ECFB /* Shop.swift in Sources */,
 				E7BD1C692CC7CD4800EC70FE /* SignInScreen.swift in Sources */,
+				F3FDEBC72CCFA39E0073BFED /* CalendarManager.swift in Sources */,
 				F3C8CBEA2CC7AAFC002DE72A /* HomeRepository.swift in Sources */,
 				F3C8CB5D2CC66048002DE72A /* AppoloClient.swift in Sources */,
 				CE98D2F62CC936FC0017E477 /* RegistrationRepository.swift in Sources */,
@@ -1050,6 +1074,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"This app needs access to your calendar to add scheduled events.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1085,6 +1110,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "\"This app needs access to your calendar to add scheduled events.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
