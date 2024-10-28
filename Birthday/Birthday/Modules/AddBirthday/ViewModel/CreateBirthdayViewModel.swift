@@ -53,7 +53,6 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
         }
       } receiveValue: { [weak self] birthday in
         guard let self else { return }
-        print(birthday)
         self.birtday = BirthdayModel()
       }.store(in: &cancelables)
   }
