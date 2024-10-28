@@ -26,7 +26,11 @@ extension HomeScreen {
   private var content: some View {
     VStack {
       image
-      list
+      if viewModel.isLoading {
+        skeletonListView
+      } else {
+        list
+      }
     }
     .background(Color.lightPink)
   }
@@ -59,6 +63,20 @@ extension HomeScreen {
       }
     }
     .padding(.horizontal, 24)
+    .scrollIndicators(.hidden)
+  }
+  
+  private var skeletonListView: some View {
+    ScrollView {
+      LazyVStack(spacing: 8) {
+        ForEach(0 ..< 10, id: \.self) { _ in
+          SkeletonView()
+            .clipShape(RoundedRectangle(cornerRadius: 24))
+            .frame(height: 110)
+        }
+      }
+      .padding(.horizontal, 24)
+    }
     .scrollIndicators(.hidden)
   }
   
