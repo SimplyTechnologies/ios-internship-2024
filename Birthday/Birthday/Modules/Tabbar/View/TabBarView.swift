@@ -38,14 +38,15 @@ extension TabBarView {
   private var homeTab: some View {
     NavigationStack(path: $homeRouter.path) {
       HomeScreen(
-        viewModel: HomeViewModel(
-          homeRepository: HomeDefaultRepository()
-        )
+        viewModel:
+          HomeViewModel(
+            homeRepository: HomeDefaultRepository()
+          )
       )
       .navigationDestination(for: HomeScreens.self) { screen in
         switch screen {
         case .details(let viewModel, let birthday):
-          BirthdayDetailsScreen(viewModel: viewModel, birthdayData: birthday)
+          BirthdayDetailsScreen(viewModel: viewModel)
         }
       }
     }

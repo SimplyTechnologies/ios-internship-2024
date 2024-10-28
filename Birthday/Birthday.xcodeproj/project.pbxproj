@@ -92,6 +92,9 @@
 		F3FDEBA22CCC463A0073BFED /* CreateBirthdayViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA12CCC463A0073BFED /* CreateBirthdayViewModeling.swift */; };
 		F3FDEBA42CCC46940073BFED /* CreateBirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA32CCC46940073BFED /* CreateBirthdayViewModel.swift */; };
 		F3FDEBA62CCE47C40073BFED /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA52CCE47C40073BFED /* UIImage+Ext.swift */; };
+		F3FDEB962CCB9EFE0073BFED /* GenerateMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */; };
+		F3FDEB982CCBBB850073BFED /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB972CCBBB850073BFED /* AlertModifier.swift */; };
+		F3FDEBC42CCF753D0073BFED /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -179,6 +182,9 @@
 		F3FDEBA12CCC463A0073BFED /* CreateBirthdayViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBirthdayViewModeling.swift; sourceTree = "<group>"; };
 		F3FDEBA32CCC46940073BFED /* CreateBirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBirthdayViewModel.swift; sourceTree = "<group>"; };
 		F3FDEBA52CCE47C40073BFED /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMessageView.swift; sourceTree = "<group>"; };
+		F3FDEB972CCBBB850073BFED /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
+		F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +301,7 @@
 				CE42AB1F2CCA94220057ECFB /* SkeletonView.swift */,
 				CE42AB282CCB7A870057ECFB /* CircularImage.swift */,
 				CE42AB2F2CCB8C9A0057ECFB /* RatingView.swift */,
+				F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -328,6 +335,7 @@
 				CE98D2E92CC7C2CD0017E477 /* FieldErrorModifier.swift */,
 				CE42AAFE2CCA12790057ECFB /* ViewDidLoadModifier.swift */,
 				CE42AB1D2CCA93B40057ECFB /* SkeletonEffect.swift */,
+				F3FDEB972CCBBB850073BFED /* AlertModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -632,6 +640,7 @@
 		F3C8CBBA2CC7892E002DE72A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				F3FDEB932CCB9ECD0073BFED /* Message Generate */,
 				F327AC1E2CC97FBF0043A0EE /* Birthday Details */,
 				F327AC1D2CC97FB20043A0EE /* HomePage */,
 			);
@@ -731,6 +740,22 @@
 				F3FDEBA32CCC46940073BFED /* CreateBirthdayViewModel.swift */,
 			);
 			path = ViewModel;
+      sourceTree = "<group>";
+      };
+		F3FDEB932CCB9ECD0073BFED /* Message Generate */ = {
+			isa = PBXGroup;
+			children = (
+				F3FDEB942CCB9EDA0073BFED /* View */,
+			);
+			path = "Message Generate";
+			sourceTree = "<group>";
+		};
+		F3FDEB942CCB9EDA0073BFED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -838,6 +863,7 @@
 				CE98D2EF2CC80C7E0017E477 /* Console.swift in Sources */,
 				CE42AB1A2CCA677D0057ECFB /* ShopCell.swift in Sources */,
 				F3FDEB9F2CCC407E0073BFED /* CreateBirthdayPayload.swift in Sources */,
+				F3FDEBC42CCF753D0073BFED /* ShareSheet.swift in Sources */,
 				CE42AB292CCB7A870057ECFB /* CircularImage.swift in Sources */,
 				CE98D2C82CC77C290017E477 /* Optional+Ext.swift in Sources */,
 				CE98D2CC2CC786390017E477 /* View+Ext.swift in Sources */,
@@ -847,7 +873,9 @@
 				CE98D2E62CC7C1270017E477 /* ResignKeyboardOnDragModifier.swift in Sources */,
 				F3C8CBF72CC7B9EF002DE72A /* BirthdayModel.swift in Sources */,
 				F3F641472CC98C5C002D0EEB /* Relation.swift in Sources */,
+				F3FDEB962CCB9EFE0073BFED /* GenerateMessageView.swift in Sources */,
 				F3C8CBC92CC78A12002DE72A /* ProfileScreen.swift in Sources */,
+				F3FDEB982CCBBB850073BFED /* AlertModifier.swift in Sources */,
 				931C201F2CC7E9FD0087E7AD /* LandingButton.swift in Sources */,
 				F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */,
 				F3FDEBA42CCC46940073BFED /* CreateBirthdayViewModel.swift in Sources */,

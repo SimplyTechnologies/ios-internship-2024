@@ -113,6 +113,7 @@ extension String {
     static var gift: String { "birthday_gift".localized }
     static var done: String { "birthday_done".localized }
     static var newRelationship: String { "birthday_relationship_new".localized }
+    static var send: String { "birthday_send".localized }
 
   }
   
