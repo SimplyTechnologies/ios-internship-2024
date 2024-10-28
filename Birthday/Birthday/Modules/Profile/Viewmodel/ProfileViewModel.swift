@@ -10,7 +10,9 @@ import Combine
 
 final class ProfileViewModel: ProfileViewModeling {
   
-  var isLoading: Bool = false
+  var id: UUID
+  @Published var isLoading: Bool = false
+  
   @Published var profileData: ProfileModel = ProfileModel(
     email: "",
     firstName: "",
@@ -21,6 +23,11 @@ final class ProfileViewModel: ProfileViewModeling {
   
   private var profileRepository: ProfileRepository
   private var cancelables = Set<AnyCancellable>()
+  
+  init(profileRepository: ProfileRepository) {
+    self.profileRepository = profileRepository
+    self.id = UUID()
+  }
   
   func getProfileData() {
     isLoading = true
@@ -37,9 +44,5 @@ final class ProfileViewModel: ProfileViewModeling {
         self?.profileData = ProfileModel(dto: profile)
       }.store(in: &cancelables)
   }
-  
-  init( profileRepository: ProfileRepository) {
-    self.profileRepository = profileRepository
-  }
-  
+
 }

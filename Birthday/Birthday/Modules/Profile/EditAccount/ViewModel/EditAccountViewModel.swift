@@ -10,19 +10,25 @@ import Combine
 import BirthDayAPI
 
 final class EditAccountViewModel: EditAccountViewModeling {
-  
 
   @Published var isLoading: Bool = false
   @Published var editAccountModel: EditAccountModel
   @Published var profileModel: ProfileModel = .init(firstName: "", lastName: "")
+  @Published var name: String = ""
+  @Published var surname: String = ""
+  @Published var isNameFocused: Bool = false
+  @Published var isSurnameFocused: Bool = false
 
   private var cancellables = Set<AnyCancellable>()
   
   private var editAccountRepository: EditAccountRepository
   
+  var id: UUID
+  
   init(editAccountRepository: EditAccountRepository, model: EditAccountModel) {
     self.editAccountRepository = editAccountRepository
     self.editAccountModel = model
+    self.id = UUID()
   }
   
   func updateProfileData(model: EditAccountModel, completion: @escaping () -> Void) {

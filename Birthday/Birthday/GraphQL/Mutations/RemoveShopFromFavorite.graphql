@@ -1,0 +1,9 @@
+mutation RemoveShopFromeFavorite($shopId: Int!) {
+
+  removeShopFromFavorite(shopId: $shopId) {
+    createdAt
+    shopId
+    userId
+  }
+  
+}

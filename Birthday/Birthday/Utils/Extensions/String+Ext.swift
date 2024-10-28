@@ -11,6 +11,97 @@ extension String {
   
   var localized: String {
     NSLocalizedString(self, comment: "")
-  }  
+  }
+  var toDate: Date? {
+    DateFormatter.iso8601Full.date(from: self)
+  }
+
+  var isValidEmail: Bool {
+    let emailRegEx =  #"[a-zA-Z0-9+._%\-+]{1,256}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9\-]{0,64}(\.[a-zA-Z0-9][a-zA-Z0-9\-]{0,25})+"#
+    let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+    return self.count <= 60 && emailPredicate.evaluate(with: self)
+  }
+  
+  var isValidName: Bool {
+    let nameRegEx = "^[A-Za-z]{1,20}$"
+    let namePredicate = NSPredicate(format: "SELF MATCHES %@", nameRegEx)
+    return namePredicate.evaluate(with: self)
+  }
+  
+  var isValidPassword: Bool {
+    let passwordRegEx = "^(?=.*[a-z])(?=.*[!\"#$%&'()*+,-./:;<=>?@^_`{|}~])[A-Za-z\\d!\"#$%&'()*+,-./:;<=>?@^_`{|}~]{8,20}"
+    let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
+    return passwordPredicate.evaluate(with: self)
+  }
+  
+  func toFormattedDate() -> String? {
+    let inputFormatter = DateFormatter()
+    inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    guard let date = inputFormatter.date(from: self) else {
+      return nil
+    }
+    let outputFormatter = DateFormatter()
+    outputFormatter.dateFormat = "dd.MM.yyyy"
+    
+    return outputFormatter.string(from: date)
+  }
+
+}
+
+extension String {
+  
+  enum Button {
+    
+    static var signIn: String { "button_signIn".localized }
+    static var register: String { "button_register".localized }
+    static var editAccount: String { "button_edit_account".localized }
+    static var changePassword: String { "button_change_password".localized }
+    static var signOut: String { "button_sign_out".localized }
+    
+  }
+  
+  enum Field {
+    
+    static var name: String { "field_name".localized }
+    static var surname: String { "field_surname".localized }
+    static var email: String { "field_email".localized }
+    static var password: String { "field_password".localized }
+    static var repeatPassword: String { "field_repeat_password".localized }
+    static var emptyName: String { "field_empty_name".localized }
+    static var invalidName: String { "field_invalid_name".localized }
+    static var emptySurname: String { "field_empty_surname".localized }
+    static var invalidSurname: String { "field_invalid_surname".localized }
+    static var emptyEmail: String { "field_empty_email".localized }
+    static var invalidEmail: String { "field_invalid_email".localized }
+    static var emptyPassword: String { "field_empty_password".localized }
+    static var invalidPassword: String { "field_invalid_password".localized }
+    static var emptyRepeatPassword: String { "field_empty_repeat_password".localized }
+    static var invalidRepeatPassword: String { "field_invalid_repeat_password".localized }
+    static var searchNoResultTitle: String { "field_search_no_result_title".localized }
+    static var searchNoResultDescription: String { "field_search_no_result_description".localized }
+    static var search: String { "field_search".localized }
+    
+  }
+  
+  enum Shop {
+    
+    static var phone: String { "shop_phone".localized }
+    static var address: String { "shop_address".localized }
+    static var website: String { "shop_website".localized }
+    
+  }
+  
+  enum Birthday {
+    
+    static var name: String { "birthday_name".localized }
+    static var relationship: String { "birthday_relationship".localized }
+    static var zodiac: String { "birthday_zodiac".localized }
+    static var generate: String { "birthday_generate".localized }
+    static var gift: String { "birthday_gift".localized }
+    static var done: String { "birthday_done".localized }
+    static var newRelationship: String { "birthday_relationship_new".localized }
+    static var send: String { "birthday_send".localized }
+
+  }
   
 }

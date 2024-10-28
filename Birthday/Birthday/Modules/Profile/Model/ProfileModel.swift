@@ -8,7 +8,7 @@
 import Foundation
 import BirthDayAPI
 
-struct ProfileModel: Codable {
+struct ProfileModel: Codable, Hashable {
 
   let email: String?
   var firstName: String

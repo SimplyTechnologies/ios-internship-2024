@@ -8,9 +8,47 @@
 
 // Button
 
-"button_login" = "Login";
 "button_sign_out" = "Sign Out";
 "button_change_password" = "Change Password";
 "button_edit_account" = "Edit Account";
 "button_signin" = "Sign In";
 "button_register" = "Register";
+
+
+// Field
+
+"field_name" = "Name";
+"field_surname" = "Surname";
+"field_email" = "Email";
+"field_password" = "Password";
+"field_repeat_password" = "Repeat password";
+"field_empty_name" = "*Name field can't be empty.";
+"field_invalid_name" = "*Name field can't contain number or special character.";
+"field_empty_surname" = "*Surname field can't be empty.";
+"field_invalid_surname" = "*Surname field can't contain number or special character.";
+"field_empty_email" = "*Email field can't be empty.";
+"field_invalid_email" = "*Please enter a valid email address.";
+"field_empty_password" = "*Password field can't be empty.";
+"field_invalid_password" = "*Length: Minimum 8 characters, maximum 20 characters. Include uppercase, lowercase, number, special character.";
+"field_empty_repeat_password" = "*Repeat Password field can't be empty.";
+"field_invalid_repeat_password" = "*Passwords do not match.";
+"field_search_no_result_title" = "Nothing Found";
+"field_search_no_result_description" = "Nothing matched your search terms. Please try again with different keywords.";
+"field_search" = "Search";
+
+// Birthday
+
+"birthday_name" = "Name";
+"birthday_relationship" = "Relationship";
+"birthday_zodiac" = "Zodiac Sign: ";
+"birthday_generate" = "Generate Message";
+"birthday_gift" = "Find Gift";
+"birthday_done" = "Done";
+"birthday_relationship_new" = "New relationship";
+"birthday_send" = "Send";
+
+// Shop
+
+"shop_phone" = "Phone:";
+"shop_address" = "Address:";
+"shop_website" = "Web Site";
