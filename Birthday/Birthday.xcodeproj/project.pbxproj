@@ -24,6 +24,11 @@
 		CE42AB1E2CCA93B40057ECFB /* SkeletonEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB1D2CCA93B40057ECFB /* SkeletonEffect.swift */; };
 		CE42AB202CCA94220057ECFB /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB1F2CCA94220057ECFB /* SkeletonView.swift */; };
 		CE42AB222CCB61560057ECFB /* RegistrationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB212CCB61560057ECFB /* RegistrationPayload.swift */; };
+		CE42AB272CCB79900057ECFB /* ShopDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB262CCB79900057ECFB /* ShopDetailsScreen.swift */; };
+		CE42AB292CCB7A870057ECFB /* CircularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB282CCB7A870057ECFB /* CircularImage.swift */; };
+		CE42AB2C2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB2B2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift */; };
+		CE42AB2E2CCB7D120057ECFB /* ShopDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB2D2CCB7D120057ECFB /* ShopDetailsViewModel.swift */; };
+		CE42AB302CCB8C9A0057ECFB /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB2F2CCB8C9A0057ECFB /* RatingView.swift */; };
 		CE98D2BF2CC775FB0017E477 /* RegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2BE2CC775FB0017E477 /* RegistrationScreen.swift */; };
 		CE98D2C62CC778780017E477 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2C52CC778780017E477 /* NavigationBar.swift */; };
 		CE98D2C82CC77C290017E477 /* Optional+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2C72CC77C290017E477 /* Optional+Ext.swift */; };
@@ -107,6 +112,11 @@
 		CE42AB1D2CCA93B40057ECFB /* SkeletonEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonEffect.swift; sourceTree = "<group>"; };
 		CE42AB1F2CCA94220057ECFB /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
 		CE42AB212CCB61560057ECFB /* RegistrationPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPayload.swift; sourceTree = "<group>"; };
+		CE42AB262CCB79900057ECFB /* ShopDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsScreen.swift; sourceTree = "<group>"; };
+		CE42AB282CCB7A870057ECFB /* CircularImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImage.swift; sourceTree = "<group>"; };
+		CE42AB2B2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsViewModeling.swift; sourceTree = "<group>"; };
+		CE42AB2D2CCB7D120057ECFB /* ShopDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsViewModel.swift; sourceTree = "<group>"; };
+		CE42AB2F2CCB8C9A0057ECFB /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		CE98D2BE2CC775FB0017E477 /* RegistrationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationScreen.swift; sourceTree = "<group>"; };
 		CE98D2C52CC778780017E477 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		CE98D2C72CC77C290017E477 /* Optional+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Ext.swift"; sourceTree = "<group>"; };
@@ -238,6 +248,42 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		CE42AB232CCB79510057ECFB /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				CE42AB0A2CCA54C00057ECFB /* Model */,
+				F3C8CBC02CC78986002DE72A /* View */,
+				CE42AB092CCA54B90057ECFB /* ViewModel */,
+			);
+			path = Shop;
+			sourceTree = "<group>";
+		};
+		CE42AB242CCB79600057ECFB /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				CE42AB2A2CCB7CD50057ECFB /* ViewModel */,
+				CE42AB252CCB79750057ECFB /* View */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		CE42AB252CCB79750057ECFB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE42AB262CCB79900057ECFB /* ShopDetailsScreen.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE42AB2A2CCB7CD50057ECFB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE42AB2B2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift */,
+				CE42AB2D2CCB7D120057ECFB /* ShopDetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CE98D2C42CC7778E0017E477 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +293,8 @@
 				CE98D2DB2CC792E30017E477 /* RoundedButton.swift */,
 				CE42AB1B2CCA703C0057ECFB /* SearchBar.swift */,
 				CE42AB1F2CCA94220057ECFB /* SkeletonView.swift */,
+				CE42AB282CCB7A870057ECFB /* CircularImage.swift */,
+				CE42AB2F2CCB8C9A0057ECFB /* RatingView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -593,9 +641,8 @@
 		F3C8CBBB2CC78934002DE72A /* Shops */ = {
 			isa = PBXGroup;
 			children = (
-				CE42AB0A2CCA54C00057ECFB /* Model */,
-				F3C8CBC02CC78986002DE72A /* View */,
-				CE42AB092CCA54B90057ECFB /* ViewModel */,
+				CE42AB242CCB79600057ECFB /* Details */,
+				CE42AB232CCB79510057ECFB /* Shop */,
 			);
 			path = Shops;
 			sourceTree = "<group>";
@@ -791,6 +838,7 @@
 				CE98D2EF2CC80C7E0017E477 /* Console.swift in Sources */,
 				CE42AB1A2CCA677D0057ECFB /* ShopCell.swift in Sources */,
 				F3FDEB9F2CCC407E0073BFED /* CreateBirthdayPayload.swift in Sources */,
+				CE42AB292CCB7A870057ECFB /* CircularImage.swift in Sources */,
 				CE98D2C82CC77C290017E477 /* Optional+Ext.swift in Sources */,
 				CE98D2CC2CC786390017E477 /* View+Ext.swift in Sources */,
 				CE98D2E12CC79A600017E477 /* RegistrationViewModel.swift in Sources */,
@@ -809,11 +857,16 @@
 				F3FDEBA22CCC463A0073BFED /* CreateBirthdayViewModeling.swift in Sources */,
 				CE42AB0C2CCA54FC0057ECFB /* ShopViewModel.swift in Sources */,
 				CE42AB202CCA94220057ECFB /* SkeletonView.swift in Sources */,
+				CE42AB2C2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift in Sources */,
 				CE42AB162CCA5CAB0057ECFB /* ShopScreen.swift in Sources */,
 				F3C8CB762CC682C9002DE72A /* GraphQLRepository.swift in Sources */,
+				CE42AB2E2CCB7D120057ECFB /* ShopDetailsViewModel.swift in Sources */,
 				CE42AB222CCB61560057ECFB /* RegistrationPayload.swift in Sources */,
 				CE98D2F42CC8ED2D0017E477 /* String+Ext.swift in Sources */,
 				F3C8CBC32CC789AA002DE72A /* HomeScreen.swift in Sources */,
+				CE42AB272CCB79900057ECFB /* ShopDetailsScreen.swift in Sources */,
+				F3C8CBF02CC7B3F0002DE72A /* HomeViewModeling.swift in Sources */,
+				CE42AB302CCB8C9A0057ECFB /* RatingView.swift in Sources */,
 				CE42AAFF2CCA12790057ECFB /* ViewDidLoadModifier.swift in Sources */,
 				CE42AB1C2CCA703C0057ECFB /* SearchBar.swift in Sources */,
 				F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */,
