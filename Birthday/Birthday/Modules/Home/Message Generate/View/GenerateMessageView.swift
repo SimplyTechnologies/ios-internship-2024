@@ -23,8 +23,8 @@ struct GenerateMessageView: View {
         .karmaFont(style: .bold14)
         .background(Color.lightPink)
         .clipShape(RoundedRectangle(cornerRadius: 8))
-        .padding(.horizontal, 16)
         .padding(.top, 16)
+      
       Button {
         withAnimation {
           isSharePresented = true
@@ -35,11 +35,11 @@ struct GenerateMessageView: View {
           .padding(6)
           .background(Color.lightPink)
           .clipShape(RoundedRectangle(cornerRadius: 8))
-          .padding(.horizontal, 16)
           .padding(.bottom, 8)
       }
     }
     .frame(width: 300, height: 200)
+    .padding(.horizontal, 16)
     .background(Color.white)
     .clipShape(RoundedRectangle(cornerRadius: 16))
     .shadow(radius: 10)
@@ -55,26 +55,6 @@ struct GenerateMessageView: View {
       }
     }
   }
-  
-}
-
-struct ShareSheet: UIViewControllerRepresentable {
-  
-  @Binding var message: String
-  var completion: ((Bool) -> Void)?
-  
-  func makeUIViewController(context: Context) -> UIActivityViewController {
-    let controller = UIActivityViewController(
-      activityItems: [message],
-      applicationActivities: nil
-    )
-    controller.completionWithItemsHandler = { _, completed, _, _ in
-      completion?(completed)
-    }
-    return controller
-  }
-  
-  func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) { }
   
 }
 

@@ -86,9 +86,9 @@
 		F3C8CBF72CC7B9EF002DE72A /* BirthdayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBF62CC7B9EF002DE72A /* BirthdayModel.swift */; };
 		F3C8CBF92CC7BB4D002DE72A /* BirthDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBF82CC7BB4D002DE72A /* BirthDayCell.swift */; };
 		F3F641472CC98C5C002D0EEB /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F641462CC98C5C002D0EEB /* Relation.swift */; };
-		F3F641492CC9A6C5002D0EEB /* DeleteBirthDayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3F641482CC9A6C5002D0EEB /* DeleteBirthDayMutation.graphql */; };
 		F3FDEB962CCB9EFE0073BFED /* GenerateMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */; };
 		F3FDEB982CCBBB850073BFED /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB972CCBBB850073BFED /* AlertModifier.swift */; };
+		F3FDEBC42CCF753D0073BFED /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,9 +170,9 @@
 		F3C8CBF62CC7B9EF002DE72A /* BirthdayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayModel.swift; sourceTree = "<group>"; };
 		F3C8CBF82CC7BB4D002DE72A /* BirthDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDayCell.swift; sourceTree = "<group>"; };
 		F3F641462CC98C5C002D0EEB /* Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
-		F3F641482CC9A6C5002D0EEB /* DeleteBirthDayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = DeleteBirthDayMutation.graphql; path = "Birthday/Modules/Home/Birthday Details/Model/DeleteBirthDayMutation.graphql"; sourceTree = SOURCE_ROOT; };
 		F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMessageView.swift; sourceTree = "<group>"; };
 		F3FDEB972CCBBB850073BFED /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
+		F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,15 +190,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE42AAFD2CCA10230057ECFB /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				F3978D1A2CC9862300FFF7F5 /* UpdateBirthdayMutation.graphql */,
-				F3F641482CC9A6C5002D0EEB /* DeleteBirthDayMutation.graphql */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		CE42AB002CCA23770057ECFB /* Landing */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +289,7 @@
 				CE42AB1F2CCA94220057ECFB /* SkeletonView.swift */,
 				CE42AB282CCB7A870057ECFB /* CircularImage.swift */,
 				CE42AB2F2CCB8C9A0057ECFB /* RatingView.swift */,
+				F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -835,6 +827,7 @@
 				F354FF2B2CCADB2500A3F6E4 /* BirthDayEditCommonView.swift in Sources */,
 				CE98D2EF2CC80C7E0017E477 /* Console.swift in Sources */,
 				CE42AB1A2CCA677D0057ECFB /* ShopCell.swift in Sources */,
+				F3FDEBC42CCF753D0073BFED /* ShareSheet.swift in Sources */,
 				CE42AB292CCB7A870057ECFB /* CircularImage.swift in Sources */,
 				CE98D2C82CC77C290017E477 /* Optional+Ext.swift in Sources */,
 				CE98D2CC2CC786390017E477 /* View+Ext.swift in Sources */,
