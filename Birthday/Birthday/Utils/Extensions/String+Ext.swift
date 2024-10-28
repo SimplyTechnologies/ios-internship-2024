@@ -63,7 +63,10 @@ extension String {
     static var surname: String { "field_surname".localized }
     static var email: String { "field_email".localized }
     static var password: String { "field_password".localized }
+    static var oldPassword: String { "field_old_password".localized }
+    static var newPassword: String { "field_new_password".localized }
     static var repeatPassword: String { "field_repeat_password".localized }
+    static var repeatNewPassword: String { "field_repeat_new_password".localized }
     static var emptyName: String { "field_empty_name".localized }
     static var invalidName: String { "field_invalid_name".localized }
     static var emptySurname: String { "field_empty_surname".localized }

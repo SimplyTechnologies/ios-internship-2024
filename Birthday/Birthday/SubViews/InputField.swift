@@ -18,13 +18,16 @@ struct InputField: View {
   private var placeholderText: String = ""
   private var isSecureField: Bool = false
   
+  var backgroundColor: Color
+  
   init(
     text: Binding<String>,
     isFocused: Binding<Bool>,
     isValidField: Binding<Bool>,
     isShow: Binding<Bool> = .constant(false),
     placeholderText: String = "",
-    isSecureField: Bool = false
+    isSecureField: Bool = false,
+    backgroundColor: Color = .snow
   ) {
     self._text = text
     self._isFocused = isFocused
@@ -32,6 +35,7 @@ struct InputField: View {
     self._isShow = isShow
     self.placeholderText = placeholderText
     self.isSecureField = isSecureField
+    self.backgroundColor = backgroundColor
   }
 
   var body: some View {
@@ -49,7 +53,7 @@ struct InputField: View {
     }
     .padding(.horizontal, 16)
     .frame(height: 44)
-    .background(!isValidField ? Color.piggyPink : Color.snow)
+    .background(!isValidField ? Color.piggyPink : backgroundColor)
     .clipShape(RoundedRectangle(cornerRadius: 12))
     .background(
       ZStack {
@@ -117,15 +121,14 @@ struct InputField: View {
   
 }
 
-// MARK: - PREVIEW
-
 #Preview {
   InputField(
     text: .constant(""),
     isFocused: .constant(false),
     isValidField: .constant(true),
     placeholderText: "Input",
-    isSecureField: true
+    isSecureField: true,
+    backgroundColor: .white
   )
   .padding()
 }
