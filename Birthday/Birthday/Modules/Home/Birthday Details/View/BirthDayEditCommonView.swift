@@ -9,7 +9,8 @@ import SwiftUI
 
 struct BirthDayEditCommonView: View {
   
-  @State var birthdayData: BirthdayModel
+  @Binding var birthdayData: BirthdayModel
+  @Binding var isContentvalid: Bool
   @State private var isAddingRelation: Bool = false
   @State private var relationshipData: [Relationship] = Relationship.allCases
   @State private var newRelation: String = ""
@@ -113,9 +114,10 @@ extension BirthDayEditCommonView {
         .karmaFont(style: .semiBold18)
         .padding(.vertical, 8)
         .padding(.horizontal, 20)
-        .background(Color.darkRed)
+        .background(isContentvalid ? Color.darkRed : Color.gray)
         .cornerRadius(8)
     }
+    .disabled(!isContentvalid)
   }
   
   private var calendar: some View {
@@ -184,19 +186,22 @@ extension BirthDayEditCommonView {
 #Preview {
   BirthDayEditCommonView(
     birthdayData:
-      BirthdayModel(
-        createdAt: "",
-        date: "2021-03-10T00:00:00.000Z",
-        id: 1,
-        image: "https://randomuser.me/api/portraits/med/women/3.jpg",
-        message: "Be happy",
-        name: "John",
-        relation: .brother,
-        upcomingAge: 10,
-        upcomingBirthday: "",
-        updatedAt: "",
-        userId: 1
-      ),
+        .constant(
+          BirthdayModel(
+            createdAt: "",
+            date: "2021-03-10T00:00:00.000Z",
+            id: 1,
+            image: "https://randomuser.me/api/portraits/med/women/3.jpg",
+            message: "Be happy",
+            name: "John",
+            relation: .brother,
+            upcomingAge: 10,
+            upcomingBirthday: "",
+            updatedAt: "",
+            userId: 1
+          )
+        ),
+    isContentvalid: .constant(true),
     doneAction: { _ in
       print()
     }
