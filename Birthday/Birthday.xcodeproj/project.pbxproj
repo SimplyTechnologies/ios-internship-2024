@@ -320,6 +320,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		CE02CA0C2CD13BC300C091F0 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9393CDE52CC9173A00D8DEA1 /* Model */,
+				9393CDE22CC9170200D8DEA1 /* Viewmodel */,
+				F3C8CBBE2CC78979002DE72A /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		CE42AB002CCA23770057ECFB /* Landing */ = {
 			isa = PBXGroup;
 			children = (
@@ -805,10 +815,8 @@
 		F3C8CBBD2CC7894F002DE72A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				CE02CA0C2CD13BC300C091F0 /* Profile */,
 				9393CDEA2CC9446400D8DEA1 /* EditAccount */,
-				9393CDE52CC9173A00D8DEA1 /* Model */,
-				9393CDE22CC9170200D8DEA1 /* Viewmodel */,
-				F3C8CBBE2CC78979002DE72A /* View */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
