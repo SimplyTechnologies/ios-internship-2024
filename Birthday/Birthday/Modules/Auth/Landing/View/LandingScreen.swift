@@ -14,12 +14,12 @@ struct LandingScreen: View {
     case registration
   }
 
-  @StateObject var router = NavigationRouter()
+  @StateObject var authRouter = NavigationRouter("Auth")
 
   private let radiusValue: CGFloat = 42
 
   var body: some View {
-    NavigationStack(path: $router.path) {
+    NavigationStack(path: $authRouter.path) {
       ZStack {
         Color.lightPink
           .ignoresSafeArea()
@@ -28,16 +28,20 @@ struct LandingScreen: View {
       }
       .navigationDestination(for: Screen.self) { screen in
         switch screen {
-        case .signIn: SignInScreen(viewModel: SignInViewModel(router: router))
+        case .signIn: SignInScreen(
+          viewModel: SignInViewModel(
+            signInRepository: SignInDefaultRepository()
+          )
+        )
         case .registration: RegistrationScreen(
             viewModel: RegistrationViewModel(
-              router: router,
               registrationRepository: RegistrationDefaultRepository()
             )
           )
         }
       }
     }
+    .environmentObject(authRouter)
   }
   
 }
@@ -66,7 +70,7 @@ extension LandingScreen {
       textColor: .rouge,
       backgroundColor: .bubblegumPink,
       action: {
-        router.push(Screen.signIn)
+        authRouter.push(Screen.signIn)
       },
       cornerRadius: [
         radiusValue,
@@ -83,7 +87,7 @@ extension LandingScreen {
       textColor: .bubblegumPink,
       backgroundColor: .rouge,
       action: {
-        router.push(Screen.registration)
+        authRouter.push(Screen.registration)
       },
       cornerRadius: [
         radiusValue,

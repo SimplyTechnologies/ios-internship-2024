@@ -18,6 +18,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   private let homeRepository: HomeRepository
   private var cancelables = Set<AnyCancellable>()
   
+  var id: UUID
   var deleteAction: () -> ()
   var updateAction: (BirthdayModel) -> ()
   
@@ -31,6 +32,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
     self.birthdayData = birthdayData
     self.deleteAction = deleteAction
     self.updateAction = updateAction
+    self.id = UUID()
   }
   
   func updateBirthday() {

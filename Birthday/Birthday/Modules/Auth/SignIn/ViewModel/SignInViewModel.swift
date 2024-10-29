@@ -8,10 +8,9 @@
 import SwiftUI
 import Combine
 
-class SignInViewModel: ObservableObject {
+class SignInViewModel: SignInViewModeling {
   
-  @Published var router: any Routable
-  
+  @Published var isLoading: Bool = false
   @Published var email: String = ""
   @Published var password: String = ""
   @Published var isEmailFocused: Bool = false
@@ -23,14 +22,15 @@ class SignInViewModel: ObservableObject {
   @Published var passwordErrorMessage: String = ""
   @Published var emailErrorMessage: String = ""
   
+  private let signInRepository: SignInRepository
   private var cancellables = Set<AnyCancellable>()
   
   private var hasEmptyField: Bool {
     email.isEmpty || password.isEmpty
   }
   
-  init(router: any Routable) {
-    self.router = router
+  init(signInRepository: SignInRepository) {
+    self.signInRepository = signInRepository
 
     $isEmailFocused
       .sink { [weak self] isFocused in
@@ -87,6 +87,30 @@ class SignInViewModel: ObservableObject {
   
   private func validatePassword() {
     isValidPassword = password.isValidPassword
+  }
+  
+  func signIn(completion: @escaping () -> Void) {
+    validateForm()
+    if isValidForm {
+      isLoading = true
+      
+      signInRepository.singIn(email: email, password: password)
+        .sink { [weak self] result in
+          self?.isLoading = false
+          switch result {
+          case .failure(let error):
+            Console.log("❌ Error: \(error)")
+          default: break
+          }
+        } receiveValue: { data in
+          let accessToken = data.login.accessToken
+          if !accessToken.isEmpty {
+            AppController.shared.setLogedIn(accessToken)
+            completion()
+          }
+        }
+        .store(in: &cancellables)
+    }
   }
 
 }

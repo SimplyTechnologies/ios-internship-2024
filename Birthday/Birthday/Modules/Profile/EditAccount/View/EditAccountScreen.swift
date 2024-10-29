@@ -62,7 +62,8 @@ struct EditAccountScreen<T: EditAccountViewModeling>: View {
     InputField(
       text: $viewModel.profileModel.firstName,
       isFocused: $viewModel.isNameFocused,
-      placeholderText: viewModel.editAccountModel.firstName
+      placeholderText: viewModel.editAccountModel.firstName,
+      backgroundColor: .white
     )
     .keyboardType(.default)
     .textInputAutocapitalization(.never)
@@ -77,7 +78,8 @@ struct EditAccountScreen<T: EditAccountViewModeling>: View {
     InputField(
       text: $viewModel.profileModel.lastName,
       isFocused: $viewModel.isSurnameFocused,
-      placeholderText: viewModel.editAccountModel.lastName
+      placeholderText: viewModel.editAccountModel.lastName,
+      backgroundColor: .white
     )
     .keyboardType(.default)
     .textInputAutocapitalization(.never)

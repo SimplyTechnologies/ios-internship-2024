@@ -5,17 +5,17 @@
 //  Created by MEKHAK GHAPANTSYAN on 21.10.24.
 //
 
-import Foundation
 import Apollo
 import ApolloAPI
+import Foundation
+import Pulse
 
 class AuthInterceptor: ApolloInterceptor {
   
   var id: String = "id"
   
   private var accessToken: String {
-    //MARK: - Change this to get from userdefaults when registration is ready
-    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InVzZXIiLCJpYXQiOjE3Mjk1ODg0MDgsImV4cCI6MTczMjE4MDQwOH0.jLSwpHpEvWfpTELpSQfmk2Atc2TIpmumEwO5vYrCMY0"
+    UserDefaults.accessToken ?? ""
   }
   
   func interceptAsync<Operation: GraphQLOperation>(
@@ -30,13 +30,12 @@ class AuthInterceptor: ApolloInterceptor {
   
 }
 
-
 class Network {
   
   static let shared = Network()
   
   private(set) lazy var apollo: ApolloClient = {
-    let url = URL(string: "https://birthdayapp.store/graphql")!
+    let url = URL(string: AppController.shared.environment.baseURL)!
     let store = ApolloStore(cache: InMemoryNormalizedCache())
     let transport = RequestChainNetworkTransport(interceptorProvider: CustomInterceptorProvider(store: store), endpointURL: url)
     return ApolloClient(networkTransport: transport, store: store)
@@ -54,7 +53,6 @@ class CustomInterceptorProvider: InterceptorProvider {
     
     self.interceptors = [
       AuthInterceptor(),
-      CacheReadInterceptor(store: store),
       NetworkFetchInterceptor(client: sessionClient),
       ResponseCodeInterceptor(),
       AutomaticPersistedQueryInterceptor(),
@@ -70,5 +68,30 @@ class CustomInterceptorProvider: InterceptorProvider {
   
 }
 
-
-
+public extension URLSessionClient {
+  
+  override convenience init() {
+    let sessionConfiguration: URLSessionConfiguration = .default
+    let callbackQueue: OperationQueue? = .main
+    
+    #if DEBUG
+    let session: URLSessionProtocol = URLSessionProxy(configuration: sessionConfiguration)
+    #else
+    let session = URLSession(configuration: sessionConfiguration)
+    #endif
+    
+    var urlSession: URLSession
+    if let session = session as? URLSessionProxy {
+      urlSession = session.session
+    } else  {
+      urlSession = session as? URLSession ?? URLSession(configuration: sessionConfiguration)
+    }
+    
+    self.init(
+      sessionConfiguration: urlSession.configuration,
+      callbackQueue: callbackQueue,
+      sessionDescription: urlSession.description
+    )
+  }
+  
+}
