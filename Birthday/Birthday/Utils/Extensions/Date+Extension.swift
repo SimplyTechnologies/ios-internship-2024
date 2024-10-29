@@ -25,4 +25,18 @@ extension Date {
     DateFormatter.iso8601Full.string(from: self)
   }
   
+  func getNextOccurrence() -> Date? {
+    let calendar = Calendar.current
+    let day = calendar.component(.day, from: self)
+    let month = calendar.component(.month, from: self)
+    let currentYear = calendar.component(.year, from: Date())
+    var nextDateComponents = DateComponents(year: currentYear, month: month, day: day)
+    if let nextDate = calendar.date(from: nextDateComponents), nextDate >= Date() {
+      return nextDate
+    } else {
+      nextDateComponents.year = currentYear + 1
+      return calendar.date(from: nextDateComponents)
+    }
+  }
+  
 }

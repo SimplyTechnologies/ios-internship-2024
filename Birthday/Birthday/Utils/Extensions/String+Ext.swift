@@ -101,4 +101,10 @@ extension String {
 
   }
   
+  enum Add {
+    
+    static var event: String { "add_event".localized }
+    
+  }
+  
 }

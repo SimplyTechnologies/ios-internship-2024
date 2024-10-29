@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import EventKit
+import EventKitUI
 
 struct BirthDayEditCommonView: View {
   
@@ -14,13 +16,25 @@ struct BirthDayEditCommonView: View {
   @State private var isAddingRelation: Bool = false
   @State private var relationshipData: [Relationship] = Relationship.allCases
   @State private var newRelation: String = ""
+  @State private var isAddingEvent: Bool = false
+  @State private var openCalendar: Bool = false
   
+  var isCreating: Bool
   var doneAction: (BirthdayModel) -> ()
   var columns = [GridItem(.flexible()),GridItem(.flexible()),GridItem(.flexible())]
   
   var body: some View {
     content
       .background(Color.lightPink)
+      .sheet(
+        isPresented: $openCalendar,
+        content: {
+          EventEditViewController(
+            birthday: $birthdayData,
+            eventStore: EKEventStore()
+          )
+        }
+      )
   }
   
 }
@@ -41,7 +55,11 @@ extension BirthDayEditCommonView {
             .padding(.bottom, 34)
         }
         calendar
-          .padding(.bottom, 50)
+          .padding(.bottom, 24)
+        if isCreating {
+          addToCalendarCheckBox
+            .padding(.bottom, 24)
+        }
         doneButton
       }
       .padding(.bottom, 10)
@@ -108,6 +126,10 @@ extension BirthDayEditCommonView {
   private var doneButton: some View {
     Button {
       doneAction(birthdayData)
+      if isAddingEvent {
+        openCalendar = true
+        isAddingEvent = false
+      }
     } label: {
       Text(String.Birthday.done)
         .foregroundStyle(.white)
@@ -180,8 +202,28 @@ extension BirthDayEditCommonView {
     .cornerRadius(16)
   }
   
+  private var addToCalendarCheckBox: some View {
+    Button {
+      isAddingEvent.toggle()
+    } label: {
+      HStack {
+        RoundedRectangle(cornerRadius: 2.0)
+          .overlay {
+            Image(systemName: isAddingEvent ? "checkmark" : "")
+              .foregroundStyle(Color.white)
+          }
+          .frame(width: 20, height: 20)
+          .foregroundStyle(isAddingEvent ? Color.bubblegumPink : Color.white)
+        Text(String.Add.event)
+          .karmaFont(style: .bold14)
+          .foregroundStyle(Color.darkRed)
+          .padding(.top, 2)
+        Spacer()
+      }
+    }
+  }
+  
 }
-
 
 #Preview {
   BirthDayEditCommonView(
@@ -202,6 +244,7 @@ extension BirthDayEditCommonView {
           )
         ),
     isContentvalid: .constant(true),
+    isCreating: true,
     doneAction: { _ in
       print()
     }

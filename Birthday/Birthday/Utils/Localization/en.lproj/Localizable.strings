@@ -49,3 +49,7 @@
 "shop_phone" = "Phone:";
 "shop_address" = "Address:";
 "shop_website" = "Web Site";
+
+//Add
+
+"add_event" = "Add to Calendar";

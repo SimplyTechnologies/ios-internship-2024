@@ -8,7 +8,7 @@
 import Foundation
 import BirthDayAPI
 
-struct BirthdayModel {
+struct BirthdayModel: Eventable {
   
   private let createdAt: String?
   var  date: String?
