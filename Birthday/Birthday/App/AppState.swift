@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Pulse
 
 final class AppState: ObservableObject {
   
@@ -13,5 +14,15 @@ final class AppState: ObservableObject {
   @Published var message: String = ""
   @Published var isSuccessMessage: Bool = false
   @Published var isUserLogedIn: Bool = AppController.shared.status == .authenticated
+  @Published var isShowLogger: Bool = false
+  
+  @MainActor
+  func setupNetworkLogger() {
+    #if DEBUG
+    URLSessionProxyDelegate.enableAutomaticRegistration()
+    NetworkLogger.enableProxy()
+    RemoteLogger.shared.isAutomaticConnectionEnabled = true
+    #endif
+  }
   
 }
