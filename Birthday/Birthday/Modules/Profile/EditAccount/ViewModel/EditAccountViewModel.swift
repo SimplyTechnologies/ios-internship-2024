@@ -54,23 +54,8 @@ final class EditAccountViewModel: EditAccountViewModeling {
         profileModel.firstName = profile.updateProfile.firstName
         profileModel.image = profile.updateProfile.image
         completion()
-//        self?.editAccountModel = EditAccountModel(dto: profile)
       })
       .store(in: &cancellables)
     
   }
-  
-//  func updateFirstName(_ firstName: String) {
-//    editAccountModel.firstName = firstName
-//  }
-//  
-//  // Method to update last name from the UI
-//  func updateLastName(_ lastName: String) {
-//    editAccountModel.lastName = lastName
-//  }
-//  
-//  // Method to update image from the UI
-//  func updateImage(_ image: String?) {
-//    editAccountModel.image = image ?? ""
-//  }
 }

@@ -29,10 +29,10 @@ struct EditAccountScreen<T: EditAccountViewModeling>: View {
     viewModel: any EditAccountViewModeling,
     model: ProfileModel,
     doneAction: @escaping (EditAccountModel) -> ()) {
-    self._viewModel = StateObject(wrappedValue: viewModel as! T)
-    self.model = model
-    self.doneAction = doneAction
-  }
+      self._viewModel = StateObject(wrappedValue: viewModel as! T)
+      self.model = model
+      self.doneAction = doneAction
+    }
   
   var body: some View {
     VStack(spacing: 42) {
@@ -44,6 +44,7 @@ struct EditAccountScreen<T: EditAccountViewModeling>: View {
         nameField
         surnameField
       }
+      .padding(.horizontal, 60)
       Spacer()
       buttonDone
     }
@@ -151,20 +152,33 @@ extension EditAccountScreen {
       ) {
         doneAction(.init(
           firstName: viewModel.profileModel.firstName,
-          image: viewModel.profileModel.image ?? "",
+          image: selectedImage?.convertImageToBase64String() ?? "",
           lastName: viewModel.profileModel.lastName)
         )
         // TODO: - dismiss
-
+        
       }
     } label: {
-      Text("Done")
+      Text(String.Button.done)
         .foregroundColor(.white)
         .padding()
-        .background(model.firstName.isEmpty || model.lastName.isEmpty ? Color.piggyPink : Color.rouge)
+        .background(
+          model.firstName != viewModel.profileModel.firstName ||
+          model.lastName != viewModel.profileModel.lastName ||
+          selectedImage.isNotNil
+          ? Color.rouge
+          : Color.piggyPink
+        )
         .cornerRadius(8)
     }
-    .disabled(model.firstName.isEmpty || model.lastName.isEmpty)
+    .disabled(
+      model.firstName != viewModel.profileModel.firstName ||
+      model.lastName != viewModel.profileModel.lastName ||
+      selectedImage.isNotNil
+      ? false
+      : true
+    )
     .padding()
   }
+
 }

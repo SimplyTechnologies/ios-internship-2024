@@ -37,25 +37,13 @@ extension ProfileScreen {
   
   private var userDetails: some View {
     VStack(spacing: 30) {
-      AsyncImage(url: URL(string: viewModel.profileData.image ?? "")) { image in
-        image
-          .resizable()
-          .aspectRatio(contentMode: .fit)
-          .clipShape(Circle())
-      } placeholder: {
-        
-        ZStack {
-          Circle()
-            .stroke(.darkRed, lineWidth: 2)
-            .frame(width: 100, height: 100)
-          Image(.imagePlus)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 42, height: 42)
-        }
+      ZStack {
+        CircularImage(
+          imagePath: viewModel.profileData.image ?? "",
+          size: .init(width: 100, height: 100)
+        )
       }
-      .frame(width: 100, height: 100)
-      
+      .clipShape(Circle())
       VStack(spacing: 15) {
         Text(viewModel.profileData.fullname ?? "")
           .bold()

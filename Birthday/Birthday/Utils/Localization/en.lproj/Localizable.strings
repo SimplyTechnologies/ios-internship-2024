@@ -13,6 +13,7 @@
 "button_edit_account" = "Edit Account";
 "button_signin" = "Sign In";
 "button_register" = "Register";
+"button_done" = "Done";
 
 
 // Field
