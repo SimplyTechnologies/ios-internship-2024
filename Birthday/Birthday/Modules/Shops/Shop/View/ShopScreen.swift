@@ -11,6 +11,7 @@ struct ShopScreen<T: ShopViewModeling>: View {
   
   @StateObject var viewModel: T
   @EnvironmentObject var router: NavigationRouter
+  @EnvironmentObject var appState: AppState
 
   var body: some View {
     content
@@ -50,14 +51,16 @@ extension ShopScreen {
               .frame(height: 10)
             LazyVStack(spacing: 18) {
               ForEach($viewModel.filteredShops, id: \.id) { $shop in
-                ShopCell(model: $shop)
-                  .onTapGesture {
-                    let viewModel = ShopDetailsViewModel(
-                      shopRepository: ShopDefaultRepository(),
-                      shop: shop
-                    )
-                    router.push(TabBarView.ShopScreens.details(viewModel: viewModel))
-                  }
+                ShopCell(model: $shop, isLoading: shop.isLoading) {
+                  viewModel.toggleFavorite(shop: shop)
+                }
+                .onTapGesture {
+                  let viewModel = ShopDetailsViewModel(
+                    shopRepository: ShopDefaultRepository(),
+                    shop: shop
+                  )
+                  router.push(TabBarView.ShopScreens.details(viewModel: viewModel))
+                }
               }
             }
             .padding(.horizontal, 24)

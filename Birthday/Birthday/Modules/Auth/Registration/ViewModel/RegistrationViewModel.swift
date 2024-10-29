@@ -8,10 +8,8 @@
 import Combine
 import SwiftUI
 
-@MainActor
-class RegistrationViewModel: ObservableObject {
+class RegistrationViewModel: RegistrationViewModeling {
   
-  @Published var router: any Routable
   @Published var isLoading: Bool = false
 
   @Published var name: String = ""
@@ -32,7 +30,7 @@ class RegistrationViewModel: ObservableObject {
   @Published var isValidPassword: Bool = true
   @Published var isValidRepeatPassword: Bool = true
   @Published var isValidForm: Bool = false
-  @Published var isSamePasswords = true
+  @Published var isSamePasswords: Bool = true
   @Published var isShowPasswordField: Bool = false
   
   @Published var repeatPasswordErrorMessage: String = ""
@@ -48,8 +46,7 @@ class RegistrationViewModel: ObservableObject {
     name.isEmpty || surname.isEmpty || email.isEmpty || password.isEmpty || repeatPassword.isEmpty
   }
   
-  init(router: any Routable, registrationRepository: RegistrationRepository) {
-    self.router = router
+  init(registrationRepository: RegistrationRepository) {
     self.registrationRepository = registrationRepository
     
     $password
@@ -165,7 +162,7 @@ class RegistrationViewModel: ObservableObject {
       .store(in: &cancellables)
   }
   
-  func register() {
+  func register(completion: @escaping () -> Void) {
     validateForm()
     if isValidForm {
       isLoading = true
@@ -186,9 +183,9 @@ class RegistrationViewModel: ObservableObject {
           }
         } receiveValue: { [weak self] data in
           guard let self else { return }
-          router.resetNavigation(with: [LandingScreen.Screen.signIn])
           let user = User(dto: data.signUp)
           Console.log("User is : \(user)")
+          completion()
         }
         .store(in: &cancellables)
     }

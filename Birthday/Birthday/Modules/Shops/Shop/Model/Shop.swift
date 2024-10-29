@@ -16,8 +16,10 @@ struct Shop: Hashable {
   var isFavorite: Bool?
   let name: String?
   let phone: String?
-  let rate: Double?
+  var rate: Double?
   let url: String?
+  
+  var isLoading: Bool = false
 
   init(
     id: Int?,

@@ -13,7 +13,7 @@ struct Console {
     private init() {}
 
     static func log(_ items: Any..., separator: String = " ", terminator: String = "\n") {
-        let output = items.map { "🔓\n\($0)" }.joined(separator: separator)
+        let output = items.map { "🔓\(terminator)\($0)" }.joined(separator: separator)
         let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.Birthday.ios", category: "custom_console_logger")
         logger.log("This is a log message with a value: \(output)")
     }

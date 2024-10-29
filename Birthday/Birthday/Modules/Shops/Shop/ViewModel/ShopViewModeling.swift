@@ -16,5 +16,6 @@ protocol ShopViewModeling: ObservableObject {
   var searchText: String { get set }
   
   func getShops()
+  func toggleFavorite(shop: Shop)
   
 }

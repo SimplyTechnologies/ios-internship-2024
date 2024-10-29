@@ -34,22 +34,6 @@ extension String {
     return passwordPredicate.evaluate(with: self)
   }
   
-  func isEmailValid() -> Bool {
-    guard !self.isEmpty else {
-      return false
-    }
-    let emailFormat = "[a-zA-Z0-9.-_]+@[a-zA-Z0-9.-_]+\\.[a-zA-z]{2,60}"
-    let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailFormat)
-    return emailPredicate.evaluate(with: self)
-  }
-
-  func isPassValid() -> Bool {
-    guard !self.isEmpty else {
-      return false
-    }
-    return self.count > 8
-  }
-  
   func toFormattedDate() -> String? {
     let inputFormatter = DateFormatter()
     inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
@@ -113,6 +97,7 @@ extension String {
     static var gift: String { "birthday_gift".localized }
     static var done: String { "birthday_done".localized }
     static var newRelationship: String { "birthday_relationship_new".localized }
+    static var send: String { "birthday_send".localized }
 
   }
   

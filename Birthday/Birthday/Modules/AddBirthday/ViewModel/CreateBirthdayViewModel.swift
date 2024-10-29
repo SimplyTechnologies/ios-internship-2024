@@ -54,6 +54,8 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
       } receiveValue: { [weak self] birthday in
         guard let self else { return }
         self.birtday = BirthdayModel()
+        self.selectedItem = nil
+        self.selectedImage = nil
       }.store(in: &cancelables)
   }
   

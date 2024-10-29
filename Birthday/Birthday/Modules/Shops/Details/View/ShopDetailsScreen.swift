@@ -70,8 +70,7 @@ extension ShopDetailsScreen {
   }
   
   private var rate: some View {
-    RatingView(rating: 4)
-      .disabled(true)
+    RatingView(rating: $viewModel.shop.rate)
   }
   
   private var phone: some View {

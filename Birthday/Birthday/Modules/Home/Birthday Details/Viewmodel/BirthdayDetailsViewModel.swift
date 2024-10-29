@@ -11,25 +11,41 @@ import Combine
 final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   
   @Published var isLoading: Bool = false
+  @Published var birthdayData: BirthdayModel
+  @Published var isEditing: Bool = false
+  @Published var isGeneratingMessage: Bool = false
   
   private let homeRepository: HomeRepository
   private var cancelables = Set<AnyCancellable>()
   
+  var id: UUID
   var deleteAction: () -> ()
   var updateAction: (BirthdayModel) -> ()
   
   init(
     homeRepository: HomeRepository,
+    birthdayData: BirthdayModel,
     deleteAction: @escaping () -> (),
     updateAction: @escaping (BirthdayModel) -> ()
   ) {
     self.homeRepository = homeRepository
+    self.birthdayData = birthdayData
     self.deleteAction = deleteAction
     self.updateAction = updateAction
+    self.id = UUID()
   }
   
-  func updateBirthday(payload: BirthdayUpdatePayload, birthday: BirthdayModel) {
+  func updateBirthday() {
     isLoading = true
+    guard let id = birthdayData.id else { return }
+    let payload = BirthdayUpdatePayload(
+      id: id,
+      image: birthdayData.image,
+      name: birthdayData.name,
+      date: birthdayData.date,
+      message: birthdayData.message,
+      relation: birthdayData.relation?.rawValue
+    )
     homeRepository.updateBirhday(payload: payload)
       .sink { [weak self] result in
         self?.isLoading = false
@@ -39,7 +55,8 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
         default: break
         }
       } receiveValue: { [weak self] update in
-        self?.updateAction(birthday)
+        guard let self else { return }
+        self.updateAction(self.birthdayData)
       }
       .store(in: &cancelables)
   }

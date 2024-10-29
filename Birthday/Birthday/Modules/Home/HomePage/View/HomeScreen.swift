@@ -26,7 +26,11 @@ extension HomeScreen {
   private var content: some View {
     VStack {
       image
-      list
+      if viewModel.isLoading {
+        skeletonListView
+      } else {
+        list
+      }
     }
     .background(Color.lightPink)
   }
@@ -40,11 +44,13 @@ extension HomeScreen {
               TabBarView.HomeScreens.details(
                 viewModel: BirthdayDetailsViewModel(
                   homeRepository: HomeDefaultRepository(),
+                  birthdayData: birthday,
                   deleteAction: {
                     viewModel.birthdayData.removeAll(where: { $0.id == birthday.id })
                   },
                   updateAction: { newBirthDay in
-                    viewModel.birthdayData[viewModel.birthdayData.firstIndex(where: { $0.id == birthday.id }) ?? 0] = newBirthDay
+                    guard let index = viewModel.birthdayData.firstIndex(where: { $0.id == birthday.id } ) else { return }
+                    viewModel.birthdayData[index] = newBirthDay
                   }
                 ),
                 birthday: birthday
@@ -57,6 +63,20 @@ extension HomeScreen {
       }
     }
     .padding(.horizontal, 24)
+    .scrollIndicators(.hidden)
+  }
+  
+  private var skeletonListView: some View {
+    ScrollView {
+      LazyVStack(spacing: 8) {
+        ForEach(0 ..< 10, id: \.self) { _ in
+          SkeletonView()
+            .clipShape(RoundedRectangle(cornerRadius: 24))
+            .frame(height: 110)
+        }
+      }
+      .padding(.horizontal, 24)
+    }
     .scrollIndicators(.hidden)
   }
   

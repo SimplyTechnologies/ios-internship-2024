@@ -9,8 +9,8 @@ import SwiftUI
 
 struct TabBarView: View {
   
-  @StateObject private var homeRouter = NavigationRouter()
-  @StateObject private var shopRouter = NavigationRouter()
+  @StateObject private var homeRouter = NavigationRouter("Home")
+  @StateObject private var shopRouter = NavigationRouter("Shop")
   
   @State var selectedTab: TabModel = .home
   
@@ -38,14 +38,15 @@ extension TabBarView {
   private var homeTab: some View {
     NavigationStack(path: $homeRouter.path) {
       HomeScreen(
-        viewModel: HomeViewModel(
-          homeRepository: HomeDefaultRepository()
-        )
+        viewModel:
+          HomeViewModel(
+            homeRepository: HomeDefaultRepository()
+          )
       )
       .navigationDestination(for: HomeScreens.self) { screen in
         switch screen {
         case .details(let viewModel, let birthday):
-          BirthdayDetailsScreen(viewModel: viewModel, birthdayData: birthday)
+          BirthdayDetailsScreen(viewModel: viewModel)
         }
       }
     }
@@ -111,20 +112,23 @@ extension TabBarView {
   
   enum HomeScreens: Hashable {
     
-    case details(viewModel:  BirthdayDetailsViewModel, birthday: BirthdayModel)
+    case details(viewModel: BirthdayDetailsViewModel, birthday: BirthdayModel)
     
-    var id: Int {
+    var id: UUID {
       switch self {
-      case .details: 1
+      case let .details(viewModel, _): viewModel.id
       }
     }
     
     static func == (lhs: TabBarView.HomeScreens, rhs: TabBarView.HomeScreens) -> Bool {
-      return lhs.id == rhs.id
+      lhs.id == rhs.id
     }
     
     func hash(into hasher: inout Hasher) {
-      hasher.combine(self.id)
+      switch self {
+      case let .details(viewModel, _):
+        hasher.combine(viewModel.id)
+      }
     }
     
   }

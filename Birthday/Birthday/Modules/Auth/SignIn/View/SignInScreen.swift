@@ -13,6 +13,8 @@ struct SignInScreen: View {
     case email, password
   }
   
+  @EnvironmentObject var appState: AppState
+  @EnvironmentObject var router: NavigationRouter
   @StateObject var viewModel: SignInViewModel
   @FocusState private var focusedField: Field?
   
@@ -23,13 +25,14 @@ struct SignInScreen: View {
 }
   
 extension SignInScreen {
+  
   private var content: some View {
     ZStack {
       Color.lightPink
         .ignoresSafeArea()
       VStack(spacing: 0) {
         NavigationBar {
-          viewModel.router.pop()
+          router.pop()
         }
         Spacer()
         signInForm
@@ -144,8 +147,14 @@ extension SignInScreen {
   }
   
   private var signInButton: some View {
-    RoundedButton(name: String.Button.signIn) {
-      // TODO: - SignIn Action
+    RoundedButton(
+      name: String.Button.signIn,
+      isLoading: viewModel.isLoading
+    ) {
+      viewModel.signIn {
+        appState.isUserLogedIn = true
+        router.pop()
+      }
     }
     .disabled(!viewModel.isValidForm)
   }
@@ -167,5 +176,9 @@ extension SignInScreen {
 }
 
 #Preview {
-  SignInScreen(viewModel: SignInViewModel(router: NavigationRouter()))
+  SignInScreen(
+    viewModel: SignInViewModel(
+      signInRepository: SignInDefaultRepository()
+    )
+  )
 }
