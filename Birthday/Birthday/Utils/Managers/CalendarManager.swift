@@ -5,10 +5,10 @@
 //  Created by MEKHAK GHAPANTSYAN on 28.10.24.
 //
 
-import Foundation
 import EventKit
-import SwiftUI
 import EventKitUI
+import Foundation
+import SwiftUI
 
 struct EventEditViewController: UIViewControllerRepresentable {
   
@@ -37,13 +37,17 @@ struct EventEditViewController: UIViewControllerRepresentable {
   }
   
   class Coordinator: NSObject, EKEventEditViewDelegate {
+    
     var parent: EventEditViewController
+    
     init(_ controller: EventEditViewController) {
       self.parent = controller
     }
+    
     func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
       parent.dismiss ()
     }
+    
   }
   
 }

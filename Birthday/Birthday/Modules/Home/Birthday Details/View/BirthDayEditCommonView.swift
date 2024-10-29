@@ -9,7 +9,6 @@ import SwiftUI
 import EventKit
 import EventKitUI
 
-
 struct BirthDayEditCommonView: View {
   
   @Binding var birthdayData: BirthdayModel
@@ -27,9 +26,15 @@ struct BirthDayEditCommonView: View {
   var body: some View {
     content
       .background(Color.lightPink)
-      .sheet(isPresented: $openCalendar, content: {
-        EventEditViewController(birthday: $birthdayData, eventStore: EKEventStore())
-      })
+      .sheet(
+        isPresented: $openCalendar,
+        content: {
+          EventEditViewController(
+            birthday: $birthdayData,
+            eventStore: EKEventStore()
+          )
+        }
+      )
   }
   
 }
