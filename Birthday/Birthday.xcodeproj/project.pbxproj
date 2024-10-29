@@ -104,6 +104,7 @@
 		F3FDEBA42CCC46940073BFED /* CreateBirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA32CCC46940073BFED /* CreateBirthdayViewModel.swift */; };
 		F3FDEBA62CCE47C40073BFED /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA52CCE47C40073BFED /* UIImage+Ext.swift */; };
 		F3FDEBC42CCF753D0073BFED /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */; };
+		F3FDEBD32CCFD7CB0073BFED /* PullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBD22CCFD7CB0073BFED /* PullToRefresh.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -203,6 +204,7 @@
 		F3FDEBA32CCC46940073BFED /* CreateBirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBirthdayViewModel.swift; sourceTree = "<group>"; };
 		F3FDEBA52CCE47C40073BFED /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		F3FDEBD22CCFD7CB0073BFED /* PullToRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefresh.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -592,6 +594,7 @@
 		F3C8CBA32CC6A61D002DE72A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F3FDEBD12CCFD7B40073BFED /* PullToRefresh */,
 				CE98D2ED2CC80C710017E477 /* Logger */,
 				CE98D2E42CC7C1060017E477 /* ViewModifiers */,
 				CE98D2DD2CC795A40017E477 /* ButtonStyle */,
@@ -785,6 +788,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		F3FDEBD12CCFD7B40073BFED /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				F3FDEBD22CCFD7CB0073BFED /* PullToRefresh.swift */,
+			);
+			path = PullToRefresh;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -933,6 +944,7 @@
 				F3C8CB5D2CC66048002DE72A /* ApolloClient.swift in Sources */,
 				CE42AB122CCA55EF0057ECFB /* ShopRepository.swift in Sources */,
 				CE42AB042CCA23B80057ECFB /* LandingScreen.swift in Sources */,
+				F3FDEBD32CCFD7CB0073BFED /* PullToRefresh.swift in Sources */,
 				F3FDEBA62CCE47C40073BFED /* UIImage+Ext.swift in Sources */,
 				CE42AB1E2CCA93B40057ECFB /* SkeletonEffect.swift in Sources */,
 				CE42AB102CCA55720057ECFB /* ShopViewModeling.swift in Sources */,
