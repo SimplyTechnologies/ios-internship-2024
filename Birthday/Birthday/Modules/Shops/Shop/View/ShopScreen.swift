@@ -11,6 +11,7 @@ struct ShopScreen<T: ShopViewModeling>: View {
   
   @StateObject var viewModel: T
   @EnvironmentObject var router: NavigationRouter
+  @EnvironmentObject var appState: AppState
 
   var body: some View {
     content
