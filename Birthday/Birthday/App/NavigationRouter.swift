@@ -9,39 +9,47 @@ import SwiftUI
 
 protocol Routable: ObservableObject {
   
-    var path: NavigationPath { get set }
+  var path: NavigationPath { get set }
+  var name: String { get }
   
-    func push(_ screen: any Hashable)
-    func pop()
-    func popToRoot()
-    func resetNavigation(with destinations: [any Hashable])
+  func push(_ screen: any Hashable)
+  func pop()
+  func popToRoot()
+  func resetNavigation(with destinations: [any Hashable])
+  
 }
 
 class NavigationRouter: Routable {
   
-    @Published var path = NavigationPath() {
-        didSet {
-            Console.log("Router navigationPath size \(path.count)")
-        }
+  init(_ name: String) {
+    self.name = name
+  }
+  
+  var name: String
+  
+  @Published var path = NavigationPath() {
+    didSet {
+      Console.log("\(name)Router navigationPath size \(path.count)")
     }
+  }
     
-    func resetNavigation(with destinations: [any Hashable]) {
-        path = NavigationPath()
-        destinations.forEach { destination in
-            path.append(destination)
-        }
+  func resetNavigation(with destinations: [any Hashable]) {
+    path = NavigationPath()
+    destinations.forEach { destination in
+      path.append(destination)
     }
+  }
 
-    func push(_ screen: any Hashable) {
-        path.append(screen)
-    }
+  func push(_ screen: any Hashable) {
+    path.append(screen)
+  }
 
-    func pop() {
-        path.removeLast()
-    }
+  func pop() {
+    path.removeLast()
+  }
 
-    func popToRoot() {
-        path.removeLast(path.count)
-    }
+  func popToRoot() {
+    path.removeLast(path.count)
+  }
   
 }

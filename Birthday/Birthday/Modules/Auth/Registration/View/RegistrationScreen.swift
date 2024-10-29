@@ -14,6 +14,7 @@ struct RegistrationScreen: View {
   }
   
   @StateObject var viewModel: RegistrationViewModel
+  @EnvironmentObject var router: NavigationRouter
   @FocusState private var focusedField: Field?
   @State private var scrollProxy: ScrollViewProxy? = nil
   
@@ -30,7 +31,7 @@ extension RegistrationScreen {
       Color.snow.ignoresSafeArea()
       VStack(spacing: 0) {
         NavigationBar {
-          viewModel.router.pop()
+          router.pop()
         }
         ScrollViewReader { scrollReader in
           ScrollView(.vertical, showsIndicators: false) {
@@ -231,7 +232,9 @@ extension RegistrationScreen {
       name: String.Button.register,
       isLoading: viewModel.isLoading
     ) {
-      viewModel.register()
+      viewModel.register {
+        router.resetNavigation(with: [LandingScreen.Screen.signIn])
+      }
     }
     .disabled(!viewModel.isValidForm)
   }
@@ -253,5 +256,9 @@ extension RegistrationScreen {
 }
 
 #Preview {
-  RegistrationScreen(viewModel: RegistrationViewModel(router: NavigationRouter(), registrationRepository: RegistrationDefaultRepository()))
+  RegistrationScreen(
+    viewModel: RegistrationViewModel(
+      registrationRepository: RegistrationDefaultRepository()
+    )
+  )
 }

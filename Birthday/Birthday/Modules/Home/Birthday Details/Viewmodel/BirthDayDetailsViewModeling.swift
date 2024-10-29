@@ -9,6 +9,7 @@ import Foundation
 
 protocol BirthDayDetailsViewModeling: ObservableObject {
   
+  var id: UUID { get }
   var isLoading: Bool { get set }
   var deleteAction: () -> () { get set }
   var updateAction: (BirthdayModel) -> () { get set}

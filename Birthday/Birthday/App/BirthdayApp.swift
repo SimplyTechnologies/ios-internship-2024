@@ -13,34 +13,33 @@ import SwiftUI
 @main
 struct BirthdayApp: App {
   
+  @StateObject private var appState = AppState()
   @Environment(\.scenePhase) var scenePhase
-  @State private var isShowLogger: Bool = false
 
   var body: some Scene {
     WindowGroup {
-      ContentView()
-        .onChange(of: scenePhase) { newPhase in
-          if newPhase == .active {
-            setupNetworkLogger()
-          }
+      ZStack {
+        if appState.isUserLogedIn {
+          TabBarView()
+        } else {
+          LandingScreen()
         }
-        .sheet(isPresented: $isShowLogger) {
-          NavigationStack { ConsoleView() }
+      }
+      .environmentObject(appState)
+      .onChange(of: scenePhase) { newPhase in
+        if newPhase == .active {
+          appState.setupNetworkLogger()
         }
-        .onShake {
-          #if DEBUG
-          isShowLogger = true
-          #endif
-        }
+      }
+      .sheet(isPresented: $appState.isShowLogger) {
+        NavigationStack { ConsoleView() }
+      }
+      .onShake {
+        #if DEBUG
+        appState.isShowLogger = true
+        #endif
+      }
     }
-  }
-
-  private func setupNetworkLogger() {
-    #if DEBUG
-    URLSessionProxyDelegate.enableAutomaticRegistration()
-    NetworkLogger.enableProxy()
-    RemoteLogger.shared.isAutomaticConnectionEnabled = true
-    #endif
   }
   
 }

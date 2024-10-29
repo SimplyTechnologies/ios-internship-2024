@@ -15,9 +15,7 @@ class AuthInterceptor: ApolloInterceptor {
   var id: String = "id"
   
   private var accessToken: String {
-    // MARK: - Change this to get from userdefaults when registration is ready
-
-    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InVzZXIiLCJpYXQiOjE3Mjk1ODg0MDgsImV4cCI6MTczMjE4MDQwOH0.jLSwpHpEvWfpTELpSQfmk2Atc2TIpmumEwO5vYrCMY0"
+    UserDefaults.accessToken ?? ""
   }
   
   func interceptAsync<Operation: GraphQLOperation>(
@@ -37,7 +35,7 @@ class Network {
   static let shared = Network()
   
   private(set) lazy var apollo: ApolloClient = {
-    let url = URL(string: "https://birthdayapp.store/graphql")!
+    let url = URL(string: AppController.shared.environment.baseURL)!
     let store = ApolloStore(cache: InMemoryNormalizedCache())
     let transport = RequestChainNetworkTransport(interceptorProvider: CustomInterceptorProvider(store: store), endpointURL: url)
     return ApolloClient(networkTransport: transport, store: store)
