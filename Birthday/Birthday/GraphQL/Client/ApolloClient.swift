@@ -79,14 +79,12 @@ public extension URLSessionClient {
     
     #if DEBUG
     let session: URLSessionProtocol = URLSessionProxy(configuration: sessionConfiguration)
-    #else
-    let session = URLSession(configuration: sessionConfiguration)
     #endif
     
     var urlSession: URLSession
     if let session = session as? URLSessionProxy {
       urlSession = session.session
-    } else {
+    } else  {
       urlSession = URLSession(configuration: sessionConfiguration)
     }
     
