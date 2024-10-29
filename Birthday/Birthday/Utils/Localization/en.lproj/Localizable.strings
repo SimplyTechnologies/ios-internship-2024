@@ -33,7 +33,7 @@
 "field_search_no_result_description" = "Nothing matched your search terms. Please try again with different keywords.";
 "field_search" = "Search";
 
-//Birthday
+// Birthday
 
 "birthday_name" = "Name";
 "birthday_relationship" = "Relationship";
@@ -50,6 +50,10 @@
 "shop_address" = "Address:";
 "shop_website" = "Web Site";
 
-//Add
+// Add
 
 "add_event" = "Add to Calendar";
+
+// Toast
+
+"toast_register" = "You have successfully registered! 🎉";

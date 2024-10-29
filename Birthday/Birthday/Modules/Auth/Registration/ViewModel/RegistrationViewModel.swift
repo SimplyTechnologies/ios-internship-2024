@@ -11,6 +11,8 @@ import SwiftUI
 class RegistrationViewModel: RegistrationViewModeling {
   
   @Published var isLoading: Bool = false
+  @Published var isShowMessage: Bool = false
+  @Published var isSuccessMessage: Bool = false
 
   @Published var name: String = ""
   @Published var surname: String = ""
@@ -38,6 +40,7 @@ class RegistrationViewModel: RegistrationViewModeling {
   @Published var nameErrorMessage: String = ""
   @Published var surnameErrorMessage: String = ""
   @Published var emailErrorMessage: String = ""
+  @Published var toastMessage: String = ""
   
   private let registrationRepository: RegistrationRepository
   private var cancellables = Set<AnyCancellable>()
@@ -166,6 +169,7 @@ class RegistrationViewModel: RegistrationViewModeling {
     validateForm()
     if isValidForm {
       isLoading = true
+      isShowMessage = false
       let registrationPayload: RegistrationPayload = .init(
         firstName: name,
         lastName: surname,
@@ -175,16 +179,23 @@ class RegistrationViewModel: RegistrationViewModeling {
       
       registrationRepository.singUp(registrationPayload)
         .sink { [weak self] result in
-          self?.isLoading = false
+          guard let self else { return }
+          isLoading = false
           switch result {
           case .failure(let error):
             Console.log("❌ Error: \(error)")
+            toastMessage = error.localizedDescription
+            isSuccessMessage = false
+            isShowMessage = true
           default: break
           }
         } receiveValue: { [weak self] data in
           guard let self else { return }
           let user = User(dto: data.signUp)
           Console.log("User is : \(user)")
+          toastMessage = String.Toast.register
+          isSuccessMessage = true
+          isShowMessage = true
           completion()
         }
         .store(in: &cancellables)

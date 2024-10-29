@@ -7,6 +7,7 @@
 
 import Foundation
 import Pulse
+import PulseProxy
 
 final class AppState: ObservableObject {
   
