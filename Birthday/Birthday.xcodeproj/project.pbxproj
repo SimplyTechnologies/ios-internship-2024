@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		931C201F2CC7E9FD0087E7AD /* LandingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C201E2CC7E9FD0087E7AD /* LandingButton.swift */; };
+		9393CDE42CC9171C00D8DEA1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE32CC9171C00D8DEA1 /* ProfileViewModel.swift */; };
+		9393CDE72CC9174A00D8DEA1 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */; };
+		9393CDE92CC91F5D00D8DEA1 /* ProfileViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */; };
+		9393CDEF2CCA4BC200D8DEA1 /* EditAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDEE2CCA4BC200D8DEA1 /* EditAccountScreen.swift */; };
+		9393CE1D2CCA864500D8DEA1 /* MutationProfile.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */; };
+		9393CE432CCA872700D8DEA1 /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE422CCA872700D8DEA1 /* EditAccountModel.swift */; };
+		9393CE462CCA8BF500D8DEA1 /* EditAccountViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE452CCA8BF500D8DEA1 /* EditAccountViewModeling.swift */; };
+		9393CE482CCA8C2700D8DEA1 /* EditAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE472CCA8C2700D8DEA1 /* EditAccountViewModel.swift */; };
+		9393CE4A2CCA8C6600D8DEA1 /* EditAccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE492CCA8C6600D8DEA1 /* EditAccountRepository.swift */; };
+		93DDE0BC2CC9144700F7FAA4 /* GetProfile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 93DDE0BB2CC9144700F7FAA4 /* GetProfile.graphql */; };
+		93DDE0BE2CC915F700F7FAA4 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDE0BD2CC915F700F7FAA4 /* ProfileRepository.swift */; };
 		CE02C9EB2CCFDBB300C091F0 /* SignInViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C9EA2CCFDBB300C091F0 /* SignInViewModeling.swift */; };
 		CE02C9ED2CCFDCD900C091F0 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C9EC2CCFDCD900C091F0 /* SignInRepository.swift */; };
 		CE02C9EF2CCFDD4100C091F0 /* SignIn.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE02C9EE2CCFDD4100C091F0 /* SignIn.graphql */; };
@@ -21,17 +32,7 @@
 		CE02CA002CD033F600C091F0 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = CE02C9FF2CD033F600C091F0 /* PulseUI */; };
 		CE02CA022CD03AC100C091F0 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02CA012CD03AC100C091F0 /* UIDevice+Ext.swift */; };
 		CE02CA042CD03B2900C091F0 /* DeviceShakeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02CA032CD03B2900C091F0 /* DeviceShakeViewModifier.swift */; };
-		9393CDE42CC9171C00D8DEA1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE32CC9171C00D8DEA1 /* ProfileViewModel.swift */; };
-		9393CDE72CC9174A00D8DEA1 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */; };
-		9393CDE92CC91F5D00D8DEA1 /* ProfileViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */; };
-		9393CDEF2CCA4BC200D8DEA1 /* EditAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDEE2CCA4BC200D8DEA1 /* EditAccountScreen.swift */; };
-		9393CE1D2CCA864500D8DEA1 /* MutationProfile.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */; };
-		9393CE432CCA872700D8DEA1 /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE422CCA872700D8DEA1 /* EditAccountModel.swift */; };
-		9393CE462CCA8BF500D8DEA1 /* EditAccountViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE452CCA8BF500D8DEA1 /* EditAccountViewModeling.swift */; };
-		9393CE482CCA8C2700D8DEA1 /* EditAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE472CCA8C2700D8DEA1 /* EditAccountViewModel.swift */; };
-		9393CE4A2CCA8C6600D8DEA1 /* EditAccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE492CCA8C6600D8DEA1 /* EditAccountRepository.swift */; };
-		93DDE0BC2CC9144700F7FAA4 /* GetProfile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 93DDE0BB2CC9144700F7FAA4 /* GetProfile.graphql */; };
-		93DDE0BE2CC915F700F7FAA4 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDE0BD2CC915F700F7FAA4 /* ProfileRepository.swift */; };
+		CE02CA0B2CD1391D00C091F0 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02CA0A2CD1391D00C091F0 /* ProfileButton.swift */; };
 		CE2DAEC92CCBA54400D5D591 /* UpdateBirthdayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2DAEC82CCBA54400D5D591 /* UpdateBirthdayMutation.graphql */; };
 		CE2DAECB2CCBA5A800D5D591 /* DeleteBirthDayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2DAECA2CCBA5A800D5D591 /* DeleteBirthDayMutation.graphql */; };
 		CE2DAECF2CCBBDB900D5D591 /* AddShopToFavorite.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2DAECE2CCBBDB900D5D591 /* AddShopToFavorite.graphql */; };
@@ -120,23 +121,13 @@
 		F3FDEBA42CCC46940073BFED /* CreateBirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA32CCC46940073BFED /* CreateBirthdayViewModel.swift */; };
 		F3FDEBA62CCE47C40073BFED /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBA52CCE47C40073BFED /* UIImage+Ext.swift */; };
 		F3FDEBC42CCF753D0073BFED /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */; };
-		F3FDEBD32CCFD7CB0073BFED /* PullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBD22CCFD7CB0073BFED /* PullToRefresh.swift */; };
 		F3FDEBC72CCFA39E0073BFED /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBC62CCFA39E0073BFED /* CalendarManager.swift */; };
 		F3FDEBCA2CCFA6580073BFED /* Eventable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBC92CCFA6580073BFED /* Eventable.swift */; };
+		F3FDEBD32CCFD7CB0073BFED /* PullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEBD22CCFD7CB0073BFED /* PullToRefresh.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		931C201E2CC7E9FD0087E7AD /* LandingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingButton.swift; sourceTree = "<group>"; };
-		CE02C9EA2CCFDBB300C091F0 /* SignInViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModeling.swift; sourceTree = "<group>"; };
-		CE02C9EC2CCFDCD900C091F0 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
-		CE02C9EE2CCFDD4100C091F0 /* SignIn.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignIn.graphql; sourceTree = "<group>"; };
-		CE02C9F02CCFE11800C091F0 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
-		CE02C9F22CD024C700C091F0 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		CE02C9F42CD024DF00C091F0 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		CE02C9F62CD025B100C091F0 /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
-		CE02C9F82CD02C0A00C091F0 /* RegistrationViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModeling.swift; sourceTree = "<group>"; };
-		CE02CA012CD03AC100C091F0 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
-		CE02CA032CD03B2900C091F0 /* DeviceShakeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceShakeViewModifier.swift; sourceTree = "<group>"; };
 		9393CDE32CC9171C00D8DEA1 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModeling.swift; sourceTree = "<group>"; };
@@ -148,6 +139,17 @@
 		9393CE492CCA8C6600D8DEA1 /* EditAccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountRepository.swift; sourceTree = "<group>"; };
 		93DDE0BB2CC9144700F7FAA4 /* GetProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetProfile.graphql; sourceTree = "<group>"; };
 		93DDE0BD2CC915F700F7FAA4 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		CE02C9EA2CCFDBB300C091F0 /* SignInViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModeling.swift; sourceTree = "<group>"; };
+		CE02C9EC2CCFDCD900C091F0 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
+		CE02C9EE2CCFDD4100C091F0 /* SignIn.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignIn.graphql; sourceTree = "<group>"; };
+		CE02C9F02CCFE11800C091F0 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		CE02C9F22CD024C700C091F0 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		CE02C9F42CD024DF00C091F0 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		CE02C9F62CD025B100C091F0 /* UserDefaults+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Ext.swift"; sourceTree = "<group>"; };
+		CE02C9F82CD02C0A00C091F0 /* RegistrationViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModeling.swift; sourceTree = "<group>"; };
+		CE02CA012CD03AC100C091F0 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
+		CE02CA032CD03B2900C091F0 /* DeviceShakeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceShakeViewModifier.swift; sourceTree = "<group>"; };
+		CE02CA0A2CD1391D00C091F0 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		CE2DAEC82CCBA54400D5D591 /* UpdateBirthdayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdateBirthdayMutation.graphql; sourceTree = "<group>"; };
 		CE2DAECA2CCBA5A800D5D591 /* DeleteBirthDayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = DeleteBirthDayMutation.graphql; sourceTree = "<group>"; };
 		CE2DAECE2CCBBDB900D5D591 /* AddShopToFavorite.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AddShopToFavorite.graphql; sourceTree = "<group>"; };
@@ -235,9 +237,9 @@
 		F3FDEBA32CCC46940073BFED /* CreateBirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBirthdayViewModel.swift; sourceTree = "<group>"; };
 		F3FDEBA52CCE47C40073BFED /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
-		F3FDEBD22CCFD7CB0073BFED /* PullToRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefresh.swift; sourceTree = "<group>"; };
 		F3FDEBC62CCFA39E0073BFED /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		F3FDEBC92CCFA6580073BFED /* Eventable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eventable.swift; sourceTree = "<group>"; };
+		F3FDEBD22CCFD7CB0073BFED /* PullToRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefresh.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,6 +420,7 @@
 				CE42AB282CCB7A870057ECFB /* CircularImage.swift */,
 				CE42AB2F2CCB8C9A0057ECFB /* RatingView.swift */,
 				F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */,
+				CE02CA0A2CD1391D00C091F0 /* ProfileButton.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -894,14 +897,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		F3FDEBD12CCFD7B40073BFED /* PullToRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				F3FDEBD22CCFD7CB0073BFED /* PullToRefresh.swift */,
-			);
-			path = PullToRefresh;
-			sourceTree = "<group>";
-		};
 		F3FDEBC52CCFA3900073BFED /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -917,6 +912,14 @@
 				F3FDEBC92CCFA6580073BFED /* Eventable.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F3FDEBD12CCFD7B40073BFED /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				F3FDEBD22CCFD7CB0073BFED /* PullToRefresh.swift */,
+			);
+			path = PullToRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1079,6 +1082,7 @@
 				F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */,
 				CE02C9F32CD024C700C091F0 /* AppEnvironment.swift in Sources */,
 				F3C8CB5D2CC66048002DE72A /* ApolloClient.swift in Sources */,
+				CE02CA0B2CD1391D00C091F0 /* ProfileButton.swift in Sources */,
 				CE42AB122CCA55EF0057ECFB /* ShopRepository.swift in Sources */,
 				CE42AB042CCA23B80057ECFB /* LandingScreen.swift in Sources */,
 				F3FDEBD32CCFD7CB0073BFED /* PullToRefresh.swift in Sources */,

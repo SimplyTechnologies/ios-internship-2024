@@ -25,7 +25,7 @@ extension HomeScreen {
   
   private var content: some View {
     VStack {
-      image
+      NavigationBar()
       if viewModel.isLoading {
         skeletonListView
       } else {
@@ -84,10 +84,6 @@ extension HomeScreen {
       .padding(.horizontal, 24)
     }
     .scrollIndicators(.hidden)
-  }
-  
-  private var image: some View {
-    Image(.birth)
   }
   
 }

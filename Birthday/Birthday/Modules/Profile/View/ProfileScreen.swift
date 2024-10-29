@@ -14,8 +14,8 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
   
   var body: some View {
     VStack(spacing: 50) {
-      logo
-      userDetails // image, name, gmail
+      NavigationBar()
+      userDetails
       buttons
       Spacer()
     }
@@ -27,35 +27,29 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
 }
 
 extension ProfileScreen {
-  
-  private var logo: some View {
-    Image(.birth)
-      .resizable()
-      .aspectRatio(contentMode: .fit)
-      .frame(width: 88, height: 40)
-  }
-  
+    
   private var userDetails: some View {
-    VStack(spacing: 30) {
-      ZStack {
+    VStack(spacing: 0) {
         CircularImage(
           imagePath: viewModel.profileData.image ?? "",
+          placeholderImage: Image(systemName: "person"),
           size: .init(width: 100, height: 100)
         )
-      }
-      .clipShape(Circle())
-      VStack(spacing: 15) {
+      Spacer()
+        .frame(height: 32)
+      
         Text(viewModel.profileData.fullname ?? "")
-          .bold()
-          .font(.system(size: 20))
-        Text(verbatim: viewModel.profileData.email ?? "")
-          .textSelection(.disabled)
           .foregroundStyle(.black)
-          .font(.system(size: 20))
-          .frame(maxWidth: .infinity)
-          .bold()
-      }
+          .karmaFont(style: .bold20)
+        
+        Spacer()
+          .frame(height: 16)
+
+        Text(verbatim: viewModel.profileData.email ?? "")
+          .foregroundStyle(.black)
+          .karmaFont(style: .bold20)
     }
+    .padding(.horizontal, 16)
   }
   
   private var buttons: some View {
@@ -66,35 +60,32 @@ extension ProfileScreen {
   }
   
   private var editButton: some View {
-    Button {
-      let editViewModel = EditAccountViewModel(
-        editAccountRepository: EditAccountDefaultRepository(),
-        model: .init(
+      ProfileButton(
+        title: String.Button.editAccount
+      ) {
+        let editViewModel = EditAccountViewModel(
+          editAccountRepository: EditAccountDefaultRepository(),
+          model: .init(
+            firstName: viewModel.profileData.firstName,
+            image: viewModel.profileData.image ?? "",
+            lastName: viewModel.profileData.lastName
+          )
+        )
+        
+        let profileModel: ProfileModel = .init(
           firstName: viewModel.profileData.firstName,
           image: viewModel.profileData.image ?? "",
           lastName: viewModel.profileData.lastName
         )
-      )
-      
-      let profileModel: ProfileModel = .init(
-        firstName: viewModel.profileData.firstName,
-        image: viewModel.profileData.image ?? "",
-        lastName: viewModel.profileData.lastName
-      )
-      
-      let screen = TabBarView.ProfileScreens.editProfile(
-        viewModel: editViewModel,
-        profileModel: profileModel) { profileModel in
-          viewModel.profileData.firstName = profileModel.firstName
-          viewModel.profileData.lastName = profileModel.lastName
-          viewModel.profileData.image = profileModel.image
-        }
-      
-      router.push(screen)
-      
-    } label: {
-      ProfileButton(title: String.Button.editAccount)
-    }
+        
+        let screen = TabBarView.ProfileScreens.editProfile(
+          viewModel: editViewModel,
+          profileModel: profileModel) {
+            viewModel.getProfileData()
+          }
+        
+        router.push(screen)
+      }
   }
 }
 
@@ -102,18 +93,3 @@ extension ProfileScreen {
   ProfileScreen(viewModel: ProfileViewModel(profileRepository: ProfileDefaultRepository()))
 }
 
-struct ProfileButton: View {
-  var title: String
-  
-  var body: some View {
-    Text(title)
-      .frame(maxWidth: .infinity)
-      .padding(.horizontal, 16)
-      .padding(.vertical, 12)
-      .background(Color.white)
-      .cornerRadius(9)
-      .foregroundStyle(.darkRed)
-      .bold()
-      .font(.system(size: 20))
-  }
-}

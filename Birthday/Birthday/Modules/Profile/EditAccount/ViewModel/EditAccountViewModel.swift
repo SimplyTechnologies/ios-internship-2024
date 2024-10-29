@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 import BirthDayAPI
+import SwiftUI
+import PhotosUI
 
 final class EditAccountViewModel: EditAccountViewModeling {
 
@@ -18,10 +20,15 @@ final class EditAccountViewModel: EditAccountViewModeling {
   @Published var surname: String = ""
   @Published var isNameFocused: Bool = false
   @Published var isSurnameFocused: Bool = false
+  @Published var selectedPickerItem: PhotosPickerItem?
+  @Published var selectedImage: UIImage? = nil
 
   private var cancellables = Set<AnyCancellable>()
-  
   private var editAccountRepository: EditAccountRepository
+  
+  var isDoneEnabled: Bool {
+    !profileModel.firstName.isEmpty && !profileModel.lastName.isEmpty && profileModel.image.isNotNil
+  }
   
   var id: UUID
   
@@ -29,24 +36,34 @@ final class EditAccountViewModel: EditAccountViewModeling {
     self.editAccountRepository = editAccountRepository
     self.editAccountModel = model
     self.id = UUID()
+        
+    $selectedPickerItem
+      .sink { [weak self] item in
+        guard let self else { return }
+        Task { [weak self] in
+          guard let self, item.isNotNil else { return }
+          await convertImage(image: item)
+        }
+      }
+      .store(in: &cancellables)
   }
   
-  func updateProfileData(model: EditAccountModel, completion: @escaping () -> Void) {
+  func updateProfileData(completion: @escaping () -> Void) {
     isLoading = true
-    
+    let image = profileModel.image ?? ""
     let input = UpdateProfileInput(
-      firstName: model.firstName.isEmpty ? nil : .some(model.firstName),
-      image: nil,// model.image.isEmpty ? nil : .some(model.image),
-      lastName: model.lastName.isEmpty ? nil : .some(model.lastName)
+      firstName: profileModel.firstName.isEmpty ? nil : .some(profileModel.firstName),
+      image: image.isEmpty ? nil : .some(image),
+      lastName: profileModel.lastName.isEmpty ? nil : .some(profileModel.lastName)
     )
     
     editAccountRepository.updateProfile(input: input)
       .sink(receiveCompletion: { result in
         switch result {
         case .finished:
-          print("Update succeeded!")
+          Console.log("Update Profile succeeded!")
         case .failure(let error):
-          print("Error updating profile: \(error.localizedDescription)")
+          Console.log("Error updating profile: \(error.localizedDescription)")
         }
       }, receiveValue: { [weak self] profile in
         guard let self else { return }
@@ -56,6 +73,23 @@ final class EditAccountViewModel: EditAccountViewModeling {
         completion()
       })
       .store(in: &cancellables)
-    
   }
+  
+  @MainActor
+  func convertImage(image: PhotosPickerItem?) async {
+    if let data = try? await image?.loadTransferable(type: Data.self),
+       let uiImage = UIImage(data: data) {
+      selectedImage = uiImage
+      let resizedImage = uiImage.resizeImage(targetSize: CGSize(width: 160, height: 160))
+      if let jpegData = resizedImage.jpegData(compressionQuality: 0.1) {
+        profileModel.image = jpegData.base64EncodedString(options: .lineLength64Characters)
+        Console.log("Base64 string created successfully.")
+      } else {
+        Console.log("Failed to convert image to JPEG.")
+      }
+    } else {
+      Console.log("Failed to convert image to data.")
+    }
+  }
+  
 }

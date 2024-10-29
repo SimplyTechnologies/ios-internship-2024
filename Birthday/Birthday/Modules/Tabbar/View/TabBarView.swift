@@ -95,8 +95,8 @@ extension TabBarView {
           case let .editProfile(viewModel: viewModel, profileModel, doneAction):
             EditAccountScreen<EditAccountViewModel>(
               viewModel: viewModel,
-              model: profileModel) { profileModel in
-                doneAction(profileModel)
+              model: profileModel) {
+                doneAction()
               }
           case .changePassword: Text("Change password")
           }
@@ -179,7 +179,7 @@ extension TabBarView {
   
   enum ProfileScreens: Hashable {
     
-    case editProfile(viewModel: EditAccountViewModel, profileModel: ProfileModel, doneAction: (EditAccountModel) -> Void)
+    case editProfile(viewModel: EditAccountViewModel, profileModel: ProfileModel, doneAction: () -> Void)
     case changePassword
     
     var id: UUID {
