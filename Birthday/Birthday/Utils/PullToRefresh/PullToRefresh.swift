@@ -11,7 +11,7 @@ import SwiftUI
 struct PullToRefresh: View {
   
   var coordinateSpaceName: String
-  var onRefresh: ()->Void
+  var onRefresh: () -> Void
   
   @State var needRefresh: Bool = false
   
@@ -40,7 +40,8 @@ struct PullToRefresh: View {
         }
         Spacer()
       }
-    }.padding(.top, -50)
+    }
+    .padding(.top, -50)
   }
   
 }

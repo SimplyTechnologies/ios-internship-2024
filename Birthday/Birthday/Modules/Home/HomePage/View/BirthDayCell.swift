@@ -31,7 +31,6 @@ extension BirthDayCell {
     .cornerRadius(24)
   }
   
-  @ViewBuilder
   private var image: some View {
     ZStack {
       if let image = model.image  {
