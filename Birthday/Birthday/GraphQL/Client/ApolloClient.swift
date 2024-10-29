@@ -53,7 +53,6 @@ class CustomInterceptorProvider: InterceptorProvider {
     
     self.interceptors = [
       AuthInterceptor(),
-      CacheReadInterceptor(store: store),
       NetworkFetchInterceptor(client: sessionClient),
       ResponseCodeInterceptor(),
       AutomaticPersistedQueryInterceptor(),
