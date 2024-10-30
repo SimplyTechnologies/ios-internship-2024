@@ -10,6 +10,9 @@ import Combine
 
 final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
   
+  @Published var isShowMessage: Bool = false
+  @Published var isSuccessMessage: Bool = false
+  @Published var toastMessage: String = ""
   @Published var isLoading: Bool = false
   @Published var email: String = ""
   @Published var passwordCode: String = ""
@@ -28,12 +31,14 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
   
   func getCode() {
     isLoading = true
+    isShowMessage = false
     forgotPasswordRepository.getCode(email: email)
       .sink { [weak self] result in
         self?.isLoading = false
         switch result {
         case .failure(let error):
           Console.log(error)
+          self?.showToast(message: error.localizedDescription, isSuccess: false)
         default: break
         }
       } receiveValue: { [weak self]  code in
@@ -56,6 +61,21 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
         $0.isValidEmail
       }
       .assign(to: &$isEmailValid)
+  }
+  
+  func checkCode(complition: @escaping () -> ()) {
+    isShowMessage = false
+    if passwordCode == actualCode {
+      complition()
+    } else {
+      showToast(message: "Wrong Code", isSuccess: false)
+    }
+  }
+  
+  private func showToast(message: String, isSuccess: Bool) {
+    toastMessage = message
+    isSuccessMessage = isSuccess
+    isShowMessage = true
   }
   
 }

@@ -12,6 +12,7 @@ struct ResetPasswordScreen<T: ResetPasswordViewModeling>: View {
   @StateObject var viewModel: T
   
   @EnvironmentObject var router: NavigationRouter
+  @EnvironmentObject var appState: AppState
   
   @State var isShowingPassword: Bool = false
   @State var isShowingConfirmPass: Bool = false
@@ -20,6 +21,13 @@ struct ResetPasswordScreen<T: ResetPasswordViewModeling>: View {
     content
       .background(Color.lightPink)
       .navigationBarBackButtonHidden(true)
+      .onChange(of: viewModel.isShowMessage) { isShow in
+        appState.isShowMessage = isShow
+        if isShow {
+          appState.isSuccessMessage = viewModel.isSuccessMessage
+          appState.message = viewModel.toastMessage
+        }
+      }
   }
   
 }
@@ -53,7 +61,8 @@ extension ResetPasswordScreen {
         isFocused: .constant(true),
         isValidField: $viewModel.isPasswordValid,
         isShow: $isShowingPassword,
-        isSecureField: true
+        isSecureField: true,
+        backgroundColor: .white
       )
     }
   }
@@ -68,7 +77,8 @@ extension ResetPasswordScreen {
         isFocused: .constant(true),
         isValidField: $viewModel.isConfirmPassValid,
         isShow: $isShowingConfirmPass,
-        isSecureField: true
+        isSecureField: true,
+        backgroundColor: .white
       )
     }
   }
@@ -86,7 +96,6 @@ extension ResetPasswordScreen {
         }
       )
     }
-    .disabled(!viewModel.isConfirmPassValid)
   }
   
 }

@@ -15,7 +15,11 @@ protocol ForgotPasswordViewModeling: ObservableObject {
   var isCodeValid: Bool { get set }
   var isEmailValid: Bool { get set }
   var actualCode: String { get set }
+  var isShowMessage: Bool { get set }
+  var isSuccessMessage: Bool { get set }
+  var toastMessage: String { get set }
   
   func getCode()
+  func checkCode(complition: @escaping () -> ())
   
 }

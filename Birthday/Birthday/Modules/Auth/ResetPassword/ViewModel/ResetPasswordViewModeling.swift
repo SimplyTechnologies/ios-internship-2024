@@ -14,6 +14,9 @@ protocol ResetPasswordViewModeling: ObservableObject {
   var confirmPassword: String { get set }
   var isPasswordValid: Bool { get set }
   var isConfirmPassValid: Bool { get set }
+  var isShowMessage: Bool { get set }
+  var isSuccessMessage: Bool { get set }
+  var toastMessage: String { get set }
   
   func changePassword(navigationAction: @escaping () -> ())
   

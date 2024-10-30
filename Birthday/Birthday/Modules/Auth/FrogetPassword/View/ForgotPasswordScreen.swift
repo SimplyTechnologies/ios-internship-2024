@@ -11,10 +11,19 @@ struct ForgotPasswordScreen<T: ForgotPasswordViewModeling>: View {
   
   @StateObject var viewModel: T
   @EnvironmentObject var router: NavigationRouter
+  @EnvironmentObject var appState: AppState
+  
   
   var body: some View {
     content
       .navigationBarBackButtonHidden(true)
+      .onChange(of: viewModel.isShowMessage) { isShow in
+        appState.isShowMessage = isShow
+        if isShow {
+          appState.isSuccessMessage = viewModel.isSuccessMessage
+          appState.message = viewModel.toastMessage
+        }
+      }
   }
   
 }
@@ -23,18 +32,23 @@ extension ForgotPasswordScreen {
   
   private var content: some View {
     VStack {
-      emailField
-        .padding(.bottom, 40)
-      getCodeButton
-      Spacer()
-      if !viewModel.actualCode.isEmpty {
-        passwordCode
-        Spacer()
-        setPasswordButton
+      NavigationBar {
+        router.pop()
       }
+      VStack {
+        emailField
+          .padding(.bottom, 40)
+        getCodeButton
+        Spacer()
+        if !viewModel.actualCode.isEmpty {
+          passwordCode
+          Spacer()
+          setPasswordButton
+        }
+      }
+      .padding(.top, 20)
+      .padding(.horizontal, 60)
     }
-    .padding(.horizontal, 60)
-    .padding(.top, 100)
     .background(Color.lightPink)
   }
   
@@ -47,7 +61,8 @@ extension ForgotPasswordScreen {
         text: $viewModel.email,
         isFocused: .constant(true),
         isValidField: $viewModel.isEmailValid,
-        placeholderText: "example@gmail.com"
+        placeholderText: "example@gmail.com",
+        backgroundColor: .white
       )
       .textInputAutocapitalization(.never)
     }
@@ -75,8 +90,9 @@ extension ForgotPasswordScreen {
         isFocused: .constant(true),
         isValidField: $viewModel.isCodeValid
       )
+      .karmaFont(style: .bold26)
       .keyboardType(.numberPad)
-      .frame(width: 80)
+      .frame(width: 120)
       .padding(.horizontal, 70)
       .padding(.bottom, 20)
     }
@@ -88,13 +104,14 @@ extension ForgotPasswordScreen {
     RoundedButton(
       name: String.Auth.setNewPassword
     ) {
-      router.push(
-        LandingScreen.Screen.resetPassword(
-          code: viewModel.passwordCode
+      viewModel.checkCode {
+        router.push(
+          LandingScreen.Screen.resetPassword(
+            code: viewModel.passwordCode
+          )
         )
-      )
+      }
     }
-    .disabled(!viewModel.isCodeValid)
     .foregroundStyle(Color.bubblegumPink)
   }
   

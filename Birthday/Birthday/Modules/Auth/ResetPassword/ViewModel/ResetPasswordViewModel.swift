@@ -10,6 +10,9 @@ import Combine
 
 final class ResetPasswordViewModel: ResetPasswordViewModeling {
   
+  @Published var isShowMessage: Bool = false
+  @Published var isSuccessMessage: Bool = false
+  @Published var toastMessage: String = ""
   @Published var isLoading: Bool = false
   @Published var isPasswordValid: Bool = false
   @Published var isConfirmPassValid: Bool = false
@@ -29,6 +32,7 @@ final class ResetPasswordViewModel: ResetPasswordViewModeling {
   
   func changePassword(navigationAction: @escaping () -> ()) {
     isLoading = true
+    isShowMessage = false
     let payload = ResetPasswordPayload(
       code: passwordCode,
       password: password, confirmPassword: confirmPassword
@@ -39,10 +43,12 @@ final class ResetPasswordViewModel: ResetPasswordViewModeling {
         switch result {
         case .failure(let error):
           Console.log(error)
+          self?.showToast(message: error.localizedDescription, isSuccess: false)
         default: break
         }
-      } receiveValue: { isChanged in
+      } receiveValue: { [weak self] isChanged in
         if isChanged {
+          self?.showToast(message: String.Toast.change, isSuccess: true)
           navigationAction()
         }
       }
@@ -63,6 +69,12 @@ final class ResetPasswordViewModel: ResetPasswordViewModeling {
         $0.isValidPassword && $0 == self.password
       }
       .assign(to: &$isConfirmPassValid)
+  }
+  
+  private func showToast(message: String, isSuccess: Bool) {
+    toastMessage = message
+    isSuccessMessage = isSuccess
+    isShowMessage = true
   }
   
 }
