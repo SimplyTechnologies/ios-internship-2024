@@ -1,5 +1,5 @@
 {
-  "originHash" : "e058fd7505b23b74eb95fd0fbfb861fa0acb863bd6fcbf29c222a39d96a9a710",
+  "originHash" : "7a15e3d0f9e280bc40f28508f901cb05e9fe3d4b1ec41b42c366039fb18ad9d5",
   "pins" : [
     {
       "identity" : "apollo-ios",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "7122421c2ba9ce2d252943cef055c74ef56ea431",
         "version" : "1.15.2"
+      }
+    },
+    {
+      "identity" : "pulse",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Pulse",
+      "state" : {
+        "revision" : "c102aaa266ac69a26d08ee6861da710283988e3b",
+        "version" : "5.1.2"
       }
     },
     {
