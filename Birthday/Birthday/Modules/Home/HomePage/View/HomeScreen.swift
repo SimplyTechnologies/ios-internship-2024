@@ -55,8 +55,7 @@ extension HomeScreen {
                     guard let index = viewModel.birthdayData.firstIndex(where: { $0.id == birthday.id } ) else { return }
                     viewModel.birthdayData[index] = newBirthDay
                   }
-                ),
-                birthday: birthday
+                )
               )
             )
           } label: {

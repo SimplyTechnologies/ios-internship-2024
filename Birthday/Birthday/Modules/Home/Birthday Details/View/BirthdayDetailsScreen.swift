@@ -231,7 +231,13 @@ extension BirthdayDetailsScreen {
   
   private var findGiftButton: some View {
     Button {
-      //MARK: - implement find gift
+      router.push(
+        TabBarView.HomeScreens.shops(
+          viewModel: ShopViewModel(
+            shopRepository: ShopDefaultRepository()
+          )
+        )
+      )
     } label: {
       Text(String.Birthday.gift)
         .padding(.vertical, 8)
