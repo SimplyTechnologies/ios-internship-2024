@@ -57,7 +57,7 @@
 "shop_address" = "Address:";
 "shop_website" = "Web Site";
 
-//Add
+// Add
 
 "add_event" = "Add to Calendar";
 
@@ -69,3 +69,7 @@
 "auth_repeat_password" = "Repeat New Password";
 "auth_done" = "Done";
 "auth_forgot" = "Forgot password?";
+
+// Toast
+
+"toast_register" = "You have successfully registered! 🎉";

@@ -32,6 +32,7 @@
 		CE02CA002CD033F600C091F0 /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = CE02C9FF2CD033F600C091F0 /* PulseUI */; };
 		CE02CA022CD03AC100C091F0 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02CA012CD03AC100C091F0 /* UIDevice+Ext.swift */; };
 		CE02CA042CD03B2900C091F0 /* DeviceShakeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02CA032CD03B2900C091F0 /* DeviceShakeViewModifier.swift */; };
+		CE02CA092CD0D99E00C091F0 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02CA082CD0D99E00C091F0 /* ToastView.swift */; };
 		CE02CA0B2CD1391D00C091F0 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02CA0A2CD1391D00C091F0 /* ProfileButton.swift */; };
 		CE2DAEC92CCBA54400D5D591 /* UpdateBirthdayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2DAEC82CCBA54400D5D591 /* UpdateBirthdayMutation.graphql */; };
 		CE2DAECB2CCBA5A800D5D591 /* DeleteBirthDayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE2DAECA2CCBA5A800D5D591 /* DeleteBirthDayMutation.graphql */; };
@@ -92,6 +93,7 @@
 		CEDC8A202CD241A700CA0ACF /* RemoveShopFromFavorite.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A172CD241A700CA0ACF /* RemoveShopFromFavorite.graphql */; };
 		CEDC8A212CD241A700CA0ACF /* AddShopToFavorite.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A132CD241A700CA0ACF /* AddShopToFavorite.graphql */; };
 		CEDC8A222CD241A700CA0ACF /* SignUp.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A192CD241A700CA0ACF /* SignUp.graphql */; };
+		CEDC8A282CD2710100CA0ACF /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = CEDC8A272CD2710100CA0ACF /* PopupView */; };
 		E7BD1C662CC7CD1700EC70FE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */; };
 		E7BD1C692CC7CD4800EC70FE /* SignInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C682CC7CD4800EC70FE /* SignInScreen.swift */; };
 		F30266972CD10C25008214FC /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30266962CD10C25008214FC /* ForgotPasswordScreen.swift */; };
@@ -172,6 +174,7 @@
 		CE02C9F82CD02C0A00C091F0 /* RegistrationViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModeling.swift; sourceTree = "<group>"; };
 		CE02CA012CD03AC100C091F0 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		CE02CA032CD03B2900C091F0 /* DeviceShakeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceShakeViewModifier.swift; sourceTree = "<group>"; };
+		CE02CA082CD0D99E00C091F0 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		CE02CA0A2CD1391D00C091F0 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		CE2DAEC82CCBA54400D5D591 /* UpdateBirthdayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdateBirthdayMutation.graphql; sourceTree = "<group>"; };
 		CE2DAECA2CCBA5A800D5D591 /* DeleteBirthDayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = DeleteBirthDayMutation.graphql; sourceTree = "<group>"; };
@@ -293,6 +296,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEDC8A282CD2710100CA0ACF /* PopupView in Frameworks */,
 				F3C8CB7B2CC68E90002DE72A /* ApolloAPI in Frameworks */,
 				F3C8CB7D2CC68E90002DE72A /* ApolloSQLite in Frameworks */,
 				CE02C9FC2CD033F600C091F0 /* Pulse in Frameworks */,
@@ -520,6 +524,7 @@
 				CE42AB282CCB7A870057ECFB /* CircularImage.swift */,
 				CE42AB2F2CCB8C9A0057ECFB /* RatingView.swift */,
 				F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */,
+				CE02CA082CD0D99E00C091F0 /* ToastView.swift */,
 				CE02CA0A2CD1391D00C091F0 /* ProfileButton.swift */,
 			);
 			path = SubViews;
@@ -1112,6 +1117,7 @@
 				CE02C9FB2CD033F600C091F0 /* Pulse */,
 				CE02C9FD2CD033F600C091F0 /* PulseProxy */,
 				CE02C9FF2CD033F600C091F0 /* PulseUI */,
+				CEDC8A272CD2710100CA0ACF /* PopupView */,
 			);
 			productName = Birthday;
 			productReference = F3C8CB3B2CC658C6002DE72A /* Birthday.app */;
@@ -1146,6 +1152,7 @@
 				F3C8CB6D2CC67A03002DE72A /* XCLocalSwiftPackageReference "BirthDayAPI" */,
 				F3C8CB772CC68E90002DE72A /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				CE02C9FA2CD033F600C091F0 /* XCRemoteSwiftPackageReference "Pulse" */,
+				CEDC8A262CD2710100CA0ACF /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = F3C8CB3C2CC658C6002DE72A /* Products */;
 			projectDirPath = "";
@@ -1260,6 +1267,7 @@
 				F3C8CBF02CC7B3F0002DE72A /* HomeViewModeling.swift in Sources */,
 				CE42AB302CCB8C9A0057ECFB /* RatingView.swift in Sources */,
 				CE42AAFF2CCA12790057ECFB /* ViewDidLoadModifier.swift in Sources */,
+				CE02CA092CD0D99E00C091F0 /* ToastView.swift in Sources */,
 				CE42AB1C2CCA703C0057ECFB /* SearchBar.swift in Sources */,
 				F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */,
 				CE02C9F32CD024C700C091F0 /* AppEnvironment.swift in Sources */,
@@ -1556,6 +1564,14 @@
 				minimumVersion = 5.1.2;
 			};
 		};
+		CEDC8A262CD2710100CA0ACF /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView?tab=readme-ov-file";
+			requirement = {
+				kind = exactVersion;
+				version = 3.1.0;
+			};
+		};
 		F3C8CB772CC68E90002DE72A /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios";
@@ -1581,6 +1597,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE02C9FA2CD033F600C091F0 /* XCRemoteSwiftPackageReference "Pulse" */;
 			productName = PulseUI;
+		};
+		CEDC8A272CD2710100CA0ACF /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDC8A262CD2710100CA0ACF /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
 		};
 		F3C8CB6E2CC67A03002DE72A /* BirthDayAPI */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SignInScreen: View {
+struct SignInScreen<T: SignInViewModeling>: View {
   
   private enum Field: Int, CaseIterable {
     case email, password
@@ -15,7 +15,7 @@ struct SignInScreen: View {
   
   @EnvironmentObject var appState: AppState
   @EnvironmentObject var router: NavigationRouter
-  @StateObject var viewModel: SignInViewModel
+  @StateObject var viewModel: T
   @FocusState private var focusedField: Field?
   
   var body: some View {

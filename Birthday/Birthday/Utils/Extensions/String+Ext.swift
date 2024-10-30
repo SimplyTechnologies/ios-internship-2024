@@ -114,6 +114,11 @@ extension String {
     
   }
   
+  enum Toast {
+    
+    static var register: String { "toast_register".localized }
+
+}
   enum Auth {
     
     static var code: String { "auth_code".localized }
