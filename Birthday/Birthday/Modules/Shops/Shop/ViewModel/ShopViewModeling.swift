@@ -15,6 +15,8 @@ protocol ShopViewModeling: ObservableObject {
   var isFocused: Bool { get set }
   var searchText: String { get set }
   
+  var id: UUID { get set }
+  
   func getShops()
   func toggleFavorite(shop: Shop)
   

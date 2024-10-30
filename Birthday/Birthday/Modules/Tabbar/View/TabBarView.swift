@@ -45,8 +45,10 @@ extension TabBarView {
       )
       .navigationDestination(for: HomeScreens.self) { screen in
         switch screen {
-        case .details(let viewModel, let birthday):
+        case .details(let viewModel):
           BirthdayDetailsScreen(viewModel: viewModel)
+        case .shops(viewModel: let viewModel):
+          ShopScreen(viewModel: viewModel)
         }
       }
     }
@@ -112,11 +114,14 @@ extension TabBarView {
   
   enum HomeScreens: Hashable {
     
-    case details(viewModel: BirthdayDetailsViewModel, birthday: BirthdayModel)
+    case details(viewModel: BirthdayDetailsViewModel)
+    case shops(viewModel: ShopViewModel)
     
     var id: UUID {
       switch self {
-      case let .details(viewModel, _): viewModel.id
+      case let .details(viewModel): viewModel.id
+      case let .shops(viewModel): viewModel.id
+
       }
     }
     
@@ -126,8 +131,11 @@ extension TabBarView {
     
     func hash(into hasher: inout Hasher) {
       switch self {
-      case let .details(viewModel, _):
+      case let .details(viewModel):
         hasher.combine(viewModel.id)
+      case let .shops(viewModel):
+        hasher.combine(viewModel.id)
+
       }
     }
     

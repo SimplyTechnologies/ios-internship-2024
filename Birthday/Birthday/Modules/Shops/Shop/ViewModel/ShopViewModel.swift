@@ -9,18 +9,21 @@ import Combine
 import SwiftUI
 
 final class ShopViewModel: ShopViewModeling {
-  
+    
   @Published var isLoading: Bool = false
   @Published var shops: [Shop] = []
   @Published var filteredShops: [Shop] = []
   @Published var isFocused: Bool = false
   @Published var searchText: String = ""
   
+  var id: UUID
+  
   private let shopRepository: ShopRepository
   private var cancellables = Set<AnyCancellable>()
   
   init(shopRepository: ShopRepository) {
     self.shopRepository = shopRepository
+    self.id = UUID()
     
     $shops
       .sink { [weak self] shops in
