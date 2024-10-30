@@ -9,6 +9,7 @@ import PhotosUI
 import SwiftUI
 
 struct EditAccountScreen<T: EditAccountViewModeling>: View {
+  
   private enum Field: Int, CaseIterable {
     case name, surname
   }
@@ -85,6 +86,7 @@ struct EditAccountScreen<T: EditAccountViewModeling>: View {
       viewModel.isSurnameFocused = true
     }
   }
+  
 }
 
 extension EditAccountScreen {

@@ -24,6 +24,7 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
       viewModel.getProfileData()
     }
   }
+  
 }
 
 extension ProfileScreen {
@@ -87,6 +88,7 @@ extension ProfileScreen {
         router.push(screen)
       }
   }
+  
 }
 
 #Preview {

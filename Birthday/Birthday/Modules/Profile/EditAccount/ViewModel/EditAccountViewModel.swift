@@ -16,8 +16,6 @@ final class EditAccountViewModel: EditAccountViewModeling {
   @Published var isLoading: Bool = false
   @Published var editAccountModel: EditAccountModel
   @Published var profileModel: ProfileModel = .init(firstName: "", lastName: "")
-  @Published var name: String = ""
-  @Published var surname: String = ""
   @Published var isNameFocused: Bool = false
   @Published var isSurnameFocused: Bool = false
   @Published var selectedPickerItem: PhotosPickerItem?
@@ -50,10 +48,12 @@ final class EditAccountViewModel: EditAccountViewModeling {
   
   func updateProfileData(completion: @escaping () -> Void) {
     isLoading = true
-    let image = profileModel.image ?? ""
+    let isSameImage = editAccountModel.image == profileModel.image
+    let image = !editAccountModel.image.isEmpty && isSameImage ? nil : profileModel.image
+    
     let input = UpdateProfileInput(
       firstName: profileModel.firstName.isEmpty ? nil : .some(profileModel.firstName),
-      image: image.isEmpty ? nil : .some(image),
+      image: image.isNil ? nil : .some(image ?? ""),
       lastName: profileModel.lastName.isEmpty ? nil : .some(profileModel.lastName)
     )
     
