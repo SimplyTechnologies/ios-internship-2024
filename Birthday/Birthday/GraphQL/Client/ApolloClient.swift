@@ -66,3 +66,29 @@ class CustomInterceptorProvider: InterceptorProvider {
   }
   
 }
+
+public extension URLSessionClient {
+  
+  override convenience init() {
+    let sessionConfiguration: URLSessionConfiguration = .default
+    let callbackQueue: OperationQueue? = .main
+    
+    #if DEBUG
+    let session: URLSessionProtocol = URLSessionProxy(configuration: sessionConfiguration)
+    #endif
+    
+    var urlSession: URLSession
+    if let session = session as? URLSessionProxy {
+      urlSession = session.session
+    } else  {
+      urlSession = URLSession(configuration: sessionConfiguration)
+    }
+    
+    self.init(
+      sessionConfiguration: urlSession.configuration,
+      callbackQueue: callbackQueue,
+      sessionDescription: urlSession.description
+    )
+  }
+  
+}
