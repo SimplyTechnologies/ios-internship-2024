@@ -25,7 +25,7 @@ extension HomeScreen {
   
   private var content: some View {
     VStack {
-      image
+      NavigationBar()
       if viewModel.isLoading {
         skeletonListView
       } else {
@@ -55,8 +55,7 @@ extension HomeScreen {
                     guard let index = viewModel.birthdayData.firstIndex(where: { $0.id == birthday.id } ) else { return }
                     viewModel.birthdayData[index] = newBirthDay
                   }
-                ),
-                birthday: birthday
+                )
               )
             )
           } label: {
@@ -84,10 +83,6 @@ extension HomeScreen {
       .padding(.horizontal, 24)
     }
     .scrollIndicators(.hidden)
-  }
-  
-  private var image: some View {
-    Image(.birth)
   }
   
 }

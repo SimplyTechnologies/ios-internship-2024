@@ -7,7 +7,8 @@
 
 import Foundation
 import Combine
-import _PhotosUI_SwiftUI
+import SwiftUI
+import PhotosUI
 
 final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
   
@@ -74,6 +75,5 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
       Console.log("Failed to convert image to data.")
     }
   }
-  
   
 }

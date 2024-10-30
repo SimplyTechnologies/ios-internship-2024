@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import _PhotosUI_SwiftUI
 
 final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   
@@ -14,6 +15,8 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   @Published var birthdayData: BirthdayModel
   @Published var isEditing: Bool = false
   @Published var isGeneratingMessage: Bool = false
+  @Published var selectedImage: UIImage?
+  @Published var selectedItem: PhotosPickerItem?
   
   private let homeRepository: HomeRepository
   private var cancelables = Set<AnyCancellable>()
@@ -56,6 +59,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
         }
       } receiveValue: { [weak self] update in
         guard let self else { return }
+        self.birthdayData.image = update.image
         self.updateAction(self.birthdayData)
       }
       .store(in: &cancelables)
@@ -77,6 +81,23 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
         complition()
       }
       .store(in: &cancelables)
+  }
+  
+  @MainActor
+  func convertImage(image: PhotosPickerItem?) async {
+      if let data = try? await image?.loadTransferable(type: Data.self),
+         let uiImage = UIImage(data: data) {
+        selectedImage = uiImage
+        let resizedImage = uiImage.resizeImage(targetSize: CGSize(width: 100, height: 100))
+        if let jpegData = resizedImage.jpegData(compressionQuality: 0.1) {
+          birthdayData.image = jpegData.base64EncodedString(options: .lineLength64Characters)
+          Console.log("Base64 string created successfully.")
+        } else {
+          Console.log("Failed to convert image to JPEG.")
+        }
+      } else {
+        Console.log("Failed to convert image to data.")
+      }
   }
   
 }

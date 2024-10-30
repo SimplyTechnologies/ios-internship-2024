@@ -156,7 +156,6 @@ extension SignInScreen {
     ) {
       viewModel.signIn {
         appState.isUserLogedIn = true
-        router.pop()
       }
     }
     .disabled(!viewModel.isValidForm)

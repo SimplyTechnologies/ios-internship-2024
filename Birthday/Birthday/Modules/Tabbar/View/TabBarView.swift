@@ -11,6 +11,7 @@ struct TabBarView: View {
   
   @StateObject private var homeRouter = NavigationRouter("Home")
   @StateObject private var shopRouter = NavigationRouter("Shop")
+  @StateObject private var profileRouter = NavigationRouter("Profile")
   
   @State var selectedTab: TabModel = .home
   
@@ -45,8 +46,10 @@ extension TabBarView {
       )
       .navigationDestination(for: HomeScreens.self) { screen in
         switch screen {
-        case .details(let viewModel, let birthday):
+        case .details(let viewModel):
           BirthdayDetailsScreen(viewModel: viewModel)
+        case .shops(viewModel: let viewModel):
+          ShopScreen(viewModel: viewModel)
         }
       }
     }
@@ -87,9 +90,22 @@ extension TabBarView {
   }
   
   private var profileTab: some View {
-    NavigationStack {
-      ProfileScreen()
+    NavigationStack(path: $profileRouter.path) {
+      ProfileScreen(viewModel: ProfileViewModel(profileRepository: ProfileDefaultRepository()))
+        .navigationDestination(for: ProfileScreens.self) { screen in
+          switch screen {
+          case let .editProfile(viewModel: viewModel, profileModel, doneAction):
+            EditAccountScreen<EditAccountViewModel>(
+              viewModel: viewModel,
+              model: profileModel) {
+                doneAction()
+              }
+          case let .changePassword(viewModel):
+            ChangePasswordScreen(viewModel: viewModel)
+          }
+        }
     }
+    .environmentObject(profileRouter)
     .tabItem { TabCellView(model: .profile) }
     .tag(TabModel.profile)
   }
@@ -112,11 +128,13 @@ extension TabBarView {
   
   enum HomeScreens: Hashable {
     
-    case details(viewModel: BirthdayDetailsViewModel, birthday: BirthdayModel)
+    case details(viewModel: BirthdayDetailsViewModel)
+    case shops(viewModel: ShopViewModel)
     
     var id: UUID {
       switch self {
-      case let .details(viewModel, _): viewModel.id
+      case let .details(viewModel): viewModel.id
+      case let .shops(viewModel): viewModel.id
       }
     }
     
@@ -125,10 +143,7 @@ extension TabBarView {
     }
     
     func hash(into hasher: inout Hasher) {
-      switch self {
-      case let .details(viewModel, _):
-        hasher.combine(viewModel.id)
-      }
+      hasher.combine(id)
     }
     
   }
@@ -154,6 +169,37 @@ extension TabBarView {
     func hash(into hasher: inout Hasher) {
       switch self {
       case let .details(viewModel):
+        hasher.combine(viewModel.id)
+      }
+    }
+    
+  }
+  
+}
+
+extension TabBarView {
+  
+  enum ProfileScreens: Hashable {
+    
+    case editProfile(viewModel: EditAccountViewModel, profileModel: ProfileModel, doneAction: () -> Void)
+    case changePassword(viewModel: ChangePasswordViewModel)
+    
+    var id: UUID {
+      switch self {
+      case let .editProfile(viewModel, _, _): viewModel.id
+      case let .changePassword(viewModel): viewModel.id
+      }
+    }
+    
+    static func == (lhs: TabBarView.ProfileScreens, rhs: TabBarView.ProfileScreens) -> Bool {
+      lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+      switch self {
+      case let .editProfile(viewModel, _, _):
+        hasher.combine(viewModel.id)
+      case let .changePassword(viewModel):
         hasher.combine(viewModel.id)
       }
     }

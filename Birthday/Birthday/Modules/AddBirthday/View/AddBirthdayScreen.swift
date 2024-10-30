@@ -22,7 +22,7 @@ extension AddBirthdayScreen {
   
   private var content: some View {
     VStack {
-      label
+      NavigationBar()
       ScrollView {
         image
         editView
@@ -31,11 +31,6 @@ extension AddBirthdayScreen {
     }
     .padding(.horizontal, 24)
     .background(Color.lightPink)
-  }
-  
-  private var label: some View {
-    Image(.birth)
-      .frame(maxWidth: .infinity, alignment: .trailing)
   }
   
   private var image: some View {
@@ -74,5 +69,3 @@ extension AddBirthdayScreen {
   }
   
 }
-
-
