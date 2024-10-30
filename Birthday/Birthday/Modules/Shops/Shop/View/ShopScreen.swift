@@ -26,7 +26,7 @@ extension ShopScreen {
   
   private var content: some View {
     VStack(spacing: 0) {
-      Image(.birth)
+      NavigationBar()
       Spacer()
         .frame(height: 22)
       searchBar

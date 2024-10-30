@@ -11,6 +11,7 @@ struct TabBarView: View {
   
   @StateObject private var homeRouter = NavigationRouter("Home")
   @StateObject private var shopRouter = NavigationRouter("Shop")
+  @StateObject private var profileRouter = NavigationRouter("Profile")
   
   @State var selectedTab: TabModel = .home
   
@@ -45,7 +46,7 @@ extension TabBarView {
       )
       .navigationDestination(for: HomeScreens.self) { screen in
         switch screen {
-        case .details(let viewModel, let birthday):
+        case .details(let viewModel, _):
           BirthdayDetailsScreen(viewModel: viewModel)
         }
       }
@@ -87,9 +88,21 @@ extension TabBarView {
   }
   
   private var profileTab: some View {
-    NavigationStack {
-      ProfileScreen()
+    NavigationStack(path: $profileRouter.path) {
+      ProfileScreen(viewModel: ProfileViewModel(profileRepository: ProfileDefaultRepository()))
+        .navigationDestination(for: ProfileScreens.self) { screen in
+          switch screen {
+          case let .editProfile(viewModel: viewModel, profileModel, doneAction):
+            EditAccountScreen<EditAccountViewModel>(
+              viewModel: viewModel,
+              model: profileModel) {
+                doneAction()
+              }
+          case .changePassword: Text("Change password")
+          }
+        }
     }
+    .environmentObject(profileRouter)
     .tabItem { TabCellView(model: .profile) }
     .tag(TabModel.profile)
   }
@@ -155,6 +168,36 @@ extension TabBarView {
       switch self {
       case let .details(viewModel):
         hasher.combine(viewModel.id)
+      }
+    }
+    
+  }
+  
+}
+
+extension TabBarView {
+  
+  enum ProfileScreens: Hashable {
+    
+    case editProfile(viewModel: EditAccountViewModel, profileModel: ProfileModel, doneAction: () -> Void)
+    case changePassword
+    
+    var id: UUID {
+      switch self {
+      case let .editProfile(viewModel, _, _): viewModel.id
+      case .changePassword: UUID()
+      }
+    }
+    
+    static func == (lhs: TabBarView.ProfileScreens, rhs: TabBarView.ProfileScreens) -> Bool {
+      lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+      switch self {
+      case let .editProfile(viewModel, _, _):
+        hasher.combine(viewModel.id)
+      case .changePassword: hasher.combine(UUID())
       }
     }
     

@@ -50,18 +50,13 @@ extension LandingScreen {
   
   private var enterance: some View {
     VStack(spacing: 0) {
-      logo
+      NavigationBar()
       VStack(spacing: 8) {
         signInButton
         registerButton
       }
       .padding(.vertical, 50)
     }
-  }
-
-  private var logo: some View {
-    Image(.birth)
-      .imageScale(.large)
   }
 
   private var signInButton: some View {
