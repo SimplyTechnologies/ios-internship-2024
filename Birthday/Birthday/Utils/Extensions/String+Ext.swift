@@ -107,4 +107,16 @@ extension String {
     
   }
   
+  enum Auth {
+    
+    static var code: String { "auth_code".localized }
+    static var passwordCode: String { "auth_password_code".localized }
+    static var setNewPassword: String { "auth_set_password".localized }
+    static var newPassword: String { "auth_new_password".localized }
+    static var repeatPassword: String { "auth_repeat_password".localized }
+    static var done: String { "auth_done".localized }
+    static var forgot: String { "auth_forgot".localized }
+    
+  }
+  
 }
