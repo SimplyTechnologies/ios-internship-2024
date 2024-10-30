@@ -26,7 +26,7 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
     setupEmailValidation()
   }
   
-  func askForCode() {
+  func getCode() {
     isLoading = true
     forgotPasswordRepository.getCode(email: email)
       .sink { [weak self] result in

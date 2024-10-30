@@ -16,6 +16,6 @@ protocol ForgotPasswordViewModeling: ObservableObject {
   var isEmailValid: Bool { get set }
   var actualCode: String { get set }
   
-  func askForCode()
+  func getCode()
   
 }

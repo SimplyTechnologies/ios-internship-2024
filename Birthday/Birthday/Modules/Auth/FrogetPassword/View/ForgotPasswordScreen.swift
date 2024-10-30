@@ -58,7 +58,7 @@ extension ForgotPasswordScreen {
       name: String.Auth.code,
       isLoading: viewModel.isLoading
     ) {
-      viewModel.askForCode()
+      viewModel.getCode()
     }
     .disabled(!viewModel.isEmailValid)
     .foregroundStyle(Color.bubblegumPink)

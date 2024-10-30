@@ -20,7 +20,6 @@ final class ResetPasswordViewModel: ResetPasswordViewModeling {
   private let passwordCode: String
   private var cancelables = Set<AnyCancellable>()
 
-  
   init(forgotPasswordRepository: ForgotPasswordRepository, passwordCode: String) {
     self.forgotPasswordRepository = forgotPasswordRepository
     self.passwordCode = passwordCode
