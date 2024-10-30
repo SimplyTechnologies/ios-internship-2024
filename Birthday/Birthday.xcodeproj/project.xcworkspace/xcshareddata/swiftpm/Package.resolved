@@ -1,5 +1,5 @@
 {
-  "originHash" : "e058fd7505b23b74eb95fd0fbfb861fa0acb863bd6fcbf29c222a39d96a9a710",
+  "originHash" : "3dd83378d2f1462f879266cb9daa1e65f7fec5fa919003b949d291647a4ec3f2",
   "pins" : [
     {
       "identity" : "apollo-ios",
@@ -11,12 +11,39 @@
       }
     },
     {
+      "identity" : "popupview?tab=readme-ov-file",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/PopupView?tab=readme-ov-file",
+      "state" : {
+        "revision" : "ecbb775e4a181930008edfcb9207f250663e2806",
+        "version" : "3.1.3"
+      }
+    },
+    {
+      "identity" : "pulse",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Pulse",
+      "state" : {
+        "revision" : "c102aaa266ac69a26d08ee6861da710283988e3b",
+        "version" : "5.1.2"
+      }
+    },
+    {
       "identity" : "sqlite.swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/stephencelis/SQLite.swift.git",
       "state" : {
         "revision" : "a95fc6df17d108bd99210db5e8a9bac90fe984b8",
         "version" : "0.15.3"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/swiftui-introspect",
+      "state" : {
+        "revision" : "807f73ce09a9b9723f12385e592b4e0aaebd3336",
+        "version" : "1.3.0"
       }
     }
   ],
