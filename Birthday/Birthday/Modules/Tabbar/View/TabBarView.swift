@@ -100,7 +100,8 @@ extension TabBarView {
               model: profileModel) {
                 doneAction()
               }
-          case .changePassword: Text("Change password")
+          case let .changePassword(viewModel):
+            ChangePasswordScreen(viewModel: viewModel)
           }
         }
     }
@@ -181,12 +182,12 @@ extension TabBarView {
   enum ProfileScreens: Hashable {
     
     case editProfile(viewModel: EditAccountViewModel, profileModel: ProfileModel, doneAction: () -> Void)
-    case changePassword
+    case changePassword(viewModel: ChangePasswordViewModel)
     
     var id: UUID {
       switch self {
       case let .editProfile(viewModel, _, _): viewModel.id
-      case .changePassword: UUID()
+      case let .changePassword(viewModel): viewModel.id
       }
     }
     
@@ -198,7 +199,8 @@ extension TabBarView {
       switch self {
       case let .editProfile(viewModel, _, _):
         hasher.combine(viewModel.id)
-      case .changePassword: hasher.combine(UUID())
+      case let .changePassword(viewModel):
+        hasher.combine(viewModel.id)
       }
     }
     
