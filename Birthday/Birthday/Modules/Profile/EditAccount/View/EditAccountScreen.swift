@@ -14,8 +14,9 @@ struct EditAccountScreen<T: EditAccountViewModeling>: View {
     case name, surname
   }
   
-  @EnvironmentObject var router: NavigationRouter
   @StateObject var viewModel: T
+  @EnvironmentObject var appState: AppState
+  @EnvironmentObject var router: NavigationRouter
   @FocusState private var focusedField: Field?
   @State private var scrollProxy: ScrollViewProxy? = nil
   
@@ -33,6 +34,21 @@ struct EditAccountScreen<T: EditAccountViewModeling>: View {
   }
   
   var body: some View {
+    content
+      .onChange(of: viewModel.isShowMessage) { isShow in
+        appState.isShowMessage = isShow
+        if isShow {
+          appState.isSuccessMessage = viewModel.isSuccessMessage
+          appState.message = viewModel.toastMessage
+        }
+      }
+  }
+  
+}
+
+extension EditAccountScreen {
+  
+  private var content: some View {
     VStack(spacing: 42) {
       NavigationBar {
         router.pop()
@@ -44,7 +60,7 @@ struct EditAccountScreen<T: EditAccountViewModeling>: View {
       }
       .padding(.horizontal, 60)
       Spacer()
-      buttonDone
+      doneButton
       Spacer()
         .frame(height: 40)
     }
@@ -87,10 +103,6 @@ struct EditAccountScreen<T: EditAccountViewModeling>: View {
     }
   }
   
-}
-
-extension EditAccountScreen {
-  
   private var profileImage: some View {
     ZStack {
       PhotosPicker(selection: $viewModel.selectedPickerItem, matching: .images) {
@@ -129,17 +141,18 @@ extension EditAccountScreen {
     .clipShape(Circle())
   }
   
-  private var buttonDone: some View {
+  private var doneButton: some View {
     RoundedButton(
       name: String.Button.done,
-      isLoading: viewModel.isLoading
+      isLoading: viewModel.isLoading,
+      isSecondary: true
     ) {
       viewModel.updateProfileData {
         doneAction()
         router.pop()
       }
     }
-    .disabled(!viewModel.isDoneEnabled)
+    .disabled(!viewModel.isDoneEnabled || viewModel.isLoading)
   }
   
 }

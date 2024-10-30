@@ -11,7 +11,7 @@ struct RoundedButtonStyle: ButtonStyle {
   
   @Environment(\.isEnabled) var isEnabled
   
-  let isLoading: Bool
+  private let isLoading: Bool
   
   init(_ isLoading: Bool) {
     self.isLoading = isLoading

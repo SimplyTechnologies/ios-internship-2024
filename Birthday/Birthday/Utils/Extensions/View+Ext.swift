@@ -48,7 +48,6 @@ extension View {
   
 }
 
-
 extension View {
   
   func skeletonEffect(
@@ -79,6 +78,18 @@ extension View {
   
   func onShake(perform action: @escaping () -> Void) -> some View {
     self.modifier(DeviceShakeViewModifier(action: action))
+  }
+  
+}
+
+extension View {
+  
+  @ViewBuilder func `if`<Content: View>(_ condition: @autoclosure () -> Bool, transform: (Self) -> Content) -> some View {
+    if condition() {
+      transform(self)
+    } else {
+      self
+    }
   }
   
 }

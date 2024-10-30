@@ -21,6 +21,9 @@ class SignInViewModel: SignInViewModeling {
   @Published var isShowPasswordField: Bool = false
   @Published var passwordErrorMessage: String = ""
   @Published var emailErrorMessage: String = ""
+  @Published var toastMessage: String = ""
+  @Published var isSuccessMessage: Bool = false
+  @Published var isShowMessage: Bool = false
   
   private let signInRepository: SignInRepository
   private var cancellables = Set<AnyCancellable>()
@@ -99,7 +102,7 @@ class SignInViewModel: SignInViewModeling {
           self?.isLoading = false
           switch result {
           case .failure(let error):
-            Console.log("❌ Error: \(error)")
+            Console.log("❌ Error: ", error)
           default: break
           }
         } receiveValue: { data in

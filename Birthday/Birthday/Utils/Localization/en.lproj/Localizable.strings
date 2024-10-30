@@ -64,3 +64,8 @@
 // Toast
 
 "toast_register" = "You have successfully registered! 🎉";
+"toast_change_password" = "Password successfully changed! 🎉";
+"toast_edit_profile" = "Profile info successfully updated! 🎉";
+"toast_create_birthday" = "BirthDay successfully created! 🎉";
+"toast_delete_birthday" = "BirthDay successfully deleted! 🎉";
+"toast_update_birthday" = "BirthDay successfully updated! 🎉";

@@ -36,7 +36,7 @@ extension RegistrationScreen {
   
   private var content: some View {
     ZStack {
-      Color.snow.ignoresSafeArea()
+      Color.lightPink.ignoresSafeArea()
       VStack(spacing: 0) {
         NavigationBar {
           router.pop()
@@ -244,7 +244,7 @@ extension RegistrationScreen {
         router.resetNavigation(with: [LandingScreen.Screen.signIn])
       }
     }
-    .disabled(!viewModel.isValidForm)
+    .disabled(!viewModel.isValidForm || viewModel.isLoading)
   }
   
   private func goUp() {

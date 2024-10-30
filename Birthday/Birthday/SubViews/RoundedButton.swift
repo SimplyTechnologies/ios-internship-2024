@@ -9,9 +9,22 @@ import SwiftUI
 
 struct RoundedButton: View {
     
-  let name: String
-  var isLoading: Bool = false
-  let action: () -> Void
+  private let name: String
+  private let isLoading: Bool
+  private let isSecondary: Bool
+  private let action: () -> Void
+  
+  init(
+    name: String,
+    isLoading: Bool = false,
+    isSecondary: Bool = false,
+    action: @escaping () -> Void
+  ) {
+    self.name = name
+    self.isLoading = isLoading
+    self.isSecondary = isSecondary
+    self.action = action
+  }
 
   var body: some View {
     Button {
@@ -19,7 +32,14 @@ struct RoundedButton: View {
     } label: {
       Text(name)
     }
-    .buttonStyle(RoundedButtonStyle(isLoading))
+    .if(!isSecondary) { view in
+      view
+        .buttonStyle(RoundedButtonStyle(isLoading))
+    }
+    .if(isSecondary) { view in
+      view
+        .buttonStyle(SecondaryRoundedButtonStyle(isLoading))
+    }
   }
   
 }

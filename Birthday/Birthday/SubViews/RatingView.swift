@@ -23,7 +23,7 @@ struct RatingView: View {
               ZStack(alignment: .leading) {
                 Rectangle()
                   .frame(width: width)
-                  .foregroundColor(.orangePeel)
+                  .foregroundStyle(.orangePeel)
               }
             }
           }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SignInViewModeling: ObservableObject {
+protocol SignInViewModeling: Toastable {
   
   var isLoading: Bool { get set }
   var email: String { get set }

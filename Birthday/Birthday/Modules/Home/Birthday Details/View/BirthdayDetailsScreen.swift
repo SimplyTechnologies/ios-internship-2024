@@ -11,7 +11,7 @@ import PhotosUI
 struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
   
   @StateObject var viewModel: T
-  
+  @EnvironmentObject var appState: AppState
   @EnvironmentObject var router: NavigationRouter
   
   var body: some View {
@@ -19,6 +19,13 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
       .background(Color.lightPink)
       .navigationBarBackButtonHidden(true)
       .customAlert(isPresented: $viewModel.isGeneratingMessage)
+      .onChange(of: viewModel.isShowMessage) { isShow in
+        appState.isShowMessage = isShow
+        if isShow {
+          appState.isSuccessMessage = viewModel.isSuccessMessage
+          appState.message = viewModel.toastMessage
+        }
+      }
   }
   
 }
@@ -93,7 +100,7 @@ extension BirthdayDetailsScreen {
           } else if phase.error != nil {
             Image(systemName: "person")
               .resizable()
-              .foregroundStyle(Color.darkRed)
+              .foregroundStyle(Color.rouge)
               .padding(12)
           } else {
             ProgressView()
@@ -103,12 +110,12 @@ extension BirthdayDetailsScreen {
       }  else {
         Image(systemName: "person")
           .resizable()
-          .foregroundStyle(Color.darkRed)
+          .foregroundStyle(Color.rouge)
           .padding(8)
       }
     }
     .frame(width: 100, height: 100)
-    .cornerRadius(50)
+    .clipShape(RoundedRectangle(cornerRadius: 50))
   }
   
   private var selectedImage: some View {
@@ -129,7 +136,7 @@ extension BirthdayDetailsScreen {
               image
                 .resizable()
                 .frame(width: 100, height: 100)
-                .cornerRadius(50)
+                .clipShape(RoundedRectangle(cornerRadius: 50))
             } else if phase.error != nil {
               Image(.addPicture)
                 .resizable()
@@ -173,7 +180,7 @@ extension BirthdayDetailsScreen {
         .foregroundStyle(Color.black)
         .background(Color.white)
         .karmaFont(style: .semiBold14)
-        .cornerRadius(8)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
   }
   
@@ -185,7 +192,7 @@ extension BirthdayDetailsScreen {
       Text(ZodiacSign.from(
         dateString: viewModel.birthdayData.date?.toFormattedDate() ?? "")?.rawValue ?? ""
       )
-      .foregroundStyle(Color.darkRed)
+      .foregroundStyle(Color.rouge)
       .karmaFont(style: .semiBold14)
     }
   }
@@ -220,10 +227,10 @@ extension BirthdayDetailsScreen {
       Text(String.Birthday.generate)
         .padding(.vertical, 8)
         .padding(.horizontal, 20)
-        .foregroundStyle(Color.darkRed)
+        .foregroundStyle(Color.rouge)
         .background(Color.bubblegumPink)
-        .karmaFont(style: .semiBold18)
-        .cornerRadius(16)
+        .karmaFont(style: .bold18)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
   }
   
@@ -241,9 +248,9 @@ extension BirthdayDetailsScreen {
         .padding(.vertical, 8)
         .padding(.horizontal, 20)
         .foregroundStyle(Color.bubblegumPink)
-        .background(Color.darkRed)
-        .karmaFont(style: .semiBold18)
-        .cornerRadius(16)
+        .background(Color.rouge)
+        .karmaFont(style: .bold18)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
   }
   
@@ -274,12 +281,8 @@ extension BirthdayDetailsScreen {
         updatedAt: "",
         userId: 1
       ),
-      deleteAction: {
-        print()
-      },
-      updateAction: { _ in
-        print()
-      }
+      deleteAction: { },
+      updateAction: { _ in }
     )
   )
 }

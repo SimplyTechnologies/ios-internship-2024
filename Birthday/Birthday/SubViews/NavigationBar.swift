@@ -32,7 +32,7 @@ struct NavigationBar: View {
     Button {
       backButtonAction?()
     } label: {
-      Image(.arrowBack)
+      Image(.back)
         .resizable()
         .frame(width: 16, height: 24)
     }

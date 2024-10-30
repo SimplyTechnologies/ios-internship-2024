@@ -11,9 +11,17 @@ import PhotosUI
 struct AddBirthdayScreen<T: CreateBirthdayViewModeling>: View {
   
   @StateObject var viewModel: T
+  @EnvironmentObject var appState: AppState
   
   var body: some View {
     content
+      .onChange(of: viewModel.isShowMessage) { isShow in
+        appState.isShowMessage = isShow
+        if isShow {
+          appState.isSuccessMessage = viewModel.isSuccessMessage
+          appState.message = viewModel.toastMessage
+        }
+      }
   }
   
 }

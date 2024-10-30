@@ -183,7 +183,7 @@ class RegistrationViewModel: RegistrationViewModeling {
           isLoading = false
           switch result {
           case .failure(let error):
-            Console.log("❌ Error: \(error)")
+            Console.log("❌ Error: ", error)
             showToast(message: error.localizedDescription, isSuccess: false)
           default: break
           }
@@ -230,12 +230,6 @@ class RegistrationViewModel: RegistrationViewModeling {
   private func validateRepeatPassword() {
     isSamePasswords = password == repeatPassword
     isValidRepeatPassword = repeatPassword.isValidPassword && isSamePasswords
-  }
-  
-  private func showToast(message: String, isSuccess: Bool) {
-    toastMessage = message
-    isSuccessMessage = isSuccess
-    isShowMessage = true
   }
   
 }
