@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
   
@@ -28,8 +29,13 @@ extension BirthdayDetailsScreen {
     VStack(spacing: 0) {
       header
       ScrollView {
-        image
-          .padding(.bottom, 12)
+        if viewModel.isEditing {
+          selectedImage
+            .padding(.bottom, 12)
+        } else {
+          image
+            .padding(.bottom, 12)
+        }
         if viewModel.isEditing {
           BirthDayEditCommonView(
             birthdayData: $viewModel.birthdayData,
@@ -78,22 +84,70 @@ extension BirthdayDetailsScreen {
   }
   
   private var image: some View {
-    AsyncImage(url:URL(string: viewModel.birthdayData.image ?? "") ) { phase in
-      if let image = phase.image {
-        image
-          .resizable()
-      } else if phase.error != nil {
+    ZStack {
+      if let image = viewModel.birthdayData.image {
+        AsyncImage(url:URL(string: image) ) { phase in
+          if let image = phase.image {
+            image
+              .resizable()
+          } else if phase.error != nil {
+            Image(systemName: "person")
+              .resizable()
+              .foregroundStyle(Color.darkRed)
+              .padding(12)
+          } else {
+            ProgressView()
+              .progressViewStyle(.circular)
+          }
+        }
+      }  else {
         Image(systemName: "person")
           .resizable()
           .foregroundStyle(Color.darkRed)
-          .padding(12)
-      } else {
-        ProgressView()
-          .progressViewStyle(.circular)
+          .padding(8)
       }
     }
     .frame(width: 100, height: 100)
     .cornerRadius(50)
+  }
+  
+  private var selectedImage: some View {
+    PhotosPicker(
+      selection: $viewModel.selectedItem,
+      matching: .images,
+      photoLibrary: .shared()
+    ) {
+      if let image = viewModel.selectedImage {
+        Image(uiImage: image)
+          .resizable()
+          .clipShape(Circle())
+          .frame(width: 100, height: 100)
+      } else {
+        if let image = viewModel.birthdayData.image {
+          AsyncImage(url:URL(string: image)) { phase in
+            if let image = phase.image {
+              image
+                .resizable()
+                .frame(width: 100, height: 100)
+                .cornerRadius(50)
+            } else if phase.error != nil {
+              Image(.addPicture)
+                .resizable()
+                .clipShape(Circle())
+                .frame(width: 100, height: 100)
+            } else {
+              ProgressView()
+                .progressViewStyle(.circular)
+            }
+          }
+        }
+      }
+    }
+    .onChange(of: viewModel.selectedItem) { newItem in
+      Task {
+        await viewModel.convertImage(image: newItem)
+      }
+    }
   }
   
   private var name: some View {
