@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import _PhotosUI_SwiftUI
 
 protocol BirthDayDetailsViewModeling: ObservableObject {
   
@@ -14,10 +15,13 @@ protocol BirthDayDetailsViewModeling: ObservableObject {
   var deleteAction: () -> () { get set }
   var updateAction: (BirthdayModel) -> () { get set}
   var birthdayData: BirthdayModel { get set }
+  var selectedImage: UIImage? { get set }
+  var selectedItem: PhotosPickerItem? { get set }
   var isEditing: Bool { get set }
   var isGeneratingMessage: Bool { get set }
   
   func updateBirthday()
   func deleteBirthDay(id: Int, complition: @escaping () -> ())
+  func convertImage(image: PhotosPickerItem?) async 
   
 }

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+  <key>NSBonjourServices</key>
+  <array>
+    <string>_pulse._tcp</string>
+  </array>
 	<key>NSCalendarsFullAccessUsageDescription</key>
 	<string>"This app needs access to your calendar to add scheduled events."</string>
 	<key>UIAppFonts</key>
@@ -12,5 +16,14 @@
 		<string>Karma-Regular.ttf</string>
 		<string>Karma-SemiBold.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>lightPink</string>
+		<key>UIImageName</key>
+		<string>birth</string>
+		<key>UILaunchScreen</key>
+		<dict/>
+	</dict>
 </dict>
 </plist>

@@ -20,7 +20,7 @@ struct EventEditViewController: UIViewControllerRepresentable {
   func makeUIViewController(context: Context) -> EKEventEditViewController {
     let controller = EKEventEditViewController()
     controller.eventStore = eventStore
-    var event = EKEvent(eventStore: eventStore)
+    let event = EKEvent(eventStore: eventStore)
     event.startDate = birthday.date?.toDate?.getNextOccurrence()
     event.endDate = birthday.date?.toDate?.getNextOccurrence()?.addingTimeInterval(TimeInterval(integerLiteral: 3600*24))
     event.title = "\(birthday.name ?? "")'s Birthday"

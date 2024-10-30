@@ -21,7 +21,10 @@ struct NavigationBar: View {
       Spacer()
       Image(.birth)
       Spacer()
-        .frame(width: 24)
+      if backButtonAction.isNotNil {
+        Spacer()
+          .frame(width: 24 + 38)
+      }
     }
   }
 
@@ -38,5 +41,5 @@ struct NavigationBar: View {
 }
 
 #Preview {
-  NavigationBar()
+  NavigationBar {}
 }

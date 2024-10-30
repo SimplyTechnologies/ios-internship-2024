@@ -18,6 +18,7 @@ struct ShopScreen<T: ShopViewModeling>: View {
       .onLoad {
         viewModel.getShops()
       }
+      .navigationBarBackButtonHidden(true)
   }
   
 }
@@ -26,7 +27,13 @@ extension ShopScreen {
   
   private var content: some View {
     VStack(spacing: 0) {
-      Image(.birth)
+      if router.path.count > 0 {
+        NavigationBar {
+          router.pop()
+        }
+      } else {
+        Image(.birth)
+      }
       Spacer()
         .frame(height: 22)
       searchBar
