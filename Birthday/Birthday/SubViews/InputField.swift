@@ -18,7 +18,7 @@ struct InputField: View {
   private let placeholderText: String
   private let isSecureField: Bool
   private let backgroundColor: Color
-  
+    
   init(
     text: Binding<String>,
     isFocused: Binding<Bool>,
@@ -120,15 +120,14 @@ struct InputField: View {
   
 }
 
-// MARK: - PREVIEW
-
 #Preview {
   InputField(
     text: .constant(""),
     isFocused: .constant(false),
     isValidField: .constant(true),
     placeholderText: "Input",
-    isSecureField: true
+    isSecureField: true,
+    backgroundColor: .white
   )
   .padding()
 }
