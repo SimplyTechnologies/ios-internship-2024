@@ -11,8 +11,8 @@ struct CircularImage<Placeholder: View>: View {
   
   var image: Image?
   let imagePath: String
-  var placeholderView: Placeholder?
-  var placeholderImage: Image = .init(systemName: "gift.circle")
+  private let placeholderView: Placeholder?
+  private let placeholderImage: Image
   var borderColor: Color = .spanishGray
   var borderWidth: CGFloat = 1
   var backgroundColor: Color = .clear
