@@ -21,10 +21,10 @@ struct ProfileModel: Codable, Hashable {
 
   init(
     email: String? = nil,
-    firstName: String,
+    firstName: String = "",
     id: Int? = nil,
     image: String? = nil,
-    lastName: String
+    lastName: String = ""
   ) {
     self.email = email
     self.firstName = firstName

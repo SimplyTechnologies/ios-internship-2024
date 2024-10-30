@@ -10,7 +10,7 @@ import SwiftUI
 import PhotosUI
 
 protocol EditAccountViewModeling: ObservableObject {
-  
+
   var id: UUID { get }
   var isLoading: Bool { get set }
   var editAccountModel: EditAccountModel { get set }
@@ -22,7 +22,6 @@ protocol EditAccountViewModeling: ObservableObject {
   var isDoneEnabled: Bool { get }
 
   func updateProfileData(completion: @escaping () -> Void)
-  
   func convertImage(image: PhotosPickerItem?) async
 
 }

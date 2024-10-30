@@ -26,4 +26,5 @@ struct EditAccountModel: Codable {
     self.image = dto.image ?? ""
     self.lastName = dto.lastName
   }
+
 }

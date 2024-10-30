@@ -13,13 +13,7 @@ final class ProfileViewModel: ProfileViewModeling {
   var id: UUID
   @Published var isLoading: Bool = false
   
-  @Published var profileData: ProfileModel = ProfileModel(
-    email: "",
-    firstName: "",
-    id: 0,
-    image: "",
-    lastName: ""
-  )
+  @Published var profileData: ProfileModel = ProfileModel()
   
   private var profileRepository: ProfileRepository
   private var cancelables = Set<AnyCancellable>()
