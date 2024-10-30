@@ -184,18 +184,14 @@ class RegistrationViewModel: RegistrationViewModeling {
           switch result {
           case .failure(let error):
             Console.log("❌ Error: \(error)")
-            toastMessage = error.localizedDescription
-            isSuccessMessage = false
-            isShowMessage = true
+            showToast(message: error.localizedDescription, isSuccess: false)
           default: break
           }
         } receiveValue: { [weak self] data in
           guard let self else { return }
           let user = User(dto: data.signUp)
           Console.log("User is : \(user)")
-          toastMessage = String.Toast.register
-          isSuccessMessage = true
-          isShowMessage = true
+          showToast(message: String.Toast.register, isSuccess: true)
           completion()
         }
         .store(in: &cancellables)
@@ -234,6 +230,12 @@ class RegistrationViewModel: RegistrationViewModeling {
   private func validateRepeatPassword() {
     isSamePasswords = password == repeatPassword
     isValidRepeatPassword = repeatPassword.isValidPassword && isSamePasswords
+  }
+  
+  private func showToast(message: String, isSuccess: Bool) {
+    toastMessage = message
+    isSuccessMessage = isSuccess
+    isShowMessage = true
   }
   
 }
