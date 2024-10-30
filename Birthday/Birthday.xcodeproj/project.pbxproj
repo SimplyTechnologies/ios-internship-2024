@@ -12,6 +12,7 @@
 		9393CDE72CC9174A00D8DEA1 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */; };
 		9393CDE92CC91F5D00D8DEA1 /* ProfileViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */; };
 		9393CDEF2CCA4BC200D8DEA1 /* EditAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDEE2CCA4BC200D8DEA1 /* EditAccountScreen.swift */; };
+		9393CE1D2CCA864500D8DEA1 /* MutationProfile.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */; };
 		9393CE432CCA872700D8DEA1 /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE422CCA872700D8DEA1 /* EditAccountModel.swift */; };
 		9393CE462CCA8BF500D8DEA1 /* EditAccountViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE452CCA8BF500D8DEA1 /* EditAccountViewModeling.swift */; };
 		9393CE482CCA8C2700D8DEA1 /* EditAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE472CCA8C2700D8DEA1 /* EditAccountViewModel.swift */; };
@@ -144,6 +145,7 @@
 		9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModeling.swift; sourceTree = "<group>"; };
 		9393CDEE2CCA4BC200D8DEA1 /* EditAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountScreen.swift; sourceTree = "<group>"; };
+		9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = MutationProfile.graphql; path = Birthday/GraphQL/Mutations/MutationProfile.graphql; sourceTree = SOURCE_ROOT; };
 		9393CE422CCA872700D8DEA1 /* EditAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountModel.swift; sourceTree = "<group>"; };
 		9393CE452CCA8BF500D8DEA1 /* EditAccountViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModeling.swift; sourceTree = "<group>"; };
 		9393CE472CCA8C2700D8DEA1 /* EditAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModel.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				CEDC8A182CD241A700CA0ACF /* SignIn.graphql */,
 				CEDC8A192CD241A700CA0ACF /* SignUp.graphql */,
 				CEDC8A1A2CD241A700CA0ACF /* UpdateBirthdayMutation.graphql */,
+				9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */,
 			);
 			path = Mutations;
 			sourceTree = "<group>";
@@ -1203,6 +1206,7 @@
 				CE02C9ED2CCFDCD900C091F0 /* SignInRepository.swift in Sources */,
 				9393CE462CCA8BF500D8DEA1 /* EditAccountViewModeling.swift in Sources */,
 				F3C8CBB42CC7845F002DE72A /* TabModel.swift in Sources */,
+				9393CE1D2CCA864500D8DEA1 /* MutationProfile.graphql in Sources */,
 				F3C8CB9B2CC6A5F2002DE72A /* BirthdayApp.swift in Sources */,
 				CE98D2EC2CC80BFB0017E477 /* NavigationRouter.swift in Sources */,
 				CE98D2DC2CC792E30017E477 /* RoundedButton.swift in Sources */,
@@ -1356,13 +1360,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = QAG24BGKCF;
+				DEVELOPMENT_TEAM = NQ25FKCD57;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -1391,13 +1394,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = QAG24BGKCF;
+				DEVELOPMENT_TEAM = NQ25FKCD57;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
