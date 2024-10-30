@@ -12,7 +12,6 @@
 		9393CDE72CC9174A00D8DEA1 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */; };
 		9393CDE92CC91F5D00D8DEA1 /* ProfileViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */; };
 		9393CDEF2CCA4BC200D8DEA1 /* EditAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDEE2CCA4BC200D8DEA1 /* EditAccountScreen.swift */; };
-		9393CE1D2CCA864500D8DEA1 /* MutationProfile.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */; };
 		9393CE432CCA872700D8DEA1 /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE422CCA872700D8DEA1 /* EditAccountModel.swift */; };
 		9393CE462CCA8BF500D8DEA1 /* EditAccountViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE452CCA8BF500D8DEA1 /* EditAccountViewModeling.swift */; };
 		9393CE482CCA8C2700D8DEA1 /* EditAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE472CCA8C2700D8DEA1 /* EditAccountViewModel.swift */; };
@@ -84,6 +83,14 @@
 		CE98D2F42CC8ED2D0017E477 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */; };
 		CE98D2F62CC936FC0017E477 /* RegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2F52CC936FC0017E477 /* RegistrationRepository.swift */; };
 		CE98D2FB2CC93B2D0017E477 /* SignUp.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE98D2FA2CC93B2D0017E477 /* SignUp.graphql */; };
+		CEDC8A1B2CD241A700CA0ACF /* ChangePassword.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A142CD241A700CA0ACF /* ChangePassword.graphql */; };
+		CEDC8A1C2CD241A700CA0ACF /* UpdateBirthdayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A1A2CD241A700CA0ACF /* UpdateBirthdayMutation.graphql */; };
+		CEDC8A1D2CD241A700CA0ACF /* DeleteBirthDayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A162CD241A700CA0ACF /* DeleteBirthDayMutation.graphql */; };
+		CEDC8A1E2CD241A700CA0ACF /* SignIn.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A182CD241A700CA0ACF /* SignIn.graphql */; };
+		CEDC8A1F2CD241A700CA0ACF /* CreateBirthdayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A152CD241A700CA0ACF /* CreateBirthdayMutation.graphql */; };
+		CEDC8A202CD241A700CA0ACF /* RemoveShopFromFavorite.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A172CD241A700CA0ACF /* RemoveShopFromFavorite.graphql */; };
+		CEDC8A212CD241A700CA0ACF /* AddShopToFavorite.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A132CD241A700CA0ACF /* AddShopToFavorite.graphql */; };
+		CEDC8A222CD241A700CA0ACF /* SignUp.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A192CD241A700CA0ACF /* SignUp.graphql */; };
 		E7BD1C662CC7CD1700EC70FE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */; };
 		E7BD1C692CC7CD4800EC70FE /* SignInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C682CC7CD4800EC70FE /* SignInScreen.swift */; };
 		F327AC232CC97FF90043A0EE /* BirthdayDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F327AC222CC97FF90043A0EE /* BirthdayDetailsScreen.swift */; };
@@ -137,7 +144,6 @@
 		9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModeling.swift; sourceTree = "<group>"; };
 		9393CDEE2CCA4BC200D8DEA1 /* EditAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountScreen.swift; sourceTree = "<group>"; };
-		9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = MutationProfile.graphql; path = Birthday/GraphQL/Mutations/MutationProfile.graphql; sourceTree = SOURCE_ROOT; };
 		9393CE422CCA872700D8DEA1 /* EditAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountModel.swift; sourceTree = "<group>"; };
 		9393CE452CCA8BF500D8DEA1 /* EditAccountViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModeling.swift; sourceTree = "<group>"; };
 		9393CE472CCA8C2700D8DEA1 /* EditAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModel.swift; sourceTree = "<group>"; };
@@ -206,6 +212,14 @@
 		CE98D2EE2CC80C7E0017E477 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		CE98D2F52CC936FC0017E477 /* RegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRepository.swift; sourceTree = "<group>"; };
 		CE98D2FA2CC93B2D0017E477 /* SignUp.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignUp.graphql; sourceTree = "<group>"; };
+		CEDC8A132CD241A700CA0ACF /* AddShopToFavorite.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AddShopToFavorite.graphql; sourceTree = "<group>"; };
+		CEDC8A142CD241A700CA0ACF /* ChangePassword.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangePassword.graphql; sourceTree = "<group>"; };
+		CEDC8A152CD241A700CA0ACF /* CreateBirthdayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CreateBirthdayMutation.graphql; sourceTree = "<group>"; };
+		CEDC8A162CD241A700CA0ACF /* DeleteBirthDayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = DeleteBirthDayMutation.graphql; sourceTree = "<group>"; };
+		CEDC8A172CD241A700CA0ACF /* RemoveShopFromFavorite.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = RemoveShopFromFavorite.graphql; sourceTree = "<group>"; };
+		CEDC8A182CD241A700CA0ACF /* SignIn.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignIn.graphql; sourceTree = "<group>"; };
+		CEDC8A192CD241A700CA0ACF /* SignUp.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignUp.graphql; sourceTree = "<group>"; };
+		CEDC8A1A2CD241A700CA0ACF /* UpdateBirthdayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdateBirthdayMutation.graphql; sourceTree = "<group>"; };
 		E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		E7BD1C682CC7CD4800EC70FE /* SignInScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInScreen.swift; sourceTree = "<group>"; };
 		F327AC222CC97FF90043A0EE /* BirthdayDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayDetailsScreen.swift; sourceTree = "<group>"; };
@@ -273,7 +287,14 @@
 		93343F532CCFBB4700ED7C2F /* Mutations */ = {
 			isa = PBXGroup;
 			children = (
-				9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */,
+				CEDC8A132CD241A700CA0ACF /* AddShopToFavorite.graphql */,
+				CEDC8A142CD241A700CA0ACF /* ChangePassword.graphql */,
+				CEDC8A152CD241A700CA0ACF /* CreateBirthdayMutation.graphql */,
+				CEDC8A162CD241A700CA0ACF /* DeleteBirthDayMutation.graphql */,
+				CEDC8A172CD241A700CA0ACF /* RemoveShopFromFavorite.graphql */,
+				CEDC8A182CD241A700CA0ACF /* SignIn.graphql */,
+				CEDC8A192CD241A700CA0ACF /* SignUp.graphql */,
+				CEDC8A1A2CD241A700CA0ACF /* UpdateBirthdayMutation.graphql */,
 			);
 			path = Mutations;
 			sourceTree = "<group>";
@@ -556,8 +577,6 @@
 				CE2DAEC82CCBA54400D5D591 /* UpdateBirthdayMutation.graphql */,
 				CE2DAECA2CCBA5A800D5D591 /* DeleteBirthDayMutation.graphql */,
 				F3FDEB9B2CCC3E850073BFED /* CreateBirthdayMutation.graphql */,
-				CE2DAECE2CCBBDB900D5D591 /* AddShopToFavorite.graphql */,
-				CE2DAED02CCBC13A00D5D591 /* RemoveShopFromFavorite.graphql */,
 				CE02C9EE2CCFDD4100C091F0 /* SignIn.graphql */,
 				CE2DAECE2CCBBDB900D5D591 /* AddShopToFavorite.graphql */,
 				CE2DAED02CCBC13A00D5D591 /* RemoveShopFromFavorite.graphql */,
@@ -1066,6 +1085,14 @@
 				CE2DAECF2CCBBDB900D5D591 /* AddShopToFavorite.graphql in Resources */,
 				F3FDEB9C2CCC3E850073BFED /* CreateBirthdayMutation.graphql in Resources */,
 				CE42AB182CCA64BC0057ECFB /* GetShops.graphql in Resources */,
+				CEDC8A1B2CD241A700CA0ACF /* ChangePassword.graphql in Resources */,
+				CEDC8A1C2CD241A700CA0ACF /* UpdateBirthdayMutation.graphql in Resources */,
+				CEDC8A1D2CD241A700CA0ACF /* DeleteBirthDayMutation.graphql in Resources */,
+				CEDC8A1E2CD241A700CA0ACF /* SignIn.graphql in Resources */,
+				CEDC8A1F2CD241A700CA0ACF /* CreateBirthdayMutation.graphql in Resources */,
+				CEDC8A202CD241A700CA0ACF /* RemoveShopFromFavorite.graphql in Resources */,
+				CEDC8A212CD241A700CA0ACF /* AddShopToFavorite.graphql in Resources */,
+				CEDC8A222CD241A700CA0ACF /* SignUp.graphql in Resources */,
 				F3C8CBAC2CC6A61D002DE72A /* Assets.xcassets in Resources */,
 				CE56BDB52CCF731100F7DC9A /* ChangePassword.graphql in Resources */,
 				F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */,
@@ -1176,7 +1203,6 @@
 				CE02C9ED2CCFDCD900C091F0 /* SignInRepository.swift in Sources */,
 				9393CE462CCA8BF500D8DEA1 /* EditAccountViewModeling.swift in Sources */,
 				F3C8CBB42CC7845F002DE72A /* TabModel.swift in Sources */,
-				9393CE1D2CCA864500D8DEA1 /* MutationProfile.graphql in Sources */,
 				F3C8CB9B2CC6A5F2002DE72A /* BirthdayApp.swift in Sources */,
 				CE98D2EC2CC80BFB0017E477 /* NavigationRouter.swift in Sources */,
 				CE98D2DC2CC792E30017E477 /* RoundedButton.swift in Sources */,

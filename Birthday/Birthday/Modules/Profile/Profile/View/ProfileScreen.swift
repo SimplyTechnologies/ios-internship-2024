@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileScreen<T: ProfileViewModeling>: View {
   
+  @EnvironmentObject var appState: AppState
   @EnvironmentObject var router: NavigationRouter
   @StateObject var viewModel: T
   
@@ -56,6 +57,8 @@ extension ProfileScreen {
   private var buttons: some View {
     VStack(spacing: 10) {
       editButton
+      changePasswordButton
+      signOutButton
     }
     .padding(.horizontal, 16)
   }
@@ -86,6 +89,27 @@ extension ProfileScreen {
           }
         
         router.push(screen)
+      }
+  }
+  
+  private var changePasswordButton: some View {
+      ProfileButton(
+        title: String.Button.changePassword
+      ) {
+        let viewModel = ChangePasswordViewModel(
+          changePasswordRepository: ChangePasswordDefaultRepository()
+        )
+        let screen = TabBarView.ProfileScreens.changePassword(viewModel: viewModel)
+        router.push(screen)
+      }
+  }
+  
+  private var signOutButton: some View {
+      ProfileButton(
+        title: String.Button.signOut
+      ) {
+        AppController.shared.logOut()
+        appState.isUserLogedIn = false
       }
   }
   

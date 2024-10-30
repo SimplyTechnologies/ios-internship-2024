@@ -150,9 +150,7 @@ extension BirthdayDetailsScreen {
     Button {
       guard let id = viewModel.birthdayData.id else { return }
       viewModel.deleteBirthDay(id: id) {
-        DispatchQueue.main.async {
-          router.pop()
-        }
+        router.pop()
       }
     } label: {
       Image(.delete)
