@@ -556,8 +556,6 @@
 				CE2DAEC82CCBA54400D5D591 /* UpdateBirthdayMutation.graphql */,
 				CE2DAECA2CCBA5A800D5D591 /* DeleteBirthDayMutation.graphql */,
 				F3FDEB9B2CCC3E850073BFED /* CreateBirthdayMutation.graphql */,
-				CE2DAECE2CCBBDB900D5D591 /* AddShopToFavorite.graphql */,
-				CE2DAED02CCBC13A00D5D591 /* RemoveShopFromFavorite.graphql */,
 				CE02C9EE2CCFDD4100C091F0 /* SignIn.graphql */,
 				CE2DAECE2CCBBDB900D5D591 /* AddShopToFavorite.graphql */,
 				CE2DAED02CCBC13A00D5D591 /* RemoveShopFromFavorite.graphql */,
@@ -1330,7 +1328,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = QAG24BGKCF;
+				DEVELOPMENT_TEAM = NQ25FKCD57;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
@@ -1365,7 +1363,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = QAG24BGKCF;
+				DEVELOPMENT_TEAM = NQ25FKCD57;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;

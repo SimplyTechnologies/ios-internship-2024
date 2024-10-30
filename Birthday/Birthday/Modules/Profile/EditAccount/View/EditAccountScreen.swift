@@ -96,8 +96,8 @@ extension EditAccountScreen {
       PhotosPicker(selection: $viewModel.selectedPickerItem, matching: .images) {
         if let selectedImage = viewModel.selectedImage {
           CircularImage(
-            image: Image(uiImage: selectedImage),
             imagePath: "",
+            image: Image(uiImage: selectedImage),
             borderColor: .rouge,
             borderWidth: 3,
             size: .init(width: 160, height: 160)
