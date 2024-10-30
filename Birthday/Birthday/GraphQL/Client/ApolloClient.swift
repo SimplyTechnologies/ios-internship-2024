@@ -57,8 +57,7 @@ class CustomInterceptorProvider: InterceptorProvider {
       ResponseCodeInterceptor(),
       AutomaticPersistedQueryInterceptor(),
       MultipartResponseParsingInterceptor(),
-      JSONResponseParsingInterceptor(),
-      CacheWriteInterceptor(store: store)
+      JSONResponseParsingInterceptor()
     ]
   }
   

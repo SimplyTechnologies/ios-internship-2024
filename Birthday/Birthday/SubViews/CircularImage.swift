@@ -9,18 +9,19 @@ import SwiftUI
 
 struct CircularImage<Placeholder: View>: View {
   
-  var image: Image?
   let imagePath: String
-  var placeholderView: Placeholder?
-  var placeholderImage: Image = .init(systemName: "gift.circle")
-  var borderColor: Color = .spanishGray
-  var borderWidth: CGFloat = 1
-  var backgroundColor: Color = .clear
-  var size: CGSize = .init(width: 70, height: 70)
+  
+  private let image: Image?
+  private let placeholderView: Placeholder?
+  private let placeholderImage: Image
+  private let borderColor: Color
+  private let borderWidth: CGFloat
+  private let backgroundColor: Color
+  private let size: CGSize
 
   init(
-    image: Image? = nil,
     imagePath: String,
+    image: Image? = nil,
     @ViewBuilder placeholderView: () -> Placeholder? = { EmptyView() },
     placeholderImage: Image = Image(systemName: "gift.circle"),
     borderColor: Color = .spanishGray,
@@ -28,8 +29,8 @@ struct CircularImage<Placeholder: View>: View {
     backgroundColor: Color = .clear,
     size: CGSize = .init(width: 70, height: 70)
   ) {
-    self.image = image
     self.imagePath = imagePath
+    self.image = image
     self.placeholderView = placeholderView()
     self.placeholderImage = placeholderImage
     self.borderColor = borderColor
