@@ -41,7 +41,5 @@ struct NavigationBar: View {
 }
 
 #Preview {
-  NavigationBar {
-    
-  }
+  NavigationBar {}
 }

@@ -47,26 +47,22 @@ struct CircularImage<Placeholder: View>: View {
           .aspectRatio(contentMode: .fill)
           .clipShape(Circle())
       } else {
-        AsyncImage(url: URL(string: imagePath)) { phase in
-          if let image = phase.image {
-            image
-              .resizable()
-              .aspectRatio(contentMode: .fill)
-              .clipShape(Circle())
-            
-          } else if phase.error != nil {
-            if placeholderView is EmptyView {
-              placeholderImage
+        if let url = URL(string: imagePath) {
+          AsyncImage(url: url) { phase in
+            if let image = phase.image {
+              image
                 .resizable()
-                .foregroundStyle(.piggyPink)
+                .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
-                .padding(borderWidth)
+
+            } else if phase.error != nil {
+              placeholder
             } else {
-              placeholderView
+              SkeletonView()
             }
-          } else {
-            SkeletonView()
           }
+        } else {
+          placeholder
         }
       }
     }
@@ -77,6 +73,21 @@ struct CircularImage<Placeholder: View>: View {
     )
     .frame(width: size.width, height: size.height)
   }
+
+  @ViewBuilder
+  private var placeholder: some View {
+    if placeholderView is EmptyView {
+      placeholderImage
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .frame(width: size.width * 0.7, height: size.height * 0.7)
+        .foregroundStyle(Color.piggyPink)
+        .padding(borderWidth)
+    } else {
+      placeholderView
+    }
+  }
+  
 }
 
 #Preview {

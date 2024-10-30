@@ -111,20 +111,18 @@ extension EditAccountScreen {
             size: .init(width: 160, height: 160)
           )
         } else {
-          if let _ = URL(string: viewModel.editAccountModel.image) {
-            CircularImage(
-              imagePath: viewModel.editAccountModel.image,
-              placeholderView: {
-                Image(.imagePlus)
-                  .resizable()
-                  .aspectRatio(contentMode: .fit)
-                  .frame(width: 50, height: 50)
-              },
-              borderColor: .rouge,
-              borderWidth: 3,
-              size: .init(width: 160, height: 160)
-            )
-          }
+          CircularImage(
+            imagePath: viewModel.editAccountModel.image,
+            placeholderView: {
+              Image(.imagePlus)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50, height: 50)
+            },
+            borderColor: .rouge,
+            borderWidth: 3,
+            size: .init(width: 160, height: 160)
+          )
         }
       }
     }

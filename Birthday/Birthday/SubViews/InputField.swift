@@ -15,9 +15,9 @@ struct InputField: View {
   @Binding var isValidField: Bool
   @Binding var isShow: Bool
 
-  private var placeholderText: String = ""
-  private var isSecureField: Bool = false
-  private var backgroundColor: Color = .snow
+  private let placeholderText: String
+  private let isSecureField: Bool
+  private let backgroundColor: Color
   
   init(
     text: Binding<String>,
