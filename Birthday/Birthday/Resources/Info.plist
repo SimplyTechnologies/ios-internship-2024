@@ -12,5 +12,14 @@
 		<string>Karma-Regular.ttf</string>
 		<string>Karma-SemiBold.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>lightPink</string>
+		<key>UIImageName</key>
+		<string>birth</string>
+		<key>UILaunchScreen</key>
+		<dict/>
+	</dict>
 </dict>
 </plist>
