@@ -57,6 +57,10 @@
 "shop_address" = "Address:";
 "shop_website" = "Web Site";
 
-//Add
+// Add
 
 "add_event" = "Add to Calendar";
+
+// Toast
+
+"toast_register" = "You have successfully registered! 🎉";

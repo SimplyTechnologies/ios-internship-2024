@@ -5,8 +5,7 @@
 //  Created by MEKHAK GHAPANTSYAN on 21.10.24.
 //
 
-import Pulse
-import PulseProxy
+import PopupView
 import PulseUI
 import SwiftUI
 
@@ -39,7 +38,25 @@ struct BirthdayApp: App {
         appState.isShowLogger = true
         #endif
       }
+      .popup(isPresented: $appState.isShowMessage) {
+        toastView
+      } customize: {
+        $0
+          .type(.floater())
+          .position(.bottom)
+          .animation(.spring())
+          .dragToDismiss(true)
+          .autohideIn(4)
+      }
     }
+  }
+  
+  private var toastView: some View {
+    ToastView(
+      isShow: $appState.isShowMessage,
+      title: appState.message,
+      toastType: appState.isSuccessMessage ? .success : .error
+    )
   }
   
 }
