@@ -21,8 +21,8 @@ final class ChangePasswordDefaultRepository: ChangePasswordRepository {
     performMutation(
       mutation: ChangePasswordMutation(
         changePasswordInput: ChangePasswordInput(
-          newPassword: oldPassword,
-          oldPassword: newPassword
+          newPassword: newPassword,
+          oldPassword: oldPassword
         )
       )
     )

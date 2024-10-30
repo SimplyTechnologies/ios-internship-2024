@@ -98,7 +98,8 @@ extension TabBarView {
               model: profileModel) {
                 doneAction()
               }
-          case .changePassword: Text("Change password")
+          case let .changePassword(viewModel):
+            ChangePasswordScreen(viewModel: viewModel)
           }
         }
     }
