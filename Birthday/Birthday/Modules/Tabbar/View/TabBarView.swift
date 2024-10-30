@@ -134,7 +134,6 @@ extension TabBarView {
       switch self {
       case let .details(viewModel): viewModel.id
       case let .shops(viewModel): viewModel.id
-
       }
     }
     
@@ -143,13 +142,7 @@ extension TabBarView {
     }
     
     func hash(into hasher: inout Hasher) {
-      switch self {
-      case let .details(viewModel):
-        hasher.combine(viewModel.id)
-      case let .shops(viewModel):
-        hasher.combine(viewModel.id)
-
-      }
+      hasher.combine(id)
     }
     
   }
