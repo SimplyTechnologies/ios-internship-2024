@@ -29,7 +29,7 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
   private func setupContentValidation() {
     $birtday
       .map { birthday in
-        birthday.name != nil && birthday.date != nil && birthday.relation != nil
+        !(birthday.name?.isEmpty ?? true) && birthday.date != nil && birthday.relation != nil
       }
       .assign(to: &$isContentValid)
   }
@@ -73,6 +73,15 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
       }
     } else {
       Console.log("Failed to convert image to data.")
+    }
+  }
+  
+  func resetScreen() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+      guard let self else { return }
+      birtday = BirthdayModel()
+      selectedItem = nil
+      selectedImage = nil
     }
   }
   
