@@ -78,14 +78,12 @@ extension BirthDayEditCommonView {
         .foregroundStyle(Color.rouge)
         .karmaFont(style: .bold18)
         .padding(.bottom, 8)
-      ZStack {
-        TextField("", text: $birthdayData.name.toUnwrapped(defaultValue: ""))
-          .karmaFont(style: .bold18)
-          .frame(height: 40)
-          .padding(.horizontal, 8)
-      }
-      .background(Color.white)
-      .clipShape(RoundedRectangle(cornerRadius:160))
+      InputField(
+        text: $birthdayData.name.toUnwrapped(defaultValue: ""),
+        isFocused: .constant(true),
+        placeholderText: "John Doe",
+        backgroundColor: .white
+      )
     }
     .padding(.horizontal, 26)
   }
@@ -116,7 +114,7 @@ extension BirthDayEditCommonView {
       Text(relationship.rawValue)
         .lineLimit(1)
         .foregroundStyle(birthdayData.relation == relationship ? .white : .black)
-        .karmaFont(style: .semiBold14)
+        .karmaFont(style: .bold14)
     }
     .frame(width: 106, height: 40)
     .background(birthdayData.relation == relationship ? Color.rouge : Color.white)
@@ -152,7 +150,7 @@ extension BirthDayEditCommonView {
     .colorInvert()
     .colorMultiply(Color.rouge)
     .background(Color.white)
-    .karmaFont(style: .semiBold20)
+    .karmaFont(style: .bold20)
     .clipShape(RoundedRectangle(cornerRadius: 16))
   }
   
@@ -175,6 +173,8 @@ extension BirthDayEditCommonView {
     HStack {
       TextField(String.Birthday.newRelationship, text: $newRelation)
         .karmaFont(style: .bold18)
+        .foregroundStyle(Color.rouge)
+        .tint(Color.rouge)
         .padding(.horizontal, 10)
       Button {
         withAnimation {

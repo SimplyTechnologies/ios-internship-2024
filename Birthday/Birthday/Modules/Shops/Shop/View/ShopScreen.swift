@@ -27,9 +27,15 @@ extension ShopScreen {
   
   private var content: some View {
     VStack(spacing: 0) {
-      NavigationBar(
-        backButtonAction: router.path.count > 0 ? { router.pop() } : nil
-      )
+      if router.path.count > 0 {
+        NavigationBar {
+          router.pop()
+        }
+        .padding(.top, 20)
+      } else {
+        Image(.birth)
+          .padding(.top, 20)
+      }
       Spacer()
         .frame(height: 22)
       searchBar

@@ -19,5 +19,6 @@ protocol CreateBirthdayViewModeling: Toastable {
 
   func createBirthday()
   func convertImage(image: PhotosPickerItem?) async
+  func resetScreen()
   
 }

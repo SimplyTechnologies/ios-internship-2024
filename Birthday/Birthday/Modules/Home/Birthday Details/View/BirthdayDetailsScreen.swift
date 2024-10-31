@@ -160,13 +160,13 @@ extension BirthdayDetailsScreen {
   private var name: some View {
     Text(viewModel.birthdayData.name ?? "")
       .foregroundStyle(Color.black)
-      .karmaFont(style: .semiBold20)
+      .karmaFont(style: .bold20)
   }
   
   private var date: some View {
     Text(viewModel.birthdayData.date?.toFormattedDate() ?? "")
       .foregroundStyle(Color.black)
-      .karmaFont(style: .semiBold14)
+      .karmaFont(style: .bold14)
   }
   
   private var relationship: some View {
@@ -179,7 +179,7 @@ extension BirthdayDetailsScreen {
         .padding(.horizontal, 16)
         .foregroundStyle(Color.black)
         .background(Color.white)
-        .karmaFont(style: .semiBold14)
+        .karmaFont(style: .bold14)
         .clipShape(RoundedRectangle(cornerRadius: 8))
     }
   }
@@ -188,12 +188,12 @@ extension BirthdayDetailsScreen {
     HStack {
       Text(String.Birthday.zodiac)
         .foregroundStyle(Color.black)
-        .karmaFont(style: .semiBold14)
+        .karmaFont(style: .bold14)
       Text(ZodiacSign.from(
         dateString: viewModel.birthdayData.date?.toFormattedDate() ?? "")?.rawValue ?? ""
       )
       .foregroundStyle(Color.rouge)
-      .karmaFont(style: .semiBold14)
+      .karmaFont(style: .bold14)
     }
   }
   

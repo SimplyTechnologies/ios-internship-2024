@@ -31,6 +31,7 @@ extension AddBirthdayScreen {
   private var content: some View {
     VStack {
       NavigationBar()
+        .padding(.top, 20)
       ScrollView {
         image
         editView
@@ -69,7 +70,7 @@ extension AddBirthdayScreen {
   private var editView: some View {
     BirthDayEditCommonView(
       birthdayData: $viewModel.birtday,
-      isContentvalid: $viewModel.isContentValid, 
+      isContentvalid: $viewModel.isContentValid,
       isCreating: true
     ) { _ in
       viewModel.createBirthday()
