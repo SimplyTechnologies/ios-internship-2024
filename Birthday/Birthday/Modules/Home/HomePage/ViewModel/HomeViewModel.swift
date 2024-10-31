@@ -28,7 +28,7 @@ final class HomeViewModel: HomeViewModeling {
     }
     homeRepository.getBirthdays()
       .sink { [weak self] result in
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
           withAnimation {
             self?.isLoading = false
           }
