@@ -84,6 +84,14 @@ extension View {
 
 extension View {
   
+  func loadingOverlay(isLoading: Binding<Bool>) -> some View {
+    self.modifier(LoadingOverlayModifier(isLoading: isLoading))
+  }
+  
+}
+
+extension View {
+  
   @ViewBuilder func `if`<Content: View>(_ condition: @autoclosure () -> Bool, transform: (Self) -> Content) -> some View {
     if condition() {
       transform(self)

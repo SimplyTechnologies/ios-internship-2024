@@ -13,7 +13,7 @@ protocol CreateBirthdayViewModeling: Toastable {
   
   var isLoading: Bool { get set }
   var isContentValid: Bool { get set }
-  var birtday: BirthdayModel { get set }
+  var birthday: BirthdayModel { get set }
   var selectedImage: UIImage? { get set }
   var selectedItem: PhotosPickerItem? { get set }
 

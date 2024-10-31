@@ -19,6 +19,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   @Published var selectedImage: UIImage?
   @Published var selectedItem: PhotosPickerItem?
   @Published var isShowMessage: Bool = false
+  @Published var isDeleting: Bool = false
   
   var id: UUID
   var deleteAction: () -> ()
@@ -74,12 +75,14 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   }
   
   func deleteBirthDay(id: Int, complition: @escaping () -> ()) {
+    isDeleting = true
     isLoading = true
     isShowMessage = false
     homeRepository.deleteBirthday(id: id)
       .sink { [weak self] result in
         guard let self else { return }
-        isLoading = false
+        self.isLoading = false
+        self.isDeleting = false
         switch result {
         case .failure(let error):
           Console.log("❌ Error: ", error)

@@ -69,8 +69,8 @@ extension AddBirthdayScreen {
   
   private var editView: some View {
     BirthDayEditCommonView(
-      birthdayData: $viewModel.birtday,
-      isContentvalid: $viewModel.isContentValid,
+      birthdayData: $viewModel.birthday,
+      isContentvalid: $viewModel.isContentValid, 
       isCreating: true
     ) { _ in
       viewModel.createBirthday()

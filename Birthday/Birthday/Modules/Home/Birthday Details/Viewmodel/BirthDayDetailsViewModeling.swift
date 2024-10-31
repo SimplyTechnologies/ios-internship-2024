@@ -20,7 +20,8 @@ protocol BirthDayDetailsViewModeling: Toastable {
   var selectedItem: PhotosPickerItem? { get set }
   var isEditing: Bool { get set }
   var isGeneratingMessage: Bool { get set }
-
+  var isDeleting: Bool { get set }
+  
   func updateBirthday()
   func deleteBirthDay(id: Int, complition: @escaping () -> ())
   func convertImage(image: PhotosPickerItem?) async
