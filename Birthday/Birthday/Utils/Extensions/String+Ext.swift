@@ -118,6 +118,7 @@ extension String {
     
     static var register: String { "toast_register".localized }
     static var change: String { "toast_change".localized }
+    static var wrongCode: String { "toast_wrong_code".localized }
     
   }
   

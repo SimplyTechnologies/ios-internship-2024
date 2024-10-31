@@ -68,7 +68,7 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
     if passwordCode == actualCode {
       complition()
     } else {
-      showToast(message: "Wrong Code", isSuccess: false)
+      showToast(message: String.Toast.wrongCode, isSuccess: false)
     }
   }
   

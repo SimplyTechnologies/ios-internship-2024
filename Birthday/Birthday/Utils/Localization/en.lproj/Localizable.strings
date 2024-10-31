@@ -74,3 +74,4 @@
 
 "toast_register" = "You have successfully registered! 🎉";
 "toast_change" = "You have successfully changed your Password! 🎉";
+"toast_wrong_code" = "Wrong Code";
