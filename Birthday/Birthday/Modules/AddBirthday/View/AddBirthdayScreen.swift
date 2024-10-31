@@ -11,7 +11,7 @@ import PhotosUI
 struct AddBirthdayScreen<T: CreateBirthdayViewModeling>: View {
   
   @StateObject var viewModel: T
-  
+    
   var body: some View {
     content
   }
