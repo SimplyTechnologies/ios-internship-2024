@@ -17,6 +17,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   @Published var isGeneratingMessage: Bool = false
   @Published var selectedImage: UIImage?
   @Published var selectedItem: PhotosPickerItem?
+  @Published var isDeleting: Bool = false
   
   private let homeRepository: HomeRepository
   private var cancelables = Set<AnyCancellable>()
@@ -66,10 +67,13 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   }
   
   func deleteBirthDay(id: Int, complition: @escaping () -> ()) {
+    isDeleting = true
     isLoading = true
     homeRepository.deleteBirthday(id: id)
       .sink { [weak self] result in
-        self?.isLoading = false
+        guard let self else { return }
+        self.isLoading = false
+        self.isDeleting = false
         switch result {
         case .failure(let error):
           print(error)
@@ -85,19 +89,19 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   
   @MainActor
   func convertImage(image: PhotosPickerItem?) async {
-      if let data = try? await image?.loadTransferable(type: Data.self),
-         let uiImage = UIImage(data: data) {
-        selectedImage = uiImage
-        let resizedImage = uiImage.resizeImage(targetSize: CGSize(width: 100, height: 100))
-        if let jpegData = resizedImage.jpegData(compressionQuality: 0.1) {
-          birthdayData.image = jpegData.base64EncodedString(options: .lineLength64Characters)
-          Console.log("Base64 string created successfully.")
-        } else {
-          Console.log("Failed to convert image to JPEG.")
-        }
+    if let data = try? await image?.loadTransferable(type: Data.self),
+       let uiImage = UIImage(data: data) {
+      selectedImage = uiImage
+      let resizedImage = uiImage.resizeImage(targetSize: CGSize(width: 100, height: 100))
+      if let jpegData = resizedImage.jpegData(compressionQuality: 0.1) {
+        birthdayData.image = jpegData.base64EncodedString(options: .lineLength64Characters)
+        Console.log("Base64 string created successfully.")
       } else {
-        Console.log("Failed to convert image to data.")
+        Console.log("Failed to convert image to JPEG.")
       }
+    } else {
+      Console.log("Failed to convert image to data.")
+    }
   }
   
 }

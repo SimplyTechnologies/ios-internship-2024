@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 final class HomeViewModel: HomeViewModeling {
   
@@ -18,13 +19,20 @@ final class HomeViewModel: HomeViewModeling {
   
   init(homeRepository: HomeRepository) {
     self.homeRepository = homeRepository
+    subscribeForNewBirthdays()
   }
   
   func getBirthDays() {
-    isLoading = true
+    withAnimation {
+      isLoading = true
+    }
     homeRepository.getBirthdays()
       .sink { [weak self] result in
-        self?.isLoading = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+          withAnimation {
+            self?.isLoading = false
+          }
+        }
         switch result {
         case .failure(let error):
           Console.log(error)
@@ -35,7 +43,15 @@ final class HomeViewModel: HomeViewModeling {
         birtdays.forEach {
           self?.birthdayData.append(BirthdayModel(dto: $0))
         }
-      }.store(in: &cancelables)
+      }
+      .store(in: &cancelables)
+  }
+  
+  func subscribeForNewBirthdays() {
+    BirthdayPublisher.publisher.sink { [weak self] newBirthday in
+      self?.birthdayData.append(newBirthday)
+    }
+    .store(in: &cancelables)
   }
   
 }
