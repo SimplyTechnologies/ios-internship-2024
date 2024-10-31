@@ -96,13 +96,15 @@ class SignInViewModel: SignInViewModeling {
     validateForm()
     if isValidForm {
       isLoading = true
-      
+      isShowMessage = false
       signInRepository.singIn(email: email, password: password)
         .sink { [weak self] result in
-          self?.isLoading = false
+          guard let self else { return }
+          isLoading = false
           switch result {
           case .failure(let error):
             Console.log("❌ Error: ", error)
+            showToast(message: error.localizedDescription, isSuccess: false)
           default: break
           }
         } receiveValue: { data in

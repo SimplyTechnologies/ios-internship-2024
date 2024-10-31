@@ -14,7 +14,7 @@ struct LandingScreen: View {
     case registration
   }
 
-  @StateObject var authRouter = NavigationRouter("Auth")
+  @StateObject var authRouter = NavigationRouter(.auth)
 
   private let radiusValue: CGFloat = 42
 

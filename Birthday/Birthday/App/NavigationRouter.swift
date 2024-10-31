@@ -7,10 +7,19 @@
 
 import SwiftUI
 
+enum RouterType: String, Hashable {
+  
+  case auth = "Auth"
+  case home = "Home"
+  case shop = "Shop"
+  case profile = "Profile"
+  
+}
+
 protocol Routable: ObservableObject {
   
   var path: NavigationPath { get set }
-  var name: String { get }
+  var type: RouterType { get }
   
   func push(_ screen: any Hashable)
   func pop()
@@ -21,15 +30,15 @@ protocol Routable: ObservableObject {
 
 class NavigationRouter: Routable {
   
-  init(_ name: String) {
-    self.name = name
+  init(_ type: RouterType) {
+    self.type = type
   }
   
-  var name: String
+  var type: RouterType
   
   @Published var path = NavigationPath() {
     didSet {
-      Console.log("\(name)Router navigationPath size \(path.count)")
+      Console.log("\(type.rawValue)Router navigationPath size \(path.count)")
     }
   }
     
