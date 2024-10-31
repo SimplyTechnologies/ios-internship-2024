@@ -29,7 +29,7 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
   private func setupContentValidation() {
     $birtday
       .map { birthday in
-        birthday.name != nil && birthday.date != nil && birthday.relation != nil
+        !(birthday.name?.isEmpty ?? true) && birthday.date != nil && birthday.relation != nil
       }
       .assign(to: &$isContentValid)
   }

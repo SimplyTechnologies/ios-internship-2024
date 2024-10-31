@@ -82,7 +82,8 @@ extension TabBarView {
       AddBirthdayScreen(
         viewModel: CreateBirthdayViewModel(
           newBirthdayRepository: NewBirthdayDefaultRepository()
-        )
+        ),
+        selectedTab: $selectedTab
       )
     }
     .tabItem { TabCellView(model: .addBirthday) }

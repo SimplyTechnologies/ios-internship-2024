@@ -12,8 +12,13 @@ struct AddBirthdayScreen<T: CreateBirthdayViewModeling>: View {
   
   @StateObject var viewModel: T
   
+  @Binding var selectedTab: TabModel
+  
   var body: some View {
     content
+      .onChange(of: selectedTab) { _ in
+        resetScreen()
+      }
   }
   
 }
@@ -61,10 +66,18 @@ extension AddBirthdayScreen {
   private var editView: some View {
     BirthDayEditCommonView(
       birthdayData: $viewModel.birtday,
-      isContentvalid: $viewModel.isContentValid, 
+      isContentvalid: $viewModel.isContentValid,
       isCreating: true
     ) { _ in
       viewModel.createBirthday()
+    }
+  }
+  
+  private func resetScreen() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      viewModel.birtday = BirthdayModel()
+      viewModel.selectedItem = nil
+      viewModel.selectedImage = nil
     }
   }
   
