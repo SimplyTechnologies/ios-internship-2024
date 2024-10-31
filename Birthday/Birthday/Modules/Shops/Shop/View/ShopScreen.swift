@@ -31,8 +31,10 @@ extension ShopScreen {
         NavigationBar {
           router.pop()
         }
+        .padding(.top, 20)
       } else {
         Image(.birth)
+          .padding(.top, 20)
       }
       Spacer()
         .frame(height: 22)

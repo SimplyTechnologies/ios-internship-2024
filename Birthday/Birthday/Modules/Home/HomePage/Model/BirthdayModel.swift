@@ -60,6 +60,20 @@ struct BirthdayModel: Eventable {
     self.userId = dto.userId
   }
   
+  init(createBirthdayDTO: CreateBirthdayMutation.Data.CreateBirthday) {
+    id = createBirthdayDTO.id
+    image = createBirthdayDTO.image
+    date = createBirthdayDTO.date
+    name = createBirthdayDTO.name
+    message = createBirthdayDTO.message
+    relation = Relationship(rawValue: createBirthdayDTO.relation)
+    upcomingAge = nil
+    upcomingBirthday = nil
+    updatedAt = nil
+    userId = nil
+    createdAt = nil
+  }
+  
   init() {
     createdAt = nil
     date = nil

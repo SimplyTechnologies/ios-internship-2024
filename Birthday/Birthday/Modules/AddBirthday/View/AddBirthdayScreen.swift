@@ -11,7 +11,7 @@ import PhotosUI
 struct AddBirthdayScreen<T: CreateBirthdayViewModeling>: View {
   
   @StateObject var viewModel: T
-  
+    
   var body: some View {
     content
   }
@@ -23,6 +23,7 @@ extension AddBirthdayScreen {
   private var content: some View {
     VStack {
       NavigationBar()
+        .padding(.top, 20)
       ScrollView {
         image
         editView
@@ -60,7 +61,7 @@ extension AddBirthdayScreen {
   
   private var editView: some View {
     BirthDayEditCommonView(
-      birthdayData: $viewModel.birtday,
+      birthdayData: $viewModel.birthday,
       isContentvalid: $viewModel.isContentValid, 
       isCreating: true
     ) { _ in

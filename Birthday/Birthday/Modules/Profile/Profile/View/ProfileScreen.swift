@@ -14,10 +14,13 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
   @StateObject var viewModel: T
   
   var body: some View {
-    VStack(spacing: 50) {
+    VStack(spacing: 0) {
       NavigationBar()
+        .padding(.top, 20)
       userDetails
+        .padding(.top, 50)
       buttons
+        .padding(.top, 50)
       Spacer()
     }
     .background(Color.lightPink)
