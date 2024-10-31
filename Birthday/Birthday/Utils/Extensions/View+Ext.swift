@@ -82,3 +82,11 @@ extension View {
   }
   
 }
+
+extension View {
+  
+  func loadingOverlay(isLoading: Binding<Bool>) -> some View {
+    self.modifier(LoadingOverlayModifier(isLoading: isLoading))
+  }
+  
+}

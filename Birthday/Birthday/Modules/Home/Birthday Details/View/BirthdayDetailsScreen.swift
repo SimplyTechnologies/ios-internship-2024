@@ -19,6 +19,7 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
       .background(Color.lightPink)
       .navigationBarBackButtonHidden(true)
       .customAlert(isPresented: $viewModel.isGeneratingMessage)
+      .loadingOverlay(isLoading: $viewModel.isDeleting)
   }
   
 }
@@ -28,37 +29,43 @@ extension BirthdayDetailsScreen {
   private var content: some View {
     VStack(spacing: 0) {
       header
-      ScrollView {
-        if viewModel.isEditing {
-          selectedImage
-            .padding(.bottom, 12)
-        } else {
-          image
-            .padding(.bottom, 12)
-        }
-        if viewModel.isEditing {
-          BirthDayEditCommonView(
-            birthdayData: $viewModel.birthdayData,
-            isContentvalid: .constant(true),
-            isCreating: false
-          ) { newBirthday in
-            doneAction(birthday: newBirthday)
+      GeometryReader { geometry in
+        ScrollView {
+          VStack {
+            if viewModel.isEditing {
+              selectedImage
+                .padding(.bottom, 12)
+            } else {
+              image
+                .padding(.bottom, 12)
+            }
+            if viewModel.isEditing {
+              BirthDayEditCommonView(
+                birthdayData: $viewModel.birthdayData,
+                isContentvalid: .constant(true),
+                isCreating: false
+              ) { newBirthday in
+                doneAction(birthday: newBirthday)
+              }
+            } else {
+              name
+                .padding(.bottom, 24)
+              date
+                .padding(.bottom, 10)
+              relationship
+                .padding(.bottom, 10)
+              zodiacSign
+              Spacer()
+              HStack(spacing: 10) {
+                generateMessageButton
+                findGiftButton
+              }
+              .padding(.bottom, 20)
+            }
           }
-        } else {
-          name
-            .padding(.bottom, 24)
-          date
-            .padding(.bottom, 10)
-          relationship
-            .padding(.bottom, 10)
-          zodiacSign
-          Spacer()
-            .frame(minHeight: 200)
-          HStack(spacing: 10) {
-            generateMessageButton
-            findGiftButton
-          }
+          .frame(minHeight: geometry.size.height)
         }
+        .frame(width: geometry.size.width)
       }
       .padding(.horizontal, 24)
       .scrollIndicators(.hidden)
@@ -104,7 +111,7 @@ extension BirthdayDetailsScreen {
         Image(systemName: "person")
           .resizable()
           .foregroundStyle(Color.darkRed)
-          .padding(8)
+          .padding(12)
       }
     }
     .frame(width: 100, height: 100)
@@ -135,11 +142,18 @@ extension BirthdayDetailsScreen {
                 .resizable()
                 .clipShape(Circle())
                 .frame(width: 100, height: 100)
+                .padding(12)
             } else {
               ProgressView()
                 .progressViewStyle(.circular)
             }
           }
+        } else {
+          Image(.addPicture)
+            .resizable()
+            .clipShape(Circle())
+            .frame(width: 100, height: 100)
+            .padding(12)
         }
       }
     }
@@ -154,6 +168,8 @@ extension BirthdayDetailsScreen {
     Text(viewModel.birthdayData.name ?? "")
       .foregroundStyle(Color.black)
       .karmaFont(style: .semiBold20)
+      .lineLimit(2)
+      .multilineTextAlignment(.center)
   }
   
   private var date: some View {
@@ -168,6 +184,7 @@ extension BirthdayDetailsScreen {
         .foregroundStyle(Color.black)
         .karmaFont(style: .bold14)
       Text(viewModel.birthdayData.relation?.rawValue ?? "")
+        .lineLimit(1)
         .padding(.vertical, 10)
         .padding(.horizontal, 16)
         .foregroundStyle(Color.black)
@@ -222,7 +239,7 @@ extension BirthdayDetailsScreen {
         .padding(.horizontal, 20)
         .foregroundStyle(Color.darkRed)
         .background(Color.bubblegumPink)
-        .karmaFont(style: .semiBold18)
+        .karmaFont(style: .semiBold16)
         .cornerRadius(16)
     }
   }
@@ -242,7 +259,7 @@ extension BirthdayDetailsScreen {
         .padding(.horizontal, 20)
         .foregroundStyle(Color.bubblegumPink)
         .background(Color.darkRed)
-        .karmaFont(style: .semiBold18)
+        .karmaFont(style: .semiBold16)
         .cornerRadius(16)
     }
   }
