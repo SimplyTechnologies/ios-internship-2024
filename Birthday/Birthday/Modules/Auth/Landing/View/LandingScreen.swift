@@ -12,12 +12,14 @@ struct LandingScreen: View {
   enum Screen: Hashable {
     case signIn
     case registration
+    case forgotPassword
+    case resetPassword(code: String)
   }
 
   @StateObject var authRouter = NavigationRouter(.auth)
 
   private let radiusValue: CGFloat = 42
-
+  
   var body: some View {
     NavigationStack(path: $authRouter.path) {
       ZStack {
@@ -34,8 +36,21 @@ struct LandingScreen: View {
           )
         )
         case .registration: RegistrationScreen(
-            viewModel: RegistrationViewModel(
-              registrationRepository: RegistrationDefaultRepository()
+          viewModel: RegistrationViewModel(
+            registrationRepository: RegistrationDefaultRepository()
+          )
+        )
+        case .forgotPassword:
+          ForgotPasswordScreen(
+            viewModel: ForgotPasswordViewModel(
+              forgotPasswordRepository: ForgotPasswordDefaultRepository()
+            )
+          )
+        case .resetPassword(let code):
+          ResetPasswordScreen(
+            viewModel: ResetPasswordViewModel(
+              forgotPasswordRepository: ForgotPasswordDefaultRepository(),
+              passwordCode: code
             )
           )
         }
@@ -75,7 +90,7 @@ extension LandingScreen {
       ]
     )
   }
-
+  
   private var registerButton: some View {
     LandingButton(
       title: String.Button.register,

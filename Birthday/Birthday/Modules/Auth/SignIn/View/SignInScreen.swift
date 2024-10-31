@@ -30,7 +30,7 @@ struct SignInScreen<T: SignInViewModeling>: View {
   }
   
 }
-  
+
 extension SignInScreen {
   
   private var content: some View {
@@ -63,7 +63,7 @@ extension SignInScreen {
         Image(systemName: "chevron.up")
       }
       .disabled(focusedField == .email)
-        
+      
       Button {
         goDown()
       } label: {
@@ -82,7 +82,10 @@ extension SignInScreen {
         .frame(height: 24)
       fields
       Spacer()
-        .frame(height: 50)
+        .frame(height: 24)
+      forgotPasswordButton
+      Spacer()
+        .frame(height: 24)
       signInButton
       Spacer()
         .frame(height: 64)
@@ -92,7 +95,7 @@ extension SignInScreen {
     .clipShape(RoundedRectangle(cornerRadius: 30))
     .padding(.horizontal, 24)
   }
-
+  
   private var fields: some View {
     VStack(spacing: 20) {
       emailField
@@ -145,7 +148,7 @@ extension SignInScreen {
       viewModel.isPasswordFocused = true
     }
   }
-
+  
   private var signInHeaderView: some View {
     Text(String.Button.signIn)
       .karmaFont(style: .bold22)
@@ -163,6 +166,20 @@ extension SignInScreen {
       }
     }
     .disabled(!viewModel.isValidForm || viewModel.isLoading)
+  }
+  
+  private var forgotPasswordButton: some View {
+    HStack {
+      Spacer()
+      Button {
+        router.push(LandingScreen.Screen.forgotPassword)
+      } label: {
+        Text(String.Auth.forgot)
+          .foregroundStyle(Color.rouge)
+          .karmaFont(style: .bold12)
+      }
+      .frame(alignment: .trailing)
+    }
   }
   
   private func goUp() {
