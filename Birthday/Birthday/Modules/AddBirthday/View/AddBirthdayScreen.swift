@@ -23,6 +23,7 @@ extension AddBirthdayScreen {
   private var content: some View {
     VStack {
       NavigationBar()
+        .padding(.top, 20)
       ScrollView {
         image
         editView
