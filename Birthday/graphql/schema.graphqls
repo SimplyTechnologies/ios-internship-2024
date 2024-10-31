@@ -75,8 +75,9 @@ type Mutation {
   changePassword(changePasswordInput: ChangePasswordInput!): Boolean!
   createBirthday(createBirthdayInput: CreateBirthdayInput!): Birthday!
   deleteBirthday(id: Int!): Birthday!
-  forgotPassword(forgotPasswordInput: ForgotPasswordInput!): Boolean!
+  forgotPassword(forgotPasswordInput: ForgotPasswordInput!): String!
   login(loginInput: LoginInput!): AccessToken!
+  rateShop(rateShopInput: RateShopInput!): Boolean!
   refreshToken: Boolean!
   removeShopFromFavorite(shopId: Int!): UserFavoriteShop!
   resetPassword(resetPasswordInput: ResetPasswordInput!): Boolean!
@@ -96,6 +97,11 @@ type Query {
 input RateFilter {
   gte: Int
   lte: Int
+}
+
+input RateShopInput {
+  rating: Int!
+  shopId: Int!
 }
 
 input ResetPasswordInput {

@@ -61,6 +61,17 @@
 
 "add_event" = "Add to Calendar";
 
+//Auth
+"auth_code" = "Get The Code";
+"auth_password_code" = "Password Code";
+"auth_set_password" = "Set New Password";
+"auth_new_password" = "New Password";
+"auth_repeat_password" = "Repeat New Password";
+"auth_done" = "Done";
+"auth_forgot" = "Forgot password?";
+
 // Toast
 
 "toast_register" = "You have successfully registered! 🎉";
+"toast_change" = "You have successfully changed your Password! 🎉";
+"toast_wrong_code" = "Wrong Code";

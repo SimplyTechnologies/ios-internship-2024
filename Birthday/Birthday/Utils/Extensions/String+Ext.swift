@@ -15,7 +15,7 @@ extension String {
   var toDate: Date? {
     DateFormatter.iso8601Full.date(from: self)
   }
-
+  
   var isValidEmail: Bool {
     let emailRegEx =  #"[a-zA-Z0-9+._%\-+]{1,256}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9\-]{0,64}(\.[a-zA-Z0-9][a-zA-Z0-9\-]{0,25})+"#
     let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
@@ -45,7 +45,7 @@ extension String {
     
     return outputFormatter.string(from: date)
   }
-
+  
 }
 
 extension String {
@@ -105,7 +105,7 @@ extension String {
     static var done: String { "birthday_done".localized }
     static var newRelationship: String { "birthday_relationship_new".localized }
     static var send: String { "birthday_send".localized }
-
+    
   }
   
   enum Add {
@@ -117,6 +117,20 @@ extension String {
   enum Toast {
     
     static var register: String { "toast_register".localized }
+    static var change: String { "toast_change".localized }
+    static var wrongCode: String { "toast_wrong_code".localized }
+    
+  }
+  
+  enum Auth {
+    
+    static var code: String { "auth_code".localized }
+    static var passwordCode: String { "auth_password_code".localized }
+    static var setNewPassword: String { "auth_set_password".localized }
+    static var newPassword: String { "auth_new_password".localized }
+    static var repeatPassword: String { "auth_repeat_password".localized }
+    static var done: String { "auth_done".localized }
+    static var forgot: String { "auth_forgot".localized }
     
   }
   
