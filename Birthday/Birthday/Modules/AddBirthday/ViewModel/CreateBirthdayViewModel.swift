@@ -17,9 +17,10 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
   @Published var selectedImage: UIImage? = nil
   @Published var selectedItem: PhotosPickerItem? = nil
   @Published var birtday: BirthdayModel = .init()
-  @Published var toastMessage: String = ""
-  @Published var isSuccessMessage: Bool = false
   @Published var isShowMessage: Bool = false
+  
+  var toastMessage: String = ""
+  var isSuccessMessage: Bool = false
   
   private let newBirthdayRepository: NewBirthdayRepository
   private var cancelables = Set<AnyCancellable>()

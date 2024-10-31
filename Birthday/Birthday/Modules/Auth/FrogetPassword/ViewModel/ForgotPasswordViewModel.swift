@@ -11,14 +11,15 @@ import Combine
 final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
   
   @Published var isShowMessage: Bool = false
-  @Published var isSuccessMessage: Bool = false
-  @Published var toastMessage: String = ""
   @Published var isLoading: Bool = false
   @Published var email: String = ""
   @Published var passwordCode: String = ""
   @Published var isCodeValid: Bool = false
   @Published var isEmailValid: Bool = true
   @Published var actualCode: String = ""
+  
+  var isSuccessMessage: Bool = false
+  var toastMessage: String = ""
   
   private let forgotPasswordRepository: ForgotPasswordRepository
   private var cancelables = Set<AnyCancellable>()

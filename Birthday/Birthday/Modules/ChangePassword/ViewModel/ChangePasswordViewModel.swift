@@ -33,12 +33,11 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
   @Published var oldPasswordErrorMessage: String = ""
   @Published var newPasswordErrorMessage: String = ""
   @Published var repeatPasswordErrorMessage: String = ""
-  
-  @Published var toastMessage: String = ""
-  @Published var isSuccessMessage: Bool = false
   @Published var isShowMessage: Bool = false
   
   var id: UUID
+  var toastMessage: String = ""
+  var isSuccessMessage: Bool = false
   
   private let changePasswordRepository: ChangePasswordRepository
   private var cancellables = Set<AnyCancellable>()

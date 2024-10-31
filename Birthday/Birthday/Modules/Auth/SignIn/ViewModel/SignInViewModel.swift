@@ -21,9 +21,10 @@ class SignInViewModel: SignInViewModeling {
   @Published var isShowPasswordField: Bool = false
   @Published var passwordErrorMessage: String = ""
   @Published var emailErrorMessage: String = ""
-  @Published var toastMessage: String = ""
-  @Published var isSuccessMessage: Bool = false
   @Published var isShowMessage: Bool = false
+  
+  var toastMessage: String = ""
+  var isSuccessMessage: Bool = false
   
   private let signInRepository: SignInRepository
   private var cancellables = Set<AnyCancellable>()

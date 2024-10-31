@@ -20,9 +20,10 @@ final class EditAccountViewModel: EditAccountViewModeling {
   @Published var isSurnameFocused: Bool = false
   @Published var selectedPickerItem: PhotosPickerItem?
   @Published var selectedImage: UIImage? = nil
-  @Published var toastMessage: String = ""
-  @Published var isSuccessMessage: Bool = false
   @Published var isShowMessage: Bool = false
+  
+  var toastMessage: String = ""
+  var isSuccessMessage: Bool = false
 
   private var cancellables = Set<AnyCancellable>()
   private var editAccountRepository: EditAccountRepository

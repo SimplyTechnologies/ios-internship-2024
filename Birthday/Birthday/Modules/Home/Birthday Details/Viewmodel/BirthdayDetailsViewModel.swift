@@ -18,16 +18,16 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   @Published var isGeneratingMessage: Bool = false
   @Published var selectedImage: UIImage?
   @Published var selectedItem: PhotosPickerItem?
-  @Published var toastMessage: String = ""
-  @Published var isSuccessMessage: Bool = false
   @Published var isShowMessage: Bool = false
-  
-  private let homeRepository: HomeRepository
-  private var cancelables = Set<AnyCancellable>()
   
   var id: UUID
   var deleteAction: () -> ()
   var updateAction: (BirthdayModel) -> ()
+  var toastMessage: String = ""
+  var isSuccessMessage: Bool = false
+  
+  private let homeRepository: HomeRepository
+  private var cancelables = Set<AnyCancellable>()
   
   init(
     homeRepository: HomeRepository,

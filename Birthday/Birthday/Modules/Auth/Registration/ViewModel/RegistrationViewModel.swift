@@ -12,7 +12,6 @@ class RegistrationViewModel: RegistrationViewModeling {
   
   @Published var isLoading: Bool = false
   @Published var isShowMessage: Bool = false
-  @Published var isSuccessMessage: Bool = false
 
   @Published var name: String = ""
   @Published var surname: String = ""
@@ -40,7 +39,9 @@ class RegistrationViewModel: RegistrationViewModeling {
   @Published var nameErrorMessage: String = ""
   @Published var surnameErrorMessage: String = ""
   @Published var emailErrorMessage: String = ""
-  @Published var toastMessage: String = ""
+  
+  var toastMessage: String = ""
+  var isSuccessMessage: Bool = false
   
   private let registrationRepository: RegistrationRepository
   private var cancellables = Set<AnyCancellable>()
