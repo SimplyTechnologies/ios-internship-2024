@@ -18,5 +18,6 @@ protocol CreateBirthdayViewModeling: ObservableObject {
   
   func createBirthday()
   func convertImage(image: PhotosPickerItem?) async
+  func resetScreen()
   
 }
