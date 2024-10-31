@@ -26,6 +26,7 @@ extension HomeScreen {
   private var content: some View {
     VStack {
       NavigationBar()
+        .padding(.top, 20)
       if viewModel.isLoading {
         skeletonListView
       } else {

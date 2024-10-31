@@ -25,6 +25,7 @@ extension ShopDetailsScreen {
       NavigationBar {
         router.pop()
       }
+      .padding(.top, 20)
       Spacer()
         .frame(height: 26)
       shopInfoView
