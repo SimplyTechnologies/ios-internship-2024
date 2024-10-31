@@ -168,6 +168,8 @@ extension BirthdayDetailsScreen {
     Text(viewModel.birthdayData.name ?? "")
       .foregroundStyle(Color.black)
       .karmaFont(style: .semiBold20)
+      .lineLimit(2)
+      .multilineTextAlignment(.center)
   }
   
   private var date: some View {

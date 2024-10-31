@@ -67,6 +67,7 @@ extension BirthDayCell {
       .foregroundStyle(.black)
       .karmaFont(style: .bold20)
       .lineLimit(2)
+      .multilineTextAlignment(.leading)
   }
   
   private var date: some View {
