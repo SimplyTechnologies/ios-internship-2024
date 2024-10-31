@@ -14,7 +14,7 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
   @StateObject var viewModel: T
   
   var body: some View {
-    VStack {
+    VStack(spacing: 0) {
       NavigationBar()
         .padding(.top, 20)
       userDetails
