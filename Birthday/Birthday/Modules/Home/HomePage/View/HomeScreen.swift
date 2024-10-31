@@ -16,7 +16,7 @@ struct HomeScreen<T: HomeViewModeling>: View {
   
   var body: some View {
     content
-      .onAppear {
+      .onLoad {
         viewModel.getBirthDays()
       }
   }
@@ -64,28 +64,7 @@ extension HomeScreen {
       }
       LazyVStack(spacing: 18) {
         if !viewModel.birthdayData.isEmpty {
-          ForEach(viewModel.birthdayData, id: \.id) { birthday in
-            Button {
-              router.push(
-                TabBarView.HomeScreens.details(
-                  viewModel: BirthdayDetailsViewModel(
-                    homeRepository: HomeDefaultRepository(),
-                    birthdayData: birthday,
-                    deleteAction: {
-                      viewModel.birthdayData.removeAll(where: { $0.id == birthday.id })
-                    },
-                    updateAction: { newBirthDay in
-                      guard let index = viewModel.birthdayData.firstIndex(where: { $0.id == birthday.id } ) else { return }
-                      viewModel.birthdayData[index] = newBirthDay
-                    }
-                  ),
-                  birthday: birthday
-                )
-              )
-            } label: {
-              BirthDayCell(model: birthday)
-            }
-          }
+          cells
         } else {
           emptyState
         }
@@ -95,7 +74,30 @@ extension HomeScreen {
     .padding(.horizontal, 24)
     .scrollIndicators(.hidden)
     .coordinateSpace(name: "pull")
-    
+  }
+  
+  private var cells: some View {
+    ForEach(viewModel.birthdayData, id: \.id) { birthday in
+      Button {
+        router.push(
+          TabBarView.HomeScreens.details(
+            viewModel: BirthdayDetailsViewModel(
+              homeRepository: HomeDefaultRepository(),
+              birthdayData: birthday,
+              deleteAction: {
+                viewModel.birthdayData.removeAll(where: { $0.id == birthday.id })
+              },
+              updateAction: { newBirthDay in
+                guard let index = viewModel.birthdayData.firstIndex(where: { $0.id == birthday.id } ) else { return }
+                viewModel.birthdayData[index] = newBirthDay
+              }
+            )
+          )
+        )
+      } label: {
+        BirthDayCell(model: birthday)
+      }
+    }
   }
   
   private var skeletonListView: some View {
