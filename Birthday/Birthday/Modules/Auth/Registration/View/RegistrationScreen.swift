@@ -7,19 +7,27 @@
 
 import SwiftUI
 
-struct RegistrationScreen: View {
+struct RegistrationScreen<T: RegistrationViewModeling>: View {
   
   private enum Field: Int, CaseIterable {
     case name, surname, email, password, repeatPassword
   }
   
-  @StateObject var viewModel: RegistrationViewModel
+  @StateObject var viewModel: T
+  @EnvironmentObject var appState: AppState
   @EnvironmentObject var router: NavigationRouter
   @FocusState private var focusedField: Field?
   @State private var scrollProxy: ScrollViewProxy? = nil
   
   var body: some View {
     content
+      .onChange(of: viewModel.isShowMessage) { isShow in
+        appState.isShowMessage = isShow
+        if isShow {
+          appState.isSuccessMessage = viewModel.isSuccessMessage
+          appState.message = viewModel.toastMessage
+        }
+      }
   }
   
 }

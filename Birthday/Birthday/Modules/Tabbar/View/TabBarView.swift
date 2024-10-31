@@ -46,8 +46,10 @@ extension TabBarView {
       )
       .navigationDestination(for: HomeScreens.self) { screen in
         switch screen {
-        case .details(let viewModel, _):
+        case .details(let viewModel):
           BirthdayDetailsScreen(viewModel: viewModel)
+        case .shops(viewModel: let viewModel):
+          ShopScreen(viewModel: viewModel)
         }
       }
     }
@@ -98,7 +100,8 @@ extension TabBarView {
               model: profileModel) {
                 doneAction()
               }
-          case .changePassword: Text("Change password")
+          case let .changePassword(viewModel):
+            ChangePasswordScreen(viewModel: viewModel)
           }
         }
     }
@@ -125,11 +128,13 @@ extension TabBarView {
   
   enum HomeScreens: Hashable {
     
-    case details(viewModel: BirthdayDetailsViewModel, birthday: BirthdayModel)
+    case details(viewModel: BirthdayDetailsViewModel)
+    case shops(viewModel: ShopViewModel)
     
     var id: UUID {
       switch self {
-      case let .details(viewModel, _): viewModel.id
+      case let .details(viewModel): viewModel.id
+      case let .shops(viewModel): viewModel.id
       }
     }
     
@@ -138,10 +143,7 @@ extension TabBarView {
     }
     
     func hash(into hasher: inout Hasher) {
-      switch self {
-      case let .details(viewModel, _):
-        hasher.combine(viewModel.id)
-      }
+      hasher.combine(id)
     }
     
   }
@@ -180,12 +182,12 @@ extension TabBarView {
   enum ProfileScreens: Hashable {
     
     case editProfile(viewModel: EditAccountViewModel, profileModel: ProfileModel, doneAction: () -> Void)
-    case changePassword
+    case changePassword(viewModel: ChangePasswordViewModel)
     
     var id: UUID {
       switch self {
       case let .editProfile(viewModel, _, _): viewModel.id
-      case .changePassword: UUID()
+      case let .changePassword(viewModel): viewModel.id
       }
     }
     
@@ -197,7 +199,8 @@ extension TabBarView {
       switch self {
       case let .editProfile(viewModel, _, _):
         hasher.combine(viewModel.id)
-      case .changePassword: hasher.combine(UUID())
+      case let .changePassword(viewModel):
+        hasher.combine(viewModel.id)
       }
     }
     

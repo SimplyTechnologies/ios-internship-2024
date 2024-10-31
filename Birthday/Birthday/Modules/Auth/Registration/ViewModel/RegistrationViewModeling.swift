@@ -10,6 +10,8 @@ import Foundation
 protocol RegistrationViewModeling: ObservableObject {
   
   var isLoading: Bool { get set }
+  var isShowMessage: Bool { get set }
+  var isSuccessMessage: Bool { get set }
   var name: String { get set }
   var surname: String { get set }
   var email: String { get set }
@@ -33,6 +35,7 @@ protocol RegistrationViewModeling: ObservableObject {
   var nameErrorMessage: String { get set }
   var surnameErrorMessage: String { get set }
   var emailErrorMessage: String { get set }
+  var toastMessage: String { get set }
   
   func register(completion: @escaping () -> Void)
   

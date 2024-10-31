@@ -204,9 +204,7 @@ extension BirthdayDetailsScreen {
     Button {
       guard let id = viewModel.birthdayData.id else { return }
       viewModel.deleteBirthDay(id: id) {
-        DispatchQueue.main.async {
-          router.pop()
-        }
+        router.pop()
       }
     } label: {
       Image(.delete)
@@ -231,7 +229,13 @@ extension BirthdayDetailsScreen {
   
   private var findGiftButton: some View {
     Button {
-      //MARK: - implement find gift
+      router.push(
+        TabBarView.HomeScreens.shops(
+          viewModel: ShopViewModel(
+            shopRepository: ShopDefaultRepository()
+          )
+        )
+      )
     } label: {
       Text(String.Birthday.gift)
         .padding(.vertical, 8)
