@@ -105,6 +105,7 @@ extension String {
     static var done: String { "birthday_done".localized }
     static var newRelationship: String { "birthday_relationship_new".localized }
     static var send: String { "birthday_send".localized }
+    static var emptyStateMessage: String { "birthday_list_empty_state".localized }
 
   }
   
