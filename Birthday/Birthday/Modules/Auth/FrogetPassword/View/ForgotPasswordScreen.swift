@@ -13,7 +13,6 @@ struct ForgotPasswordScreen<T: ForgotPasswordViewModeling>: View {
   @EnvironmentObject var router: NavigationRouter
   @EnvironmentObject var appState: AppState
   
-  
   var body: some View {
     content
       .navigationBarBackButtonHidden(true)
