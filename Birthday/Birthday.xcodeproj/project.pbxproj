@@ -19,6 +19,7 @@
 		9393CE4A2CCA8C6600D8DEA1 /* EditAccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE492CCA8C6600D8DEA1 /* EditAccountRepository.swift */; };
 		93DDE0BC2CC9144700F7FAA4 /* GetProfile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 93DDE0BB2CC9144700F7FAA4 /* GetProfile.graphql */; };
 		93DDE0BE2CC915F700F7FAA4 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDE0BD2CC915F700F7FAA4 /* ProfileRepository.swift */; };
+		93EB4A1D2CD52CF00070C377 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB4A1C2CD52CF00070C377 /* Alert.swift */; };
 		CE02C9EB2CCFDBB300C091F0 /* SignInViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C9EA2CCFDBB300C091F0 /* SignInViewModeling.swift */; };
 		CE02C9ED2CCFDCD900C091F0 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C9EC2CCFDCD900C091F0 /* SignInRepository.swift */; };
 		CE02C9EF2CCFDD4100C091F0 /* SignIn.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE02C9EE2CCFDD4100C091F0 /* SignIn.graphql */; };
@@ -168,6 +169,7 @@
 		9393CE492CCA8C6600D8DEA1 /* EditAccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountRepository.swift; sourceTree = "<group>"; };
 		93DDE0BB2CC9144700F7FAA4 /* GetProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetProfile.graphql; sourceTree = "<group>"; };
 		93DDE0BD2CC915F700F7FAA4 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		93EB4A1C2CD52CF00070C377 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		CE02C9EA2CCFDBB300C091F0 /* SignInViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModeling.swift; sourceTree = "<group>"; };
 		CE02C9EC2CCFDCD900C091F0 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
 		CE02C9EE2CCFDD4100C091F0 /* SignIn.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignIn.graphql; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 				F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */,
 				CE02CA082CD0D99E00C091F0 /* ToastView.swift */,
 				CE02CA0A2CD1391D00C091F0 /* ProfileButton.swift */,
+				93EB4A1C2CD52CF00070C377 /* Alert.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1344,6 +1347,7 @@
 				F3C8CBB42CC7845F002DE72A /* TabModel.swift in Sources */,
 				9393CE1D2CCA864500D8DEA1 /* MutationProfile.graphql in Sources */,
 				F3C8CB9B2CC6A5F2002DE72A /* BirthdayApp.swift in Sources */,
+				93EB4A1D2CD52CF00070C377 /* Alert.swift in Sources */,
 				CE98D2EC2CC80BFB0017E477 /* NavigationRouter.swift in Sources */,
 				CE98D2DC2CC792E30017E477 /* RoundedButton.swift in Sources */,
 				CE02C9F52CD024DF00C091F0 /* AppState.swift in Sources */,
@@ -1496,7 +1500,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = QAG24BGKCF;
+				DEVELOPMENT_TEAM = NQ25FKCD57;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
@@ -1530,7 +1534,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = QAG24BGKCF;
+				DEVELOPMENT_TEAM = NQ25FKCD57;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
