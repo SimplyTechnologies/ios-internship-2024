@@ -19,7 +19,7 @@
 		9393CE4A2CCA8C6600D8DEA1 /* EditAccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE492CCA8C6600D8DEA1 /* EditAccountRepository.swift */; };
 		93DDE0BC2CC9144700F7FAA4 /* GetProfile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 93DDE0BB2CC9144700F7FAA4 /* GetProfile.graphql */; };
 		93DDE0BE2CC915F700F7FAA4 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDE0BD2CC915F700F7FAA4 /* ProfileRepository.swift */; };
-		93EB4A1B2CD52A600070C377 /* UIAplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB4A1A2CD52A600070C377 /* UIAplication.swift */; };
+		93EB4A1B2CD52A600070C377 /* UIAplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB4A1A2CD52A600070C377 /* UIAplication+Ext.swift */; };
 		CE02C9EB2CCFDBB300C091F0 /* SignInViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C9EA2CCFDBB300C091F0 /* SignInViewModeling.swift */; };
 		CE02C9ED2CCFDCD900C091F0 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C9EC2CCFDCD900C091F0 /* SignInRepository.swift */; };
 		CE02C9EF2CCFDD4100C091F0 /* SignIn.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE02C9EE2CCFDD4100C091F0 /* SignIn.graphql */; };
@@ -169,7 +169,7 @@
 		9393CE492CCA8C6600D8DEA1 /* EditAccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountRepository.swift; sourceTree = "<group>"; };
 		93DDE0BB2CC9144700F7FAA4 /* GetProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetProfile.graphql; sourceTree = "<group>"; };
 		93DDE0BD2CC915F700F7FAA4 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
-		93EB4A1A2CD52A600070C377 /* UIAplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAplication.swift; sourceTree = "<group>"; };
+		93EB4A1A2CD52A600070C377 /* UIAplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication+Ext.swift"; sourceTree = "<group>"; };
 		CE02C9EA2CCFDBB300C091F0 /* SignInViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModeling.swift; sourceTree = "<group>"; };
 		CE02C9EC2CCFDCD900C091F0 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
 		CE02C9EE2CCFDD4100C091F0 /* SignIn.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignIn.graphql; sourceTree = "<group>"; };
@@ -923,7 +923,7 @@
 				F3FDEBA52CCE47C40073BFED /* UIImage+Ext.swift */,
 				CE02C9F62CD025B100C091F0 /* UserDefaults+Ext.swift */,
 				CE02CA012CD03AC100C091F0 /* UIDevice+Ext.swift */,
-				93EB4A1A2CD52A600070C377 /* UIAplication.swift */,
+				93EB4A1A2CD52A600070C377 /* UIAplication+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1280,7 +1280,7 @@
 				9393CDE42CC9171C00D8DEA1 /* ProfileViewModel.swift in Sources */,
 				93DDE0BE2CC915F700F7FAA4 /* ProfileRepository.swift in Sources */,
 				F3C8CBF22CC7B441002DE72A /* HomeViewModel.swift in Sources */,
-				93EB4A1B2CD52A600070C377 /* UIAplication.swift in Sources */,
+				93EB4A1B2CD52A600070C377 /* UIAplication+Ext.swift in Sources */,
 				F3FDEBCA2CCFA6580073BFED /* Eventable.swift in Sources */,
 				F3FDEBA22CCC463A0073BFED /* CreateBirthdayViewModeling.swift in Sources */,
 				CE02C9F92CD02C0A00C091F0 /* RegistrationViewModeling.swift in Sources */,
