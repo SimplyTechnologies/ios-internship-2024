@@ -127,6 +127,7 @@ extension BirthDayEditCommonView {
       isSecondary: true
     ) {
       doneAction(birthdayData)
+      UIApplication.shared.hideKeyboard()
       if isAddingEvent {
         openCalendar = true
         isAddingEvent = false
