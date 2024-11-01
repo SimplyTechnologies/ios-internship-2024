@@ -12,8 +12,6 @@ struct HomeScreen<T: HomeViewModeling>: View {
   @StateObject var viewModel: T
   @EnvironmentObject var router: NavigationRouter
   
-  @State var isEmpty: Bool = false
-  
   var body: some View {
     content
       .onLoad {

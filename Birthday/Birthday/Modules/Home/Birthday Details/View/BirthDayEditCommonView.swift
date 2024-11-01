@@ -124,6 +124,7 @@ extension BirthDayEditCommonView {
   private var doneButton: some View {
     Button {
       doneAction(birthdayData)
+      UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
       if isAddingEvent {
         openCalendar = true
         isAddingEvent = false
