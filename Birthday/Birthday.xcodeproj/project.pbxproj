@@ -94,6 +94,8 @@
 		CEDC8A212CD241A700CA0ACF /* AddShopToFavorite.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A132CD241A700CA0ACF /* AddShopToFavorite.graphql */; };
 		CEDC8A222CD241A700CA0ACF /* SignUp.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A192CD241A700CA0ACF /* SignUp.graphql */; };
 		CEDC8A282CD2710100CA0ACF /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = CEDC8A272CD2710100CA0ACF /* PopupView */; };
+		CEDC8A2A2CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8A292CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift */; };
+		CEDC8A2D2CD2CC3200CA0ACF /* Messagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8A2C2CD2CC3200CA0ACF /* Messagable.swift */; };
 		E7BD1C662CC7CD1700EC70FE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */; };
 		E7BD1C692CC7CD4800EC70FE /* SignInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BD1C682CC7CD4800EC70FE /* SignInScreen.swift */; };
 		F30266972CD10C25008214FC /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30266962CD10C25008214FC /* ForgotPasswordScreen.swift */; };
@@ -237,6 +239,8 @@
 		CEDC8A182CD241A700CA0ACF /* SignIn.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignIn.graphql; sourceTree = "<group>"; };
 		CEDC8A192CD241A700CA0ACF /* SignUp.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignUp.graphql; sourceTree = "<group>"; };
 		CEDC8A1A2CD241A700CA0ACF /* UpdateBirthdayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdateBirthdayMutation.graphql; sourceTree = "<group>"; };
+		CEDC8A292CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryRoundedButtonStyle.swift; sourceTree = "<group>"; };
+		CEDC8A2C2CD2CC3200CA0ACF /* Messagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messagable.swift; sourceTree = "<group>"; };
 		E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		E7BD1C682CC7CD4800EC70FE /* SignInScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInScreen.swift; sourceTree = "<group>"; };
 		F30266962CD10C25008214FC /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
@@ -551,6 +555,7 @@
 			isa = PBXGroup;
 			children = (
 				CE98D2DE2CC795B40017E477 /* RoundedButtonStyle.swift */,
+				CEDC8A292CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift */,
 			);
 			path = ButtonStyle;
 			sourceTree = "<group>";
@@ -620,6 +625,14 @@
 				CE56BDB42CCF731100F7DC9A /* ChangePassword.graphql */,
 			);
 			path = Mutations;
+			sourceTree = "<group>";
+		};
+		CEDC8A2B2CD2CC2000CA0ACF /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				CEDC8A2C2CD2CC3200CA0ACF /* Messagable.swift */,
+			);
+			path = Messaging;
 			sourceTree = "<group>";
 		};
 		E7BD1C642CC7CCFC00EC70FE /* SignIn */ = {
@@ -883,6 +896,7 @@
 			isa = PBXGroup;
 			children = (
 				F3037B9B2CD37F1F008BC14A /* Publishers */,
+				CEDC8A2B2CD2CC2000CA0ACF /* Messaging */,
 				F3FDEBC52CCFA3900073BFED /* Managers */,
 				F3FDEBD12CCFD7B40073BFED /* PullToRefresh */,
 				CE98D2ED2CC80C710017E477 /* Logger */,
@@ -1253,6 +1267,7 @@
 				931C201F2CC7E9FD0087E7AD /* LandingButton.swift in Sources */,
 				F3C8CBB92CC78830002DE72A /* TabBarView.swift in Sources */,
 				F3FDEBA42CCC46940073BFED /* CreateBirthdayViewModel.swift in Sources */,
+				CEDC8A2A2CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift in Sources */,
 				F3978D152CC9840000FFF7F5 /* BirthDayDetailsViewModeling.swift in Sources */,
 				CE42AB082CCA36650057ECFB /* User.swift in Sources */,
 				F3C8CBC92CC78A12002DE72A /* ProfileScreen.swift in Sources */,
@@ -1267,6 +1282,7 @@
 				CE02C9F92CD02C0A00C091F0 /* RegistrationViewModeling.swift in Sources */,
 				CE56BDAC2CCF5ACE00F7DC9A /* ChangePasswordViewModel.swift in Sources */,
 				CE42AB0C2CCA54FC0057ECFB /* ShopViewModel.swift in Sources */,
+				CEDC8A2D2CD2CC3200CA0ACF /* Messagable.swift in Sources */,
 				CE42AB202CCA94220057ECFB /* SkeletonView.swift in Sources */,
 				CE42AB2C2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift in Sources */,
 				CE42AB162CCA5CAB0057ECFB /* ShopScreen.swift in Sources */,
@@ -1480,7 +1496,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QAG24BGKCF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
@@ -1514,7 +1530,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QAG24BGKCF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;

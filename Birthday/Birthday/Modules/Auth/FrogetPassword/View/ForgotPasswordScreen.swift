@@ -54,7 +54,7 @@ extension ForgotPasswordScreen {
   private var emailField: some View {
     VStack(alignment: .leading) {
       Text(String.Field.email)
-        .foregroundStyle(Color.darkRed.opacity(0.7))
+        .foregroundStyle(Color.rouge.opacity(0.7))
         .karmaFont(style: .bold18)
       InputField(
         text: $viewModel.email,
@@ -82,7 +82,7 @@ extension ForgotPasswordScreen {
     VStack {
       Text(String.Auth.passwordCode)
         .karmaFont(style: .bold18)
-        .foregroundStyle(Color.darkRed)
+        .foregroundStyle(Color.rouge)
         .padding(.vertical, 10)
       InputField(
         text: $viewModel.passwordCode,

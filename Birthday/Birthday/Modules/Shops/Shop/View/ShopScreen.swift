@@ -67,11 +67,24 @@ extension ShopScreen {
                   viewModel.toggleFavorite(shop: shop)
                 }
                 .onTapGesture {
-                  let viewModel = ShopDetailsViewModel(
+                  let shopDetailsViewModel = ShopDetailsViewModel(
                     shopRepository: ShopDefaultRepository(),
                     shop: shop
                   )
-                  router.push(TabBarView.ShopScreens.details(viewModel: viewModel))
+                  
+                  if router.type == .home {
+                    router.push(
+                      TabBarView.HomeScreens.shopDetails(
+                        viewModel: shopDetailsViewModel
+                      )
+                    )
+                  } else {
+                    router.push(
+                      TabBarView.ShopScreens.details(
+                        viewModel: shopDetailsViewModel
+                      )
+                    )
+                  }
                 }
               }
             }

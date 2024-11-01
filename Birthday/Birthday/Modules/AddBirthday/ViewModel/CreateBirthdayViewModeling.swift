@@ -6,16 +6,17 @@
 //
 
 import Foundation
-import _PhotosUI_SwiftUI
+import PhotosUI
+import SwiftUI
 
-protocol CreateBirthdayViewModeling: ObservableObject {
+protocol CreateBirthdayViewModeling: Toastable {
   
   var isLoading: Bool { get set }
   var isContentValid: Bool { get set }
   var birthday: BirthdayModel { get set }
   var selectedImage: UIImage? { get set }
   var selectedItem: PhotosPickerItem? { get set }
-  
+
   func createBirthday()
   func convertImage(image: PhotosPickerItem?) async
   func resetScreen()

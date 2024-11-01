@@ -117,8 +117,14 @@ extension String {
   enum Toast {
     
     static var register: String { "toast_register".localized }
+    static var changePassword: String { "toast_change_password".localized }
+    static var editProfile: String { "toast_edit_profile".localized }
+    static var createBirthday: String { "toast_create_birthday".localized }
+    static var deleteBirthday: String { "toast_delete_birthday".localized }
+    static var updateBirthday: String { "toast_update_birthday".localized }
     static var change: String { "toast_change".localized }
     static var wrongCode: String { "toast_wrong_code".localized }
+    static var checkEmail: String { "toast_check_email".localized }
     
   }
   

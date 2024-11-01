@@ -28,7 +28,7 @@ extension BirthDayCell {
       Spacer()
     }
     .background(Color.white)
-    .cornerRadius(24)
+    .clipShape(RoundedRectangle(cornerRadius: 24))
   }
   
   private var image: some View {
@@ -56,7 +56,7 @@ extension BirthDayCell {
       }
     }
     .frame(width: 70, height: 70)
-    .cornerRadius(50)
+    .clipShape(RoundedRectangle(cornerRadius: 50))
     .padding(.leading, 16)
     .padding(.trailing, 44)
     .padding(.vertical, 20)
@@ -79,19 +79,5 @@ extension BirthDayCell {
 }
 
 #Preview {
-  BirthDayCell(
-    model: BirthdayModel(
-      createdAt: "",
-      date: "1999-11-03T09:54:33.000Z",
-      id: 1,
-      image: "https://randomuser.me/api/portraits/med/women/19.jpg",
-      message: "Be Happy",
-      name: "John", 
-      relation: .friend,
-      upcomingAge: 12,
-      upcomingBirthday: nil,
-      updatedAt: nil, 
-      userId: 2
-    )
-  )
+  BirthDayCell(model: BirthdayModel.mock)
 }

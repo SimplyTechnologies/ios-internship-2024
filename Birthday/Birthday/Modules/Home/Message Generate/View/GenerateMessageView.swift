@@ -32,7 +32,7 @@ struct GenerateMessageView: View {
         }
       } label: {
         Text(String.Birthday.send)
-          .foregroundStyle(Color.darkRed)
+          .foregroundStyle(Color.rouge)
           .padding(6)
           .background(Color.lightPink)
           .clipShape(RoundedRectangle(cornerRadius: 8))

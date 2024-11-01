@@ -15,9 +15,9 @@ struct LandingScreen: View {
     case forgotPassword
     case resetPassword(code: String)
   }
-  
-  @StateObject var authRouter = NavigationRouter("Auth")
-  
+
+  @StateObject var authRouter = NavigationRouter(.auth)
+
   private let radiusValue: CGFloat = 42
   
   var body: some View {

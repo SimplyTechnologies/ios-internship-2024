@@ -14,13 +14,21 @@ struct ChangePasswordScreen<T: ChangePasswordViewModeling>: View {
     case oldPassword, newPassword, repeatPassword
   }
   
-  @EnvironmentObject var router: NavigationRouter
   @StateObject var viewModel: T
+  @EnvironmentObject var appState: AppState
+  @EnvironmentObject var router: NavigationRouter
   @FocusState private var focusedField: Field?
   @State private var scrollProxy: ScrollViewProxy? = nil
 
   var body: some View {
     content
+      .onChange(of: viewModel.isShowMessage) { isShow in
+        appState.isShowMessage = isShow
+        if isShow {
+          appState.isSuccessMessage = viewModel.isSuccessMessage
+          appState.message = viewModel.toastMessage
+        }
+      }
   }
   
 }
@@ -29,7 +37,7 @@ extension ChangePasswordScreen {
   
   private var content: some View {
     ZStack {
-      Color.snow.ignoresSafeArea()
+      Color.lightPink.ignoresSafeArea()
       VStack(spacing: 0) {
         NavigationBar {
           router.pop()
@@ -177,19 +185,15 @@ extension ChangePasswordScreen {
   }
   
   private var doneButton: some View {
-    Button {
-      viewModel.changePassword {
-        router.pop()
+    RoundedButton(
+      name: String.Birthday.done,
+      isLoading: viewModel.isLoading,
+      isSecondary: true
+    ) {
+        viewModel.changePassword {
+          router.pop()
+        }
       }
-    } label: {
-      Text(String.Birthday.done)
-        .foregroundStyle(.white)
-        .karmaFont(style: .bold18)
-        .padding(.vertical, 8)
-        .padding(.horizontal, 20)
-        .background(Color.rouge)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
-    }
   }
   
   private func goUp() {

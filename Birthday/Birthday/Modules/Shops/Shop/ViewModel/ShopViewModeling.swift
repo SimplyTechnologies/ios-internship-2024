@@ -14,7 +14,6 @@ protocol ShopViewModeling: ObservableObject {
   var filteredShops: [Shop] { get set }
   var isFocused: Bool { get set }
   var searchText: String { get set }
-  
   var id: UUID { get set }
   
   func getShops()

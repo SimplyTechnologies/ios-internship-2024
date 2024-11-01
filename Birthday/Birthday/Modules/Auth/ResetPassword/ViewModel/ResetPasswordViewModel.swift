@@ -11,13 +11,14 @@ import Combine
 final class ResetPasswordViewModel: ResetPasswordViewModeling {
   
   @Published var isShowMessage: Bool = false
-  @Published var isSuccessMessage: Bool = false
-  @Published var toastMessage: String = ""
   @Published var isLoading: Bool = false
   @Published var isPasswordValid: Bool = false
   @Published var isConfirmPassValid: Bool = false
   @Published var password: String = ""
   @Published var confirmPassword: String = ""
+  
+  var isSuccessMessage: Bool = false
+  var toastMessage: String = ""
   
   private let forgotPasswordRepository: ForgotPasswordRepository
   private let passwordCode: String

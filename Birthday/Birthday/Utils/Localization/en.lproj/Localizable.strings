@@ -61,7 +61,8 @@
 
 "add_event" = "Add to Calendar";
 
-//Auth
+// Auth
+
 "auth_code" = "Get The Code";
 "auth_password_code" = "Password Code";
 "auth_set_password" = "Set New Password";
@@ -75,3 +76,9 @@
 "toast_register" = "You have successfully registered! 🎉";
 "toast_change" = "You have successfully changed your Password! 🎉";
 "toast_wrong_code" = "Wrong Code";
+"toast_check_email" = "Code sent to your email! Check your inbox to continue.";
+"toast_change_password" = "Password successfully changed! 🎉";
+"toast_edit_profile" = "Profile info successfully updated! 🎉";
+"toast_create_birthday" = "BirthDay successfully created! 🎉";
+"toast_delete_birthday" = "BirthDay successfully deleted! 🎉";
+"toast_update_birthday" = "BirthDay successfully updated! 🎉";

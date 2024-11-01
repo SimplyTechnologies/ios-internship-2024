@@ -21,6 +21,10 @@ class SignInViewModel: SignInViewModeling {
   @Published var isShowPasswordField: Bool = false
   @Published var passwordErrorMessage: String = ""
   @Published var emailErrorMessage: String = ""
+  @Published var isShowMessage: Bool = false
+  
+  var toastMessage: String = ""
+  var isSuccessMessage: Bool = false
   
   private let signInRepository: SignInRepository
   private var cancellables = Set<AnyCancellable>()
@@ -93,13 +97,15 @@ class SignInViewModel: SignInViewModeling {
     validateForm()
     if isValidForm {
       isLoading = true
-      
+      isShowMessage = false
       signInRepository.singIn(email: email, password: password)
         .sink { [weak self] result in
-          self?.isLoading = false
+          guard let self else { return }
+          isLoading = false
           switch result {
           case .failure(let error):
-            Console.log("❌ Error: \(error)")
+            Console.log("❌ Error: ", error)
+            showToast(message: error.localizedDescription, isSuccess: false)
           default: break
           }
         } receiveValue: { data in

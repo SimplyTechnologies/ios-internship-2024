@@ -11,14 +11,15 @@ import Combine
 final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
   
   @Published var isShowMessage: Bool = false
-  @Published var isSuccessMessage: Bool = false
-  @Published var toastMessage: String = ""
   @Published var isLoading: Bool = false
   @Published var email: String = ""
   @Published var passwordCode: String = ""
   @Published var isCodeValid: Bool = false
-  @Published var isEmailValid: Bool = false
+  @Published var isEmailValid: Bool = true
   @Published var actualCode: String = ""
+  
+  var isSuccessMessage: Bool = false
+  var toastMessage: String = ""
   
   private let forgotPasswordRepository: ForgotPasswordRepository
   private var cancelables = Set<AnyCancellable>()
@@ -34,15 +35,18 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
     isShowMessage = false
     forgotPasswordRepository.getCode(email: email)
       .sink { [weak self] result in
-        self?.isLoading = false
+        guard let self else { return}
+        isLoading = false
         switch result {
         case .failure(let error):
           Console.log(error)
-          self?.showToast(message: error.localizedDescription, isSuccess: false)
+          showToast(message: error.localizedDescription, isSuccess: false)
         default: break
         }
-      } receiveValue: { [weak self]  code in
-        self?.actualCode = code
+      } receiveValue: { [weak self] code in
+        guard let self else { return }
+        actualCode = code
+        showToast(message: String.Toast.checkEmail, isSuccess: true)
       }
       .store(in: &cancelables)
   }
@@ -70,12 +74,6 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
     } else {
       showToast(message: String.Toast.wrongCode, isSuccess: false)
     }
-  }
-  
-  private func showToast(message: String, isSuccess: Bool) {
-    toastMessage = message
-    isSuccessMessage = isSuccess
-    isShowMessage = true
   }
   
 }

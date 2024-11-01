@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ProfileScreen<T: ProfileViewModeling>: View {
   
+  @StateObject var viewModel: T
   @EnvironmentObject var appState: AppState
   @EnvironmentObject var router: NavigationRouter
-  @StateObject var viewModel: T
   
   var body: some View {
     VStack(spacing: 0) {
