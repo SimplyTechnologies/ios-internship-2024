@@ -35,9 +35,10 @@ extension ProfileScreen {
     
   private var userDetails: some View {
     VStack(spacing: 0) {
-        CircularImage(
+        SkeletonImage(
           imagePath: viewModel.profileData.image ?? "",
           placeholderImage: Image(systemName: "person"),
+          borderColor: .clear,
           size: .init(width: 100, height: 100)
         )
       Spacer()

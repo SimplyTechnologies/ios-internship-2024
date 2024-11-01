@@ -19,7 +19,7 @@ protocol EditAccountViewModeling: Toastable {
   var isSurnameFocused: Bool { get set }
   var selectedPickerItem: PhotosPickerItem? { get set }
   var selectedImage: UIImage? { get set }
-  var isDoneEnabled: Bool { get }
+  var isDisabled: Bool { get }
 
   func updateProfileData(completion: @escaping () -> Void)
   func convertImage(image: PhotosPickerItem?) async

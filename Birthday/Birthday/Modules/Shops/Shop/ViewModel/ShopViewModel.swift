@@ -44,7 +44,11 @@ final class ShopViewModel: ShopViewModeling {
     isLoading = true
     shopRepository.getShops()
       .sink { [weak self] result in
-        self?.isLoading = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+          withAnimation {
+            self?.isLoading = false
+          }
+        }
         switch result {
         case .failure(let error):
           Console.log("❌ Error: ", error)

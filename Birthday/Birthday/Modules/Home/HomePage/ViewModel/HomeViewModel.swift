@@ -22,9 +22,7 @@ final class HomeViewModel: HomeViewModeling {
   }
   
   func getBirthDays() {
-    withAnimation {
-      isLoading = true
-    }
+    isLoading = true
     homeRepository.getBirthdays()
       .sink { [weak self] result in
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
