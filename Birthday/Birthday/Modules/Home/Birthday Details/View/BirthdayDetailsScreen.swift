@@ -274,7 +274,7 @@ extension BirthdayDetailsScreen {
         createdAt: "",
         date: "2021-03-10T00:00:00.000Z",
         id: 1,
-        image: "",// "https://randomuser.me/api/portraits/med/women/3.jpg",
+        image: "https://randomuser.me/api/portraits/med/women/3.jpg",
         message: "Be happy",
         name: "John",
         relation: .brother,
