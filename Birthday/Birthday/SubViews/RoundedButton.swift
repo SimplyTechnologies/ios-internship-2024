@@ -45,6 +45,6 @@ struct RoundedButton: View {
 }
 
 #Preview {
-  RoundedButton(name: "Anna", isLoading: false, isSecondary: true, action: {})
+  RoundedButton(name: "Register", isLoading: true) { }
   .padding()
 }
