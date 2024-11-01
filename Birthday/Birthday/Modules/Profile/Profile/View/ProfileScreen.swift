@@ -14,7 +14,7 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
   @EnvironmentObject var router: NavigationRouter
   
   @State private var isShowingSignOutAlert = false
-
+  
   var body: some View {
     VStack(spacing: 0) {
       NavigationBar()
@@ -26,7 +26,7 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
       Spacer()
     }
     .background(Color.lightPink)
-    .blur(radius: isShowingSignOutAlert ? 5 : 0)  // Add blur effect when alert is showing
+    .blur(radius: isShowingSignOutAlert ? 5 : 0)
     .onLoad {
       viewModel.getProfileData()
     }
@@ -35,8 +35,8 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
         title: String.Button.signOut,
         message: String.Auth.logOut,
         confirmAction: {
-          appState.isUserLogedIn = false
           isShowingSignOutAlert = false
+          AppController.shared.logOut()
           appState.isUserLogedIn = false
         },
         cancelAction: {
@@ -52,27 +52,27 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
 }
 
 extension ProfileScreen {
-    
+  
   private var userDetails: some View {
     VStack(spacing: 0) {
-        CircularImage(
-          imagePath: viewModel.profileData.image ?? "",
-          placeholderImage: Image(systemName: "person"),
-          size: .init(width: 100, height: 100)
-        )
+      CircularImage(
+        imagePath: viewModel.profileData.image ?? "",
+        placeholderImage: Image(systemName: "person"),
+        size: .init(width: 100, height: 100)
+      )
       Spacer()
         .frame(height: 32)
       
-        Text(viewModel.profileData.fullname ?? "")
-          .foregroundStyle(.black)
-          .karmaFont(style: .bold20)
-        
-        Spacer()
-          .frame(height: 16)
-
-        Text(verbatim: viewModel.profileData.email ?? "")
-          .foregroundStyle(.black)
-          .karmaFont(style: .bold20)
+      Text(viewModel.profileData.fullname ?? "")
+        .foregroundStyle(.black)
+        .karmaFont(style: .bold20)
+      
+      Spacer()
+        .frame(height: 16)
+      
+      Text(verbatim: viewModel.profileData.email ?? "")
+        .foregroundStyle(.black)
+        .karmaFont(style: .bold20)
     }
     .padding(.horizontal, 16)
   }
@@ -87,52 +87,52 @@ extension ProfileScreen {
   }
   
   private var editButton: some View {
-      ProfileButton(
-        title: String.Button.editAccount
-      ) {
-        let editViewModel = EditAccountViewModel(
-          editAccountRepository: EditAccountDefaultRepository(),
-          model: .init(
-            firstName: viewModel.profileData.firstName,
-            image: viewModel.profileData.image ?? "",
-            lastName: viewModel.profileData.lastName
-          )
-        )
-        
-        let profileModel: ProfileModel = .init(
+    ProfileButton(
+      title: String.Button.editAccount
+    ) {
+      let editViewModel = EditAccountViewModel(
+        editAccountRepository: EditAccountDefaultRepository(),
+        model: .init(
           firstName: viewModel.profileData.firstName,
           image: viewModel.profileData.image ?? "",
           lastName: viewModel.profileData.lastName
         )
-        
-        let screen = TabBarView.ProfileScreens.editProfile(
-          viewModel: editViewModel,
-          profileModel: profileModel) {
-            viewModel.getProfileData()
-          }
-        
-        router.push(screen)
-      }
+      )
+      
+      let profileModel: ProfileModel = .init(
+        firstName: viewModel.profileData.firstName,
+        image: viewModel.profileData.image ?? "",
+        lastName: viewModel.profileData.lastName
+      )
+      
+      let screen = TabBarView.ProfileScreens.editProfile(
+        viewModel: editViewModel,
+        profileModel: profileModel) {
+          viewModel.getProfileData()
+        }
+      
+      router.push(screen)
+    }
   }
   
   private var changePasswordButton: some View {
-      ProfileButton(
-        title: String.Button.changePassword
-      ) {
-        let viewModel = ChangePasswordViewModel(
-          changePasswordRepository: ChangePasswordDefaultRepository()
-        )
-        let screen = TabBarView.ProfileScreens.changePassword(viewModel: viewModel)
-        router.push(screen)
-      }
+    ProfileButton(
+      title: String.Button.changePassword
+    ) {
+      let viewModel = ChangePasswordViewModel(
+        changePasswordRepository: ChangePasswordDefaultRepository()
+      )
+      let screen = TabBarView.ProfileScreens.changePassword(viewModel: viewModel)
+      router.push(screen)
+    }
   }
   
   private var signOutButton: some View {
-      ProfileButton(
-        title: String.Button.signOut
-      ) {
-        isShowingSignOutAlert = true
-      }
+    ProfileButton(
+      title: String.Button.signOut
+    ) {
+      isShowingSignOutAlert = true
+    }
   }
   
 }
