@@ -75,8 +75,8 @@ extension BirthDayEditCommonView {
   private var editingName: some View {
     VStack(alignment: .leading,spacing: 0) {
       Text(String.Birthday.name)
-        .foregroundStyle(Color.darkRed)
-        .karmaFont(style: .semiBold18)
+        .foregroundStyle(Color.rouge)
+        .karmaFont(style: .bold18)
         .padding(.bottom, 8)
       InputField(
         text: $birthdayData.name.toUnwrapped(defaultValue: ""),
@@ -92,8 +92,8 @@ extension BirthDayEditCommonView {
     VStack (alignment: .leading){
       Text(String.Birthday.relationship)
         .padding(.leading, 26)
-        .foregroundStyle(Color.darkRed)
-        .karmaFont(style: .semiBold18)
+        .foregroundStyle(Color.rouge)
+        .karmaFont(style: .bold18)
       LazyVGrid(
         columns: columns,
         content: {
@@ -114,29 +114,24 @@ extension BirthDayEditCommonView {
       Text(relationship.rawValue)
         .lineLimit(1)
         .foregroundStyle(birthdayData.relation == relationship ? .white : .black)
-        .karmaFont(style: .semiBold14)
+        .karmaFont(style: .bold14)
     }
     .frame(width: 106, height: 40)
-    .background(birthdayData.relation == relationship ? Color.darkRed : Color.white)
-    .cornerRadius(16)
+    .background(birthdayData.relation == relationship ? Color.rouge : Color.white)
+    .clipShape(RoundedRectangle(cornerRadius: 16))
   }
   
   private var doneButton: some View {
-    Button {
+    RoundedButton(
+      name: String.Birthday.done,
+      isSecondary: true
+    ) {
       doneAction(birthdayData)
-      hideKeyboard()
+      UIApplication.shared.hideKeyboard()
       if isAddingEvent {
         openCalendar = true
         isAddingEvent = false
       }
-    } label: {
-      Text(String.Birthday.done)
-        .foregroundStyle(.white)
-        .karmaFont(style: .semiBold18)
-        .padding(.vertical, 8)
-        .padding(.horizontal, 20)
-        .background(isContentvalid ? Color.darkRed : Color.gray)
-        .cornerRadius(8)
     }
     .disabled(!isContentvalid)
   }
@@ -154,10 +149,10 @@ extension BirthDayEditCommonView {
     )
     .datePickerStyle(GraphicalDatePickerStyle())
     .colorInvert()
-    .colorMultiply(Color.darkRed)
+    .colorMultiply(Color.rouge)
     .background(Color.white)
-    .karmaFont(style: .semiBold20)
-    .cornerRadius(16)
+    .karmaFont(style: .bold20)
+    .clipShape(RoundedRectangle(cornerRadius: 16))
   }
   
   private var addButton: some View {
@@ -169,7 +164,7 @@ extension BirthDayEditCommonView {
     } label: {
       Image(systemName: "plus.circle.fill")
         .resizable()
-        .foregroundStyle(Color.darkRed)
+        .foregroundStyle(Color.rouge)
         .frame(width: 30, height: 30)
         .rotationEffect(.degrees(isAddingRelation ? 45.0 :  0.0))
     }
@@ -178,9 +173,9 @@ extension BirthDayEditCommonView {
   private var addRelationField: some View {
     HStack {
       TextField(String.Birthday.newRelationship, text: $newRelation)
-        .karmaFont(style: .semiBold18)
-        .foregroundStyle(Color.darkRed)
-        .tint(Color.darkRed)
+        .karmaFont(style: .bold18)
+        .foregroundStyle(Color.rouge)
+        .tint(Color.rouge)
         .padding(.horizontal, 10)
       Button {
         withAnimation {
@@ -194,13 +189,13 @@ extension BirthDayEditCommonView {
       } label: {
         Image(systemName: "checkmark.circle.fill")
           .resizable()
-          .foregroundStyle(Color.darkRed)
+          .foregroundStyle(Color.rouge)
           .frame(width: 24, height: 24)
           .padding(16)
       }
     }
     .background(Color.white)
-    .cornerRadius(16)
+    .clipShape(RoundedRectangle(cornerRadius: 16))
   }
   
   private var addToCalendarCheckBox: some View {
@@ -217,7 +212,7 @@ extension BirthDayEditCommonView {
           .foregroundStyle(isAddingEvent ? Color.bubblegumPink : Color.white)
         Text(String.Add.event)
           .karmaFont(style: .bold14)
-          .foregroundStyle(Color.darkRed)
+          .foregroundStyle(Color.rouge)
           .padding(.top, 2)
         Spacer()
       }

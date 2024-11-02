@@ -58,6 +58,8 @@ extension String {
     static var changePassword: String { "button_change_password".localized }
     static var signOut: String { "button_sign_out".localized }
     static var done: String { "button_done".localized }
+    static var cancel: String { "button_cancel".localized }
+    static var delete: String { "button_delete".localized }
     
   }
   
@@ -105,6 +107,8 @@ extension String {
     static var done: String { "birthday_done".localized }
     static var newRelationship: String { "birthday_relationship_new".localized }
     static var send: String { "birthday_send".localized }
+    static var delete: String { "birthday_delete_message".localized }
+    
     static var emptyStateMessage: String { "birthday_list_empty_state".localized }
   }
   
@@ -117,8 +121,14 @@ extension String {
   enum Toast {
     
     static var register: String { "toast_register".localized }
+    static var changePassword: String { "toast_change_password".localized }
+    static var editProfile: String { "toast_edit_profile".localized }
+    static var createBirthday: String { "toast_create_birthday".localized }
+    static var deleteBirthday: String { "toast_delete_birthday".localized }
+    static var updateBirthday: String { "toast_update_birthday".localized }
     static var change: String { "toast_change".localized }
     static var wrongCode: String { "toast_wrong_code".localized }
+    static var checkEmail: String { "toast_check_email".localized }
     
   }
   
@@ -131,7 +141,7 @@ extension String {
     static var repeatPassword: String { "auth_repeat_password".localized }
     static var done: String { "auth_done".localized }
     static var forgot: String { "auth_forgot".localized }
-    
+    static var logOut: String { "logout_text".localized }
   }
   
 }

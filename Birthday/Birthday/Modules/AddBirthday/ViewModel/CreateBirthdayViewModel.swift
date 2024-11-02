@@ -5,10 +5,10 @@
 //  Created by MEKHAK GHAPANTSYAN on 26.10.24.
 //
 
-import Foundation
 import Combine
-import SwiftUI
+import Foundation
 import PhotosUI
+import SwiftUI
 
 final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
   
@@ -16,6 +16,10 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
   @Published var isLoading: Bool = false
   @Published var selectedImage: UIImage? = nil
   @Published var selectedItem: PhotosPickerItem? = nil
+  @Published var isShowMessage: Bool = false
+  
+  var toastMessage: String = ""
+  var isSuccessMessage: Bool = false
   @Published var birthday: BirthdayModel = BirthdayModel()
   
   private let newBirthdayRepository: NewBirthdayRepository
@@ -36,6 +40,7 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
   
   func createBirthday() {
     isLoading = true
+    isShowMessage = false
     guard let name = birthday.name, let date = birthday.date, let relation = birthday.relation else { return }
     let payload = CreateBirthdayPayload(
       message: birthday.message,
@@ -46,10 +51,12 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
     )
     newBirthdayRepository.createBirthday(payload: payload)
       .sink { [weak self] result in
-        self?.isLoading = false
+        guard let self else { return }
+        isLoading = false
         switch result {
         case .failure(let error):
-          Console.log(error)
+          Console.log("❌ Error: ", error)
+          showToast(message: error.localizedDescription, isSuccess: false)
         default: break
         }
       } receiveValue: { [weak self] birthday in
@@ -59,13 +66,15 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
         self.birthday = BirthdayModel()
         self.selectedItem = nil
         self.selectedImage = nil
+        showToast(message: String.Toast.createBirthday, isSuccess: true)
       }.store(in: &cancelables)
   }
   
   @MainActor
   func convertImage(image: PhotosPickerItem?) async {
     if let data = try? await image?.loadTransferable(type: Data.self),
-       let uiImage = UIImage(data: data) {
+       let uiImage = UIImage(data: data)
+    {
       selectedImage = uiImage
       let resizedImage = uiImage.resizeImage(targetSize: CGSize(width: 100, height: 100))
       if let jpegData = resizedImage.jpegData(compressionQuality: 0.1) {

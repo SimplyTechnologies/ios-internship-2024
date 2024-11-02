@@ -47,7 +47,7 @@ final class ShopViewModel: ShopViewModeling {
         self?.isLoading = false
         switch result {
         case .failure(let error):
-          print(error)
+          Console.log("❌ Error: ", error)
         default: break
         }
       } receiveValue: { [weak self] shopsData in
@@ -90,7 +90,7 @@ final class ShopViewModel: ShopViewModeling {
         filteredShops[index].isLoading = false
         switch result {
         case .failure(let error):
-          Console.log("❌ Error: \(error)")
+          Console.log("❌ Error: ", error)
         default: break
         }
       } receiveValue: { [weak self] data in
@@ -114,7 +114,7 @@ final class ShopViewModel: ShopViewModeling {
         filteredShops[index].isLoading = false
         switch result {
         case .failure(let error):
-          Console.log("❌ Error: \(error)")
+          Console.log("❌ Error: ", error)
         default: break
         }
       } receiveValue: { [weak self] data in

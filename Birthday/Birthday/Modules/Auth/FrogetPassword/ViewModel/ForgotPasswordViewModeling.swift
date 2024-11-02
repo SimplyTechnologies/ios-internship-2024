@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ForgotPasswordViewModeling: ObservableObject {
+protocol ForgotPasswordViewModeling: Toastable {
   
   var isLoading: Bool { get set }
   var email: String { get set }

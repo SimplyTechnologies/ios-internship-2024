@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import PhotosUI
 
-protocol EditAccountViewModeling: ObservableObject {
+protocol EditAccountViewModeling: Toastable {
 
   var id: UUID { get }
   var isLoading: Bool { get set }

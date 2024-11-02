@@ -13,13 +13,20 @@ struct SignInScreen<T: SignInViewModeling>: View {
     case email, password
   }
   
+  @StateObject var viewModel: T
   @EnvironmentObject var appState: AppState
   @EnvironmentObject var router: NavigationRouter
-  @StateObject var viewModel: T
   @FocusState private var focusedField: Field?
   
   var body: some View {
     content
+      .onChange(of: viewModel.isShowMessage) { isShow in
+        appState.isShowMessage = isShow
+        if isShow {
+          appState.isSuccessMessage = viewModel.isSuccessMessage
+          appState.message = viewModel.toastMessage
+        }
+      }
   }
   
 }
@@ -154,11 +161,12 @@ extension SignInScreen {
       name: String.Button.signIn,
       isLoading: viewModel.isLoading
     ) {
+      UIApplication.shared.hideKeyboard()
       viewModel.signIn {
         appState.isUserLogedIn = true
       }
     }
-    .disabled(!viewModel.isValidForm)
+    .disabled(!viewModel.isValidForm || viewModel.isLoading)
   }
   
   private var forgotPasswordButton: some View {
@@ -168,7 +176,7 @@ extension SignInScreen {
         router.push(LandingScreen.Screen.forgotPassword)
       } label: {
         Text(String.Auth.forgot)
-          .foregroundStyle(Color.darkRed)
+          .foregroundStyle(Color.rouge)
           .karmaFont(style: .bold12)
       }
       .frame(alignment: .trailing)

@@ -9,9 +9,9 @@ import SwiftUI
 
 struct TabBarView: View {
   
-  @StateObject private var homeRouter = NavigationRouter("Home")
-  @StateObject private var shopRouter = NavigationRouter("Shop")
-  @StateObject private var profileRouter = NavigationRouter("Profile")
+  @StateObject private var homeRouter = NavigationRouter(.home)
+  @StateObject private var shopRouter = NavigationRouter(.shop)
+  @StateObject private var profileRouter = NavigationRouter(.profile)
   
   @State var selectedTab: TabModel = .home
   
@@ -53,10 +53,12 @@ extension TabBarView {
       )
       .navigationDestination(for: HomeScreens.self) { screen in
         switch screen {
-        case .details(let viewModel):
+        case let .details(viewModel):
           BirthdayDetailsScreen(viewModel: viewModel)
-        case .shops(viewModel: let viewModel):
+        case let .shops(viewModel):
           ShopScreen(viewModel: viewModel)
+        case let .shopDetails(viewModel):
+          ShopDetailsScreen(viewModel: viewModel)
         }
       }
     }
@@ -135,11 +137,13 @@ extension TabBarView {
     
     case details(viewModel: BirthdayDetailsViewModel)
     case shops(viewModel: ShopViewModel)
+    case shopDetails(viewModel: ShopDetailsViewModel)
     
     var id: UUID {
       switch self {
       case let .details(viewModel): viewModel.id
       case let .shops(viewModel): viewModel.id
+      case let .shopDetails(viewModel): viewModel.id
       }
     }
     

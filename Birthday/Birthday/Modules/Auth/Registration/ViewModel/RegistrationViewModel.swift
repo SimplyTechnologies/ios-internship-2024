@@ -12,7 +12,6 @@ class RegistrationViewModel: RegistrationViewModeling {
   
   @Published var isLoading: Bool = false
   @Published var isShowMessage: Bool = false
-  @Published var isSuccessMessage: Bool = false
 
   @Published var name: String = ""
   @Published var surname: String = ""
@@ -40,7 +39,9 @@ class RegistrationViewModel: RegistrationViewModeling {
   @Published var nameErrorMessage: String = ""
   @Published var surnameErrorMessage: String = ""
   @Published var emailErrorMessage: String = ""
-  @Published var toastMessage: String = ""
+  
+  var toastMessage: String = ""
+  var isSuccessMessage: Bool = false
   
   private let registrationRepository: RegistrationRepository
   private var cancellables = Set<AnyCancellable>()
@@ -183,7 +184,7 @@ class RegistrationViewModel: RegistrationViewModeling {
           isLoading = false
           switch result {
           case .failure(let error):
-            Console.log("❌ Error: \(error)")
+            Console.log("❌ Error: ", error)
             showToast(message: error.localizedDescription, isSuccess: false)
           default: break
           }
@@ -230,12 +231,6 @@ class RegistrationViewModel: RegistrationViewModeling {
   private func validateRepeatPassword() {
     isSamePasswords = password == repeatPassword
     isValidRepeatPassword = repeatPassword.isValidPassword && isSamePasswords
-  }
-  
-  private func showToast(message: String, isSuccess: Bool) {
-    toastMessage = message
-    isSuccessMessage = isSuccess
-    isShowMessage = true
   }
   
 }

@@ -32,7 +32,7 @@ final class ProfileViewModel: ProfileViewModeling {
         case .finished:
           Console.log("Profile data fetching Succeed!")
         case .failure(let error):
-          Console.log(error.localizedDescription)
+          Console.log("❌ Error: ", error)
         }
       } receiveValue: { [weak self] profile in
         self?.profileData = ProfileModel(dto: profile)

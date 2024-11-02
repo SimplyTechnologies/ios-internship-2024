@@ -5,13 +5,13 @@
 //  Created by MEKHAK GHAPANTSYAN on 22.10.24.
 //
 
-import Foundation
 import BirthDayAPI
+import Foundation
 
 struct BirthdayModel: Eventable {
   
   private let createdAt: String?
-  var  date: String?
+  var date: String?
   let id: Int?
   var image: String?
   var message, name: String?
@@ -24,7 +24,7 @@ struct BirthdayModel: Eventable {
     createdAt: String?,
     date: String?,
     id: Int?,
-    image: String?, 
+    image: String?,
     message: String?,
     name: String?,
     relation: Relationship?,
@@ -32,7 +32,7 @@ struct BirthdayModel: Eventable {
     upcomingBirthday: String?,
     updatedAt: String?,
     userId: Int?
-    ) {
+  ) {
     self.createdAt = createdAt
     self.date = date
     self.id = id
@@ -47,17 +47,17 @@ struct BirthdayModel: Eventable {
   }
   
   init(dto: GetBirthDayListQuery.Data.Birthday) {
-    self.createdAt = dto.createdAt
-    self.date = dto.date
-    self.id = dto.id
-    self.image = dto.image
-    self.message = dto.message
-    self.name = dto.name
-    self.relation = Relationship(rawValue: dto.relation)
-    self.upcomingAge = dto.upcomingAge
-    self.upcomingBirthday = dto.upcomingBirthday
-    self.updatedAt = dto.updatedAt
-    self.userId = dto.userId
+    createdAt = dto.createdAt
+    date = dto.date
+    id = dto.id
+    image = dto.image
+    message = dto.message
+    name = dto.name
+    relation = Relationship(rawValue: dto.relation)
+    upcomingAge = dto.upcomingAge
+    upcomingBirthday = dto.upcomingBirthday
+    updatedAt = dto.updatedAt
+    userId = dto.userId
   }
   
   init(createBirthdayDTO: CreateBirthdayMutation.Data.CreateBirthday) {
@@ -87,5 +87,23 @@ struct BirthdayModel: Eventable {
     updatedAt = nil
     userId = nil
   }
+  
+}
+
+extension BirthdayModel {
+  
+  static let mock: BirthdayModel = .init(
+    createdAt: "",
+    date: "1999-11-03T09:54:33.000Z",
+    id: 1,
+    image: "https://randomuser.me/api/portraits/med/women/19.jpg",
+    message: "Be Happy",
+    name: "John",
+    relation: .friend,
+    upcomingAge: 12,
+    upcomingBirthday: nil,
+    updatedAt: nil,
+    userId: 2
+  )
   
 }

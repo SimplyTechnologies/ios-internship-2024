@@ -54,7 +54,7 @@ extension ResetPasswordScreen {
   private var password: some View {
     VStack(alignment: .leading, spacing: 10) {
       Text(String.Auth.newPassword)
-        .foregroundStyle(Color.darkRed.opacity(0.7))
+        .foregroundStyle(Color.rouge.opacity(0.7))
         .karmaFont(style: .bold18)
       InputField(
         text: $viewModel.password,
@@ -70,7 +70,7 @@ extension ResetPasswordScreen {
   private var confirmPassword: some View {
     VStack(alignment: .leading, spacing: 10) {
       Text(String.Auth.repeatPassword)
-        .foregroundStyle(Color.darkRed.opacity(0.7))
+        .foregroundStyle(Color.rouge.opacity(0.7))
         .karmaFont(style: .bold18)
       InputField(
         text: $viewModel.confirmPassword,
@@ -88,6 +88,7 @@ extension ResetPasswordScreen {
       name: String.Auth.done,
       isLoading: viewModel.isLoading
     ) {
+      UIApplication.shared.hideKeyboard()
       viewModel.changePassword(
         navigationAction: {
           router.resetNavigation(

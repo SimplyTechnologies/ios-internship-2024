@@ -33,8 +33,11 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
   @Published var oldPasswordErrorMessage: String = ""
   @Published var newPasswordErrorMessage: String = ""
   @Published var repeatPasswordErrorMessage: String = ""
+  @Published var isShowMessage: Bool = false
   
   var id: UUID
+  var toastMessage: String = ""
+  var isSuccessMessage: Bool = false
   
   private let changePasswordRepository: ChangePasswordRepository
   private var cancellables = Set<AnyCancellable>()
@@ -115,18 +118,22 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
     validateForm()
     if isValidForm {
       isLoading = true
-
+      isShowMessage = false
       changePasswordRepository.changePassword(oldPassword: oldPassword, newPassword: newPassword)
         .sink { [weak self] result in
-          self?.isLoading = false
+          guard let self else { return }
+          isLoading = false
           switch result {
           case .failure(let error):
-            Console.log("❌ Error: \(error)")
+            Console.log("❌ Error: ", error)
+            showToast(message: error.localizedDescription, isSuccess: false)
           default: break
           }
-        } receiveValue: { data in
+        } receiveValue: { [weak self] data in
+          guard let self else { return }
           let isChanged = data.changePassword
           if isChanged {
+            showToast(message: String.Toast.changePassword, isSuccess: true)
             completion()
           }
         }

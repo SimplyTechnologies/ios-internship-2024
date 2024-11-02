@@ -18,10 +18,18 @@ struct BirthdayApp: App {
   var body: some Scene {
     WindowGroup {
       ZStack {
-        if appState.isUserLogedIn {
-          TabBarView()
-        } else {
-          LandingScreen()
+        ZStack {
+          if appState.isUserLogedIn {
+            TabBarView()
+          } else {
+            LandingScreen()
+          }
+        }
+        .blur(radius: appState.isShowPopup ? 5 : 0)
+        .disabled(appState.isShowPopup)
+        
+        if appState.isShowPopup {
+          appState.popupContent
         }
       }
       .environmentObject(appState)
@@ -48,6 +56,7 @@ struct BirthdayApp: App {
           .dragToDismiss(true)
           .autohideIn(4)
       }
+      .animation(.easeInOut(duration: 0.3), value: appState.isShowPopup)
     }
   }
   

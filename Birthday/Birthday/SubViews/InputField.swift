@@ -26,7 +26,7 @@ struct InputField: View {
     isShow: Binding<Bool> = .constant(false),
     placeholderText: String = "",
     isSecureField: Bool = false,
-    backgroundColor: Color = .snow
+    backgroundColor: Color = .lightPink
   ) {
     self._text = text
     self._isFocused = isFocused
