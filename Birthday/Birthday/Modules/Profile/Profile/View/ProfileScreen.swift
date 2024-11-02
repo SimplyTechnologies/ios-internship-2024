@@ -45,7 +45,8 @@ extension ProfileScreen {
       },
       cancelAction: {
         appState.hidePopup()
-      }
+      },
+      icon: Image(systemName: "rectangle.portrait.and.arrow.right")
     )
   }
   

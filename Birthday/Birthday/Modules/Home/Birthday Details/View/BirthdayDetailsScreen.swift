@@ -248,7 +248,8 @@ extension BirthdayDetailsScreen {
       },
       cancelAction: {
         appState.hidePopup()
-      }
+      },
+      icon: Image(.delete)
     )
   }
   

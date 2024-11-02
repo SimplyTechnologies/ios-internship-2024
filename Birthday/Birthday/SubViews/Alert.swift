@@ -17,14 +17,23 @@ struct AlertView: View {
   private let confirmButtonTitle: String
   private let confirmAction: () -> Void
   private let cancelAction: () -> Void
+  private let icon: Image?
   
-  init(title: String, message: String, confirmButtonTitle: String, confirmAction: @escaping () -> Void, cancelAction: @escaping () -> Void) {
+  init(
+    title: String,
+    message: String,
+    confirmButtonTitle: String,
+    confirmAction: @escaping () -> Void,
+    cancelAction: @escaping () -> Void,
+    icon: Image? = nil
+  ) {
     self.animationDuration = 0.3
     self.title = title
     self.message = message
     self.confirmButtonTitle = confirmButtonTitle
     self.confirmAction = confirmAction
     self.cancelAction = cancelAction
+    self.icon = icon
   }
   
   var body: some View {
@@ -39,7 +48,7 @@ struct AlertView: View {
         }
       
       VStack(spacing: 10) {
-        icon
+        iconView
         infoView
         buttons
       }
@@ -59,8 +68,8 @@ struct AlertView: View {
     }
   }
   
-  private var icon: some View {
-    Image(systemName: "rectangle.portrait.and.arrow.right")
+  private var iconView: some View {
+    icon
       .foregroundStyle(.rouge)
       .font(.system(size: 30))
   }
