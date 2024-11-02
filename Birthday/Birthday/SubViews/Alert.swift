@@ -71,7 +71,7 @@ struct AlertView: View {
   private var iconView: some View {
     icon
       .foregroundStyle(.rouge)
-      .font(.system(size: 30))
+      .frame(width: 30, height: 30)
   }
   
   private var infoView: some View {

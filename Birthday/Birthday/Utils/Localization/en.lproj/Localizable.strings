@@ -74,6 +74,7 @@
 "auth_forgot" = "Forgot password?";
 
 // LogOut
+
 "logout_text" = "Are you sure ?";
 
 // Toast
