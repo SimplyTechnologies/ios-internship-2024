@@ -11,29 +11,22 @@ import SwiftUI
 final class ChangePasswordViewModel: ChangePasswordViewModeling {
   
   @Published var isLoading: Bool = false
-  
   @Published var oldPassword: String = ""
   @Published var newPassword: String = ""
   @Published var repeatPassword: String = ""
-  
   @Published var isOldPasswordFocused: Bool = false
   @Published var isNewPasswordFocused: Bool = false
   @Published var isRepeatPasswordFocused: Bool = false
-  
   @Published var isValidOldPassword: Bool = true
   @Published var isValidNewPassword: Bool = true
   @Published var isValidRepeatPassword: Bool = true
-  @Published var isValidForm: Bool = false
   @Published var isSamePasswords = true
-  
-  @Published var isShowOldPassword: Bool = false
-  @Published var isShowNewPassword: Bool = false
-  @Published var isShowRepeatPassword: Bool = false
-  
-  @Published var oldPasswordErrorMessage: String = ""
-  @Published var newPasswordErrorMessage: String = ""
-  @Published var repeatPasswordErrorMessage: String = ""
+  @Published var isShowPasswordField: Bool = false
   @Published var isShowMessage: Bool = false
+  
+  var oldPasswordErrorMessage: String = ""
+  var newPasswordErrorMessage: String = ""
+  var repeatPasswordErrorMessage: String = ""
   
   var id: UUID
   var toastMessage: String = ""
@@ -46,67 +39,55 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
     oldPassword.isEmpty || newPassword.isEmpty || repeatPassword.isEmpty
   }
   
+  var isValidForm: Bool {
+    if hasEmptyField { return false }
+    return isValidOldPassword && isValidNewPassword && isValidRepeatPassword && isSamePasswords
+  }
+  
   init(changePasswordRepository: ChangePasswordRepository) {
     self.changePasswordRepository = changePasswordRepository
     self.id = UUID()
-
-    $isOldPasswordFocused
-      .sink { [weak self] isFocused in
-        guard let self else { return }
-        if isOldPasswordFocused && !isFocused {
-          validateOldPassword()
-          validateForm()
-        }
-      }
-      .store(in: &cancellables)
     
-    $isNewPasswordFocused
-      .sink { [weak self] isFocused in
+    $oldPassword
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] passwordText in
         guard let self else { return }
-        if isNewPasswordFocused && !isFocused {
-          validateNewPassword()
-          validateForm()
-        }
-      }
-      .store(in: &cancellables)
-    
-    $isRepeatPasswordFocused
-      .sink { [weak self] isFocused in
-        guard let self else { return }
-        if isRepeatPasswordFocused && !isFocused {
-          validateRepeatPassword()
-          validateForm()
-        }
-      }
-      .store(in: &cancellables)
-    
-    $isValidOldPassword
-      .sink { [weak self] isValid in
-        guard let self else { return }
-        if !isValid {
-          let message = oldPassword.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
+        isValidOldPassword = passwordText.isValidPassword
+        if !isValidOldPassword {
+          let message = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
           oldPasswordErrorMessage = message
         }
       }
       .store(in: &cancellables)
     
-    $isValidNewPassword
-      .sink { [weak self] isValid in
+    $newPassword
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] passwordText in
         guard let self else { return }
-        if !isValid {
-          let message = newPassword.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
+        isValidNewPassword = passwordText.isValidPassword
+        if newPassword != passwordText && !repeatPassword.isEmpty {
+          repeatPassword = ""
+        }
+        if !isValidNewPassword {
+          let message = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
           newPasswordErrorMessage = message
         }
       }
       .store(in: &cancellables)
     
-    $isValidRepeatPassword
-      .sink { [weak self] isValid in
+    $repeatPassword
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] repeatPasswordText in
         guard let self else { return }
-        if !isValid {
+        isSamePasswords = newPassword == repeatPasswordText
+        isValidRepeatPassword = repeatPasswordText.isValidPassword && isSamePasswords
+        if !isValidRepeatPassword {
           if !isSamePasswords {
             repeatPasswordErrorMessage = String.Field.invalidRepeatPassword
-          } else if repeatPassword.isEmpty {
+          } else if repeatPasswordText.isEmpty {
             repeatPasswordErrorMessage = String.Field.emptyRepeatPassword
           }
         }
@@ -115,8 +96,6 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
   }
   
   func changePassword(completion: @escaping () -> Void ) {
-    validateForm()
-    if isValidForm {
       isLoading = true
       isShowMessage = false
       changePasswordRepository.changePassword(oldPassword: oldPassword, newPassword: newPassword)
@@ -138,29 +117,6 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
           }
         }
         .store(in: &cancellables)
-    }
-  }
-  
-  private func validateForm() {
-    if !hasEmptyField {
-      validateOldPassword()
-      validateNewPassword()
-      validateRepeatPassword()
-      isValidForm = isValidOldPassword && isValidNewPassword && isValidRepeatPassword && isSamePasswords
-    }
-  }
-  
-  private func validateOldPassword() {
-    isValidOldPassword = oldPassword.isValidPassword
-  }
-  
-  private func validateNewPassword() {
-    isValidNewPassword = newPassword.isValidPassword
-  }
-  
-  private func validateRepeatPassword() {
-    isSamePasswords = newPassword == repeatPassword
-    isValidRepeatPassword = repeatPassword.isValidPassword && isSamePasswords
   }
   
 }

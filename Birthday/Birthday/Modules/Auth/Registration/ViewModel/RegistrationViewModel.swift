@@ -30,16 +30,14 @@ class RegistrationViewModel: RegistrationViewModeling {
   @Published var isValidEmail: Bool = true
   @Published var isValidPassword: Bool = true
   @Published var isValidRepeatPassword: Bool = true
-  @Published var isValidForm: Bool = false
   @Published var isSamePasswords: Bool = true
   @Published var isShowPasswordField: Bool = false
   
-  @Published var repeatPasswordErrorMessage: String = ""
-  @Published var passwordErrorMessage: String = ""
-  @Published var nameErrorMessage: String = ""
-  @Published var surnameErrorMessage: String = ""
-  @Published var emailErrorMessage: String = ""
-  
+  var repeatPasswordErrorMessage: String = ""
+  var passwordErrorMessage: String = ""
+  var nameErrorMessage: String = ""
+  var surnameErrorMessage: String = ""
+  var emailErrorMessage: String = ""
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
   
@@ -50,115 +48,84 @@ class RegistrationViewModel: RegistrationViewModeling {
     name.isEmpty || surname.isEmpty || email.isEmpty || password.isEmpty || repeatPassword.isEmpty
   }
   
+  var isValidForm: Bool {
+    if hasEmptyField { return false }
+    
+    let isValidFullName = isValidName && isValidSurname
+    let isValidPasswords = isValidPassword && isValidRepeatPassword && isSamePasswords
+    return isValidFullName && isValidEmail && isValidPasswords
+  }
+  
   init(registrationRepository: RegistrationRepository) {
     self.registrationRepository = registrationRepository
     
-    $password
-      .sink { [weak self] passwordText in
+    $name
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] name in
         guard let self else { return }
-        if password != passwordText && !repeatPassword.isEmpty {
-          repeatPassword = ""
-        }
-      }
-      .store(in: &cancellables)
-        
-    $isNameFocused
-      .sink { [weak self] isFocused in
-        guard let self else { return }
-        if isNameFocused && !isFocused {
-          validateName()
-          validateForm()
-        }
-      }
-      .store(in: &cancellables)
-    
-    $isSurnameFocused
-      .sink { [weak self] isFocused in
-        guard let self else { return }
-        if isSurnameFocused && !isFocused {
-          validateSurname()
-          validateForm()
-        }
-      }
-      .store(in: &cancellables)
-    
-    $isEmailFocused
-      .sink { [weak self] isFocused in
-        guard let self else { return }
-        if isEmailFocused && !isFocused {
-          validateEmail()
-          validateForm()
-        }
-      }
-      .store(in: &cancellables)
-    
-    $isPasswordFocused
-      .sink { [weak self] isFocused in
-        guard let self else { return }
-        if isPasswordFocused && !isFocused {
-          validatePassword()
-          validateForm()
-        }
-      }
-      .store(in: &cancellables)
-    
-    $isRepeatPasswordFocused
-      .sink { [weak self] isFocused in
-        guard let self else { return }
-        if isRepeatPasswordFocused && !isFocused {
-          validateRepeatPassword()
-          validateForm()
-        }
-      }
-      .store(in: &cancellables)
-    
-    $isValidName
-      .sink { [weak self] isValid in
-        guard let self else { return }
-        if !isValid {
+        self.name = name
+        isValidName = name.isValidName
+        if !isValidName {
           let message = name.isEmpty ? String.Field.emptyName : String.Field.invalidName
           nameErrorMessage = message
         }
       }
       .store(in: &cancellables)
     
-    $isValidSurname
-      .sink { [weak self] isValid in
+    $surname
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] surname in
         guard let self else { return }
-        if !isValid {
+        isValidSurname = surname.isValidName
+        if !isValidSurname {
           let message = surname.isEmpty ? String.Field.emptySurname : String.Field.invalidSurname
           surnameErrorMessage = message
         }
       }
       .store(in: &cancellables)
     
-    $isValidEmail
-      .sink { [weak self] isValid in
+    $email
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] email in
         guard let self else { return }
-        if !isValid {
+        isValidEmail = email.isValidEmail
+        if !isValidEmail {
           let message = email.isEmpty ? String.Field.emptyEmail : String.Field.invalidEmail
           emailErrorMessage = message
         }
       }
       .store(in: &cancellables)
     
-    $isValidPassword
-      .sink { [weak self] isValid in
+    $password
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] passwordText in
         guard let self else { return }
-        if !isValid {
-          let message = password.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
+        isValidPassword = passwordText.isValidPassword
+        if password != passwordText && !repeatPassword.isEmpty {
+          repeatPassword = ""
+        }
+        if !isValidPassword {
+          let message = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
           passwordErrorMessage = message
         }
       }
       .store(in: &cancellables)
     
-    $isValidRepeatPassword
-      .sink { [weak self] isValid in
+    $repeatPassword
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] repeatPasswordText in
         guard let self else { return }
-        if !isValid {
+        isSamePasswords = password == repeatPasswordText
+        isValidRepeatPassword = repeatPasswordText.isValidPassword && isSamePasswords
+        if !isValidRepeatPassword {
           if !isSamePasswords {
             repeatPasswordErrorMessage = String.Field.invalidRepeatPassword
-          } else if repeatPassword.isEmpty {
+          } else if repeatPasswordText.isEmpty {
             repeatPasswordErrorMessage = String.Field.emptyRepeatPassword
           }
         }
@@ -167,70 +134,33 @@ class RegistrationViewModel: RegistrationViewModeling {
   }
   
   func register(completion: @escaping () -> Void) {
-    validateForm()
-    if isValidForm {
-      isLoading = true
-      isShowMessage = false
-      let registrationPayload: RegistrationPayload = .init(
-        firstName: name,
-        lastName: surname,
-        email: email,
-        password: password
-      )
+    isLoading = true
+    isShowMessage = false
+    let registrationPayload: RegistrationPayload = .init(
+      firstName: name,
+      lastName: surname,
+      email: email,
+      password: password
+    )
       
-      registrationRepository.singUp(registrationPayload)
-        .sink { [weak self] result in
-          guard let self else { return }
-          isLoading = false
-          switch result {
-          case .failure(let error):
-            Console.log("❌ Error: ", error)
-            showToast(message: error.localizedDescription, isSuccess: false)
-          default: break
-          }
-        } receiveValue: { [weak self] data in
-          guard let self else { return }
-          let user = User(dto: data.signUp)
-          Console.log("User is : \(user)")
-          showToast(message: String.Toast.register, isSuccess: true)
-          completion()
+    registrationRepository.singUp(registrationPayload)
+      .sink { [weak self] result in
+        guard let self else { return }
+        isLoading = false
+        switch result {
+        case .failure(let error):
+          Console.log("❌ Error: ", error)
+          showToast(message: error.localizedDescription, isSuccess: false)
+        default: break
         }
-        .store(in: &cancellables)
-    }
-  }
-  
-  private func validateForm() {
-    if !hasEmptyField {
-      validateName()
-      validateSurname()
-      validateEmail()
-      validatePassword()
-      validateRepeatPassword()
-      let isValidFullName = isValidName && isValidSurname
-      let isValidPasswords = isValidPassword && isValidRepeatPassword && isSamePasswords
-      isValidForm = isValidFullName && isValidEmail && isValidPasswords
-    }
-  }
-  
-  private func validateName() {
-    isValidName = name.isValidName
-  }
-  
-  private func validateSurname() {
-    isValidSurname = surname.isValidName
-  }
-  
-  private func validateEmail() {
-    isValidEmail = email.isValidEmail
-  }
-  
-  private func validatePassword() {
-    isValidPassword = password.isValidPassword
-  }
-  
-  private func validateRepeatPassword() {
-    isSamePasswords = password == repeatPassword
-    isValidRepeatPassword = repeatPassword.isValidPassword && isSamePasswords
+      } receiveValue: { [weak self] data in
+        guard let self else { return }
+        let user = User(dto: data.signUp)
+        Console.log("User is : \(user)")
+        showToast(message: String.Toast.register, isSuccess: true)
+        completion()
+      }
+      .store(in: &cancellables)
   }
   
 }

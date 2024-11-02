@@ -80,6 +80,7 @@ struct InputField: View {
       .tint(Color.rouge)
       .karmaFont(style: .bold14)
       .autocorrectionDisabled()
+      .textInputAutocapitalization(.never)
   }
 
   var secureTextField: some View {
@@ -100,6 +101,7 @@ struct InputField: View {
       .tint(Color.rouge)
       .karmaFont(style: .bold14)
       .autocorrectionDisabled()
+      .textInputAutocapitalization(.never)
   }
 
   var hideButton: some View {

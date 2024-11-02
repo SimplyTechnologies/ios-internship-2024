@@ -12,17 +12,32 @@ final class ResetPasswordViewModel: ResetPasswordViewModeling {
   
   @Published var isShowMessage: Bool = false
   @Published var isLoading: Bool = false
-  @Published var isPasswordValid: Bool = false
-  @Published var isConfirmPassValid: Bool = false
+  @Published var isPasswordValid: Bool = true
+  @Published var isConfirmPassValid: Bool = true
   @Published var password: String = ""
   @Published var confirmPassword: String = ""
+  @Published var isPasswordFocused: Bool = false
+  @Published var isRepeatPasswordFocused: Bool = false
+  @Published var isSamePasswords: Bool = false
+  @Published var isShowPasswordField: Bool = false
   
+  var repeatPasswordErrorMessage: String = ""
+  var passwordErrorMessage: String = ""
   var isSuccessMessage: Bool = false
   var toastMessage: String = ""
   
+  private var hasEmptyField: Bool {
+    password.isEmpty || confirmPassword.isEmpty
+  }
+  
+  var isValidForm: Bool {
+    if hasEmptyField { return false }
+    return isPasswordValid && isConfirmPassValid && isSamePasswords
+  }
+  
   private let forgotPasswordRepository: ForgotPasswordRepository
   private let passwordCode: String
-  private var cancelables = Set<AnyCancellable>()
+  private var cancellables = Set<AnyCancellable>()
 
   init(forgotPasswordRepository: ForgotPasswordRepository, passwordCode: String) {
     self.forgotPasswordRepository = forgotPasswordRepository
@@ -53,23 +68,44 @@ final class ResetPasswordViewModel: ResetPasswordViewModeling {
           navigationAction()
         }
       }
-      .store(in: &cancelables)
+      .store(in: &cancellables)
   }
   
   private func setupPasswordValidation() {
     $password
-      .map {
-        $0.isValidPassword
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] passwordText in
+        guard let self else { return }
+        isPasswordValid = passwordText.isValidPassword
+        if password != passwordText && !confirmPassword.isEmpty {
+          confirmPassword = ""
+        }
+        if !isPasswordValid {
+          let message = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
+          passwordErrorMessage = message
+        }
       }
-      .assign(to: &$isPasswordValid)
+      .store(in: &cancellables)
   }
   
   private func setupConfirmPassValidation() {
     $confirmPassword
-      .map {
-        $0.isValidPassword && $0 == self.password
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] repeatPasswordText in
+        guard let self else { return }
+        isSamePasswords = password == repeatPasswordText
+        isConfirmPassValid = repeatPasswordText.isValidPassword && isSamePasswords
+        if !isConfirmPassValid {
+          if !isSamePasswords {
+            repeatPasswordErrorMessage = String.Field.invalidRepeatPassword
+          } else if repeatPasswordText.isEmpty {
+            repeatPasswordErrorMessage = String.Field.emptyRepeatPassword
+          }
+        }
       }
-      .assign(to: &$isConfirmPassValid)
+      .store(in: &cancellables)
   }
   
   private func showToast(message: String, isSuccess: Bool) {

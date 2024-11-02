@@ -5,8 +5,8 @@
 //  Created by Sona on 21.10.24.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 class SignInViewModel: SignInViewModeling {
   
@@ -17,12 +17,11 @@ class SignInViewModel: SignInViewModeling {
   @Published var isPasswordFocused: Bool = false
   @Published var isValidEmail: Bool = true
   @Published var isValidPassword: Bool = true
-  @Published var isValidForm: Bool = false
   @Published var isShowPasswordField: Bool = false
-  @Published var passwordErrorMessage: String = ""
-  @Published var emailErrorMessage: String = ""
   @Published var isShowMessage: Bool = false
   
+  var passwordErrorMessage: String = ""
+  var emailErrorMessage: String = ""
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
   
@@ -33,90 +32,62 @@ class SignInViewModel: SignInViewModeling {
     email.isEmpty || password.isEmpty
   }
   
+  var isValidForm: Bool {
+    if hasEmptyField { return false }
+    return isValidEmail && isValidPassword
+  }
+  
   init(signInRepository: SignInRepository) {
     self.signInRepository = signInRepository
 
-    $isEmailFocused
-      .sink { [weak self] isFocused in
+    $email
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] email in
         guard let self else { return }
-        if isEmailFocused && !isFocused {
-          validateEmail()
-          validateForm()
-        }
-      }
-      .store(in: &cancellables)
-    
-    $isPasswordFocused
-      .sink { [weak self] isFocused in
-        guard let self else { return }
-        if isPasswordFocused && !isFocused {
-          validatePassword()
-          validateForm()
-        }
-      }
-      .store(in: &cancellables)
-    
-    $isValidEmail
-      .sink { [weak self] isValid in
-        guard let self else { return }
-        if !isValid {
+        isValidEmail = email.isValidEmail
+        if !isValidEmail {
           let message = email.isEmpty ? String.Field.emptyEmail : String.Field.invalidEmail
           emailErrorMessage = message
         }
       }
       .store(in: &cancellables)
     
-    $isValidPassword
-      .sink { [weak self] isValid in
+    $password
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] passwordText in
         guard let self else { return }
-        if !isValid {
-          let message = password.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
+        isValidPassword = passwordText.isValidPassword
+        if !isValidPassword {
+          let message = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
           passwordErrorMessage = message
         }
       }
       .store(in: &cancellables)
   }
   
-  private func validateForm() {
-    if !hasEmptyField {
-      validateEmail()
-      validatePassword()
-      isValidForm = isValidEmail && isValidPassword
-    }
-  }
-  
-  private func validateEmail() {
-    isValidEmail = email.isValidEmail
-  }
-  
-  private func validatePassword() {
-    isValidPassword = password.isValidPassword
-  }
-  
   func signIn(completion: @escaping () -> Void) {
-    validateForm()
-    if isValidForm {
-      isLoading = true
-      isShowMessage = false
-      signInRepository.singIn(email: email, password: password)
-        .sink { [weak self] result in
-          guard let self else { return }
-          isLoading = false
-          switch result {
-          case .failure(let error):
-            Console.log("❌ Error: ", error)
-            showToast(message: error.localizedDescription, isSuccess: false)
-          default: break
-          }
-        } receiveValue: { data in
-          let accessToken = data.login.accessToken
-          if !accessToken.isEmpty {
-            AppController.shared.setLogedIn(accessToken)
-            completion()
-          }
+    isLoading = true
+    isShowMessage = false
+    signInRepository.singIn(email: email, password: password)
+      .sink { [weak self] result in
+        guard let self else { return }
+        isLoading = false
+        switch result {
+        case .failure(let error):
+          Console.log("❌ Error: ", error)
+          showToast(message: error.localizedDescription, isSuccess: false)
+        default: break
         }
-        .store(in: &cancellables)
-    }
+      } receiveValue: { data in
+        let accessToken = data.login.accessToken
+        if !accessToken.isEmpty {
+          AppController.shared.setLogedIn(accessToken)
+          completion()
+        }
+      }
+      .store(in: &cancellables)
   }
-
+  
 }

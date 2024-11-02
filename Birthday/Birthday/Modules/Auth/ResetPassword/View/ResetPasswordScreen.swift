@@ -9,13 +9,15 @@ import SwiftUI
 
 struct ResetPasswordScreen<T: ResetPasswordViewModeling>: View {
   
-  @StateObject var viewModel: T
+  private enum Field: Int, CaseIterable {
+    case newPassword, repeatPassword
+  }
   
+  @StateObject var viewModel: T
   @EnvironmentObject var router: NavigationRouter
   @EnvironmentObject var appState: AppState
-  
-  @State var isShowingPassword: Bool = false
-  @State var isShowingConfirmPass: Bool = false
+  @FocusState private var focusedField: Field?
+  @State private var scrollProxy: ScrollViewProxy? = nil
   
   var body: some View {
     content
@@ -35,19 +37,53 @@ struct ResetPasswordScreen<T: ResetPasswordViewModeling>: View {
 extension ResetPasswordScreen {
   
   private var content: some View {
-    VStack {
+    VStack(spacing: 0) {
       NavigationBar {
         router.pop()
       }
-      VStack(spacing: 24) {
-        password
-        confirmPassword
-        Spacer()
-        doneButton
+      GeometryReader { geo in
+        ScrollViewReader { scrollReader in
+          ScrollView {
+            VStack(spacing: 0) {
+              Spacer()
+                .frame(height: geo.size.height * 0.1)
+              password
+              Spacer()
+                .frame(height: 24)
+              confirmPassword
+              Spacer()
+                .frame(height: 24)
+              Spacer()
+              doneButton
+              Spacer()
+                .frame(height: 40)
+            }
+            .padding(.horizontal, 60)
+            .frame(
+              maxWidth: .infinity,
+              minHeight: geo.size.height,
+              alignment: .bottom
+            )
+            .onChange(of: focusedField) { newField in
+              if let newField {
+                withAnimation {
+                  scrollProxy?.scrollTo(newField.rawValue, anchor: .center)
+                }
+              }
+            }
+          }
+          .scrollIndicators(.hidden)
+          .disableBounces()
+          .onAppear {
+            self.scrollProxy = scrollReader
+          }
+        }
       }
-      .padding(.horizontal, 60)
-      .padding(.top, 80)
-      .padding(.bottom, 30)
+    }
+    .toolbar {
+      ToolbarItem(placement: .keyboard) {
+        keyboardButtons
+      }
     }
   }
   
@@ -58,12 +94,21 @@ extension ResetPasswordScreen {
         .karmaFont(style: .bold18)
       InputField(
         text: $viewModel.password,
-        isFocused: .constant(true),
+        isFocused: $viewModel.isPasswordFocused,
         isValidField: $viewModel.isPasswordValid,
-        isShow: $isShowingPassword,
+        isShow: $viewModel.isShowPasswordField,
+        placeholderText: String.Field.newPassword,
         isSecureField: true,
         backgroundColor: .white
       )
+      .focused($focusedField, equals: .newPassword)
+      .modifier(
+        FieldErrorModifier(
+          title: viewModel.passwordErrorMessage,
+          isHidden: viewModel.isPasswordValid
+        )
+      )
+      .id(Field.newPassword.rawValue)
     }
   }
   
@@ -74,12 +119,21 @@ extension ResetPasswordScreen {
         .karmaFont(style: .bold18)
       InputField(
         text: $viewModel.confirmPassword,
-        isFocused: .constant(true),
+        isFocused: $viewModel.isRepeatPasswordFocused,
         isValidField: $viewModel.isConfirmPassValid,
-        isShow: $isShowingConfirmPass,
+        isShow: $viewModel.isShowPasswordField,
+        placeholderText: String.Field.repeatNewPassword,
         isSecureField: true,
         backgroundColor: .white
       )
+      .focused($focusedField, equals: .repeatPassword)
+      .modifier(
+        FieldErrorModifier(
+          title: viewModel.repeatPasswordErrorMessage,
+          isHidden: viewModel.isConfirmPassValid
+        )
+      )
+      .id(Field.repeatPassword.rawValue)
     }
   }
   
@@ -96,6 +150,40 @@ extension ResetPasswordScreen {
         }
       )
     }
+    .disabled(!viewModel.isValidForm || viewModel.isLoading)
+  }
+  
+  private var keyboardButtons: some View {
+    HStack(spacing: 8) {
+      Spacer()
+      Button {
+        goUp()
+      } label: {
+        Image(systemName: "chevron.up")
+      }
+      .disabled(focusedField == .newPassword)
+        
+      Button {
+        goDown()
+      } label: {
+        Image(systemName: "chevron.down")
+      }
+      .disabled(focusedField == .repeatPassword)
+    }
+  }
+  
+  private func goUp() {
+    guard let rawValue = focusedField?.rawValue,
+          let status = Field(rawValue: rawValue - 1)
+    else { return }
+    focusedField = status
+  }
+  
+  private func goDown() {
+    guard let rawValue = focusedField?.rawValue,
+          let status = Field(rawValue: rawValue + 1)
+    else { return }
+    focusedField = status
   }
   
 }

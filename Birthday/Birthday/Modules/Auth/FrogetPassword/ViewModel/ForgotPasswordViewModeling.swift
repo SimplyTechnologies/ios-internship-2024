@@ -18,6 +18,12 @@ protocol ForgotPasswordViewModeling: Toastable {
   var isShowMessage: Bool { get set }
   var isSuccessMessage: Bool { get set }
   var toastMessage: String { get set }
+  var emailErrorMessage: String { get set }
+  var codeErrorMessage: String { get set }
+  var isEmailFocused: Bool { get set }
+  var isCodeFocused: Bool { get set }
+  var isGetCodeDisabled: Bool { get }
+  var isSetPasswordDisabled: Bool { get }
   
   func getCode()
   func checkCode(complition: @escaping () -> ())

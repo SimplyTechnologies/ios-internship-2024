@@ -47,7 +47,8 @@ extension ChangePasswordScreen {
             ScrollView {
               VStack(spacing: 0) {
                 Spacer()
-                  .frame(height: geo.size.height * 0.2)
+                Spacer()
+                  .frame(height: geo.size.height * 0.1)
                 Spacer()
                 changePasswordForm
                 Spacer()
@@ -55,7 +56,11 @@ extension ChangePasswordScreen {
                 Spacer()
                   .frame(height: 40)
               }
-              .frame(height: geo.size.height)
+              .frame(
+                maxWidth: .infinity,
+                minHeight: geo.size.height,
+                alignment: .bottom
+              )
             }
             .scrollIndicators(.hidden)
             .disableBounces()
@@ -115,13 +120,11 @@ extension ChangePasswordScreen {
       text: $viewModel.oldPassword,
       isFocused: $viewModel.isOldPasswordFocused,
       isValidField: $viewModel.isValidOldPassword,
-      isShow: $viewModel.isShowOldPassword,
+      isShow: $viewModel.isShowPasswordField,
       placeholderText: String.Field.oldPassword,
       isSecureField: true,
       backgroundColor: .white
     )
-    .keyboardType(.default)
-    .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .oldPassword)
     .modifier(
       FieldErrorModifier(
@@ -130,9 +133,6 @@ extension ChangePasswordScreen {
       )
     )
     .id(Field.oldPassword.rawValue)
-    .onTapGesture {
-      viewModel.isOldPasswordFocused = true
-    }
   }
   
   private var newPasswordField: some View {
@@ -140,13 +140,11 @@ extension ChangePasswordScreen {
       text: $viewModel.newPassword,
       isFocused: $viewModel.isNewPasswordFocused,
       isValidField: $viewModel.isValidNewPassword,
-      isShow: $viewModel.isShowNewPassword,
+      isShow: $viewModel.isShowPasswordField,
       placeholderText: String.Field.newPassword,
       isSecureField: true,
       backgroundColor: .white
     )
-    .keyboardType(.default)
-    .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .newPassword)
     .modifier(
       FieldErrorModifier(
@@ -155,9 +153,6 @@ extension ChangePasswordScreen {
       )
     )
     .id(Field.newPassword.rawValue)
-    .onTapGesture {
-      viewModel.isNewPasswordFocused = true
-    }
   }
   
   private var repeatPasswordField: some View {
@@ -165,13 +160,11 @@ extension ChangePasswordScreen {
       text: $viewModel.repeatPassword,
       isFocused: $viewModel.isRepeatPasswordFocused,
       isValidField: $viewModel.isValidRepeatPassword,
-      isShow: $viewModel.isShowRepeatPassword,
+      isShow: $viewModel.isShowPasswordField,
       placeholderText: String.Field.repeatNewPassword,
       isSecureField: true,
       backgroundColor: .white
     )
-    .keyboardType(.default)
-    .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .repeatPassword)
     .modifier(
       FieldErrorModifier(
@@ -180,9 +173,6 @@ extension ChangePasswordScreen {
       )
     )
     .id(Field.repeatPassword.rawValue)
-    .onTapGesture {
-      viewModel.isRepeatPasswordFocused = true
-    }
   }
   
   private var doneButton: some View {
@@ -194,7 +184,8 @@ extension ChangePasswordScreen {
         viewModel.changePassword {
           router.pop()
         }
-      }
+    }
+    .disabled(!viewModel.isValidForm || viewModel.isLoading)
   }
   
   private func goUp() {

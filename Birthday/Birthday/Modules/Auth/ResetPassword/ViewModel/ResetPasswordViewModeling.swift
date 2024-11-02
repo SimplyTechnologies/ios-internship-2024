@@ -17,7 +17,14 @@ protocol ResetPasswordViewModeling: ObservableObject {
   var isShowMessage: Bool { get set }
   var isSuccessMessage: Bool { get set }
   var toastMessage: String { get set }
-  
+  var isPasswordFocused: Bool { get set }
+  var isRepeatPasswordFocused: Bool { get set }
+  var repeatPasswordErrorMessage: String { get set }
+  var passwordErrorMessage: String { get set }
+  var isSamePasswords: Bool { get set }
+  var isShowPasswordField: Bool { get set }
+  var isValidForm: Bool { get }
+
   func changePassword(navigationAction: @escaping () -> ())
   
 }
