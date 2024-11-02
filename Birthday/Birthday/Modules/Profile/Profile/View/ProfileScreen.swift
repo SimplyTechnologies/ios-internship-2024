@@ -13,8 +13,6 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
   @EnvironmentObject var appState: AppState
   @EnvironmentObject var router: NavigationRouter
   
-  @State private var isShowingSignOutAlert = false
-  
   var body: some View {
     VStack(spacing: 0) {
       NavigationBar()
@@ -26,32 +24,29 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
       Spacer()
     }
     .background(Color.lightPink)
-    .blur(radius: isShowingSignOutAlert ? 5 : 0)
     .onLoad {
       viewModel.getProfileData()
     }
-    .overlay(
-      isShowingSignOutAlert ? AlertView(
-        title: String.Button.signOut,
-        message: String.Auth.logOut,
-        confirmAction: {
-          isShowingSignOutAlert = false
-          AppController.shared.logOut()
-          appState.isUserLogedIn = false
-        },
-        cancelAction: {
-          isShowingSignOutAlert = false
-        }
-      )
-      .transition(.scale)
-      : nil
-    )
-    .animation(.easeInOut, value: isShowingSignOutAlert)
   }
   
 }
 
 extension ProfileScreen {
+  
+  private var logoutPopupView: some View {
+    AlertView(
+      title: String.Button.signOut,
+      message: String.Auth.logOut,
+      confirmAction: {
+        AppController.shared.logOut()
+        appState.isUserLogedIn = false
+        appState.hidePopup()
+      },
+      cancelAction: {
+        appState.hidePopup()
+      }
+    )
+  }
   
   private var userDetails: some View {
     VStack(spacing: 0) {
@@ -131,7 +126,9 @@ extension ProfileScreen {
     ProfileButton(
       title: String.Button.signOut
     ) {
-      isShowingSignOutAlert = true
+      appState.showPopup {
+        AnyView(self.logoutPopupView)
+      }
     }
   }
   

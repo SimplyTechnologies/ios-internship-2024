@@ -9,12 +9,22 @@ import SwiftUI
 
 struct AlertView: View {
   
-  var title: String
-  var message: String
-  var confirmAction: () -> Void
-  var cancelAction: () -> Void
+  @State private var isVisible: Bool = false
   
-  init(title: String, message: String, confirmAction: @escaping () -> Void, cancelAction: @escaping () -> Void) {
+  private let animationDuration: Double
+  private let title: String
+  private let message: String
+  private let confirmAction: () -> Void
+  private let cancelAction: () -> Void
+  
+  init(
+    animationDuration: Double = 0.3,
+    title: String,
+    message: String,
+    confirmAction: @escaping () -> Void,
+    cancelAction: @escaping () -> Void
+  ) {
+    self.animationDuration = animationDuration
     self.title = title
     self.message = message
     self.confirmAction = confirmAction
@@ -22,51 +32,98 @@ struct AlertView: View {
   }
   
   var body: some View {
-    VStack(
-      alignment: .center,
-      spacing: 10
-    ) {
-      Image(systemName: "rectangle.portrait.and.arrow.right")
-        .foregroundStyle(.rouge)
-        .font(.system(size: 30))
-      VStack {
-        Text(title)
-          .karmaFont(style: .bold22)
-          .foregroundColor(.rouge)
-        
-        Text(message)
-          .karmaFont(style: .bold16)
-          .foregroundColor(.rouge)
-          .multilineTextAlignment(.center)
+    ZStack {
+      Color.black.opacity(0.5)
+        .ignoresSafeArea()
+        .onTapGesture {
+          isVisible = false
+          DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
+            cancelAction()
+          }
+        }
+      
+      VStack(spacing: 10) {
+        icon
+        infoView
+        buttons
       }
-      HStack(spacing: 30) {
-        RoundedButton(
-          name: String.Button.cancel,
-          isSecondary: true,
-          action: cancelAction
-        )
-        RoundedButton(
-          name: String.Button.signOut,
-          isSecondary: true,
-          action: confirmAction
-        )
+      .padding(24)
+      .background(Color.lightPink)
+      .clipShape(RoundedRectangle(cornerRadius: 12))
+      .overlay(
+        RoundedRectangle(cornerRadius: 12)
+          .stroke(Color.rouge, lineWidth: 2)
+      )
+      .padding(24)
+      .scaleEffect(isVisible ? 1 : 0)
+      .animation(.easeInOut(duration: animationDuration), value: isVisible)
+      .onAppear {
+        isVisible = true
       }
-      .padding(.horizontal, 10)
     }
-    
-    .frame(width: 350, height: 200)
-    .background(Color.lightPink)
-    .cornerRadius(12)
-    .overlay(
-      RoundedRectangle(cornerRadius: 12)
-        .stroke(Color.rouge, lineWidth: 2)
+  }
+  
+  private var icon: some View {
+    Image(systemName: "rectangle.portrait.and.arrow.right")
+      .foregroundStyle(.rouge)
+      .font(.system(size: 30))
+  }
+  
+  private var infoView: some View {
+    VStack(spacing: 10) {
+      Text(title)
+        .karmaFont(style: .bold22)
+        .foregroundColor(.rouge)
+      
+      Text(message)
+        .karmaFont(style: .bold16)
+        .foregroundColor(.rouge)
+        .multilineTextAlignment(.center)
+    }
+  }
+  
+  private var buttons: some View {
+    HStack(spacing: 30) {
+      cancelButton
+      confirmButton
+    }
+    .padding(.horizontal, 10)
+  }
+  
+  private var cancelButton: some View {
+    RoundedButton(
+      name: String.Button.cancel,
+      isSecondary: true,
+      backgroundColor: Color.bubblegumPink,
+      action: {
+        isVisible = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
+          cancelAction()
+        }
+      }
+    )
+  }
+  
+  private var confirmButton: some View {
+    RoundedButton(
+      name: String.Button.signOut,
+      isSecondary: true,
+      action: {
+        isVisible = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
+          confirmAction()
+        }
+      }
     )
   }
   
 }
 
 #Preview {
-  AlertView(title: String.Button.signOut, message: "Are you sure ?", confirmAction: {print("Amma")}, cancelAction: {
-    print("dsf")
-  })
+  AlertView(
+    title: String.Button.signOut,
+    message: "Are you sure ?",
+    confirmAction: {},
+    cancelAction: {}
+  )
 }

@@ -12,17 +12,20 @@ struct RoundedButton: View {
   private let name: String
   private let isLoading: Bool
   private let isSecondary: Bool
+  private let backgroundColor: Color
   private let action: () -> Void
   
   init(
     name: String,
     isLoading: Bool = false,
     isSecondary: Bool = false,
+    backgroundColor: Color = .rouge,
     action: @escaping () -> Void
   ) {
     self.name = name
     self.isLoading = isLoading
     self.isSecondary = isSecondary
+    self.backgroundColor = backgroundColor
     self.action = action
   }
 
@@ -38,7 +41,12 @@ struct RoundedButton: View {
     }
     .if(isSecondary) { view in
       view
-        .buttonStyle(SecondaryRoundedButtonStyle(isLoading))
+        .buttonStyle(
+          SecondaryRoundedButtonStyle(
+            isLoading,
+            backgroundColor: backgroundColor
+          )
+        )
     }
   }
   
