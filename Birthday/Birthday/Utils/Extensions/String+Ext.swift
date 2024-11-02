@@ -59,6 +59,7 @@ extension String {
     static var signOut: String { "button_sign_out".localized }
     static var done: String { "button_done".localized }
     static var cancel: String { "button_cancel".localized }
+    static var delete: String { "button_delete".localized }
     
   }
   
@@ -106,6 +107,7 @@ extension String {
     static var done: String { "birthday_done".localized }
     static var newRelationship: String { "birthday_relationship_new".localized }
     static var send: String { "birthday_send".localized }
+    static var delete: String { "birthday_delete_message".localized }
     
   }
   

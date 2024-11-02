@@ -37,6 +37,7 @@ extension ProfileScreen {
     AlertView(
       title: String.Button.signOut,
       message: String.Auth.logOut,
+      confirmButtonTitle: String.Button.signOut,
       confirmAction: {
         AppController.shared.logOut()
         appState.isUserLogedIn = false

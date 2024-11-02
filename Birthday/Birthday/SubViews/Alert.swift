@@ -14,19 +14,15 @@ struct AlertView: View {
   private let animationDuration: Double
   private let title: String
   private let message: String
+  private let confirmButtonTitle: String
   private let confirmAction: () -> Void
   private let cancelAction: () -> Void
   
-  init(
-    animationDuration: Double = 0.3,
-    title: String,
-    message: String,
-    confirmAction: @escaping () -> Void,
-    cancelAction: @escaping () -> Void
-  ) {
-    self.animationDuration = animationDuration
+  init(title: String, message: String, confirmButtonTitle: String, confirmAction: @escaping () -> Void, cancelAction: @escaping () -> Void) {
+    self.animationDuration = 0.3
     self.title = title
     self.message = message
+    self.confirmButtonTitle = confirmButtonTitle
     self.confirmAction = confirmAction
     self.cancelAction = cancelAction
   }
@@ -106,7 +102,7 @@ struct AlertView: View {
   
   private var confirmButton: some View {
     RoundedButton(
-      name: String.Button.signOut,
+      name: confirmButtonTitle,
       isSecondary: true,
       action: {
         isVisible = false
@@ -120,10 +116,5 @@ struct AlertView: View {
 }
 
 #Preview {
-  AlertView(
-    title: String.Button.signOut,
-    message: "Are you sure ?",
-    confirmAction: {},
-    cancelAction: {}
-  )
+  AlertView(title: "Anna", message: "lalala", confirmButtonTitle: "lav", confirmAction: {}, cancelAction: {})
 }
