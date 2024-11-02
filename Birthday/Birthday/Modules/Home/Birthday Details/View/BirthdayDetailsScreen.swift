@@ -226,13 +226,31 @@ extension BirthdayDetailsScreen {
   
   private var deleteButton: some View {
     Button {
-      guard let id = viewModel.birthdayData.id else { return }
-      viewModel.deleteBirthDay(id: id) {
-        router.pop()
+      appState.showPopup {
+        AnyView(self.deleteBirthdayAlert)
       }
     } label: {
       Image(.delete)
     }
+  }
+  
+  private var deleteBirthdayAlert: some View {
+    AlertView(
+      title: String.Button.delete,
+      message: String.Birthday.delete,
+      confirmButtonTitle: String.Button.delete,
+      confirmAction: {
+        guard let id = viewModel.birthdayData.id else { return }
+        viewModel.deleteBirthDay(id: id) {
+          router.pop()
+          appState.hidePopup()
+        }
+      },
+      cancelAction: {
+        appState.hidePopup()
+      },
+      icon: Image(.delete)
+    )
   }
   
   private var generateMessageButton: some View {

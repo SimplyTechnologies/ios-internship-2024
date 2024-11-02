@@ -14,7 +14,8 @@
 "button_signIn" = "Sign In";
 "button_register" = "Register";
 "button_done" = "Done";
-
+"button_cancel" = "Cancel";
+"button_delete" = "Delete";
 
 // Field
 
@@ -50,6 +51,7 @@
 "birthday_done" = "Done";
 "birthday_relationship_new" = "New relationship";
 "birthday_send" = "Send";
+"birthday_delete_message" = "Are you sure, you want to delete the birthday?";
 
 // Shop
 
@@ -70,6 +72,10 @@
 "auth_repeat_password" = "Repeat New Password";
 "auth_done" = "Done";
 "auth_forgot" = "Forgot password?";
+
+// LogOut
+
+"logout_text" = "Are you sure ?";
 
 // Toast
 

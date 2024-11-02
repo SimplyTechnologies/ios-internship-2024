@@ -58,6 +58,8 @@ extension String {
     static var changePassword: String { "button_change_password".localized }
     static var signOut: String { "button_sign_out".localized }
     static var done: String { "button_done".localized }
+    static var cancel: String { "button_cancel".localized }
+    static var delete: String { "button_delete".localized }
     
   }
   
@@ -105,6 +107,7 @@ extension String {
     static var done: String { "birthday_done".localized }
     static var newRelationship: String { "birthday_relationship_new".localized }
     static var send: String { "birthday_send".localized }
+    static var delete: String { "birthday_delete_message".localized }
     
   }
   
@@ -137,7 +140,7 @@ extension String {
     static var repeatPassword: String { "auth_repeat_password".localized }
     static var done: String { "auth_done".localized }
     static var forgot: String { "auth_forgot".localized }
-    
+    static var logOut: String { "logout_text".localized }
   }
   
 }
