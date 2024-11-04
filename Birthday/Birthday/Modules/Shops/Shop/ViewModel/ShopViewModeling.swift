@@ -9,6 +9,7 @@ import Foundation
 
 protocol ShopViewModeling: ObservableObject {
   
+  var id: UUID { get }
   var isLoading: Bool { get set }
   var shops: [Shop] { get set }
   var filteredShops: [Shop] { get set }

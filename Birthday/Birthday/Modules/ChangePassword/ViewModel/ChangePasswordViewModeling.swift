@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ChangePasswordViewModeling: Toastable {
-  
+    
+  var id: UUID { get }
   var isLoading: Bool { get set }
   var oldPassword: String { get set }
   var newPassword: String { get set }
