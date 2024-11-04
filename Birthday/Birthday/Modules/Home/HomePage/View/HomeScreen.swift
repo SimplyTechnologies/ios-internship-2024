@@ -23,6 +23,25 @@ struct HomeScreen<T: HomeViewModeling>: View {
 
 extension HomeScreen {
   
+  private var emptyState: some View {
+    VStack(spacing: 10) {
+      Image(.bunny)
+        .resizable()
+        .frame(width: 150, height: 150)
+        .aspectRatio(contentMode: .fit)
+      HStack {
+        Spacer()
+        Text(String.Birthday.emptyStateMessage)
+          .multilineTextAlignment(.leading)
+          .foregroundStyle(.rouge)
+          .karmaFont(style: .bold18)
+        Spacer()
+      }
+      .padding(.horizontal, 16)
+    }
+    .background(.lightPink)
+  }
+  
   private var content: some View {
     VStack {
       NavigationBar()
@@ -42,26 +61,10 @@ extension HomeScreen {
         viewModel.getBirthDays()
       }
       LazyVStack(spacing: 18) {
-        ForEach(viewModel.birthdayData, id: \.id) { birthday in
-          Button {
-            router.push(
-              TabBarView.HomeScreens.details(
-                viewModel: BirthdayDetailsViewModel(
-                  homeRepository: HomeDefaultRepository(),
-                  birthdayData: birthday,
-                  deleteAction: {
-                    viewModel.birthdayData.removeAll(where: { $0.id == birthday.id })
-                  },
-                  updateAction: { newBirthDay in
-                    guard let index = viewModel.birthdayData.firstIndex(where: { $0.id == birthday.id } ) else { return }
-                    viewModel.birthdayData[index] = newBirthDay
-                  }
-                )
-              )
-            )
-          } label: {
-            BirthDayCell(model: birthday)
-          }
+        if !viewModel.birthdayData.isEmpty {
+          cells
+        } else {
+          emptyState
         }
       }
       .padding(.bottom, 20)
@@ -69,7 +72,30 @@ extension HomeScreen {
     .padding(.horizontal, 24)
     .scrollIndicators(.hidden)
     .coordinateSpace(name: "pull")
-    
+  }
+  
+  private var cells: some View {
+    ForEach(viewModel.birthdayData, id: \.id) { birthday in
+      Button {
+        router.push(
+          TabBarView.HomeScreens.details(
+            viewModel: BirthdayDetailsViewModel(
+              homeRepository: HomeDefaultRepository(),
+              birthdayData: birthday,
+              deleteAction: {
+                viewModel.birthdayData.removeAll(where: { $0.id == birthday.id })
+              },
+              updateAction: { newBirthDay in
+                guard let index = viewModel.birthdayData.firstIndex(where: { $0.id == birthday.id } ) else { return }
+                viewModel.birthdayData[index] = newBirthDay
+              }
+            )
+          )
+        )
+      } label: {
+        BirthDayCell(model: birthday)
+      }
+    }
   }
   
   private var skeletonListView: some View {

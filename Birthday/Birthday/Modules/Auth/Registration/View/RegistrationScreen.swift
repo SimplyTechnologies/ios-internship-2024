@@ -240,6 +240,7 @@ extension RegistrationScreen {
       name: String.Button.register,
       isLoading: viewModel.isLoading
     ) {
+      UIApplication.shared.hideKeyboard()
       viewModel.register {
         router.resetNavigation(with: [LandingScreen.Screen.signIn])
       }

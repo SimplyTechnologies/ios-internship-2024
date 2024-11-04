@@ -191,10 +191,11 @@ extension ChangePasswordScreen {
       isLoading: viewModel.isLoading,
       isSecondary: true
     ) {
-        viewModel.changePassword {
-          router.pop()
-        }
+      UIApplication.shared.hideKeyboard()
+      viewModel.changePassword {
+        router.pop()
       }
+    }
   }
   
   private func goUp() {

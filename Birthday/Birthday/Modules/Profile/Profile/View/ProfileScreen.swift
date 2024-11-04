@@ -32,7 +32,24 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
 }
 
 extension ProfileScreen {
-    
+  
+  private var logoutPopupView: some View {
+    AlertView(
+      title: String.Button.signOut,
+      message: String.Auth.logOut,
+      confirmButtonTitle: String.Button.signOut,
+      confirmAction: {
+        AppController.shared.logOut()
+        appState.isUserLogedIn = false
+        appState.hidePopup()
+      },
+      cancelAction: {
+        appState.hidePopup()
+      },
+      icon: Image(systemName: "rectangle.portrait.and.arrow.right")
+    )
+  }
+  
   private var userDetails: some View {
     VStack(spacing: 0) {
         SkeletonImage(
@@ -44,16 +61,16 @@ extension ProfileScreen {
       Spacer()
         .frame(height: 32)
       
-        Text(viewModel.profileData.fullname ?? "")
-          .foregroundStyle(.black)
-          .karmaFont(style: .bold20)
-        
-        Spacer()
-          .frame(height: 16)
-
-        Text(verbatim: viewModel.profileData.email ?? "")
-          .foregroundStyle(.black)
-          .karmaFont(style: .bold20)
+      Text(viewModel.profileData.fullname ?? "")
+        .foregroundStyle(.black)
+        .karmaFont(style: .bold20)
+      
+      Spacer()
+        .frame(height: 16)
+      
+      Text(verbatim: viewModel.profileData.email ?? "")
+        .foregroundStyle(.black)
+        .karmaFont(style: .bold20)
     }
     .padding(.horizontal, 16)
   }
@@ -68,53 +85,54 @@ extension ProfileScreen {
   }
   
   private var editButton: some View {
-      ProfileButton(
-        title: String.Button.editAccount
-      ) {
-        let editViewModel = EditAccountViewModel(
-          editAccountRepository: EditAccountDefaultRepository(),
-          model: .init(
-            firstName: viewModel.profileData.firstName,
-            image: viewModel.profileData.image ?? "",
-            lastName: viewModel.profileData.lastName
-          )
-        )
-        
-        let profileModel: ProfileModel = .init(
+    ProfileButton(
+      title: String.Button.editAccount
+    ) {
+      let editViewModel = EditAccountViewModel(
+        editAccountRepository: EditAccountDefaultRepository(),
+        model: .init(
           firstName: viewModel.profileData.firstName,
           image: viewModel.profileData.image ?? "",
           lastName: viewModel.profileData.lastName
         )
-        
-        let screen = TabBarView.ProfileScreens.editProfile(
-          viewModel: editViewModel,
-          profileModel: profileModel) {
-            viewModel.getProfileData()
-          }
-        
-        router.push(screen)
-      }
+      )
+      
+      let profileModel: ProfileModel = .init(
+        firstName: viewModel.profileData.firstName,
+        image: viewModel.profileData.image ?? "",
+        lastName: viewModel.profileData.lastName
+      )
+      
+      let screen = TabBarView.ProfileScreens.editProfile(
+        viewModel: editViewModel,
+        profileModel: profileModel) {
+          viewModel.getProfileData()
+        }
+      
+      router.push(screen)
+    }
   }
   
   private var changePasswordButton: some View {
-      ProfileButton(
-        title: String.Button.changePassword
-      ) {
-        let viewModel = ChangePasswordViewModel(
-          changePasswordRepository: ChangePasswordDefaultRepository()
-        )
-        let screen = TabBarView.ProfileScreens.changePassword(viewModel: viewModel)
-        router.push(screen)
-      }
+    ProfileButton(
+      title: String.Button.changePassword
+    ) {
+      let viewModel = ChangePasswordViewModel(
+        changePasswordRepository: ChangePasswordDefaultRepository()
+      )
+      let screen = TabBarView.ProfileScreens.changePassword(viewModel: viewModel)
+      router.push(screen)
+    }
   }
   
   private var signOutButton: some View {
-      ProfileButton(
-        title: String.Button.signOut
-      ) {
-        AppController.shared.logOut()
-        appState.isUserLogedIn = false
+    ProfileButton(
+      title: String.Button.signOut
+    ) {
+      appState.showPopup {
+        AnyView(self.logoutPopupView)
       }
+    }
   }
   
 }

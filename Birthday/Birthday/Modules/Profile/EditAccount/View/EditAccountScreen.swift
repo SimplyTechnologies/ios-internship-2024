@@ -151,6 +151,7 @@ extension EditAccountScreen {
       isLoading: viewModel.isLoading,
       isSecondary: true
     ) {
+      UIApplication.shared.hideKeyboard()
       viewModel.updateProfileData {
         doneAction()
         router.pop()

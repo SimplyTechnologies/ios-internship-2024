@@ -8,6 +8,7 @@
 import Foundation
 import Pulse
 import PulseProxy
+import SwiftUI
 
 final class AppState: ObservableObject {
   
@@ -16,6 +17,8 @@ final class AppState: ObservableObject {
   @Published var isSuccessMessage: Bool = false
   @Published var isUserLogedIn: Bool = AppController.shared.status == .authenticated
   @Published var isShowLogger: Bool = false
+  @Published var isShowPopup: Bool = false
+  @Published var popupContent: AnyView?
   
   @MainActor
   func setupNetworkLogger() {
@@ -23,6 +26,16 @@ final class AppState: ObservableObject {
     URLSessionProxyDelegate.enableAutomaticRegistration()
     RemoteLogger.shared.isAutomaticConnectionEnabled = true
     #endif
+  }
+  
+  func showPopup(_ popupContent: () -> AnyView) {
+    self.popupContent = popupContent()
+    isShowPopup = true
+  }
+  
+  func hidePopup() {
+    isShowPopup = false
+    self.popupContent = nil
   }
   
 }
