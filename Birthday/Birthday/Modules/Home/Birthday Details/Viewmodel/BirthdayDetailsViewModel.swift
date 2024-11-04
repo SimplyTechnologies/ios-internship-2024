@@ -21,7 +21,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   @Published var isShowMessage: Bool = false
   @Published var isDeleting: Bool = false
   
-  var id: UUID
+  let id: UUID = UUID()
   var deleteAction: () -> ()
   var updateAction: (BirthdayModel) -> ()
   var toastMessage: String = ""
@@ -40,7 +40,6 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
     self.birthdayData = birthdayData
     self.deleteAction = deleteAction
     self.updateAction = updateAction
-    self.id = UUID()
   }
   
   func updateBirthday() {

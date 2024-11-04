@@ -25,6 +25,7 @@ final class ResetPasswordViewModel: ResetPasswordViewModeling {
   var passwordErrorMessage: String = ""
   var isSuccessMessage: Bool = false
   var toastMessage: String = ""
+  let id: UUID = UUID()
   
   private var hasEmptyField: Bool {
     password.isEmpty || confirmPassword.isEmpty

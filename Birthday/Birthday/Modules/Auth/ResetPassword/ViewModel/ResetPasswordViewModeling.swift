@@ -9,6 +9,7 @@ import Foundation
 
 protocol ResetPasswordViewModeling: ObservableObject {
   
+  var id: UUID { get }
   var isLoading: Bool { get set }
   var password: String { get set }
   var confirmPassword: String { get set }

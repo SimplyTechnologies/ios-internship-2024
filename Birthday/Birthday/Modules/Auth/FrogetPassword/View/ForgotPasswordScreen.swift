@@ -122,7 +122,10 @@ extension ForgotPasswordScreen {
       viewModel.checkCode {
         router.push(
           LandingScreen.Screen.resetPassword(
-            code: viewModel.passwordCode
+            viewModel: ResetPasswordViewModel(
+              forgotPasswordRepository: ForgotPasswordDefaultRepository(),
+              passwordCode: viewModel.passwordCode
+            )
           )
         )
       }

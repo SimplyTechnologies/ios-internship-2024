@@ -24,6 +24,7 @@ class SignInViewModel: SignInViewModeling {
   var emailErrorMessage: String = ""
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
+  let id: UUID = UUID()
   
   private let signInRepository: SignInRepository
   private var cancellables = Set<AnyCancellable>()
@@ -37,9 +38,14 @@ class SignInViewModel: SignInViewModeling {
     return isValidEmail && isValidPassword
   }
   
-  init(signInRepository: SignInRepository) {
+  init(
+    signInRepository: SignInRepository,
+    email: String = "",
+    password: String = ""
+  ) {
     self.signInRepository = signInRepository
-
+    self.email = email
+    self.password = password
     $email
       .removeDuplicates()
       .dropFirst()

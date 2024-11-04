@@ -24,11 +24,10 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
   @Published var isShowPasswordField: Bool = false
   @Published var isShowMessage: Bool = false
   
+  let id: UUID = UUID()
   var oldPasswordErrorMessage: String = ""
   var newPasswordErrorMessage: String = ""
   var repeatPasswordErrorMessage: String = ""
-  
-  var id: UUID
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
   
@@ -46,7 +45,6 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
   
   init(changePasswordRepository: ChangePasswordRepository) {
     self.changePasswordRepository = changePasswordRepository
-    self.id = UUID()
     
     $oldPassword
       .removeDuplicates()

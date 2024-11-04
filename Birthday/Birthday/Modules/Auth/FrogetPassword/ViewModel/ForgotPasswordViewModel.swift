@@ -24,6 +24,7 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
   var toastMessage: String = ""
   var emailErrorMessage: String = ""
   var codeErrorMessage: String = ""
+  let id: UUID = UUID()
   
   var isGetCodeDisabled: Bool {
     !isEmailValid || email.isEmpty || isLoading
