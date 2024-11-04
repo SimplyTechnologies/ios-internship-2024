@@ -105,6 +105,9 @@ extension ChangePasswordScreen {
       repeatPasswordField
       Spacer()
     }
+    .animation(.default, value: viewModel.isValidOldPassword)
+    .animation(.default, value: viewModel.isValidNewPassword)
+    .animation(.default, value: viewModel.isValidRepeatPassword)
     .padding(.horizontal, 60)
     .onChange(of: focusedField) { newField in
       if let newField {

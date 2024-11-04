@@ -58,6 +58,8 @@ extension ResetPasswordScreen {
               Spacer()
                 .frame(height: 40)
             }
+            .animation(.default, value: viewModel.isPasswordValid)
+            .animation(.default, value: viewModel.isConfirmPassValid)
             .padding(.horizontal, 60)
             .frame(
               maxWidth: .infinity,

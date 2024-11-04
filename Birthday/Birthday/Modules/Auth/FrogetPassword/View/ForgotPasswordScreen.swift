@@ -45,6 +45,8 @@ extension ForgotPasswordScreen {
           setPasswordButton
         }
       }
+      .animation(.default, value: viewModel.isEmailValid)
+      .animation(.default, value: viewModel.isCodeValid)
       .padding(.top, 20)
       .padding(.horizontal, 60)
     }
