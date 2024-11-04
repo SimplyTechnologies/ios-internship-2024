@@ -10,6 +10,7 @@ import Combine
 
 class SignInViewModel: SignInViewModeling {
   
+  @Published var id: UUID = UUID()
   @Published var isLoading: Bool = false
   @Published var email: String = ""
   @Published var password: String = ""
@@ -33,8 +34,10 @@ class SignInViewModel: SignInViewModeling {
     email.isEmpty || password.isEmpty
   }
   
-  init(signInRepository: SignInRepository) {
+  init(signInRepository: SignInRepository, email: String = "", password: String = "") {
     self.signInRepository = signInRepository
+    self.email = email
+    self.password = password
 
     $isEmailFocused
       .sink { [weak self] isFocused in

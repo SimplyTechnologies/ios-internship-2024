@@ -242,7 +242,18 @@ extension RegistrationScreen {
     ) {
       UIApplication.shared.hideKeyboard()
       viewModel.register {
-        router.resetNavigation(with: [LandingScreen.Screen.signIn])
+        router.resetNavigation(
+          with:
+            [
+              LandingScreen.Screen.signIn(
+                viewModel: SignInViewModel(
+                  signInRepository: SignInDefaultRepository(),
+                  email: viewModel.email,
+                  password: viewModel.password
+                )
+              )
+            ]
+        )
       }
     }
     .disabled(!viewModel.isValidForm || viewModel.isLoading)

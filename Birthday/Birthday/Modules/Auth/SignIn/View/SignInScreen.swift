@@ -173,7 +173,13 @@ extension SignInScreen {
     HStack {
       Spacer()
       Button {
-        router.push(LandingScreen.Screen.forgotPassword)
+        router.push(
+          LandingScreen.Screen.forgotPassword(
+            viewModel: ForgotPasswordViewModel(
+              forgotPasswordRepository: ForgotPasswordDefaultRepository()
+            )
+          )
+        )
       } label: {
         Text(String.Auth.forgot)
           .foregroundStyle(Color.rouge)

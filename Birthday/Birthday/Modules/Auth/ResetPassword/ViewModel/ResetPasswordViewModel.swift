@@ -10,6 +10,7 @@ import Combine
 
 final class ResetPasswordViewModel: ResetPasswordViewModeling {
   
+  @Published var id: UUID = UUID()
   @Published var isShowMessage: Bool = false
   @Published var isLoading: Bool = false
   @Published var isPasswordValid: Bool = false

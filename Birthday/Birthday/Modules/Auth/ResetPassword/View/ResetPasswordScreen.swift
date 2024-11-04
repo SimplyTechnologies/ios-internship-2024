@@ -92,7 +92,13 @@ extension ResetPasswordScreen {
       viewModel.changePassword(
         navigationAction: {
           router.resetNavigation(
-            with: [LandingScreen.Screen.signIn]
+            with: [
+              LandingScreen.Screen.signIn(
+                viewModel: SignInViewModel(
+                  signInRepository: SignInDefaultRepository()
+                )
+              )
+            ]
           )
         }
       )
