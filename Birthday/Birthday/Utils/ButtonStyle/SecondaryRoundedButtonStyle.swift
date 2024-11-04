@@ -12,14 +12,16 @@ struct SecondaryRoundedButtonStyle: ButtonStyle {
   @Environment(\.isEnabled) var isEnabled
   
   private let isLoading: Bool
+  private let backgroundColor: Color
   
-  init(_ isLoading: Bool) {
+  init(_ isLoading: Bool, backgroundColor: Color = .rouge) {
     self.isLoading = isLoading
+    self.backgroundColor = backgroundColor
   }
 
   @ViewBuilder
   func makeBody(configuration: Configuration) -> some View {
-    let backgroundColor = Color.rouge.opacity(isEnabled ? 1 : 0.5)
+    let backgroundColor = backgroundColor.opacity(isEnabled ? 1 : 0.5)
     let pressedColor = Color.rouge.opacity(0.5)
     let background = configuration.isPressed ? pressedColor : backgroundColor
     

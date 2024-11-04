@@ -41,7 +41,9 @@ final class ShopViewModel: ShopViewModeling {
   }
   
   func getShops() {
-    isLoading = true
+    withAnimation {
+      isLoading = true
+    }
     shopRepository.getShops()
       .sink { [weak self] result in
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {

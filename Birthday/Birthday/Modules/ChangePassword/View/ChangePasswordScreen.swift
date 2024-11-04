@@ -181,6 +181,7 @@ extension ChangePasswordScreen {
       isLoading: viewModel.isLoading,
       isSecondary: true
     ) {
+      UIApplication.shared.hideKeyboard()
         viewModel.changePassword {
           router.pop()
         }

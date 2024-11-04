@@ -142,6 +142,7 @@ extension ResetPasswordScreen {
       name: String.Auth.done,
       isLoading: viewModel.isLoading
     ) {
+      UIApplication.shared.hideKeyboard()
       viewModel.changePassword(
         navigationAction: {
           router.resetNavigation(
