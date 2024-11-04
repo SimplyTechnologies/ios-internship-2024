@@ -10,14 +10,42 @@ import SwiftUI
 struct LandingScreen: View {
   
   enum Screen: Hashable {
-    case signIn
-    case registration
-    case forgotPassword
-    case resetPassword(code: String)
+    
+    case signIn(viewModel: SignInViewModel)
+    case registration(viewModel: RegistrationViewModel)
+    case forgotPassword(viewModel: ForgotPasswordViewModel)
+    case resetPassword(viewModel: ResetPasswordViewModel)
+    
+    var id: UUID {
+      switch self {
+      case let .signIn(viewModel): viewModel.id
+      case let .registration(viewModel): viewModel.id
+      case let .forgotPassword(viewModel): viewModel.id
+      case let .resetPassword(viewModel): viewModel.id
+      }
+    }
+    
+    static func == (lhs: LandingScreen.Screen, rhs: LandingScreen.Screen) -> Bool {
+      lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+      switch self {
+      case let .signIn(viewModel):
+        hasher.combine(viewModel.id)
+      case let .registration(viewModel):
+        hasher.combine(viewModel.id)
+      case let .forgotPassword(viewModel):
+        hasher.combine(viewModel.id)
+      case let .resetPassword(viewModel):
+        hasher.combine(viewModel.id)
+      }
+    }
+    
   }
-
+  
   @StateObject var authRouter = NavigationRouter(.auth)
-
+  
   private let radiusValue: CGFloat = 42
   
   var body: some View {
@@ -30,28 +58,21 @@ struct LandingScreen: View {
       }
       .navigationDestination(for: Screen.self) { screen in
         switch screen {
-        case .signIn: SignInScreen(
-          viewModel: SignInViewModel(
-            signInRepository: SignInDefaultRepository()
+        case let .signIn(viewModel):
+          SignInScreen(
+            viewModel: viewModel
           )
-        )
-        case .registration: RegistrationScreen(
-          viewModel: RegistrationViewModel(
-            registrationRepository: RegistrationDefaultRepository()
+        case let .registration(viewModel):
+          RegistrationScreen(
+            viewModel: viewModel
           )
-        )
-        case .forgotPassword:
+        case let .forgotPassword(viewModel):
           ForgotPasswordScreen(
-            viewModel: ForgotPasswordViewModel(
-              forgotPasswordRepository: ForgotPasswordDefaultRepository()
-            )
+            viewModel: viewModel
           )
-        case .resetPassword(let code):
+        case let .resetPassword(viewModel):
           ResetPasswordScreen(
-            viewModel: ResetPasswordViewModel(
-              forgotPasswordRepository: ForgotPasswordDefaultRepository(),
-              passwordCode: code
-            )
+            viewModel: viewModel
           )
         }
       }
@@ -73,14 +94,20 @@ extension LandingScreen {
       .padding(.vertical, 50)
     }
   }
-
+  
   private var signInButton: some View {
     LandingButton(
       title: String.Button.signIn,
       textColor: .rouge,
       backgroundColor: .bubblegumPink,
       action: {
-        authRouter.push(Screen.signIn)
+        authRouter.push(
+          Screen.signIn(
+            viewModel: SignInViewModel(
+              signInRepository: SignInDefaultRepository()
+            )
+          )
+        )
       },
       cornerRadius: [
         radiusValue,
@@ -97,7 +124,13 @@ extension LandingScreen {
       textColor: .bubblegumPink,
       backgroundColor: .rouge,
       action: {
-        authRouter.push(Screen.registration)
+        authRouter.push(
+          Screen.registration(
+            viewModel: RegistrationViewModel(
+              registrationRepository: RegistrationDefaultRepository()
+            )
+          )
+        )
       },
       cornerRadius: [
         radiusValue,

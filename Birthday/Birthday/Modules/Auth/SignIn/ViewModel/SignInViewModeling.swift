@@ -9,6 +9,7 @@ import Foundation
 
 protocol SignInViewModeling: Toastable {
   
+  var id: UUID { get }
   var isLoading: Bool { get set }
   var email: String { get set }
   var password: String { get set }

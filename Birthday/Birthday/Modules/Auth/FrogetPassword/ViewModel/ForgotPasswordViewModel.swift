@@ -20,6 +20,7 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
   
   var isSuccessMessage: Bool = false
   var toastMessage: String = ""
+  let id: UUID = UUID()
   
   private let forgotPasswordRepository: ForgotPasswordRepository
   private var cancelables = Set<AnyCancellable>()

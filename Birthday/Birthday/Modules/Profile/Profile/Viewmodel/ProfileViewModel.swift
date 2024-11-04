@@ -10,7 +10,7 @@ import Combine
 
 final class ProfileViewModel: ProfileViewModeling {
   
-  var id: UUID
+  let id: UUID = UUID()
   @Published var isLoading: Bool = false
   
   @Published var profileData: ProfileModel = ProfileModel()
@@ -20,7 +20,6 @@ final class ProfileViewModel: ProfileViewModeling {
   
   init(profileRepository: ProfileRepository) {
     self.profileRepository = profileRepository
-    self.id = UUID()
   }
   
   func getProfileData() {

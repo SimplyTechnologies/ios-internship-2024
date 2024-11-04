@@ -16,14 +16,13 @@ final class ShopViewModel: ShopViewModeling {
   @Published var isFocused: Bool = false
   @Published var searchText: String = ""
   
-  var id: UUID
+  let id: UUID = UUID()
   
   private let shopRepository: ShopRepository
   private var cancellables = Set<AnyCancellable>()
   
   init(shopRepository: ShopRepository) {
     self.shopRepository = shopRepository
-    self.id = UUID()
     
     $shops
       .sink { [weak self] shops in

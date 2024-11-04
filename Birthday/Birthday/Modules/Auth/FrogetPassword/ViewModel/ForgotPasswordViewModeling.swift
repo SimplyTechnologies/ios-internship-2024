@@ -9,6 +9,7 @@ import Foundation
 
 protocol ForgotPasswordViewModeling: Toastable {
   
+  var id: UUID { get }
   var isLoading: Bool { get set }
   var email: String { get set }
   var passwordCode: String { get set }

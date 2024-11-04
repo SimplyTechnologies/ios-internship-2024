@@ -13,7 +13,7 @@ final class ShopDetailsViewModel: ShopDetailsViewModeling {
   @Published var isLoading: Bool = false
   @Published var shop: Shop
   
-  var id: UUID
+  let id: UUID = UUID()
   
   private let shopRepository: ShopRepository
   private var cancellables = Set<AnyCancellable>()
@@ -21,7 +21,6 @@ final class ShopDetailsViewModel: ShopDetailsViewModeling {
   init(shopRepository: ShopRepository, shop: Shop) {
     self.shopRepository = shopRepository
     self.shop = shop
-    self.id = UUID()
   }
   
 }

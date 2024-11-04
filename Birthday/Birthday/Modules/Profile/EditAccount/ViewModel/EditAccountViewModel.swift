@@ -42,12 +42,11 @@ final class EditAccountViewModel: EditAccountViewModeling {
     return isSameData || isEmptyData
   }
   
-  var id: UUID
+  let id: UUID = UUID()
   
   init(editAccountRepository: EditAccountRepository, model: EditAccountModel) {
     self.editAccountRepository = editAccountRepository
     self.editAccountModel = model
-    self.id = UUID()
         
     $selectedPickerItem
       .sink { [weak self] item in
