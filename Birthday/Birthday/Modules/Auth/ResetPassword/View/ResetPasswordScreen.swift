@@ -75,7 +75,6 @@ extension ResetPasswordScreen {
             }
           }
           .scrollIndicators(.hidden)
-          .disableBounces()
           .onAppear {
             self.scrollProxy = scrollReader
           }

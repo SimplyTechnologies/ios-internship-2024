@@ -53,7 +53,6 @@ extension SignInScreen {
                 .frame(height: geo.size.height * 0.2)
               Spacer()
             }
-            .disableBounces()
             .onAppear {
               self.scrollProxy = scrollReader
             }

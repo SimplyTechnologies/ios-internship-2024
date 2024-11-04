@@ -79,7 +79,6 @@ extension EditAccountScreen {
             )
           }
           .scrollIndicators(.hidden)
-          .disableBounces()
           .onAppear {
             self.scrollProxy = scrollReader
           }
