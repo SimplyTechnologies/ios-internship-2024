@@ -41,7 +41,7 @@ struct LandingScreen: View {
         hasher.combine(viewModel.id)
       }
     }
-
+    
   }
   
   @StateObject var authRouter = NavigationRouter(.auth)
@@ -101,7 +101,13 @@ extension LandingScreen {
       textColor: .rouge,
       backgroundColor: .bubblegumPink,
       action: {
-        authRouter.push(Screen.signIn(viewModel: SignInViewModel(signInRepository: SignInDefaultRepository())))
+        authRouter.push(
+          Screen.signIn(
+            viewModel: SignInViewModel(
+              signInRepository: SignInDefaultRepository()
+            )
+          )
+        )
       },
       cornerRadius: [
         radiusValue,

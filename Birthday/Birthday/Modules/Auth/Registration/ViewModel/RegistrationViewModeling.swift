@@ -9,7 +9,6 @@ import Foundation
 
 protocol RegistrationViewModeling: Toastable {
   
-  var id: UUID { get set }
   var isLoading: Bool { get set }
   var name: String { get set }
   var surname: String { get set }

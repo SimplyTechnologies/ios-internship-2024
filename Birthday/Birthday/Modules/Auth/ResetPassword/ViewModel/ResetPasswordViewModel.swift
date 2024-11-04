@@ -19,7 +19,7 @@ final class ResetPasswordViewModel: ResetPasswordViewModeling {
   
   var isSuccessMessage: Bool = false
   var toastMessage: String = ""
-  var id: UUID = UUID()
+  let id: UUID = UUID()
   
   private let forgotPasswordRepository: ForgotPasswordRepository
   private let passwordCode: String

@@ -42,7 +42,7 @@ class RegistrationViewModel: RegistrationViewModeling {
   
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
-  var id: UUID = UUID()
+  let id: UUID = UUID()
   
   private let registrationRepository: RegistrationRepository
   private var cancellables = Set<AnyCancellable>()

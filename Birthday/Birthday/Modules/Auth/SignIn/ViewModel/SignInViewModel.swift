@@ -25,7 +25,7 @@ class SignInViewModel: SignInViewModeling {
   
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
-  var id: UUID = UUID()
+  let id: UUID = UUID()
   
   private let signInRepository: SignInRepository
   private var cancellables = Set<AnyCancellable>()
@@ -34,11 +34,15 @@ class SignInViewModel: SignInViewModeling {
     email.isEmpty || password.isEmpty
   }
   
-  init(signInRepository: SignInRepository, email: String = "", password: String = "") {
+  init(
+    signInRepository: SignInRepository,
+    email: String = "",
+    password: String = ""
+  ) {
     self.signInRepository = signInRepository
     self.email = email
     self.password = password
-
+    
     $isEmailFocused
       .sink { [weak self] isFocused in
         guard let self else { return }
