@@ -24,22 +24,26 @@ struct HomeScreen<T: HomeViewModeling>: View {
 extension HomeScreen {
   
   private var emptyState: some View {
-    VStack(spacing: 10) {
-      Image(.bunny)
-        .resizable()
-        .frame(width: 150, height: 150)
-        .aspectRatio(contentMode: .fit)
-      HStack {
-        Spacer()
-        Text(String.Birthday.emptyStateMessage)
-          .multilineTextAlignment(.leading)
-          .foregroundStyle(.rouge)
-          .karmaFont(style: .bold18)
-        Spacer()
+    ZStack {
+      Color.lightPink
+      if viewModel.isShowEmpty {
+        VStack(spacing: 10) {
+          Image(.bunny)
+            .resizable()
+            .frame(width: 150, height: 150)
+            .aspectRatio(contentMode: .fit)
+          HStack {
+            Spacer()
+            Text(String.Birthday.emptyStateMessage)
+              .multilineTextAlignment(.leading)
+              .foregroundStyle(.rouge)
+              .karmaFont(style: .bold18)
+            Spacer()
+          }
+          .padding(.horizontal, 16)
+        }
       }
-      .padding(.horizontal, 16)
     }
-    .background(.lightPink)
   }
   
   private var content: some View {

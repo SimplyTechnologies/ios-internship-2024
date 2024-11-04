@@ -11,6 +11,7 @@ import SwiftUI
 final class HomeViewModel: HomeViewModeling {
   
   @Published var isLoading: Bool = false
+  @Published var isShowEmpty: Bool = false
   @Published var birthdayData: [BirthdayModel] = []
   
   private let homeRepository: HomeRepository
@@ -22,7 +23,12 @@ final class HomeViewModel: HomeViewModeling {
   }
   
   func getBirthDays() {
-    isLoading = true
+    DispatchQueue.main.async {
+      withAnimation {
+        self.isLoading = true
+        self.isShowEmpty = true
+      }
+    }
     homeRepository.getBirthdays()
       .sink { [weak self] result in
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {

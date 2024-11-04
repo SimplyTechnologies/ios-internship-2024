@@ -19,6 +19,7 @@ struct BirthdayApp: App {
     WindowGroup {
       ZStack {
         ZStack {
+          Color.lightPink.ignoresSafeArea()
           if appState.isUserLogedIn {
             TabBarView()
           } else {
