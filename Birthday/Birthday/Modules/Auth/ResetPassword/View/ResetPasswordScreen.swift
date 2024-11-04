@@ -48,15 +48,12 @@ extension ResetPasswordScreen {
               Spacer()
                 .frame(height: geo.size.height * 0.1)
               password
-              Spacer()
-                .frame(height: 24)
+                .padding(.bottom, 24)
               confirmPassword
-              Spacer()
-                .frame(height: 24)
+                .padding(.bottom, 24)
               Spacer()
               doneButton
-              Spacer()
-                .frame(height: 40)
+                .padding(.bottom, 40)
             }
             .animation(.default, value: viewModel.isPasswordValid)
             .animation(.default, value: viewModel.isConfirmPassValid)

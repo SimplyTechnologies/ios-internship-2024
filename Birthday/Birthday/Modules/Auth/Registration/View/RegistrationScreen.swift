@@ -49,8 +49,7 @@ extension RegistrationScreen {
               Spacer()
               registerForm
               Spacer()
-              Spacer()
-                .frame(height: 40)
+                .frame(minHeight: 40)
             }
             .onAppear {
               self.scrollProxy = scrollReader
@@ -88,15 +87,11 @@ extension RegistrationScreen {
   
   private var registerForm: some View {
     VStack(spacing: 0) {
-      Spacer()
-        .frame(height: 16)
-
       Text(String.Button.register)
         .foregroundStyle(Color.rouge)
         .karmaFont(style: .bold20)
-      
-      Spacer()
-        .frame(height: 30)
+        .padding(.top, 16)
+        .padding(.bottom, 30)
       
       VStack(spacing: 24) {
         nameField
@@ -105,8 +100,7 @@ extension RegistrationScreen {
         passwordField
         repeatPasswordField
         registerButton
-        Spacer()
-          .frame(height: 30)
+          .padding(.bottom, 30)
       }
       .animation(.default, value: viewModel.isValidName)
       .animation(.default, value: viewModel.isValidSurname)

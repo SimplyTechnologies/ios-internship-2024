@@ -25,7 +25,7 @@ class AuthInterceptor: ApolloInterceptor {
     completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void
   ) {
     request.addHeader(name: "Authorization", value: "Bearer \(accessToken)")
-    chain.proceedAsync(request: request, response: response, completion: completion)
+    chain.proceedAsync(request: request, response: response, interceptor: self, completion: completion)
   }
   
 }

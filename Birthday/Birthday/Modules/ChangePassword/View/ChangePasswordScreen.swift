@@ -53,8 +53,7 @@ extension ChangePasswordScreen {
                 changePasswordForm
                 Spacer()
                 doneButton
-                Spacer()
-                  .frame(height: 40)
+                  .padding(.bottom, 40)
               }
               .frame(
                 maxWidth: .infinity,

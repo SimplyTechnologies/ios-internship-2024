@@ -46,11 +46,8 @@ extension SignInScreen {
           ScrollViewReader { scrollReader in
             ScrollView(.vertical, showsIndicators: false) {
               Spacer()
-                .frame(height: geo.size.height * 0.2)
-              Spacer()
               signInForm
-              Spacer()
-                .frame(height: geo.size.height * 0.2)
+                .padding(.vertical, geo.size.height * 0.2)
               Spacer()
             }
             .onAppear {
@@ -89,20 +86,15 @@ extension SignInScreen {
   
   private var signInForm: some View {
     VStack(spacing: 0) {
-      Spacer()
-        .frame(height: 16)
       signInHeaderView
-      Spacer()
-        .frame(height: 24)
+        .padding(.top, 16)
       fields
-      Spacer()
-        .frame(height: 24)
+        .padding(.top, 24)
       forgotPasswordButton
-      Spacer()
-        .frame(height: 24)
+        .padding(.top, 24)
       signInButton
-      Spacer()
-        .frame(height: 64)
+        .padding(.top, 24)
+        .padding(.bottom, 64)
     }
     .padding(.horizontal, 30)
     .background(Color.white)

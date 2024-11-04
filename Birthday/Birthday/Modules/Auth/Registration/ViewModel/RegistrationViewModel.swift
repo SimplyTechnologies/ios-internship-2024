@@ -50,8 +50,8 @@ class RegistrationViewModel: RegistrationViewModeling {
   }
   
   var isValidForm: Bool {
-    if hasEmptyField { return false }
-    
+    guard !hasEmptyField else { return false }
+
     let isValidFullName = isValidName && isValidSurname
     let isValidPasswords = isValidPassword && isValidRepeatPassword && isSamePasswords
     return isValidFullName && isValidEmail && isValidPasswords

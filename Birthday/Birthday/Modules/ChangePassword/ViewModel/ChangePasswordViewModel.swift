@@ -39,7 +39,7 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
   }
   
   var isValidForm: Bool {
-    if hasEmptyField { return false }
+    guard !hasEmptyField else { return false }
     return isValidOldPassword && isValidNewPassword && isValidRepeatPassword && isSamePasswords
   }
   

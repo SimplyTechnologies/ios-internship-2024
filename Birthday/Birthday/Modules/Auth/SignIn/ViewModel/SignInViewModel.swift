@@ -34,7 +34,7 @@ class SignInViewModel: SignInViewModeling {
   }
   
   var isValidForm: Bool {
-    if hasEmptyField { return false }
+    guard !hasEmptyField else { return false }
     return isValidEmail && isValidPassword
   }
   
@@ -46,6 +46,7 @@ class SignInViewModel: SignInViewModeling {
     self.signInRepository = signInRepository
     self.email = email
     self.password = password
+    
     $email
       .removeDuplicates()
       .dropFirst()

@@ -32,7 +32,7 @@ final class ResetPasswordViewModel: ResetPasswordViewModeling {
   }
   
   var isValidForm: Bool {
-    if hasEmptyField { return false }
+    guard !hasEmptyField else { return false }
     return isPasswordValid && isConfirmPassValid && isSamePasswords
   }
   

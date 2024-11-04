@@ -16,14 +16,12 @@ struct FieldErrorModifier: ViewModifier {
       VStack(alignment: .leading, spacing: 0) {
         content
         if !isHidden {
-          Spacer()
-            .frame(height: 8)
-          
           Text(title)
             .foregroundStyle(Color.red)
             .karmaFont(style: .bold12)
             .multilineTextAlignment(.leading)
             .lineLimit(nil)
+            .padding(.top, 8)
             .padding(.horizontal, 4)
         }
       }

@@ -57,11 +57,8 @@ extension EditAccountScreen {
         ScrollViewReader { scrollReader in
           ScrollView {
             VStack(spacing: 0) {
-              Spacer()
-                .frame(height: 42)
               profileImage
-              Spacer()
-                .frame(height: 42)
+                .padding(.vertical, 42)
               VStack(spacing: 8) {
                 nameField
                 surnameField
@@ -69,8 +66,7 @@ extension EditAccountScreen {
               .padding(.horizontal, 60)
               Spacer()
               doneButton
-              Spacer()
-                .frame(height: 40)
+                .padding(.bottom, 40)
             }
             .frame(
               maxWidth: .infinity,
