@@ -32,12 +32,11 @@ final class EditAccountViewModel: EditAccountViewModeling {
     !profileModel.firstName.isEmpty && !profileModel.lastName.isEmpty && profileModel.image.isNotNil
   }
   
-  var id: UUID
+  let id: UUID = UUID()
   
   init(editAccountRepository: EditAccountRepository, model: EditAccountModel) {
     self.editAccountRepository = editAccountRepository
     self.editAccountModel = model
-    self.id = UUID()
         
     $selectedPickerItem
       .sink { [weak self] item in

@@ -11,7 +11,6 @@ import PhotosUI
 
 protocol EditAccountViewModeling: Toastable {
 
-  var id: UUID { get }
   var isLoading: Bool { get set }
   var editAccountModel: EditAccountModel { get set }
   var profileModel: ProfileModel { get set }

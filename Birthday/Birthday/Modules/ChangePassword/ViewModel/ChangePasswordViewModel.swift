@@ -35,7 +35,7 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
   @Published var repeatPasswordErrorMessage: String = ""
   @Published var isShowMessage: Bool = false
   
-  var id: UUID
+  let id: UUID = UUID()
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
   
@@ -48,7 +48,6 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
   
   init(changePasswordRepository: ChangePasswordRepository) {
     self.changePasswordRepository = changePasswordRepository
-    self.id = UUID()
 
     $isOldPasswordFocused
       .sink { [weak self] isFocused in
