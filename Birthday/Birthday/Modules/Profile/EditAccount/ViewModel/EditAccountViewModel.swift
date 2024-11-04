@@ -28,8 +28,18 @@ final class EditAccountViewModel: EditAccountViewModeling {
   private var cancellables = Set<AnyCancellable>()
   private var editAccountRepository: EditAccountRepository
   
-  var isDoneEnabled: Bool {
-    !profileModel.firstName.isEmpty && !profileModel.lastName.isEmpty && profileModel.image.isNotNil
+  var isDisabled: Bool {
+    let isSameFirstName = editAccountModel.firstName == profileModel.firstName
+    let isSameLastName = editAccountModel.lastName == profileModel.lastName
+    let isSameImage = editAccountModel.image == profileModel.image
+    let isSameData = isSameLastName && isSameFirstName && isSameImage
+    
+    let isFirstNameEmpty = profileModel.firstName.isEmpty
+    let isLastNameEmpty = profileModel.lastName.isEmpty
+    let isImageEmpty = profileModel.image.isNil
+    let isEmptyData = isFirstNameEmpty && isLastNameEmpty && isImageEmpty
+    
+    return isSameData || isEmptyData
   }
   
   var id: UUID

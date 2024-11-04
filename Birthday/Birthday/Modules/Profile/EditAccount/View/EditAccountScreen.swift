@@ -105,9 +105,13 @@ extension EditAccountScreen {
   
   private var profileImage: some View {
     ZStack {
-      PhotosPicker(selection: $viewModel.selectedPickerItem, matching: .images) {
+      PhotosPicker(
+        selection: $viewModel.selectedPickerItem,
+        matching: .images,
+        photoLibrary: .shared()
+      ) {
         if let selectedImage = viewModel.selectedImage {
-          CircularImage(
+          SkeletonImage(
             imagePath: "",
             image: Image(uiImage: selectedImage),
             borderColor: .rouge,
@@ -115,7 +119,7 @@ extension EditAccountScreen {
             size: .init(width: 160, height: 160)
           )
         } else if let image = viewModel.profileModel.image, !image.isEmpty, let _ = URL(string: image) {
-          CircularImage(
+          SkeletonImage(
             imagePath: image,
             placeholderImage: Image(systemName: "person"),
             borderColor: .rouge,
@@ -123,7 +127,7 @@ extension EditAccountScreen {
             size: .init(width: 160, height: 160)
           )
         } else {
-          CircularImage(
+          SkeletonImage(
             imagePath: viewModel.editAccountModel.image,
             placeholderView: {
               Image(.imagePlus)
@@ -153,7 +157,7 @@ extension EditAccountScreen {
         router.pop()
       }
     }
-    .disabled(!viewModel.isDoneEnabled || viewModel.isLoading)
+    .disabled(viewModel.isDisabled || viewModel.isLoading)
   }
   
 }

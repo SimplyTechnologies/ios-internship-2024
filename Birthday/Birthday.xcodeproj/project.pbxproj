@@ -12,7 +12,6 @@
 		9393CDE72CC9174A00D8DEA1 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */; };
 		9393CDE92CC91F5D00D8DEA1 /* ProfileViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */; };
 		9393CDEF2CCA4BC200D8DEA1 /* EditAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDEE2CCA4BC200D8DEA1 /* EditAccountScreen.swift */; };
-		9393CE1D2CCA864500D8DEA1 /* MutationProfile.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */; };
 		9393CE432CCA872700D8DEA1 /* EditAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE422CCA872700D8DEA1 /* EditAccountModel.swift */; };
 		9393CE462CCA8BF500D8DEA1 /* EditAccountViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE452CCA8BF500D8DEA1 /* EditAccountViewModeling.swift */; };
 		9393CE482CCA8C2700D8DEA1 /* EditAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CE472CCA8C2700D8DEA1 /* EditAccountViewModel.swift */; };
@@ -55,7 +54,7 @@
 		CE42AB202CCA94220057ECFB /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB1F2CCA94220057ECFB /* SkeletonView.swift */; };
 		CE42AB222CCB61560057ECFB /* RegistrationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB212CCB61560057ECFB /* RegistrationPayload.swift */; };
 		CE42AB272CCB79900057ECFB /* ShopDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB262CCB79900057ECFB /* ShopDetailsScreen.swift */; };
-		CE42AB292CCB7A870057ECFB /* CircularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB282CCB7A870057ECFB /* CircularImage.swift */; };
+		CE42AB292CCB7A870057ECFB /* SkeletonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB282CCB7A870057ECFB /* SkeletonImage.swift */; };
 		CE42AB2C2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB2B2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift */; };
 		CE42AB2E2CCB7D120057ECFB /* ShopDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB2D2CCB7D120057ECFB /* ShopDetailsViewModel.swift */; };
 		CE42AB302CCB8C9A0057ECFB /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB2F2CCB8C9A0057ECFB /* RatingView.swift */; };
@@ -80,21 +79,12 @@
 		CE98D2E12CC79A600017E477 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2E02CC79A600017E477 /* RegistrationViewModel.swift */; };
 		CE98D2E32CC79D540017E477 /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2E22CC79D540017E477 /* UINavigationController+Ext.swift */; };
 		CE98D2E62CC7C1270017E477 /* ResignKeyboardOnDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2E52CC7C1270017E477 /* ResignKeyboardOnDragModifier.swift */; };
-		CE98D2E82CC7C1920017E477 /* DisableBouncesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2E72CC7C1920017E477 /* DisableBouncesModifier.swift */; };
 		CE98D2EA2CC7C2CD0017E477 /* FieldErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2E92CC7C2CD0017E477 /* FieldErrorModifier.swift */; };
 		CE98D2EC2CC80BFB0017E477 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2EB2CC80BFB0017E477 /* NavigationRouter.swift */; };
 		CE98D2EF2CC80C7E0017E477 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2EE2CC80C7E0017E477 /* Console.swift */; };
 		CE98D2F42CC8ED2D0017E477 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */; };
 		CE98D2F62CC936FC0017E477 /* RegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2F52CC936FC0017E477 /* RegistrationRepository.swift */; };
 		CE98D2FB2CC93B2D0017E477 /* SignUp.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE98D2FA2CC93B2D0017E477 /* SignUp.graphql */; };
-		CEDC8A1B2CD241A700CA0ACF /* ChangePassword.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A142CD241A700CA0ACF /* ChangePassword.graphql */; };
-		CEDC8A1C2CD241A700CA0ACF /* UpdateBirthdayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A1A2CD241A700CA0ACF /* UpdateBirthdayMutation.graphql */; };
-		CEDC8A1D2CD241A700CA0ACF /* DeleteBirthDayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A162CD241A700CA0ACF /* DeleteBirthDayMutation.graphql */; };
-		CEDC8A1E2CD241A700CA0ACF /* SignIn.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A182CD241A700CA0ACF /* SignIn.graphql */; };
-		CEDC8A1F2CD241A700CA0ACF /* CreateBirthdayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A152CD241A700CA0ACF /* CreateBirthdayMutation.graphql */; };
-		CEDC8A202CD241A700CA0ACF /* RemoveShopFromFavorite.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A172CD241A700CA0ACF /* RemoveShopFromFavorite.graphql */; };
-		CEDC8A212CD241A700CA0ACF /* AddShopToFavorite.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A132CD241A700CA0ACF /* AddShopToFavorite.graphql */; };
-		CEDC8A222CD241A700CA0ACF /* SignUp.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEDC8A192CD241A700CA0ACF /* SignUp.graphql */; };
 		CEDC8A282CD2710100CA0ACF /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = CEDC8A272CD2710100CA0ACF /* PopupView */; };
 		CEDC8A2A2CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8A292CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift */; };
 		CEDC8A2D2CD2CC3200CA0ACF /* Messagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8A2C2CD2CC3200CA0ACF /* Messagable.swift */; };
@@ -163,7 +153,6 @@
 		9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		9393CDE82CC91F5D00D8DEA1 /* ProfileViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModeling.swift; sourceTree = "<group>"; };
 		9393CDEE2CCA4BC200D8DEA1 /* EditAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountScreen.swift; sourceTree = "<group>"; };
-		9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = MutationProfile.graphql; path = Birthday/GraphQL/Mutations/MutationProfile.graphql; sourceTree = SOURCE_ROOT; };
 		9393CE422CCA872700D8DEA1 /* EditAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountModel.swift; sourceTree = "<group>"; };
 		9393CE452CCA8BF500D8DEA1 /* EditAccountViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModeling.swift; sourceTree = "<group>"; };
 		9393CE472CCA8C2700D8DEA1 /* EditAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModel.swift; sourceTree = "<group>"; };
@@ -203,7 +192,7 @@
 		CE42AB1F2CCA94220057ECFB /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
 		CE42AB212CCB61560057ECFB /* RegistrationPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPayload.swift; sourceTree = "<group>"; };
 		CE42AB262CCB79900057ECFB /* ShopDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsScreen.swift; sourceTree = "<group>"; };
-		CE42AB282CCB7A870057ECFB /* CircularImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImage.swift; sourceTree = "<group>"; };
+		CE42AB282CCB7A870057ECFB /* SkeletonImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonImage.swift; sourceTree = "<group>"; };
 		CE42AB2B2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsViewModeling.swift; sourceTree = "<group>"; };
 		CE42AB2D2CCB7D120057ECFB /* ShopDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsViewModel.swift; sourceTree = "<group>"; };
 		CE42AB2F2CCB8C9A0057ECFB /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
@@ -229,20 +218,11 @@
 		CE98D2E02CC79A600017E477 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		CE98D2E22CC79D540017E477 /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		CE98D2E52CC7C1270017E477 /* ResignKeyboardOnDragModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragModifier.swift; sourceTree = "<group>"; };
-		CE98D2E72CC7C1920017E477 /* DisableBouncesModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableBouncesModifier.swift; sourceTree = "<group>"; };
 		CE98D2E92CC7C2CD0017E477 /* FieldErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldErrorModifier.swift; sourceTree = "<group>"; };
 		CE98D2EB2CC80BFB0017E477 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		CE98D2EE2CC80C7E0017E477 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		CE98D2F52CC936FC0017E477 /* RegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRepository.swift; sourceTree = "<group>"; };
 		CE98D2FA2CC93B2D0017E477 /* SignUp.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignUp.graphql; sourceTree = "<group>"; };
-		CEDC8A132CD241A700CA0ACF /* AddShopToFavorite.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AddShopToFavorite.graphql; sourceTree = "<group>"; };
-		CEDC8A142CD241A700CA0ACF /* ChangePassword.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangePassword.graphql; sourceTree = "<group>"; };
-		CEDC8A152CD241A700CA0ACF /* CreateBirthdayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CreateBirthdayMutation.graphql; sourceTree = "<group>"; };
-		CEDC8A162CD241A700CA0ACF /* DeleteBirthDayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = DeleteBirthDayMutation.graphql; sourceTree = "<group>"; };
-		CEDC8A172CD241A700CA0ACF /* RemoveShopFromFavorite.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = RemoveShopFromFavorite.graphql; sourceTree = "<group>"; };
-		CEDC8A182CD241A700CA0ACF /* SignIn.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignIn.graphql; sourceTree = "<group>"; };
-		CEDC8A192CD241A700CA0ACF /* SignUp.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignUp.graphql; sourceTree = "<group>"; };
-		CEDC8A1A2CD241A700CA0ACF /* UpdateBirthdayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdateBirthdayMutation.graphql; sourceTree = "<group>"; };
 		CEDC8A292CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryRoundedButtonStyle.swift; sourceTree = "<group>"; };
 		CEDC8A2C2CD2CC3200CA0ACF /* Messagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messagable.swift; sourceTree = "<group>"; };
 		E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -322,22 +302,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		93343F532CCFBB4700ED7C2F /* Mutations */ = {
-			isa = PBXGroup;
-			children = (
-				CEDC8A132CD241A700CA0ACF /* AddShopToFavorite.graphql */,
-				CEDC8A142CD241A700CA0ACF /* ChangePassword.graphql */,
-				CEDC8A152CD241A700CA0ACF /* CreateBirthdayMutation.graphql */,
-				CEDC8A162CD241A700CA0ACF /* DeleteBirthDayMutation.graphql */,
-				CEDC8A172CD241A700CA0ACF /* RemoveShopFromFavorite.graphql */,
-				CEDC8A182CD241A700CA0ACF /* SignIn.graphql */,
-				CEDC8A192CD241A700CA0ACF /* SignUp.graphql */,
-				CEDC8A1A2CD241A700CA0ACF /* UpdateBirthdayMutation.graphql */,
-				9393CE1C2CCA864500D8DEA1 /* MutationProfile.graphql */,
-			);
-			path = Mutations;
-			sourceTree = "<group>";
-		};
 		9393CDE22CC9170200D8DEA1 /* Viewmodel */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,7 +497,7 @@
 				CE98D2DB2CC792E30017E477 /* RoundedButton.swift */,
 				CE42AB1B2CCA703C0057ECFB /* SearchBar.swift */,
 				CE42AB1F2CCA94220057ECFB /* SkeletonView.swift */,
-				CE42AB282CCB7A870057ECFB /* CircularImage.swift */,
+				CE42AB282CCB7A870057ECFB /* SkeletonImage.swift */,
 				CE42AB2F2CCB8C9A0057ECFB /* RatingView.swift */,
 				F3FDEBC32CCF753D0073BFED /* ShareSheet.swift */,
 				CE02CA082CD0D99E00C091F0 /* ToastView.swift */,
@@ -569,7 +533,6 @@
 			isa = PBXGroup;
 			children = (
 				CE98D2E52CC7C1270017E477 /* ResignKeyboardOnDragModifier.swift */,
-				CE98D2E72CC7C1920017E477 /* DisableBouncesModifier.swift */,
 				CE98D2E92CC7C2CD0017E477 /* FieldErrorModifier.swift */,
 				CE42AAFE2CCA12790057ECFB /* ViewDidLoadModifier.swift */,
 				CE42AB1D2CCA93B40057ECFB /* SkeletonEffect.swift */,
@@ -817,7 +780,6 @@
 		F3C8CB572CC65F15002DE72A /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				93343F532CCFBB4700ED7C2F /* Mutations */,
 				F3C8CB712CC67E5F002DE72A /* Repository */,
 				CE98D2F92CC93B0C0017E477 /* Mutations */,
 				F3C8CB5E2CC6607E002DE72A /* Queries */,
@@ -1215,14 +1177,6 @@
 				CE2DAECF2CCBBDB900D5D591 /* AddShopToFavorite.graphql in Resources */,
 				F3FDEB9C2CCC3E850073BFED /* CreateBirthdayMutation.graphql in Resources */,
 				CE42AB182CCA64BC0057ECFB /* GetShops.graphql in Resources */,
-				CEDC8A1B2CD241A700CA0ACF /* ChangePassword.graphql in Resources */,
-				CEDC8A1C2CD241A700CA0ACF /* UpdateBirthdayMutation.graphql in Resources */,
-				CEDC8A1D2CD241A700CA0ACF /* DeleteBirthDayMutation.graphql in Resources */,
-				CEDC8A1E2CD241A700CA0ACF /* SignIn.graphql in Resources */,
-				CEDC8A1F2CD241A700CA0ACF /* CreateBirthdayMutation.graphql in Resources */,
-				CEDC8A202CD241A700CA0ACF /* RemoveShopFromFavorite.graphql in Resources */,
-				CEDC8A212CD241A700CA0ACF /* AddShopToFavorite.graphql in Resources */,
-				CEDC8A222CD241A700CA0ACF /* SignUp.graphql in Resources */,
 				F3C8CBAC2CC6A61D002DE72A /* Assets.xcassets in Resources */,
 				CE56BDB52CCF731100F7DC9A /* ChangePassword.graphql in Resources */,
 				F3C8CB732CC680AD002DE72A /* GetBirthdays.graphql in Resources */,
@@ -1242,7 +1196,6 @@
 			files = (
 				CE98D2EA2CC7C2CD0017E477 /* FieldErrorModifier.swift in Sources */,
 				CE98D2BF2CC775FB0017E477 /* RegistrationScreen.swift in Sources */,
-				CE98D2E82CC7C1920017E477 /* DisableBouncesModifier.swift in Sources */,
 				CE98D2E32CC79D540017E477 /* UINavigationController+Ext.swift in Sources */,
 				CE98D2CA2CC77DFE0017E477 /* InputField.swift in Sources */,
 				CE98D2C62CC778780017E477 /* NavigationBar.swift in Sources */,
@@ -1254,7 +1207,7 @@
 				CE42AB1A2CCA677D0057ECFB /* ShopCell.swift in Sources */,
 				F3FDEB9F2CCC407E0073BFED /* CreateBirthdayPayload.swift in Sources */,
 				F3FDEBC42CCF753D0073BFED /* ShareSheet.swift in Sources */,
-				CE42AB292CCB7A870057ECFB /* CircularImage.swift in Sources */,
+				CE42AB292CCB7A870057ECFB /* SkeletonImage.swift in Sources */,
 				CE98D2C82CC77C290017E477 /* Optional+Ext.swift in Sources */,
 				CE98D2CC2CC786390017E477 /* View+Ext.swift in Sources */,
 				CE98D2E12CC79A600017E477 /* RegistrationViewModel.swift in Sources */,
@@ -1349,7 +1302,6 @@
 				CE02C9ED2CCFDCD900C091F0 /* SignInRepository.swift in Sources */,
 				9393CE462CCA8BF500D8DEA1 /* EditAccountViewModeling.swift in Sources */,
 				F3C8CBB42CC7845F002DE72A /* TabModel.swift in Sources */,
-				9393CE1D2CCA864500D8DEA1 /* MutationProfile.graphql in Sources */,
 				F3C8CB9B2CC6A5F2002DE72A /* BirthdayApp.swift in Sources */,
 				93EB4A1D2CD52CF00070C377 /* Alert.swift in Sources */,
 				CE98D2EC2CC80BFB0017E477 /* NavigationRouter.swift in Sources */,

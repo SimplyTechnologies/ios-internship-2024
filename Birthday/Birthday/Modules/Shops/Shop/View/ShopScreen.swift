@@ -133,7 +133,7 @@ extension ShopScreen {
   
   private var skeletonListView: some View {
     ScrollView {
-      LazyVStack(spacing: 8) {
+      LazyVStack(spacing: 18) {
         ForEach(0 ..< 10, id: \.self) { _ in
           SkeletonView()
             .clipShape(RoundedRectangle(cornerRadius: 24))

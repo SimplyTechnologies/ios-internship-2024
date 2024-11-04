@@ -39,10 +39,14 @@ extension ShopCell {
     .padding(.vertical, 20)
     .background(Color.white)
     .clipShape(RoundedRectangle(cornerRadius: 24))
+    .disabled(isLoading)
   }
   
   private var image: some View {
-    CircularImage(imagePath: model.image ?? "")
+    SkeletonImage(
+      imagePath: model.image ?? "",
+      borderColor: .clear
+    )
   }
   
   private var name: some View {

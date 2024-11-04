@@ -32,31 +32,12 @@ extension BirthDayCell {
   }
   
   private var image: some View {
-    ZStack {
-      if let image = model.image  {
-        AsyncImage(url:URL(string: image) ) { phase in
-          if let image = phase.image {
-            image
-              .resizable()
-          } else if phase.error != nil {
-            Image(systemName: "person")
-              .resizable()
-              .foregroundStyle(.lightPink)
-              .padding(8)
-          } else {
-            ProgressView()
-              .progressViewStyle(.circular)
-          }
-        }
-      } else {
-        Image(systemName: "person")
-          .resizable()
-          .foregroundStyle(.lightPink)
-          .padding(8)
-      }
-    }
-    .frame(width: 70, height: 70)
-    .clipShape(RoundedRectangle(cornerRadius: 50))
+    SkeletonImage(
+      imagePath: model.image ?? "",
+      placeholderImage: Image(systemName: "person"),
+      borderColor: .clear,
+      size: .init(width: 70, height: 70)
+    )
     .padding(.leading, 16)
     .padding(.trailing, 44)
     .padding(.vertical, 20)

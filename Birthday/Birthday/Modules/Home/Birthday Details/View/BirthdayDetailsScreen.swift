@@ -5,8 +5,8 @@
 //  Created by MEKHAK GHAPANTSYAN on 23.10.24.
 //
 
-import SwiftUI
 import PhotosUI
+import SwiftUI
 
 struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
   
@@ -47,13 +47,7 @@ extension BirthdayDetailsScreen {
                 .padding(.bottom, 12)
             }
             if viewModel.isEditing {
-              BirthDayEditCommonView(
-                birthdayData: $viewModel.birthdayData,
-                isContentvalid: .constant(true),
-                isCreating: false
-              ) { newBirthday in
-                doneAction(birthday: newBirthday)
-              }
+              birthDayEditCommonView
             } else {
               name
                 .padding(.bottom, 24)
@@ -80,9 +74,19 @@ extension BirthdayDetailsScreen {
     .padding(.top, 20)
   }
   
+  private var birthDayEditCommonView: some View {
+    BirthDayEditCommonView(
+      birthdayData: $viewModel.birthdayData,
+      isContentvalid: .constant(true),
+      isCreating: false
+    ) { newBirthday in
+      doneAction(birthday: newBirthday)
+    }
+  }
+  
   private var header: some View {
     VStack(spacing: 10) {
-      NavigationBar() {
+      NavigationBar {
         router.pop()
       }
       HStack {
@@ -98,31 +102,12 @@ extension BirthdayDetailsScreen {
   }
   
   private var image: some View {
-    ZStack {
-      if let image = viewModel.birthdayData.image {
-        AsyncImage(url:URL(string: image) ) { phase in
-          if let image = phase.image {
-            image
-              .resizable()
-          } else if phase.error != nil {
-            Image(systemName: "person")
-              .resizable()
-              .foregroundStyle(Color.rouge)
-              .padding(12)
-          } else {
-            ProgressView()
-              .progressViewStyle(.circular)
-          }
-        }
-      }  else {
-        Image(systemName: "person")
-          .resizable()
-          .foregroundStyle(Color.rouge)
-          .padding(8)
-      }
-    }
-    .frame(width: 100, height: 100)
-    .clipShape(RoundedRectangle(cornerRadius: 50))
+    SkeletonImage(
+      imagePath: viewModel.birthdayData.image ?? "",
+      placeholderImage: Image(systemName: "person"),
+      borderColor: .clear,
+      size: .init(width: 100, height: 100)
+    )
   }
   
   private var selectedImage: some View {
@@ -131,44 +116,44 @@ extension BirthdayDetailsScreen {
       matching: .images,
       photoLibrary: .shared()
     ) {
-      if let image = viewModel.selectedImage {
-        Image(uiImage: image)
-          .resizable()
-          .clipShape(Circle())
-          .frame(width: 100, height: 100)
-      } else {
-        if let image = viewModel.birthdayData.image {
-          AsyncImage(url:URL(string: image)) { phase in
-            if let image = phase.image {
-              image
-                .resizable()
-                .frame(width: 100, height: 100)
-                .clipShape(RoundedRectangle(cornerRadius: 50))
-            } else if phase.error != nil {
-              Image(.addPicture)
-                .resizable()
-                .clipShape(Circle())
-                .frame(width: 100, height: 100)
-                .padding(12)
-            } else {
-              ProgressView()
-                .progressViewStyle(.circular)
-            }
-          }
-        } else {
-          Image(.addPicture)
-            .resizable()
-            .clipShape(Circle())
-            .frame(width: 100, height: 100)
-            .padding(12)
-        }
-      }
+      pickerImage
     }
     .onChange(of: viewModel.selectedItem) { newItem in
       Task {
         await viewModel.convertImage(image: newItem)
       }
     }
+  }
+  
+  @ViewBuilder
+  private var pickerImage: some View {
+    if let selectedImage = viewModel.selectedImage {
+      SkeletonImage(
+        imagePath: "",
+        image: Image(uiImage: selectedImage),
+        borderColor: .clear,
+        size: .init(width: 100, height: 100)
+      )
+    } else if let image = viewModel.birthdayData.image, !image.isEmpty, let _ = URL(string: image) {
+      SkeletonImage(
+        imagePath: image,
+        placeholderView: {
+          placeHolderImage
+        },
+        borderColor: .clear,
+        size: .init(width: 160, height: 160)
+      )
+    } else {
+      placeHolderImage
+    }
+  }
+  
+  private var placeHolderImage: some View {
+    Image(.addPicture)
+      .resizable()
+      .clipShape(Circle())
+      .frame(width: 100, height: 100)
+      .padding(12)
   }
   
   private var name: some View {
@@ -316,7 +301,7 @@ extension BirthdayDetailsScreen {
         updatedAt: "",
         userId: 1
       ),
-      deleteAction: { },
+      deleteAction: {},
       updateAction: { _ in }
     )
   )

@@ -10,6 +10,7 @@ import Foundation
 protocol HomeViewModeling: ObservableObject {
   
   var isLoading: Bool { get set }
+  var isShowEmpty: Bool { get set }
   var birthdayData: [BirthdayModel] { get set }
   
   func getBirthDays()

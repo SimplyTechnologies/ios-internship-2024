@@ -1,5 +1,5 @@
 //
-//  CircularImage.swift
+//  SkeletonImage.swift
 //  Birthday
 //
 //  Created by Narek on 25.10.24.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct CircularImage<Placeholder: View>: View {
+struct SkeletonImage<Placeholder: View>: View {
   
   let imagePath: String
-  
+  private let isCircular: Bool
   private let image: Image?
   private let placeholderView: Placeholder?
   private let placeholderImage: Image
@@ -20,6 +20,7 @@ struct CircularImage<Placeholder: View>: View {
   private let size: CGSize
 
   init(
+    isCircular: Bool = true,
     imagePath: String,
     image: Image? = nil,
     @ViewBuilder placeholderView: () -> Placeholder? = { EmptyView() },
@@ -29,6 +30,7 @@ struct CircularImage<Placeholder: View>: View {
     backgroundColor: Color = .clear,
     size: CGSize = .init(width: 70, height: 70)
   ) {
+    self.isCircular = isCircular
     self.imagePath = imagePath
     self.image = image
     self.placeholderView = placeholderView()
@@ -45,16 +47,13 @@ struct CircularImage<Placeholder: View>: View {
       if let image {
         image
           .resizable()
-          .aspectRatio(contentMode: .fill)
-          .clipShape(Circle())
       } else {
         if let url = URL(string: imagePath) {
           AsyncImage(url: url) { phase in
             if let image = phase.image {
               image
                 .resizable()
-                .aspectRatio(contentMode: .fill)
-                .clipShape(Circle())
+                .aspectRatio(contentMode: .fit)
 
             } else if phase.error != nil {
               placeholder
@@ -67,12 +66,15 @@ struct CircularImage<Placeholder: View>: View {
         }
       }
     }
-    .clipShape(Circle())
-    .background(
-      Circle()
-        .stroke(borderColor, lineWidth: borderWidth)
-    )
-    .frame(width: size.width, height: size.height)
+    .if(isCircular) { view in
+      view
+        .clipShape(Circle())
+        .background(
+          Circle()
+            .stroke(borderColor, lineWidth: borderWidth)
+        )
+    }
+    .frame(maxWidth: size.width, maxHeight: size.height)
   }
 
   @ViewBuilder
@@ -92,7 +94,7 @@ struct CircularImage<Placeholder: View>: View {
 }
 
 #Preview {
-  CircularImage(
+  SkeletonImage(
     imagePath: "https://birthday-app-assets.s3.eu-central-1.amazonaws.com/uploads/4dbc2daa-5dfe-4dfe-90b8-d0968e704127.jpg",
     placeholderImage: Image(systemName: "person"),
     borderColor: .rouge,
