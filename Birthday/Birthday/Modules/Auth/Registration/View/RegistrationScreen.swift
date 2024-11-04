@@ -51,7 +51,6 @@ extension RegistrationScreen {
             Spacer()
               .frame(height: 40)
           }
-          .disableBounces()
           .onAppear {
             self.scrollProxy = scrollReader
           }

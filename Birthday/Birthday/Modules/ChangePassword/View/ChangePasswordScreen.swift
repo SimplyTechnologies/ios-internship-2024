@@ -58,7 +58,6 @@ extension ChangePasswordScreen {
               .frame(height: geo.size.height)
             }
             .scrollIndicators(.hidden)
-            .disableBounces()
             .onAppear {
               self.scrollProxy = scrollReader
             }

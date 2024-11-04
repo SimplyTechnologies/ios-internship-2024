@@ -79,7 +79,6 @@
 		CE98D2E12CC79A600017E477 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2E02CC79A600017E477 /* RegistrationViewModel.swift */; };
 		CE98D2E32CC79D540017E477 /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2E22CC79D540017E477 /* UINavigationController+Ext.swift */; };
 		CE98D2E62CC7C1270017E477 /* ResignKeyboardOnDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2E52CC7C1270017E477 /* ResignKeyboardOnDragModifier.swift */; };
-		CE98D2E82CC7C1920017E477 /* DisableBouncesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2E72CC7C1920017E477 /* DisableBouncesModifier.swift */; };
 		CE98D2EA2CC7C2CD0017E477 /* FieldErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2E92CC7C2CD0017E477 /* FieldErrorModifier.swift */; };
 		CE98D2EC2CC80BFB0017E477 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2EB2CC80BFB0017E477 /* NavigationRouter.swift */; };
 		CE98D2EF2CC80C7E0017E477 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2EE2CC80C7E0017E477 /* Console.swift */; };
@@ -219,7 +218,6 @@
 		CE98D2E02CC79A600017E477 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		CE98D2E22CC79D540017E477 /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		CE98D2E52CC7C1270017E477 /* ResignKeyboardOnDragModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragModifier.swift; sourceTree = "<group>"; };
-		CE98D2E72CC7C1920017E477 /* DisableBouncesModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableBouncesModifier.swift; sourceTree = "<group>"; };
 		CE98D2E92CC7C2CD0017E477 /* FieldErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldErrorModifier.swift; sourceTree = "<group>"; };
 		CE98D2EB2CC80BFB0017E477 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		CE98D2EE2CC80C7E0017E477 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
@@ -535,7 +533,6 @@
 			isa = PBXGroup;
 			children = (
 				CE98D2E52CC7C1270017E477 /* ResignKeyboardOnDragModifier.swift */,
-				CE98D2E72CC7C1920017E477 /* DisableBouncesModifier.swift */,
 				CE98D2E92CC7C2CD0017E477 /* FieldErrorModifier.swift */,
 				CE42AAFE2CCA12790057ECFB /* ViewDidLoadModifier.swift */,
 				CE42AB1D2CCA93B40057ECFB /* SkeletonEffect.swift */,
@@ -1199,7 +1196,6 @@
 			files = (
 				CE98D2EA2CC7C2CD0017E477 /* FieldErrorModifier.swift in Sources */,
 				CE98D2BF2CC775FB0017E477 /* RegistrationScreen.swift in Sources */,
-				CE98D2E82CC7C1920017E477 /* DisableBouncesModifier.swift in Sources */,
 				CE98D2E32CC79D540017E477 /* UINavigationController+Ext.swift in Sources */,
 				CE98D2CA2CC77DFE0017E477 /* InputField.swift in Sources */,
 				CE98D2C62CC778780017E477 /* NavigationBar.swift in Sources */,

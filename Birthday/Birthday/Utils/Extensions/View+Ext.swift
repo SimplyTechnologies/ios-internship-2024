@@ -24,10 +24,6 @@ extension View {
     return modifier(ResignKeyboardOnDragModifier())
   }
   
-  func disableBounces() -> some View {
-    modifier(DisableBouncesModifier())
-  }
-  
 }
 
 extension View {

@@ -65,7 +65,6 @@ extension ShopDetailsScreen {
         }
       }
       .scrollIndicators(.hidden)
-      .disableBounces()
     }
     .padding(.horizontal, 24)
   }
