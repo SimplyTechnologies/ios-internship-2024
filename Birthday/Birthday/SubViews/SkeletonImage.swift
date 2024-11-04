@@ -53,6 +53,7 @@ struct SkeletonImage<Placeholder: View>: View {
             if let image = phase.image {
               image
                 .resizable()
+                .aspectRatio(contentMode: .fit)
 
             } else if phase.error != nil {
               placeholder
@@ -73,7 +74,7 @@ struct SkeletonImage<Placeholder: View>: View {
             .stroke(borderColor, lineWidth: borderWidth)
         )
     }
-    .frame(width: size.width, height: size.height)
+    .frame(maxWidth: size.width, maxHeight: size.height)
   }
 
   @ViewBuilder

@@ -5,8 +5,8 @@
 //  Created by MEKHAK GHAPANTSYAN on 23.10.24.
 //
 
-import SwiftUI
 import PhotosUI
+import SwiftUI
 
 struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
   
@@ -86,7 +86,7 @@ extension BirthdayDetailsScreen {
   
   private var header: some View {
     VStack(spacing: 10) {
-      NavigationBar() {
+      NavigationBar {
         router.pop()
       }
       HStack {
@@ -126,27 +126,27 @@ extension BirthdayDetailsScreen {
   }
   
   @ViewBuilder
-    private var pickerImage: some View {
-      if let selectedImage = viewModel.selectedImage {
-        SkeletonImage(
-          imagePath: "",
-          image: Image(uiImage: selectedImage),
-          borderColor: .clear,
-          size: .init(width: 100, height: 100)
-        )
-      } else if let image = viewModel.birthdayData.image, !image.isEmpty, let _ = URL(string: image) {
-          SkeletonImage(
-            imagePath: image,
-            placeholderView: {
-              placeHolderImage
-            },
-            borderColor: .clear,
-            size: .init(width: 160, height: 160)
-          )
-      } else {
-        placeHolderImage
-      }
+  private var pickerImage: some View {
+    if let selectedImage = viewModel.selectedImage {
+      SkeletonImage(
+        imagePath: "",
+        image: Image(uiImage: selectedImage),
+        borderColor: .clear,
+        size: .init(width: 100, height: 100)
+      )
+    } else if let image = viewModel.birthdayData.image, !image.isEmpty, let _ = URL(string: image) {
+      SkeletonImage(
+        imagePath: image,
+        placeholderView: {
+          placeHolderImage
+        },
+        borderColor: .clear,
+        size: .init(width: 160, height: 160)
+      )
+    } else {
+      placeHolderImage
     }
+  }
   
   private var placeHolderImage: some View {
     Image(.addPicture)
@@ -301,7 +301,7 @@ extension BirthdayDetailsScreen {
         updatedAt: "",
         userId: 1
       ),
-      deleteAction: { },
+      deleteAction: {},
       updateAction: { _ in }
     )
   )
