@@ -10,7 +10,6 @@ import Combine
 
 final class ResetPasswordViewModel: ResetPasswordViewModeling {
   
-  @Published var id: UUID = UUID()
   @Published var isShowMessage: Bool = false
   @Published var isLoading: Bool = false
   @Published var isPasswordValid: Bool = false
@@ -20,6 +19,7 @@ final class ResetPasswordViewModel: ResetPasswordViewModeling {
   
   var isSuccessMessage: Bool = false
   var toastMessage: String = ""
+  var id: UUID = UUID()
   
   private let forgotPasswordRepository: ForgotPasswordRepository
   private let passwordCode: String

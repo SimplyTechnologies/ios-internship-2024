@@ -10,7 +10,6 @@ import Combine
 
 final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
   
-  @Published var id: UUID = UUID()
   @Published var isShowMessage: Bool = false
   @Published var isLoading: Bool = false
   @Published var email: String = ""
@@ -21,6 +20,7 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
   
   var isSuccessMessage: Bool = false
   var toastMessage: String = ""
+  var id: UUID = UUID()
   
   private let forgotPasswordRepository: ForgotPasswordRepository
   private var cancelables = Set<AnyCancellable>()

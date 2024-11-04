@@ -11,6 +11,11 @@ struct LandingScreen: View {
   
   enum Screen: Hashable {
     
+    case signIn(viewModel: SignInViewModel)
+    case registration(viewModel: RegistrationViewModel)
+    case forgotPassword(viewModel: ForgotPasswordViewModel)
+    case resetPassword(viewModel: ResetPasswordViewModel)
+    
     var id: UUID {
       switch self {
       case let .signIn(viewModel): viewModel.id
@@ -36,11 +41,7 @@ struct LandingScreen: View {
         hasher.combine(viewModel.id)
       }
     }
-    
-    case signIn(viewModel: SignInViewModel)
-    case registration(viewModel: RegistrationViewModel)
-    case forgotPassword(viewModel: ForgotPasswordViewModel)
-    case resetPassword(viewModel: ResetPasswordViewModel)
+
   }
   
   @StateObject var authRouter = NavigationRouter(.auth)

@@ -10,7 +10,6 @@ import Combine
 
 class SignInViewModel: SignInViewModeling {
   
-  @Published var id: UUID = UUID()
   @Published var isLoading: Bool = false
   @Published var email: String = ""
   @Published var password: String = ""
@@ -26,6 +25,7 @@ class SignInViewModel: SignInViewModeling {
   
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
+  var id: UUID = UUID()
   
   private let signInRepository: SignInRepository
   private var cancellables = Set<AnyCancellable>()
