@@ -72,6 +72,7 @@ extension ForgotPasswordScreen {
       name: String.Auth.code,
       isLoading: viewModel.isLoading
     ) {
+      UIApplication.shared.hideKeyboard()
       viewModel.getCode()
     }
     .disabled(!viewModel.isEmailValid)
@@ -103,6 +104,7 @@ extension ForgotPasswordScreen {
     RoundedButton(
       name: String.Auth.setNewPassword
     ) {
+      UIApplication.shared.hideKeyboard()
       viewModel.checkCode {
         router.push(
           LandingScreen.Screen.resetPassword(

@@ -53,6 +53,7 @@
 "birthday_send" = "Send";
 "birthday_delete_message" = "Are you sure, you want to delete the birthday?";
 
+"birthday_list_empty_state" = "It looks like you haven’t added any birthdays yet! Start adding birthdays of your family and friends to keep track of special days right here in your calendar.";
 // Shop
 
 "shop_phone" = "Phone:";

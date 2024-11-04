@@ -1,5 +1,5 @@
 //
-//  UIAplication+Ext.swift
+//  UIApplication+Ext.swift
 //  Birthday
 //
 //  Created by Anna Hakobyan on 01.11.24.

@@ -109,6 +109,7 @@ extension String {
     static var send: String { "birthday_send".localized }
     static var delete: String { "birthday_delete_message".localized }
     
+    static var emptyStateMessage: String { "birthday_list_empty_state".localized }
   }
   
   enum Add {

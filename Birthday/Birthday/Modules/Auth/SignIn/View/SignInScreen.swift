@@ -161,6 +161,7 @@ extension SignInScreen {
       name: String.Button.signIn,
       isLoading: viewModel.isLoading
     ) {
+      UIApplication.shared.hideKeyboard()
       viewModel.signIn {
         appState.isUserLogedIn = true
       }
