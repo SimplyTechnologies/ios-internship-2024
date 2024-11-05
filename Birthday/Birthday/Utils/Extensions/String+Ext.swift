@@ -86,6 +86,8 @@ extension String {
     static var searchNoResultTitle: String { "field_search_no_result_title".localized }
     static var searchNoResultDescription: String { "field_search_no_result_description".localized }
     static var search: String { "field_search".localized }
+    static var emptyCode: String { "field_empty_code".localized }
+    static var invalidCode: String { "field_invalid_code".localized }
     
   }
   

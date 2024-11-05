@@ -24,8 +24,7 @@ final class AppState: ObservableObject {
   @MainActor
   func setupNetworkLogger() {
     #if DEBUG
-    URLSessionProxyDelegate.enableAutomaticRegistration()
-    RemoteLogger.shared.isAutomaticConnectionEnabled = true
+    NetworkLogger.enableProxy()
     #endif
   }
   

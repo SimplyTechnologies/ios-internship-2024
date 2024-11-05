@@ -17,6 +17,7 @@ struct SignInScreen<T: SignInViewModeling>: View {
   @EnvironmentObject var appState: AppState
   @EnvironmentObject var router: NavigationRouter
   @FocusState private var focusedField: Field?
+  @State private var scrollProxy: ScrollViewProxy? = nil
   
   var body: some View {
     content
@@ -41,9 +42,19 @@ extension SignInScreen {
         NavigationBar {
           router.pop()
         }
-        Spacer()
-        signInForm
-        Spacer()
+        GeometryReader { geo in
+          ScrollViewReader { scrollReader in
+            ScrollView(.vertical, showsIndicators: false) {
+              Spacer()
+              signInForm
+                .padding(.vertical, geo.size.height * 0.2)
+              Spacer()
+            }
+            .onAppear {
+              self.scrollProxy = scrollReader
+            }
+          }
+        }
       }
     }
     .navigationBarBackButtonHidden(true)
@@ -75,20 +86,15 @@ extension SignInScreen {
   
   private var signInForm: some View {
     VStack(spacing: 0) {
-      Spacer()
-        .frame(height: 16)
       signInHeaderView
-      Spacer()
-        .frame(height: 24)
+        .padding(.top, 16)
       fields
-      Spacer()
-        .frame(height: 24)
+        .padding(.top, 24)
       forgotPasswordButton
-      Spacer()
-        .frame(height: 24)
+        .padding(.top, 24)
       signInButton
-      Spacer()
-        .frame(height: 64)
+        .padding(.top, 24)
+        .padding(.bottom, 64)
     }
     .padding(.horizontal, 30)
     .background(Color.white)
@@ -101,6 +107,8 @@ extension SignInScreen {
       emailField
       passwordField
     }
+    .animation(.default, value: viewModel.isValidEmail)
+    .animation(.default, value: viewModel.isValidPassword)
   }
   
   private var emailField: some View {
@@ -111,7 +119,6 @@ extension SignInScreen {
       placeholderText: String.Field.email
     )
     .keyboardType(.emailAddress)
-    .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .email)
     .modifier(
       FieldErrorModifier(
@@ -120,9 +127,6 @@ extension SignInScreen {
       )
     )
     .id(Field.email.rawValue)
-    .onTapGesture {
-      viewModel.isEmailFocused = true
-    }
   }
   
   private var passwordField: some View {
@@ -134,8 +138,6 @@ extension SignInScreen {
       placeholderText: String.Field.password,
       isSecureField: true
     )
-    .keyboardType(.default)
-    .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .password)
     .modifier(
       FieldErrorModifier(
@@ -144,9 +146,6 @@ extension SignInScreen {
       )
     )
     .id(Field.password.rawValue)
-    .onTapGesture {
-      viewModel.isPasswordFocused = true
-    }
   }
   
   private var signInHeaderView: some View {

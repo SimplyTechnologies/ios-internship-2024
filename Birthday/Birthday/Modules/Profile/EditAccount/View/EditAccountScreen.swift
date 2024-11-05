@@ -49,21 +49,38 @@ struct EditAccountScreen<T: EditAccountViewModeling>: View {
 extension EditAccountScreen {
   
   private var content: some View {
-    VStack(spacing: 42) {
+    VStack(spacing: 0) {
       NavigationBar {
         router.pop()
       }
       .padding(.top, 20)
-      profileImage
-      VStack(spacing: 8) {
-        nameField
-        surnameField
+      GeometryReader { geo in
+        ScrollViewReader { scrollReader in
+          ScrollView {
+            VStack(spacing: 0) {
+              profileImage
+                .padding(.vertical, 42)
+              VStack(spacing: 8) {
+                nameField
+                surnameField
+              }
+              .padding(.horizontal, 60)
+              Spacer()
+              doneButton
+                .padding(.bottom, 40)
+            }
+            .frame(
+              maxWidth: .infinity,
+              minHeight: geo.size.height,
+              alignment: .bottom
+            )
+          }
+          .scrollIndicators(.hidden)
+          .onAppear {
+            self.scrollProxy = scrollReader
+          }
+        }
       }
-      .padding(.horizontal, 60)
-      Spacer()
-      doneButton
-      Spacer()
-        .frame(height: 40)
     }
     .background(Color.lightPink)
     .navigationBarBackButtonHidden(true)
@@ -161,4 +178,19 @@ extension EditAccountScreen {
     .disabled(viewModel.isDisabled || viewModel.isLoading)
   }
   
+}
+
+#Preview {
+  EditAccountScreen<EditAccountViewModel>(
+    viewModel: EditAccountViewModel(
+      editAccountRepository: EditAccountDefaultRepository(),
+      model: .init(
+        firstName: "Name",
+        image: "",
+        lastName: "Surname"
+      )
+    ),
+    model: .init(),
+    doneAction: {}
+  )
 }
