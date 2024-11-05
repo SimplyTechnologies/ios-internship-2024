@@ -54,8 +54,7 @@ class SignInViewModel: SignInViewModeling {
         guard let self else { return }
         isValidEmail = email.isValidEmail
         if !isValidEmail {
-          let message = email.isEmpty ? String.Field.emptyEmail : String.Field.invalidEmail
-          emailErrorMessage = message
+          emailErrorMessage = email.isEmpty ? String.Field.emptyEmail : String.Field.invalidEmail
         }
       }
       .store(in: &cancellables)
@@ -67,8 +66,7 @@ class SignInViewModel: SignInViewModeling {
         guard let self else { return }
         isValidPassword = passwordText.isValidPassword
         if !isValidPassword {
-          let message = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
-          passwordErrorMessage = message
+          passwordErrorMessage = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
         }
       }
       .store(in: &cancellables)

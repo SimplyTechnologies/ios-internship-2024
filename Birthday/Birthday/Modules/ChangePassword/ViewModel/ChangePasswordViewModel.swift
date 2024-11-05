@@ -53,8 +53,7 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
         guard let self else { return }
         isValidOldPassword = passwordText.isValidPassword
         if !isValidOldPassword {
-          let message = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
-          oldPasswordErrorMessage = message
+          oldPasswordErrorMessage = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
         }
       }
       .store(in: &cancellables)
@@ -69,8 +68,7 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
           repeatPassword = ""
         }
         if !isValidNewPassword {
-          let message = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
-          newPasswordErrorMessage = message
+          newPasswordErrorMessage = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
         }
       }
       .store(in: &cancellables)
