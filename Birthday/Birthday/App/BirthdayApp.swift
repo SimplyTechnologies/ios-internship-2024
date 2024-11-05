@@ -21,7 +21,7 @@ struct BirthdayApp: App {
         ZStack {
           Color.lightPink.ignoresSafeArea()
           if appState.isUserLogedIn {
-            TabBarView()
+            TabBarView($appState.selectedTab)
           } else {
             LandingScreen()
           }

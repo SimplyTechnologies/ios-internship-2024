@@ -77,7 +77,7 @@ extension BirthdayDetailsScreen {
   private var birthDayEditCommonView: some View {
     BirthDayEditCommonView(
       birthdayData: $viewModel.birthdayData,
-      isContentvalid: .constant(true),
+      isContentvalid: $viewModel.isDoneActive,
       isCreating: false
     ) { newBirthday in
       doneAction(birthday: newBirthday)
@@ -87,7 +87,11 @@ extension BirthdayDetailsScreen {
   private var header: some View {
     VStack(spacing: 10) {
       NavigationBar {
-        router.pop()
+        if viewModel.isEditing {
+          viewModel.cancelEdit()
+        } else {
+          router.pop()
+        }
       }
       HStack {
         Spacer()
@@ -244,33 +248,37 @@ extension BirthdayDetailsScreen {
         viewModel.isGeneratingMessage = true
       }
     } label: {
-      Text(String.Birthday.generate)
-        .padding(.vertical, 8)
-        .padding(.horizontal, 20)
-        .foregroundStyle(Color.rouge)
-        .background(Color.bubblegumPink)
-        .karmaFont(style: .bold18)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+      ZStack {
+        Text(String.Birthday.generate)
+          .padding(.vertical, 8)
+          .padding(.horizontal, 20)
+          .foregroundStyle(Color.rouge)
+          .karmaFont(style: .bold18)
+          .lineLimit(1)
+          .minimumScaleFactor(0.59)
+      }
+      .frame(height: 41)
+      .background(Color.bubblegumPink)
+      .clipShape(RoundedRectangle(cornerRadius: 16))
     }
   }
   
   private var findGiftButton: some View {
     Button {
-      router.push(
-        TabBarView.HomeScreens.shops(
-          viewModel: ShopViewModel(
-            shopRepository: ShopDefaultRepository()
-          )
-        )
-      )
+      appState.selectedTab = .shops
     } label: {
-      Text(String.Birthday.gift)
-        .padding(.vertical, 8)
-        .padding(.horizontal, 20)
-        .foregroundStyle(Color.bubblegumPink)
-        .background(Color.rouge)
-        .karmaFont(style: .bold18)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+      ZStack {
+        Text(String.Birthday.gift)
+          .padding(.vertical, 8)
+          .padding(.horizontal, 20)
+          .foregroundStyle(Color.bubblegumPink)
+          .karmaFont(style: .bold18)
+          .lineLimit(1)
+          .minimumScaleFactor(0.5)
+      }
+      .frame(height: 41)
+      .background(Color.rouge)
+      .clipShape(RoundedRectangle(cornerRadius: 16))
     }
   }
   

@@ -53,6 +53,7 @@ extension EditAccountScreen {
       NavigationBar {
         router.pop()
       }
+      .padding(.top, 20)
       profileImage
       VStack(spacing: 8) {
         nameField

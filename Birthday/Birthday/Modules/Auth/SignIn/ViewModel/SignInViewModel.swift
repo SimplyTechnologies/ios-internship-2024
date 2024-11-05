@@ -36,12 +36,10 @@ class SignInViewModel: SignInViewModeling {
   
   init(
     signInRepository: SignInRepository,
-    email: String = "",
-    password: String = ""
+    email: String = ""
   ) {
     self.signInRepository = signInRepository
     self.email = email
-    self.password = password
     
     $isEmailFocused
       .sink { [weak self] isFocused in

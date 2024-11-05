@@ -29,17 +29,17 @@ struct AddBirthdayScreen<T: CreateBirthdayViewModeling>: View {
 extension AddBirthdayScreen {
   
   private var content: some View {
-    VStack {
+    ScrollView {
       NavigationBar()
         .padding(.top, 20)
-      ScrollView {
+      VStack {
         image
         editView
       }
+      .padding(.horizontal, 24)
       .scrollIndicators(.hidden)
     }
-    .padding(.horizontal, 24)
-    .background(Color.lightPink)
+    .background(Color.lightPink.ignoresSafeArea(.all))
   }
   
   private var image: some View {
@@ -70,7 +70,7 @@ extension AddBirthdayScreen {
   private var editView: some View {
     BirthDayEditCommonView(
       birthdayData: $viewModel.birthday,
-      isContentvalid: $viewModel.isContentValid, 
+      isContentvalid: $viewModel.isContentValid,
       isCreating: true
     ) { _ in
       viewModel.createBirthday()

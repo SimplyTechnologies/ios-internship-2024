@@ -20,12 +20,14 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   @Published var selectedItem: PhotosPickerItem?
   @Published var isShowMessage: Bool = false
   @Published var isDeleting: Bool = false
+  @Published var isDoneActive: Bool = false
   
   let id: UUID = UUID()
   var deleteAction: () -> ()
   var updateAction: (BirthdayModel) -> ()
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
+  var birthdayCopy: BirthdayModel
   
   private let homeRepository: HomeRepository
   private var cancelables = Set<AnyCancellable>()
@@ -40,6 +42,8 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
     self.birthdayData = birthdayData
     self.deleteAction = deleteAction
     self.updateAction = updateAction
+    self.birthdayCopy = birthdayData
+    validateDoneButton()
   }
   
   func updateBirthday() {
@@ -48,7 +52,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
     guard let id = birthdayData.id else { return }
     let payload = BirthdayUpdatePayload(
       id: id,
-      image: birthdayData.image,
+      image: selectedImage == nil ? nil : birthdayData.image,
       name: birthdayData.name,
       date: birthdayData.date,
       message: birthdayData.message,
@@ -66,7 +70,9 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
         }
       } receiveValue: { [weak self] update in
         guard let self else { return }
-        self.birthdayData.image = update.image
+        if update.image != nil {
+          self.birthdayData.image = update.image
+        }
         showToast(message: String.Toast.updateBirthday, isSuccess: true)
         self.updateAction(self.birthdayData)
       }
@@ -114,6 +120,23 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
       }
     } else {
       Console.log("Failed to convert image to data.")
+    }
+  }
+  
+  private func validateDoneButton() {
+    $birthdayData
+      .map {
+        !($0 == self.birthdayCopy && self.selectedItem == nil && self.selectedImage == nil)
+      }
+      .assign(to: &$isDoneActive)
+  }
+  
+  func cancelEdit() {
+    withAnimation {
+      isEditing = false
+      birthdayData = birthdayCopy
+      selectedItem = nil
+      selectedImage = nil
     }
   }
   

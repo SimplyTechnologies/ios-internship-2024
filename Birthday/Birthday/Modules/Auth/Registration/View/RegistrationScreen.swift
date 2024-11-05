@@ -247,8 +247,7 @@ extension RegistrationScreen {
               LandingScreen.Screen.signIn(
                 viewModel: SignInViewModel(
                   signInRepository: SignInDefaultRepository(),
-                  email: viewModel.email,
-                  password: viewModel.password
+                  email: viewModel.email
                 )
               )
             ]
