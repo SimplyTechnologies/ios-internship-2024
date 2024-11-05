@@ -12,7 +12,7 @@ struct ShopScreen<T: ShopViewModeling>: View {
   @StateObject var viewModel: T
   @EnvironmentObject var router: NavigationRouter
   @EnvironmentObject var appState: AppState
-
+  
   var body: some View {
     content
       .onLoad {
@@ -48,53 +48,55 @@ extension ShopScreen {
   }
   
   private var list: some View {
-    VStack(spacing: 0) {
+    VStack {
       if viewModel.isLoading {
         skeletonListView
+      } else if viewModel.filteredShops.isEmpty {
+        noSearchResultView
       } else {
-        if viewModel.filteredShops.isEmpty {
-          noSearchResultView
-        } else {
-          ScrollView {
-            PullToRefresh(coordinateSpaceName: "pull") {
-              viewModel.getShops()
-            }
-            Spacer()
-              .frame(height: 10)
-            LazyVStack(spacing: 18) {
-              ForEach($viewModel.filteredShops, id: \.id) { $shop in
-                ShopCell(model: $shop, isLoading: shop.isLoading) {
-                  viewModel.toggleFavorite(shop: shop)
-                }
-                .onTapGesture {
-                  let shopDetailsViewModel = ShopDetailsViewModel(
-                    shopRepository: ShopDefaultRepository(),
-                    shop: shop
-                  )
-                  
-                  if router.type == .home {
-                    router.push(
-                      TabBarView.HomeScreens.shopDetails(
-                        viewModel: shopDetailsViewModel
-                      )
-                    )
-                  } else {
-                    router.push(
-                      TabBarView.ShopScreens.details(
-                        viewModel: shopDetailsViewModel
-                      )
-                    )
-                  }
-                }
-              }
-            }
-            .padding(.horizontal, 24)
-            Spacer()
-              .frame(height: 10)
+        ScrollView {
+          PullToRefresh(coordinateSpaceName: "pull") {
+            viewModel.getShops()
           }
-          .scrollIndicators(.hidden)
-          .coordinateSpace(name: "pull")
+          Spacer().frame(height: 10)
+          
+          LazyVStack(spacing: 18) {
+            ForEach(getDisplayedShops(), id: \.id) { shop in
+              createShopCell(for: shop)
+            }
+          }
+          .padding(.horizontal, 24)
+          Spacer().frame(height: 10)
         }
+        .scrollIndicators(.hidden)
+        .coordinateSpace(name: "pull")
+      }
+    }
+  }
+  
+  @ViewBuilder
+  private func createShopCell(for shop: Shop) -> some View {
+    ShopCell(model: .constant(shop), isLoading: shop.isLoading) {
+      viewModel.toggleFavorite(shop: shop)
+    }
+    .onTapGesture {
+      let shopDetailsViewModel = ShopDetailsViewModel(
+        shopRepository: ShopDefaultRepository(),
+        shop: shop
+      )
+      
+      if router.type == .home {
+        router.push(
+          TabBarView.HomeScreens.shopDetails(
+            viewModel: shopDetailsViewModel
+          )
+        )
+      } else {
+        router.push(
+          TabBarView.ShopScreens.details(
+            viewModel: shopDetailsViewModel
+          )
+        )
       }
     }
   }
@@ -145,4 +147,11 @@ extension ShopScreen {
     .scrollIndicators(.hidden)
   }
   
+  private func getDisplayedShops() -> [Shop] {
+    let favoriteShops = viewModel.filteredShops.filter { $0.isFavorite == true }
+    let otherShops = viewModel.filteredShops.filter { $0.isFavorite != true }
+    
+    return favoriteShops.isEmpty ? viewModel.filteredShops : favoriteShops + otherShops
+  }
+
 }
