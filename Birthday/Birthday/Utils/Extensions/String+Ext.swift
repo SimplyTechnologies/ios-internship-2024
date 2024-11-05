@@ -46,6 +46,12 @@ extension String {
     return outputFormatter.string(from: date)
   }
   
+  mutating func limitText(_ upper: Int) {
+      if self.count > upper {
+        self = String(self.prefix(upper))
+      }
+  }
+  
 }
 
 extension String {

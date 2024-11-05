@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct RegistrationScreen<T: RegistrationViewModeling>: View {
   
@@ -128,6 +129,9 @@ extension RegistrationScreen {
       isValidField: $viewModel.isValidName,
       placeholderText: String.Field.name
     )
+    .onChange(of: viewModel.name) { _ in
+      viewModel.name.limitText(18)
+    }
     .focused($focusedField, equals: .name)
     .textInputAutocapitalization(.words)
     .modifier(
@@ -146,6 +150,9 @@ extension RegistrationScreen {
       isValidField: $viewModel.isValidSurname,
       placeholderText: String.Field.surname
     )
+    .onChange(of: viewModel.surname) { _ in
+      viewModel.surname.limitText(18)
+    }
     .textInputAutocapitalization(.words)
     .focused($focusedField, equals: .surname)
     .modifier(

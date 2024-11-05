@@ -96,6 +96,9 @@ extension EditAccountScreen {
       placeholderText: viewModel.editAccountModel.firstName,
       backgroundColor: .white
     )
+    .onChange(of: viewModel.profileModel.firstName) { _ in
+      viewModel.profileModel.firstName.limitText(18)
+    }
     .keyboardType(.default)
     .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .name)
@@ -112,6 +115,9 @@ extension EditAccountScreen {
       placeholderText: viewModel.editAccountModel.lastName,
       backgroundColor: .white
     )
+    .onChange(of: viewModel.profileModel.lastName) { _ in
+      viewModel.profileModel.firstName.limitText(18)
+    }
     .keyboardType(.default)
     .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .surname)
