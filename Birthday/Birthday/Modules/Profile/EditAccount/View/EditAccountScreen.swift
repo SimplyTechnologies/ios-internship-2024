@@ -53,6 +53,7 @@ extension EditAccountScreen {
       NavigationBar {
         router.pop()
       }
+      .padding(.top, 20)
       GeometryReader { geo in
         ScrollViewReader { scrollReader in
           ScrollView {
