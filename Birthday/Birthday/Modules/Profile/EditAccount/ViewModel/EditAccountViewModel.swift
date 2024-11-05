@@ -22,9 +22,10 @@ final class EditAccountViewModel: EditAccountViewModeling {
   @Published var selectedImage: UIImage? = nil
   @Published var isShowMessage: Bool = false
   
+  
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
-
+  
   private var cancellables = Set<AnyCancellable>()
   private var editAccountRepository: EditAccountRepository
   
@@ -32,22 +33,21 @@ final class EditAccountViewModel: EditAccountViewModeling {
     let isSameFirstName = editAccountModel.firstName == profileModel.firstName
     let isSameLastName = editAccountModel.lastName == profileModel.lastName
     let isSameImage = editAccountModel.image == profileModel.image
-    let isSameData = isSameLastName && isSameFirstName && isSameImage
+    let isSameData = isSameFirstName && isSameLastName && isSameImage
     
     let isFirstNameEmpty = profileModel.firstName.isEmpty
     let isLastNameEmpty = profileModel.lastName.isEmpty
-    let isImageEmpty = profileModel.image.isNil
-    let isEmptyData = isFirstNameEmpty && isLastNameEmpty && isImageEmpty
     
-    return isSameData || isEmptyData
+    return isSameData || isFirstNameEmpty || isLastNameEmpty
   }
+  
   
   let id: UUID = UUID()
   
   init(editAccountRepository: EditAccountRepository, model: EditAccountModel) {
     self.editAccountRepository = editAccountRepository
     self.editAccountModel = model
-        
+    
     $selectedPickerItem
       .sink { [weak self] item in
         guard let self else { return }
