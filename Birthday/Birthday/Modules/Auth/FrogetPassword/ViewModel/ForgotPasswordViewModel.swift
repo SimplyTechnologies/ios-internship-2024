@@ -72,8 +72,7 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
         guard let self else { return }
         isCodeValid = code == actualCode && !code.isEmpty && code.count == 6
         if !isCodeValid {
-          let message = code.isEmpty ? String.Field.emptyCode : String.Field.invalidCode
-          codeErrorMessage = message
+          codeErrorMessage = code.isEmpty ? String.Field.emptyCode : String.Field.invalidCode
         }
       }
       .store(in: &cancellables)
@@ -87,8 +86,7 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
         guard let self else { return }
         isEmailValid = email.isValidEmail
         if !isEmailValid {
-          let message = email.isEmpty ? String.Field.emptyEmail : String.Field.invalidEmail
-          emailErrorMessage = message
+          emailErrorMessage = email.isEmpty ? String.Field.emptyEmail : String.Field.invalidEmail
         }
       }
       .store(in: &cancellables)

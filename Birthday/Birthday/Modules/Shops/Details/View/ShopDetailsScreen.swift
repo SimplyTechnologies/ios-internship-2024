@@ -85,10 +85,7 @@ extension ShopDetailsScreen {
         .lineLimit(nil)
         .underline()
         .onTapGesture {
-          guard let url = URL(string: "tel://\(viewModel.shop.phone ?? "")"),
-                UIApplication.shared.canOpenURL(url)
-          else { return }
-          UIApplication.shared.open(url)
+          viewModel.phoneCallAction()
         }
     }
   }

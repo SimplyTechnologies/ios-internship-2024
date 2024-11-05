@@ -68,8 +68,7 @@ class RegistrationViewModel: RegistrationViewModeling {
         self.name = name
         isValidName = name.isValidName
         if !isValidName {
-          let message = name.isEmpty ? String.Field.emptyName : String.Field.invalidName
-          nameErrorMessage = message
+          nameErrorMessage = name.isEmpty ? String.Field.emptyName : String.Field.invalidName
         }
       }
       .store(in: &cancellables)
@@ -81,8 +80,7 @@ class RegistrationViewModel: RegistrationViewModeling {
         guard let self else { return }
         isValidSurname = surname.isValidName
         if !isValidSurname {
-          let message = surname.isEmpty ? String.Field.emptySurname : String.Field.invalidSurname
-          surnameErrorMessage = message
+          surnameErrorMessage = surname.isEmpty ? String.Field.emptySurname : String.Field.invalidSurname
         }
       }
       .store(in: &cancellables)
@@ -94,8 +92,7 @@ class RegistrationViewModel: RegistrationViewModeling {
         guard let self else { return }
         isValidEmail = email.isValidEmail
         if !isValidEmail {
-          let message = email.isEmpty ? String.Field.emptyEmail : String.Field.invalidEmail
-          emailErrorMessage = message
+          emailErrorMessage = email.isEmpty ? String.Field.emptyEmail : String.Field.invalidEmail
         }
       }
       .store(in: &cancellables)
@@ -110,8 +107,7 @@ class RegistrationViewModel: RegistrationViewModeling {
           repeatPassword = ""
         }
         if !isValidPassword {
-          let message = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
-          passwordErrorMessage = message
+          passwordErrorMessage = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
         }
       }
       .store(in: &cancellables)

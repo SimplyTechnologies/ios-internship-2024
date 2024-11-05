@@ -83,8 +83,7 @@ final class ResetPasswordViewModel: ResetPasswordViewModeling {
           confirmPassword = ""
         }
         if !isPasswordValid {
-          let message = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
-          passwordErrorMessage = message
+          passwordErrorMessage = passwordText.isEmpty ? String.Field.emptyPassword : String.Field.invalidPassword
         }
       }
       .store(in: &cancellables)

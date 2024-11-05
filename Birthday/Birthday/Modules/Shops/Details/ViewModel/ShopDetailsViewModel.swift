@@ -23,4 +23,10 @@ final class ShopDetailsViewModel: ShopDetailsViewModeling {
     self.shop = shop
   }
   
+  func phoneCallAction() {
+    guard let url = URL(string: "tel://\(shop.phone ?? "")"),
+          UIApplication.shared.canOpenURL(url)
+    else { return }
+    UIApplication.shared.open(url)
+  }
 }
