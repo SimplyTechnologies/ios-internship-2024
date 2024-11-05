@@ -17,7 +17,6 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   @Published var isEditing: Bool = false
   @Published var isGeneratingMessage: Bool = false
   @Published var selectedImage: UIImage?
-  @Published var selectedItem: PhotosPickerItem?
   @Published var isShowMessage: Bool = false
   @Published var isDeleting: Bool = false
   @Published var isDoneActive: Bool = false
@@ -125,7 +124,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   private func validateDoneButton() {
     $birthdayData
       .map {
-        !($0 == self.birthdayCopy && self.selectedItem == nil && self.selectedImage == nil)
+        !($0 == self.birthdayCopy && self.selectedImage == nil)
       }
       .assign(to: &$isDoneActive)
   }
@@ -134,7 +133,6 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
     withAnimation {
       isEditing = false
       birthdayData = birthdayCopy
-      selectedItem = nil
       selectedImage = nil
     }
   }

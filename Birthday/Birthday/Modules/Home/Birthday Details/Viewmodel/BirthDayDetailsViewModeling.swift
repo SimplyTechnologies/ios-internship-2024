@@ -17,7 +17,6 @@ protocol BirthDayDetailsViewModeling: Toastable {
   var updateAction: (BirthdayModel) -> () { get set }
   var birthdayData: BirthdayModel { get set }
   var selectedImage: UIImage? { get set }
-  var selectedItem: PhotosPickerItem? { get set }
   var isEditing: Bool { get set }
   var isGeneratingMessage: Bool { get set }
   var isDeleting: Bool { get set }
