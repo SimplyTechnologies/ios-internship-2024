@@ -13,13 +13,31 @@ struct TabBarView: View {
   @StateObject private var shopRouter = NavigationRouter(.shop)
   @StateObject private var profileRouter = NavigationRouter(.profile)
   
-  @State var selectedTab: TabModel = .home
+  @Binding var selectedTab: TabModel
+  
+  var handler: Binding<TabModel> {
+    Binding(
+      get: { self.selectedTab },
+      set: {
+        if $0 == self.selectedTab {
+          switch selectedTab {
+          case .home: homeRouter.popToRoot()
+          case .shops: shopRouter.popToRoot()
+          case .profile: profileRouter.popToRoot()
+          default: break
+          }
+        }
+        self.selectedTab = $0
+      }
+    )
+  }
   
   private var addTabViewModel = CreateBirthdayViewModel(
     newBirthdayRepository: NewBirthdayDefaultRepository()
   )
   
-  init() {
+  init(_ selectedTab: Binding<TabModel>) {
+    self._selectedTab = selectedTab
     customiseTabBar()
   }
   
@@ -35,7 +53,7 @@ struct TabBarView: View {
 extension TabBarView {
   
   private var tabBar: some View {
-    TabView(selection: $selectedTab) {
+    TabView(selection: handler) {
       homeTab
       shopsTab
       addTab
@@ -63,6 +81,7 @@ extension TabBarView {
       }
     }
     .environmentObject(homeRouter)
+    .environmentObject(shopRouter)
     .tabItem { TabCellView(model: .home) }
     .tag(TabModel.home)
   }
@@ -218,5 +237,5 @@ extension TabBarView {
 }
 
 #Preview {
-  TabBarView()
+  TabBarView(.constant(.home))
 }

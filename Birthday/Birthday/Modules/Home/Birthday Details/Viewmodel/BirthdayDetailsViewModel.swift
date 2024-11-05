@@ -20,6 +20,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   @Published var selectedItem: PhotosPickerItem?
   @Published var isShowMessage: Bool = false
   @Published var isDeleting: Bool = false
+  @Published var isDoneActive: Bool = false
   @Published var isPickerPresented = false
   @Published var isShowPickerOptions = false
   @Published var selectedSourceType: UIImagePickerController.SourceType = .photoLibrary
@@ -29,6 +30,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   var updateAction: (BirthdayModel) -> ()
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
+  var birthdayCopy: BirthdayModel
   
   private let homeRepository: HomeRepository
   private var cancellables = Set<AnyCancellable>()
@@ -43,7 +45,9 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
     self.birthdayData = birthdayData
     self.deleteAction = deleteAction
     self.updateAction = updateAction
+    self.birthdayCopy = birthdayData
     
+    validateDoneButton()
     convertImageOnChange()
   }
   
@@ -65,7 +69,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
     guard let id = birthdayData.id else { return }
     let payload = BirthdayUpdatePayload(
       id: id,
-      image: birthdayData.image,
+      image: selectedImage == nil ? nil : birthdayData.image,
       name: birthdayData.name,
       date: birthdayData.date,
       message: birthdayData.message,
@@ -83,7 +87,9 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
         }
       } receiveValue: { [weak self] update in
         guard let self else { return }
-        self.birthdayData.image = update.image
+        if update.image != nil {
+          self.birthdayData.image = update.image
+        }
         showToast(message: String.Toast.updateBirthday, isSuccess: true)
         self.updateAction(self.birthdayData)
       }
@@ -115,5 +121,22 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
       }
       .store(in: &cancellables)
   }
-
+  
+  private func validateDoneButton() {
+    $birthdayData
+      .map {
+        !($0 == self.birthdayCopy && self.selectedItem == nil && self.selectedImage == nil)
+      }
+      .assign(to: &$isDoneActive)
+  }
+  
+  func cancelEdit() {
+    withAnimation {
+      isEditing = false
+      birthdayData = birthdayCopy
+      selectedItem = nil
+      selectedImage = nil
+    }
+  }
+  
 }
