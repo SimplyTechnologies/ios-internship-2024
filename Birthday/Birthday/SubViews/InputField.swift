@@ -45,9 +45,8 @@ struct InputField: View {
         textField
       }
       if isSecureField {
-        Spacer()
-          .frame(width: 8)
         hideButton
+          .padding(.leading, 8)
       }
     }
     .padding(.horizontal, 16)
@@ -80,6 +79,7 @@ struct InputField: View {
       .tint(Color.rouge)
       .karmaFont(style: .bold14)
       .autocorrectionDisabled()
+      .textInputAutocapitalization(.never)
   }
 
   var secureTextField: some View {
@@ -100,6 +100,7 @@ struct InputField: View {
       .tint(Color.rouge)
       .karmaFont(style: .bold14)
       .autocorrectionDisabled()
+      .textInputAutocapitalization(.never)
   }
 
   var hideButton: some View {

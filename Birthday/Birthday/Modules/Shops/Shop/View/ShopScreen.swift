@@ -36,13 +36,11 @@ extension ShopScreen {
         Image(.birth)
           .padding(.top, 20)
       }
-      Spacer()
-        .frame(height: 22)
       searchBar
+        .padding(.top, 22)
         .padding(.horizontal, 24)
-      Spacer()
-        .frame(height: 10)
       list
+        .padding(.top, 10)
     }
     .background(Color.lightPink)
   }
@@ -59,8 +57,7 @@ extension ShopScreen {
             PullToRefresh(coordinateSpaceName: "pull") {
               viewModel.getShops()
             }
-            Spacer()
-              .frame(height: 10)
+            .padding(.bottom, 10)
             LazyVStack(spacing: 18) {
               ForEach($viewModel.filteredShops, id: \.id) { $shop in
                 ShopCell(model: $shop, isLoading: shop.isLoading) {
@@ -89,8 +86,7 @@ extension ShopScreen {
               }
             }
             .padding(.horizontal, 24)
-            Spacer()
-              .frame(height: 10)
+            .padding(.bottom, 10)
           }
           .scrollIndicators(.hidden)
           .coordinateSpace(name: "pull")
@@ -114,18 +110,19 @@ extension ShopScreen {
         .resizable()
         .frame(width: 42, height: 42)
         .foregroundStyle(.black)
-      Spacer()
-        .frame(height: 12)
+
       Text(String.Field.searchNoResultTitle)
         .foregroundStyle(Color.black)
         .karmaFont(style: .bold26)
         .multilineTextAlignment(.center)
-      Spacer()
-        .frame(height: 12)
+        .padding(.top, 12)
+      
       Text(String.Field.searchNoResultDescription)
         .foregroundStyle(Color.spanishGray)
         .karmaFont(style: .regular14)
         .multilineTextAlignment(.center)
+        .padding(.top, 12)
+
       Spacer()
     }
     .padding(.horizontal, 24)

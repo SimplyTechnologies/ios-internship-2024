@@ -20,11 +20,9 @@ protocol ChangePasswordViewModeling: Toastable {
   var isValidOldPassword: Bool { get set }
   var isValidNewPassword: Bool { get set }
   var isValidRepeatPassword: Bool { get set }
-  var isValidForm: Bool { get set }
+  var isValidForm: Bool { get }
   var isSamePasswords: Bool { get set }
-  var isShowOldPassword: Bool { get set }
-  var isShowNewPassword: Bool { get set }
-  var isShowRepeatPassword: Bool { get set }
+  var isShowPasswordField: Bool { get set }
   var oldPasswordErrorMessage: String { get set }
   var newPasswordErrorMessage: String { get set }
   var repeatPasswordErrorMessage: String { get set }

@@ -45,23 +45,17 @@ extension ShopDetailsScreen {
             size: .init(width: geo.size.width, height: geo.size.width)
           )
           .clipShape(RoundedRectangle(cornerRadius: 16))
-          Spacer()
-            .frame(height: 20)
           shopName
-          Spacer()
-            .frame(height: 18)
+            .padding(.top, 20)
           rate
-          Spacer()
-            .frame(height: 20)
+            .padding(.top, 18)
           phone
-          Spacer()
-            .frame(height: 10)
+            .padding(.top, 20)
           address
-          Spacer()
-            .frame(height: 10)
+            .padding(.top, 10)
           webSite
-          Spacer()
-            .frame(height: 40)
+            .padding(.top, 10)
+            .padding(.bottom, 40)
         }
       }
       .scrollIndicators(.hidden)
@@ -91,7 +85,7 @@ extension ShopDetailsScreen {
         .lineLimit(nil)
         .underline()
         .onTapGesture {
-          UIApplication.shared.open(URL(string: "tel://\(viewModel.shop.phone ?? "")")!)
+          viewModel.phoneCallAction()
         }
     }
   }
