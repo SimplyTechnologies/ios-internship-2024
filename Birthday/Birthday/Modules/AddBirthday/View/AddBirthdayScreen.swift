@@ -44,17 +44,10 @@ extension AddBirthdayScreen {
   
   private var image: some View {
       ZStack {
-        if let image = viewModel.selectedImage {
-          Image(uiImage: image)
-            .resizable()
-            .clipShape(Circle())
-            .frame(width: 100, height: 100)
-        } else {
-          Image(.addPicture)
-            .resizable()
-            .clipShape(Circle())
-            .frame(width: 100, height: 100)
-        }
+        Image(uiImage: viewModel.selectedImage ?? .addPicture)
+          .resizable()
+          .clipShape(Circle())
+          .frame(width: 100, height: 100)
       }
       .onTapGesture {
         viewModel.isShowPickerOptions = true
