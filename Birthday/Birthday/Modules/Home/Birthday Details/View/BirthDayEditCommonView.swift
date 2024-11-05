@@ -19,6 +19,8 @@ struct BirthDayEditCommonView: View {
   @State private var isAddingEvent: Bool = false
   @State private var openCalendar: Bool = false
   
+  @EnvironmentObject var appState: AppState
+  
   var isCreating: Bool
   var doneAction: (BirthdayModel) -> ()
   var columns = [GridItem(.flexible()),GridItem(.flexible()),GridItem(.flexible())]
@@ -145,6 +147,7 @@ extension BirthDayEditCommonView {
           birthdayData.date = newDate.toISO8601String
         }
       ),
+      in: ...Date(),
       displayedComponents: [.date]
     )
     .datePickerStyle(GraphicalDatePickerStyle())
@@ -173,6 +176,13 @@ extension BirthDayEditCommonView {
   private var addRelationField: some View {
     HStack {
       TextField(String.Birthday.newRelationship, text: $newRelation)
+        .placeholder(
+          when: newRelation.isEmpty,
+          placeholder: {
+            Text(String.Birthday.newRelationship)
+              .foregroundStyle(Color.rouge.opacity(0.7))
+          }
+        )
         .karmaFont(style: .bold18)
         .foregroundStyle(Color.rouge)
         .tint(Color.rouge)

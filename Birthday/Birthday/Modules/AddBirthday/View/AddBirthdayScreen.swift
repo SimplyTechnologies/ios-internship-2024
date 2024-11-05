@@ -29,32 +29,25 @@ struct AddBirthdayScreen<T: CreateBirthdayViewModeling>: View {
 extension AddBirthdayScreen {
   
   private var content: some View {
-    VStack {
+    ScrollView {
       NavigationBar()
         .padding(.top, 20)
-      ScrollView {
+      VStack {
         image
         editView
       }
+      .padding(.horizontal, 24)
       .scrollIndicators(.hidden)
     }
-    .padding(.horizontal, 24)
-    .background(Color.lightPink)
+    .background(Color.lightPink.ignoresSafeArea(.all))
   }
   
   private var image: some View {
       ZStack {
-        if let image = viewModel.selectedImage {
-          Image(uiImage: image)
-            .resizable()
-            .clipShape(Circle())
-            .frame(width: 100, height: 100)
-        } else {
-          Image(.addPicture)
-            .resizable()
-            .clipShape(Circle())
-            .frame(width: 100, height: 100)
-        }
+        Image(uiImage: viewModel.selectedImage ?? .addPicture)
+          .resizable()
+          .clipShape(Circle())
+          .frame(width: 100, height: 100)
       }
       .onTapGesture {
         viewModel.isShowPickerOptions = true
@@ -82,7 +75,7 @@ extension AddBirthdayScreen {
   private var editView: some View {
     BirthDayEditCommonView(
       birthdayData: $viewModel.birthday,
-      isContentvalid: $viewModel.isContentValid, 
+      isContentvalid: $viewModel.isContentValid,
       isCreating: true
     ) { _ in
       viewModel.createBirthday()

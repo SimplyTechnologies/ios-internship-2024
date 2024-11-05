@@ -40,12 +40,10 @@ class SignInViewModel: SignInViewModeling {
   
   init(
     signInRepository: SignInRepository,
-    email: String = "",
-    password: String = ""
+    email: String = ""
   ) {
     self.signInRepository = signInRepository
     self.email = email
-    self.password = password
     
     $email
       .removeDuplicates()

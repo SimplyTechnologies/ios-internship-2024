@@ -17,7 +17,6 @@ protocol BirthDayDetailsViewModeling: Toastable {
   var updateAction: (BirthdayModel) -> () { get set }
   var birthdayData: BirthdayModel { get set }
   var selectedImage: UIImage? { get set }
-  var selectedItem: PhotosPickerItem? { get set }
   var isEditing: Bool { get set }
   var isGeneratingMessage: Bool { get set }
   var isDeleting: Bool { get set }
@@ -27,5 +26,8 @@ protocol BirthDayDetailsViewModeling: Toastable {
   
   func updateBirthday()
   func deleteBirthDay(id: Int, complition: @escaping () -> ())
+  var birthdayCopy: BirthdayModel { get set }
+  var isDoneActive: Bool { get set }
+  func cancelEdit()
   
 }
