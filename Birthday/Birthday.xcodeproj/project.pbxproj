@@ -88,6 +88,7 @@
 		CEC569512CD9FA8D00087552 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC569502CD9FA8D00087552 /* ImagePicker.swift */; };
 		CEC569542CDA10FE00087552 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = CEC569532CDA10FE00087552 /* Nuke */; };
 		CEC569562CDA10FE00087552 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = CEC569552CDA10FE00087552 /* NukeUI */; };
+		CEC569582CDA350B00087552 /* PressedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC569572CDA350B00087552 /* PressedButtonStyle.swift */; };
 		CEDC8A282CD2710100CA0ACF /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = CEDC8A272CD2710100CA0ACF /* PopupView */; };
 		CEDC8A2A2CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8A292CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift */; };
 		CEDC8A2D2CD2CC3200CA0ACF /* Messagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8A2C2CD2CC3200CA0ACF /* Messagable.swift */; };
@@ -227,6 +228,7 @@
 		CE98D2F52CC936FC0017E477 /* RegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRepository.swift; sourceTree = "<group>"; };
 		CE98D2FA2CC93B2D0017E477 /* SignUp.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignUp.graphql; sourceTree = "<group>"; };
 		CEC569502CD9FA8D00087552 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		CEC569572CDA350B00087552 /* PressedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressedButtonStyle.swift; sourceTree = "<group>"; };
 		CEDC8A292CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryRoundedButtonStyle.swift; sourceTree = "<group>"; };
 		CEDC8A2C2CD2CC3200CA0ACF /* Messagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messagable.swift; sourceTree = "<group>"; };
 		E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 			children = (
 				CE98D2DE2CC795B40017E477 /* RoundedButtonStyle.swift */,
 				CEDC8A292CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift */,
+				CEC569572CDA350B00087552 /* PressedButtonStyle.swift */,
 			);
 			path = ButtonStyle;
 			sourceTree = "<group>";
@@ -1217,6 +1220,7 @@
 				CE42AB1A2CCA677D0057ECFB /* ShopCell.swift in Sources */,
 				F3FDEB9F2CCC407E0073BFED /* CreateBirthdayPayload.swift in Sources */,
 				F3FDEBC42CCF753D0073BFED /* ShareSheet.swift in Sources */,
+				CEC569582CDA350B00087552 /* PressedButtonStyle.swift in Sources */,
 				CE42AB292CCB7A870057ECFB /* SkeletonImage.swift in Sources */,
 				CE98D2C82CC77C290017E477 /* Optional+Ext.swift in Sources */,
 				CE98D2CC2CC786390017E477 /* View+Ext.swift in Sources */,
@@ -1467,7 +1471,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = QAG24BGKCF;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
@@ -1503,7 +1507,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Birthday/Preview Content\"";
-				DEVELOPMENT_TEAM = QAG24BGKCF;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;

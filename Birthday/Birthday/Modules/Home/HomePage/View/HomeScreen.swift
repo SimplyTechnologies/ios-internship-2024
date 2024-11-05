@@ -99,6 +99,7 @@ extension HomeScreen {
       } label: {
         BirthDayCell(model: birthday)
       }
+      .buttonStyle(PressedButtonStyle())
     }
   }
   

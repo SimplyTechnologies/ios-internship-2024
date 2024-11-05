@@ -34,21 +34,32 @@ extension ForgotPasswordScreen {
       NavigationBar {
         router.pop()
       }
-      VStack {
-        emailField
-          .padding(.bottom, 40)
-        getCodeButton
-        Spacer()
-        if !viewModel.actualCode.isEmpty {
-          passwordCode
-          Spacer()
-          setPasswordButton
+      GeometryReader { geo in
+        ScrollView {
+          VStack {
+            emailField
+              .padding(.bottom, 40)
+            getCodeButton
+            Spacer()
+            if !viewModel.actualCode.isEmpty {
+              passwordCode
+              Spacer()
+              setPasswordButton
+                .padding(.bottom, 40)
+            }
+          }
+          .animation(.default, value: viewModel.isEmailValid)
+          .animation(.default, value: viewModel.isCodeValid)
+          .padding(.top, 20)
+          .padding(.horizontal, 60)
+          .frame(
+            maxWidth: .infinity,
+            minHeight: geo.size.height,
+            alignment: .bottom
+          )
         }
+        .scrollIndicators(.hidden)
       }
-      .animation(.default, value: viewModel.isEmailValid)
-      .animation(.default, value: viewModel.isCodeValid)
-      .padding(.top, 20)
-      .padding(.horizontal, 60)
     }
     .background(Color.lightPink)
   }
@@ -131,7 +142,6 @@ extension ForgotPasswordScreen {
       }
     }
     .foregroundStyle(Color.bubblegumPink)
-    .disabled(viewModel.isSetPasswordDisabled)
   }
   
 }

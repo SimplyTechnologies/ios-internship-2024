@@ -67,6 +67,8 @@ extension ShopScreen {
                     viewModel.toggleFavorite(shop: shop)
                   }
                 }
+                .buttonStyle(PressedButtonStyle())
+                .disabled(shop.isLoading)
               }
             }
             .padding(.horizontal, 24)

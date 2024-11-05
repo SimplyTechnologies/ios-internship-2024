@@ -24,9 +24,8 @@ protocol ForgotPasswordViewModeling: Toastable {
   var isEmailFocused: Bool { get set }
   var isCodeFocused: Bool { get set }
   var isGetCodeDisabled: Bool { get }
-  var isSetPasswordDisabled: Bool { get }
   
   func getCode()
-  func checkCode(complition: @escaping () -> ())
+  func checkCode(completion: () -> ())
   
 }

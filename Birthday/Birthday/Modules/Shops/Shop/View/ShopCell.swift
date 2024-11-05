@@ -34,9 +34,6 @@ extension ShopCell {
         .padding(.trailing, 16)
     }
     .padding(.vertical, 20)
-    .background(Color.white)
-    .clipShape(RoundedRectangle(cornerRadius: 24))
-    .disabled(isLoading)
   }
   
   private var image: some View {
