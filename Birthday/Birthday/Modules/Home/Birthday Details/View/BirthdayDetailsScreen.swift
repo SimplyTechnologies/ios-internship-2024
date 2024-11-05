@@ -115,17 +115,29 @@ extension BirthdayDetailsScreen {
   }
   
   private var selectedImage: some View {
-    PhotosPicker(
-      selection: $viewModel.selectedItem,
-      matching: .images,
-      photoLibrary: .shared()
-    ) {
+    ZStack {
       pickerImage
     }
-    .onChange(of: viewModel.selectedItem) { newItem in
-      Task {
-        await viewModel.convertImage(image: newItem)
+    .onTapGesture {
+      viewModel.isShowPickerOptions = true
+    }
+    .confirmationDialog("", isPresented: $viewModel.isShowPickerOptions) {
+      Button(String.Button.camera) {
+        viewModel.selectedSourceType = .camera
+        viewModel.isPickerPresented = true
       }
+      Button(String.Button.gallery) {
+        viewModel.selectedSourceType = .photoLibrary
+        viewModel.isPickerPresented = true
+      }
+      Button(String.Button.cancel, role: .cancel) {}
+    }
+    .fullScreenCover(isPresented: $viewModel.isPickerPresented) {
+      ImagePicker(
+        image: $viewModel.selectedImage,
+        isPickerPresented: $viewModel.isPickerPresented,
+        sourceType: viewModel.selectedSourceType
+      )
     }
   }
   
@@ -145,7 +157,7 @@ extension BirthdayDetailsScreen {
           placeHolderImage
         },
         borderColor: .clear,
-        size: .init(width: 160, height: 160)
+        size: .init(width: 100, height: 100)
       )
     } else {
       placeHolderImage

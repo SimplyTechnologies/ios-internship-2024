@@ -9,13 +9,6 @@ import UIKit
 
 extension UIImage {
   
-  func convertImageToBase64String() -> String? {
-    guard let imageData = self.jpegData(compressionQuality: 1.0) else {
-      return nil
-    }
-    return imageData.base64EncodedString()
-  }
-  
   func resizeImage(targetSize: CGSize) -> UIImage {
     let size = self.size
     let widthRatio  = targetSize.width  / size.width
@@ -31,6 +24,26 @@ extension UIImage {
     let newImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     return newImage ?? self
+  }
+  
+}
+
+extension UIImage {
+  
+  func convertToBase64(
+    size: CGSize = .init(width: 100, height: 100),
+    result: @escaping (String?, String?) -> Void
+  ) {
+    let resizedImage = self.resizeImage(targetSize: size)
+    if let jpegData = resizedImage.jpegData(compressionQuality: 0.1) {
+      DispatchQueue.main.async {
+        Console.log("Base64 string created successfully.")
+        result(nil, jpegData.base64EncodedString(options: .lineLength64Characters))
+      }
+    } else {
+      Console.log("Failed to convert image to JPEG.")
+      result("Failed to convert image to JPEG.", nil)
+    }
   }
   
 }

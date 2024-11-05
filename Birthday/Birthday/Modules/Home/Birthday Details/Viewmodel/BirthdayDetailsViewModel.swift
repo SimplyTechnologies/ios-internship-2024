@@ -17,10 +17,12 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   @Published var isEditing: Bool = false
   @Published var isGeneratingMessage: Bool = false
   @Published var selectedImage: UIImage?
-  @Published var selectedItem: PhotosPickerItem?
   @Published var isShowMessage: Bool = false
   @Published var isDeleting: Bool = false
   @Published var isDoneActive: Bool = false
+  @Published var isPickerPresented = false
+  @Published var isShowPickerOptions = false
+  @Published var selectedSourceType: UIImagePickerController.SourceType = .photoLibrary
   
   let id: UUID = UUID()
   var deleteAction: () -> ()
@@ -30,7 +32,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
   var birthdayCopy: BirthdayModel
   
   private let homeRepository: HomeRepository
-  private var cancelables = Set<AnyCancellable>()
+  private var cancellables = Set<AnyCancellable>()
   
   init(
     homeRepository: HomeRepository,
@@ -43,7 +45,21 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
     self.deleteAction = deleteAction
     self.updateAction = updateAction
     self.birthdayCopy = birthdayData
+    
     validateDoneButton()
+    convertImageOnChange()
+  }
+  
+  private func convertImageOnChange() {
+    $selectedImage
+      .sink { [weak self] image in
+        guard let self, let image else { return }
+        image.convertToBase64 { [weak self] error, base64String in
+          guard let self else { return }
+          birthdayData.image = base64String
+        }
+      }
+      .store(in: &cancellables)
   }
   
   func updateBirthday() {
@@ -76,7 +92,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
         showToast(message: String.Toast.updateBirthday, isSuccess: true)
         self.updateAction(self.birthdayData)
       }
-      .store(in: &cancelables)
+      .store(in: &cancellables)
   }
   
   func deleteBirthDay(id: Int, complition: @escaping () -> ()) {
@@ -102,31 +118,13 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
         deleteAction()
         complition()
       }
-      .store(in: &cancelables)
-  }
-  
-  @MainActor
-  func convertImage(image: PhotosPickerItem?) async {
-    if let data = try? await image?.loadTransferable(type: Data.self),
-       let uiImage = UIImage(data: data)
-    {
-      selectedImage = uiImage
-      let resizedImage = uiImage.resizeImage(targetSize: CGSize(width: 100, height: 100))
-      if let jpegData = resizedImage.jpegData(compressionQuality: 0.1) {
-        birthdayData.image = jpegData.base64EncodedString(options: .lineLength64Characters)
-        Console.log("Base64 string created successfully.")
-      } else {
-        Console.log("Failed to convert image to JPEG.")
-      }
-    } else {
-      Console.log("Failed to convert image to data.")
-    }
+      .store(in: &cancellables)
   }
   
   private func validateDoneButton() {
     $birthdayData
       .map {
-        !($0 == self.birthdayCopy && self.selectedItem == nil && self.selectedImage == nil)
+        !($0 == self.birthdayCopy && self.selectedImage == nil)
       }
       .assign(to: &$isDoneActive)
   }
@@ -135,7 +133,6 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
     withAnimation {
       isEditing = false
       birthdayData = birthdayCopy
-      selectedItem = nil
       selectedImage = nil
     }
   }

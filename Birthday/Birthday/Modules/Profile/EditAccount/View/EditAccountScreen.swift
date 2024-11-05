@@ -123,11 +123,6 @@ extension EditAccountScreen {
   
   private var profileImage: some View {
     ZStack {
-      PhotosPicker(
-        selection: $viewModel.selectedPickerItem,
-        matching: .images,
-        photoLibrary: .shared()
-      ) {
         if let selectedImage = viewModel.selectedImage {
           SkeletonImage(
             imagePath: "",
@@ -158,9 +153,29 @@ extension EditAccountScreen {
             size: .init(width: 160, height: 160)
           )
         }
-      }
     }
     .clipShape(Circle())
+    .onTapGesture {
+      viewModel.isShowPickerOptions = true
+    }
+    .confirmationDialog("", isPresented: $viewModel.isShowPickerOptions) {
+      Button(String.Button.camera) {
+        viewModel.selectedSourceType = .camera
+        viewModel.isPickerPresented = true
+      }
+      Button(String.Button.gallery) {
+        viewModel.selectedSourceType = .photoLibrary
+        viewModel.isPickerPresented = true
+      }
+      Button(String.Button.cancel, role: .cancel) {}
+    }
+    .fullScreenCover(isPresented: $viewModel.isPickerPresented) {
+      ImagePicker(
+        image: $viewModel.selectedImage,
+        isPickerPresented: $viewModel.isPickerPresented,
+        sourceType: viewModel.selectedSourceType
+      )
+    }
   }
   
   private var doneButton: some View {

@@ -60,6 +60,8 @@ extension String {
     static var done: String { "button_done".localized }
     static var cancel: String { "button_cancel".localized }
     static var delete: String { "button_delete".localized }
+    static var camera: String { "button_camera".localized }
+    static var gallery: String { "button_gallery".localized }
     
   }
   
