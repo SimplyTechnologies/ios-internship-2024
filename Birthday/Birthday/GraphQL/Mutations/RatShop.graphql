@@ -1,0 +1,5 @@
+mutation RateShopMutation($rateShopInput: RateShopInput!) {
+
+  rateShop(rateShopInput: $rateShopInput)
+
+}

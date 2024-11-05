@@ -69,7 +69,11 @@ extension ShopScreen {
                 .onTapGesture {
                   let shopDetailsViewModel = ShopDetailsViewModel(
                     shopRepository: ShopDefaultRepository(),
-                    shop: shop
+                    shop: shop, rateComplition: { shop in
+                      if let index = viewModel.shops.firstIndex(where: {shop.id == $0.id}) {
+                        viewModel.shops[index] = shop
+                      }
+                    }
                   )
                   
                   if router.type == .home {
