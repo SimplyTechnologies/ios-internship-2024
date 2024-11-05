@@ -8,6 +8,7 @@
 import PopupView
 import PulseUI
 import SwiftUI
+import Nuke
 
 @main
 struct BirthdayApp: App {
@@ -37,6 +38,7 @@ struct BirthdayApp: App {
       .onChange(of: scenePhase) { newPhase in
         if newPhase == .active {
           appState.setupNetworkLogger()
+          ImagePipeline.shared = ImagePipeline(configuration: .withDataCache)
         }
       }
       .sheet(isPresented: $appState.isShowLogger) {

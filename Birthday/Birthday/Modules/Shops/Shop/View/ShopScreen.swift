@@ -60,27 +60,11 @@ extension ShopScreen {
             .padding(.bottom, 10)
             LazyVStack(spacing: 18) {
               ForEach($viewModel.filteredShops, id: \.id) { $shop in
-                ShopCell(model: $shop, isLoading: shop.isLoading) {
-                  viewModel.toggleFavorite(shop: shop)
-                }
-                .onTapGesture {
-                  let shopDetailsViewModel = ShopDetailsViewModel(
-                    shopRepository: ShopDefaultRepository(),
-                    shop: shop
-                  )
-                  
-                  if router.type == .home {
-                    router.push(
-                      TabBarView.HomeScreens.shopDetails(
-                        viewModel: shopDetailsViewModel
-                      )
-                    )
-                  } else {
-                    router.push(
-                      TabBarView.ShopScreens.details(
-                        viewModel: shopDetailsViewModel
-                      )
-                    )
+                Button {
+                  navigateToDetails(by: shop)
+                } label: {
+                  ShopCell(model: $shop, isLoading: shop.isLoading) {
+                    viewModel.toggleFavorite(shop: shop)
                   }
                 }
               }
@@ -140,6 +124,27 @@ extension ShopScreen {
       .padding(.horizontal, 24)
     }
     .scrollIndicators(.hidden)
+  }
+  
+  private func navigateToDetails(by shop: Shop) {
+    let shopDetailsViewModel = ShopDetailsViewModel(
+      shopRepository: ShopDefaultRepository(),
+      shop: shop
+    )
+    
+    if router.type == .home {
+      router.push(
+        TabBarView.HomeScreens.shopDetails(
+          viewModel: shopDetailsViewModel
+        )
+      )
+    } else {
+      router.push(
+        TabBarView.ShopScreens.details(
+          viewModel: shopDetailsViewModel
+        )
+      )
+    }
   }
   
 }

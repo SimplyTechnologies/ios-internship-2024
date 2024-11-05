@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct SkeletonImage<Placeholder: View>: View {
   
@@ -49,17 +50,16 @@ struct SkeletonImage<Placeholder: View>: View {
           .resizable()
       } else {
         if let url = URL(string: imagePath) {
-          AsyncImage(url: url) { phase in
-            if let image = phase.image {
-              image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-
-            } else if phase.error != nil {
-              placeholder
-            } else {
-              SkeletonView()
-            }
+          LazyImage(url: url) { state in
+              if let image = state.image {
+                image
+                  .resizable()
+                  .aspectRatio(contentMode: .fill)
+              } else if state.error != nil {
+                placeholder
+              } else {
+                SkeletonView()
+              }
           }
         } else {
           placeholder
@@ -73,8 +73,16 @@ struct SkeletonImage<Placeholder: View>: View {
           Circle()
             .stroke(borderColor, lineWidth: borderWidth)
         )
+        .frame(width: size.width, height: size.height)
     }
-    .frame(maxWidth: size.width, maxHeight: size.height)
+    .if(!isCircular) { view in
+      view
+        .frame(
+          minWidth: size.width,
+          maxWidth: size.width,
+          maxHeight: size.height
+        )
+    }
   }
 
   @ViewBuilder
@@ -95,7 +103,8 @@ struct SkeletonImage<Placeholder: View>: View {
 
 #Preview {
   SkeletonImage(
-    imagePath: "https://birthday-app-assets.s3.eu-central-1.amazonaws.com/uploads/4dbc2daa-5dfe-4dfe-90b8-d0968e704127.jpg",
+    isCircular: false,
+    imagePath: "https://birthday-app-assets.s3.eu-central-1.amazonaws.com/uploads/grand-candi.jpg",
     placeholderImage: Image(systemName: "person"),
     borderColor: .rouge,
     borderWidth: 3,

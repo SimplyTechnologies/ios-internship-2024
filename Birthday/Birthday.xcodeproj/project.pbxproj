@@ -85,6 +85,9 @@
 		CE98D2F42CC8ED2D0017E477 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBA52CC6A61D002DE72A /* String+Ext.swift */; };
 		CE98D2F62CC936FC0017E477 /* RegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2F52CC936FC0017E477 /* RegistrationRepository.swift */; };
 		CE98D2FB2CC93B2D0017E477 /* SignUp.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE98D2FA2CC93B2D0017E477 /* SignUp.graphql */; };
+		CEC569512CD9FA8D00087552 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC569502CD9FA8D00087552 /* ImagePicker.swift */; };
+		CEC569542CDA10FE00087552 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = CEC569532CDA10FE00087552 /* Nuke */; };
+		CEC569562CDA10FE00087552 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = CEC569552CDA10FE00087552 /* NukeUI */; };
 		CEDC8A282CD2710100CA0ACF /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = CEDC8A272CD2710100CA0ACF /* PopupView */; };
 		CEDC8A2A2CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8A292CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift */; };
 		CEDC8A2D2CD2CC3200CA0ACF /* Messagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8A2C2CD2CC3200CA0ACF /* Messagable.swift */; };
@@ -223,6 +226,7 @@
 		CE98D2EE2CC80C7E0017E477 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		CE98D2F52CC936FC0017E477 /* RegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRepository.swift; sourceTree = "<group>"; };
 		CE98D2FA2CC93B2D0017E477 /* SignUp.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignUp.graphql; sourceTree = "<group>"; };
+		CEC569502CD9FA8D00087552 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		CEDC8A292CD2B55C00CA0ACF /* SecondaryRoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryRoundedButtonStyle.swift; sourceTree = "<group>"; };
 		CEDC8A2C2CD2CC3200CA0ACF /* Messagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messagable.swift; sourceTree = "<group>"; };
 		E7BD1C652CC7CD0B00EC70FE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -288,10 +292,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC569542CDA10FE00087552 /* Nuke in Frameworks */,
 				CEDC8A282CD2710100CA0ACF /* PopupView in Frameworks */,
 				F3C8CB7B2CC68E90002DE72A /* ApolloAPI in Frameworks */,
 				F3C8CB7D2CC68E90002DE72A /* ApolloSQLite in Frameworks */,
 				CE02C9FC2CD033F600C091F0 /* Pulse in Frameworks */,
+				CEC569562CDA10FE00087552 /* NukeUI in Frameworks */,
 				CE02C9FE2CD033F600C091F0 /* PulseProxy in Frameworks */,
 				CE02CA002CD033F600C091F0 /* PulseUI in Frameworks */,
 				F3C8CB6F2CC67A03002DE72A /* BirthDayAPI in Frameworks */,
@@ -503,6 +509,7 @@
 				CE02CA082CD0D99E00C091F0 /* ToastView.swift */,
 				CE02CA0A2CD1391D00C091F0 /* ProfileButton.swift */,
 				93EB4A1C2CD52CF00070C377 /* Alert.swift */,
+				CEC569502CD9FA8D00087552 /* ImagePicker.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1113,6 +1120,8 @@
 				CE02C9FD2CD033F600C091F0 /* PulseProxy */,
 				CE02C9FF2CD033F600C091F0 /* PulseUI */,
 				CEDC8A272CD2710100CA0ACF /* PopupView */,
+				CEC569532CDA10FE00087552 /* Nuke */,
+				CEC569552CDA10FE00087552 /* NukeUI */,
 			);
 			productName = Birthday;
 			productReference = F3C8CB3B2CC658C6002DE72A /* Birthday.app */;
@@ -1148,6 +1157,7 @@
 				F3C8CB772CC68E90002DE72A /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				CE02C9FA2CD033F600C091F0 /* XCRemoteSwiftPackageReference "Pulse" */,
 				CEDC8A262CD2710100CA0ACF /* XCRemoteSwiftPackageReference "PopupView" */,
+				CEC569522CDA10FE00087552 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = F3C8CB3C2CC658C6002DE72A /* Products */;
 			projectDirPath = "";
@@ -1211,6 +1221,7 @@
 				CE98D2C82CC77C290017E477 /* Optional+Ext.swift in Sources */,
 				CE98D2CC2CC786390017E477 /* View+Ext.swift in Sources */,
 				CE98D2E12CC79A600017E477 /* RegistrationViewModel.swift in Sources */,
+				CEC569512CD9FA8D00087552 /* ImagePicker.swift in Sources */,
 				F3FDEB9A2CCC3C950073BFED /* NewBirthdayRepository.swift in Sources */,
 				CE02C9F12CCFE11800C091F0 /* AppController.swift in Sources */,
 				CE02CA022CD03AC100C091F0 /* UIDevice+Ext.swift in Sources */,
@@ -1460,6 +1471,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need to access your camera to capture a photo add and update profile picture.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Need to access your photo library to select a photo add and update profile picture";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1494,6 +1507,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need to access your camera to capture a photo add and update profile picture.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Need to access your photo library to select a photo add and update profile picture";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1555,6 +1570,14 @@
 				minimumVersion = 5.1.2;
 			};
 		};
+		CEC569522CDA10FE00087552 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.8.0;
+			};
+		};
 		CEDC8A262CD2710100CA0ACF /* XCRemoteSwiftPackageReference "PopupView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/exyte/PopupView?tab=readme-ov-file";
@@ -1588,6 +1611,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE02C9FA2CD033F600C091F0 /* XCRemoteSwiftPackageReference "Pulse" */;
 			productName = PulseUI;
+		};
+		CEC569532CDA10FE00087552 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEC569522CDA10FE00087552 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		CEC569552CDA10FE00087552 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEC569522CDA10FE00087552 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
 		};
 		CEDC8A272CD2710100CA0ACF /* PopupView */ = {
 			isa = XCSwiftPackageProductDependency;

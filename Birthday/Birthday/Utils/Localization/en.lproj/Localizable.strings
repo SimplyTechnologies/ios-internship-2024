@@ -16,6 +16,8 @@
 "button_done" = "Done";
 "button_cancel" = "Cancel";
 "button_delete" = "Delete";
+"button_camera" = "Camera";
+"button_gallery" = "Gallery";
 
 // Field
 

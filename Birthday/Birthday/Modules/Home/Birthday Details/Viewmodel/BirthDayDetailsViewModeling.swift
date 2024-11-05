@@ -21,9 +21,11 @@ protocol BirthDayDetailsViewModeling: Toastable {
   var isEditing: Bool { get set }
   var isGeneratingMessage: Bool { get set }
   var isDeleting: Bool { get set }
+  var isPickerPresented: Bool { get set }
+  var isShowPickerOptions: Bool { get set }
+  var selectedSourceType: UIImagePickerController.SourceType { get set }
   
   func updateBirthday()
   func deleteBirthDay(id: Int, complition: @escaping () -> ())
-  func convertImage(image: PhotosPickerItem?) async
   
 }

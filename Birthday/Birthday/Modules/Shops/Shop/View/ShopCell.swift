@@ -53,7 +53,6 @@ extension ShopCell {
       .lineLimit(nil)
   }
   
-  @ViewBuilder
   private var favoriteButtonContent: some View {
     Image(systemName: model.isFavorite ?? false ? "heart.fill" : "heart")
       .resizable()
