@@ -77,10 +77,11 @@ final class ShopViewModel: ShopViewModeling {
   
   private func filterShops(searchText: String, shops: [Shop]) {
     guard !searchText.isEmpty else {
-      filteredShops = shops
+      filteredShops = getFilteredShops(shops)
       return
     }
-    filteredShops = shops.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased()) }
+    let searchedShops = shops.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased()) }
+    filteredShops = getFilteredShops(searchedShops)
   }
   
   private func addToFavorite(shopId: Int) {
@@ -102,6 +103,7 @@ final class ShopViewModel: ShopViewModeling {
         guard let self else { return }
         if shopId == data.addShopToFavorite.shopId {
           filteredShops[index].isFavorite = true
+          filteredShops = getFilteredShops(filteredShops)
         }
       }
       .store(in: &cancellables)
@@ -126,16 +128,17 @@ final class ShopViewModel: ShopViewModeling {
         guard let self else { return }
         if shopId == data.removeShopFromFavorite.shopId {
           filteredShops[index].isFavorite = false
+          filteredShops = getFilteredShops(filteredShops)
         }
       }
       .store(in: &cancellables)
   }
   
-  func getFilteredShops() -> [Shop] {
-    let favoriteShops = filteredShops.sorted {
+  private func getFilteredShops(_ shops: [Shop]) -> [Shop] {
+    let favoriteShops = shops.sorted {
       ($0.isFavorite ?? false) && !($1.isFavorite ?? false)
     }
-    return favoriteShops.isEmpty ? filteredShops : favoriteShops
+    return favoriteShops.isEmpty ? shops : favoriteShops
   }
   
 }

@@ -24,7 +24,6 @@ final class EditAccountViewModel: EditAccountViewModeling {
   @Published var isShowPickerOptions = false
   @Published var selectedSourceType: UIImagePickerController.SourceType = .photoLibrary
   
-  
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
   
@@ -32,15 +31,16 @@ final class EditAccountViewModel: EditAccountViewModeling {
   private var editAccountRepository: EditAccountRepository
   
   var isDisabled: Bool {
+    guard !profileModel.firstName.isEmpty,
+          !profileModel.lastName.isEmpty
+    else { return true }
+    
     let isSameFirstName = editAccountModel.firstName == profileModel.firstName
     let isSameLastName = editAccountModel.lastName == profileModel.lastName
     let isSameImage = editAccountModel.image == profileModel.image
     let isSameData = isSameFirstName && isSameLastName && isSameImage
     
-    let isFirstNameEmpty = profileModel.firstName.isEmpty
-    let isLastNameEmpty = profileModel.lastName.isEmpty
-    
-    return isSameData || isFirstNameEmpty || isLastNameEmpty
+    return isSameData
   }
   
   

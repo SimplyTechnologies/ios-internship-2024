@@ -18,6 +18,6 @@ protocol ShopViewModeling: ObservableObject {
   
   func getShops()
   func toggleFavorite(shop: Shop)
-  func getFilteredShops() -> [Shop]
+//  func getFilteredShops() -> [Shop]
   
 }
