@@ -34,13 +34,7 @@ final class EditAccountViewModel: EditAccountViewModeling {
     guard !profileModel.firstName.isEmpty,
           !profileModel.lastName.isEmpty
     else { return true }
-    
-    let isSameFirstName = editAccountModel.firstName == profileModel.firstName
-    let isSameLastName = editAccountModel.lastName == profileModel.lastName
-    let isSameImage = editAccountModel.image == profileModel.image
-    let isSameData = isSameFirstName && isSameLastName && isSameImage
-    
-    return isSameData
+    return editAccountModel == profileModel
   }
   
   

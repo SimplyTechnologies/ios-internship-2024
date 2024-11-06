@@ -101,12 +101,7 @@ final class ShopViewModel: ShopViewModeling {
         }
       } receiveValue: { [weak self] data in
         guard let self else { return }
-        if shopId == data.addShopToFavorite.shopId {
-          filteredShops[index].isFavorite = true
-          if let shopIndex = shops.firstIndex(where: { $0.id == shopId }) {
-            shops[shopIndex].isFavorite = true
-          }
-        }
+        makeFavorite(by: shopId, isFavorite: true)
       }
       .store(in: &cancellables)
   }
@@ -128,12 +123,7 @@ final class ShopViewModel: ShopViewModeling {
         }
       } receiveValue: { [weak self] data in
         guard let self else { return }
-        if shopId == data.removeShopFromFavorite.shopId {
-          filteredShops[index].isFavorite = false
-          if let shopIndex = shops.firstIndex(where: { $0.id == shopId }) {
-            shops[shopIndex].isFavorite = false
-          }
-        }
+        makeFavorite(by: shopId, isFavorite: false)
       }
       .store(in: &cancellables)
   }
@@ -144,6 +134,15 @@ final class ShopViewModel: ShopViewModeling {
       ($0.isFavorite ?? false) && !($1.isFavorite ?? false)
     }
     return favoriteShops.isEmpty ? shops : favoriteShops
+  }
+  
+  private func makeFavorite(by shopId: Int, isFavorite: Bool) {
+    if let index = filteredShops.firstIndex(where: { $0.id == shopId }) {
+      filteredShops[index].isFavorite = isFavorite
+    }
+    if let shopIndex = shops.firstIndex(where: { $0.id == shopId }) {
+      shops[shopIndex].isFavorite = isFavorite
+    }
   }
   
 }
