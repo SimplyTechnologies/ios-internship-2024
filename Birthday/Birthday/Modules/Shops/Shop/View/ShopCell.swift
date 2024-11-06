@@ -10,8 +10,8 @@ import SwiftUI
 struct ShopCell: View {
   
   @State private var scale: CGFloat = 1.0
+  
   var model: Shop
-
   var isLoading: Bool
   var favoriteAction: () -> Void
   
@@ -31,7 +31,6 @@ extension ShopCell {
         .padding(.leading, 14)
       Spacer()
       favoriteButton
-        .padding(.trailing, 16)
     }
     .padding(.vertical, 20)
   }
@@ -70,6 +69,7 @@ extension ShopCell {
       favoriteAction()
     } label: {
       favoriteButtonContent
+        .padding()
     }
     .disabled(isLoading)
   }

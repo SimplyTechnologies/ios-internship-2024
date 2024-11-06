@@ -32,7 +32,7 @@ struct AddBirthdayScreen<T: CreateBirthdayViewModeling>: View {
 extension AddBirthdayScreen {
   
   private var content: some View {
-    VStack {
+    VStack(spacing: 0) {
       NavigationBar()
         .padding(.top, 20)
       ScrollView {

@@ -12,7 +12,7 @@ struct TabBarView: View {
   @StateObject private var homeRouter = NavigationRouter(.home)
   @StateObject private var shopRouter = NavigationRouter(.shop)
   @StateObject private var profileRouter = NavigationRouter(.profile)
-  
+  @EnvironmentObject var appState: AppState
   @Binding var selectedTab: TabModel
   
   var handler: Binding<TabModel> {
@@ -23,7 +23,7 @@ struct TabBarView: View {
           switch selectedTab {
           case .home: homeRouter.popToRoot()
           case .shops: shopRouter.popToRoot()
-          case .profile: profileRouter.popToRoot()
+          case .profile: appState.profileTapCount += 1; profileRouter.popToRoot()
           default: break
           }
         }
