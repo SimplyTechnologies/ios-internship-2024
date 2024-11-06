@@ -9,6 +9,7 @@ import Foundation
 
 protocol RegistrationViewModeling: Toastable {
   
+  var id: UUID { get }
   var isLoading: Bool { get set }
   var name: String { get set }
   var surname: String { get set }
@@ -25,7 +26,7 @@ protocol RegistrationViewModeling: Toastable {
   var isValidEmail: Bool { get set }
   var isValidPassword: Bool { get set }
   var isValidRepeatPassword: Bool { get set }
-  var isValidForm: Bool { get set }
+  var isValidForm: Bool { get }
   var isSamePasswords: Bool { get set }
   var isShowPasswordField: Bool { get set }
   var repeatPasswordErrorMessage: String { get set }

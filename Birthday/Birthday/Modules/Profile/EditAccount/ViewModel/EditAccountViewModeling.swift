@@ -17,11 +17,12 @@ protocol EditAccountViewModeling: Toastable {
   var profileModel: ProfileModel { get set }
   var isNameFocused: Bool { get set }
   var isSurnameFocused: Bool { get set }
-  var selectedPickerItem: PhotosPickerItem? { get set }
   var selectedImage: UIImage? { get set }
-  var isDoneEnabled: Bool { get }
+  var isDisabled: Bool { get }
+  var isPickerPresented: Bool { get set }
+  var isShowPickerOptions: Bool { get set }
+  var selectedSourceType: UIImagePickerController.SourceType { get set }
 
   func updateProfileData(completion: @escaping () -> Void)
-  func convertImage(image: PhotosPickerItem?) async
 
 }

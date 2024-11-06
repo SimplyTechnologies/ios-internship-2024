@@ -17,22 +17,16 @@ struct ProfileButton: View {
       action()
     } label: {
       HStack(spacing: 0) {
-        Spacer()
-          .frame(width: 12)
-          
         Text(title)
           .foregroundStyle(.rouge)
           .karmaFont(style: .bold20)
-          
-        Spacer()
-          .frame(width: 12)
+          .padding(.horizontal, 12)
           
         Spacer()
       }
       .padding(.vertical, 10)
-      .background(Color.white)
-      .clipShape(RoundedRectangle(cornerRadius: 8))
     }
+    .buttonStyle(PressedButtonStyle(cornerRadius: 8))
   }
   
 }

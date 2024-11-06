@@ -36,8 +36,6 @@ extension ShopDetailsScreen {
         router.pop()
       }
       .padding(.top, 20)
-      Spacer()
-        .frame(height: 26)
       shopInfoView
       Spacer()
     }
@@ -46,32 +44,33 @@ extension ShopDetailsScreen {
   }
   
   private var shopInfoView: some View {
-    VStack(spacing: 0) {
-      image
-      Spacer()
-        .frame(height: 20)
-      shopName
-      Spacer()
-        .frame(height: 18)
-      rate
-      Spacer()
-        .frame(height: 20)
-      phone
-      Spacer()
-        .frame(height: 10)
-      address
-      Spacer()
-        .frame(height: 10)
-      webSite
+    GeometryReader { geo in
+      ScrollView {
+        VStack(spacing: 0) {
+          Spacer()
+            .frame(height: 26)
+          SkeletonImage(
+            isCircular: false,
+            imagePath: viewModel.shop.image ?? "",
+            size: .init(width: geo.size.width, height: geo.size.width)
+          )
+          .clipShape(RoundedRectangle(cornerRadius: 16))
+          shopName
+            .padding(.top, 20)
+          rate
+            .padding(.top, 18)
+          phone
+            .padding(.top, 20)
+          address
+            .padding(.top, 10)
+          webSite
+            .padding(.top, 10)
+            .padding(.bottom, 40)
+        }
+      }
+      .scrollIndicators(.hidden)
     }
     .padding(.horizontal, 24)
-  }
-
-  private var image: some View {
-    CircularImage(
-      imagePath: viewModel.shop.image ?? "",
-      size: .init(width: 100, height: 100)
-    )
   }
   
   private var shopName: some View {
@@ -100,7 +99,7 @@ extension ShopDetailsScreen {
         .lineLimit(nil)
         .underline()
         .onTapGesture {
-          UIApplication.shared.open(URL(string: "tel://\(viewModel.shop.phone ?? "")")!)
+          viewModel.phoneCallAction()
         }
     }
   }

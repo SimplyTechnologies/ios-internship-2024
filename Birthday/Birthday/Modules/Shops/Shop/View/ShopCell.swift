@@ -10,8 +10,8 @@ import SwiftUI
 struct ShopCell: View {
   
   @State private var scale: CGFloat = 1.0
-  @Binding var model: Shop
-
+  
+  var model: Shop
   var isLoading: Bool
   var favoriteAction: () -> Void
   
@@ -25,24 +25,21 @@ extension ShopCell {
   
   private var content: some View {
     HStack(spacing: 0) {
-      Spacer()
-        .frame(width: 16)
       image
-      Spacer()
-        .frame(width: 14)
+        .padding(.leading, 16)
       name
+        .padding(.leading, 14)
       Spacer()
       favoriteButton
-      Spacer()
-        .frame(width: 16)
     }
     .padding(.vertical, 20)
-    .background(Color.white)
-    .clipShape(RoundedRectangle(cornerRadius: 24))
   }
   
   private var image: some View {
-    CircularImage(imagePath: model.image ?? "")
+    SkeletonImage(
+      imagePath: model.image ?? "",
+      borderColor: .clear
+    )
   }
   
   private var name: some View {
@@ -52,7 +49,6 @@ extension ShopCell {
       .lineLimit(nil)
   }
   
-  @ViewBuilder
   private var favoriteButtonContent: some View {
     Image(systemName: model.isFavorite ?? false ? "heart.fill" : "heart")
       .resizable()
@@ -73,6 +69,7 @@ extension ShopCell {
       favoriteAction()
     } label: {
       favoriteButtonContent
+        .padding()
     }
     .disabled(isLoading)
   }
@@ -81,7 +78,7 @@ extension ShopCell {
 
 #Preview {
   ShopCell(
-    model: .constant(Shop.mockShop),
+    model: Shop.mockShop,
     isLoading: true,
     favoriteAction: {}
   )

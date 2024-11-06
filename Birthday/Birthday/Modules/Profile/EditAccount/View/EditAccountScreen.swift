@@ -49,20 +49,38 @@ struct EditAccountScreen<T: EditAccountViewModeling>: View {
 extension EditAccountScreen {
   
   private var content: some View {
-    VStack(spacing: 42) {
+    VStack(spacing: 0) {
       NavigationBar {
         router.pop()
       }
-      profileImage
-      VStack(spacing: 8) {
-        nameField
-        surnameField
+      .padding(.top, 20)
+      GeometryReader { geo in
+        ScrollViewReader { scrollReader in
+          ScrollView {
+            VStack(spacing: 0) {
+              profileImage
+                .padding(.vertical, 42)
+              VStack(spacing: 8) {
+                nameField
+                surnameField
+              }
+              .padding(.horizontal, 60)
+              Spacer()
+              doneButton
+                .padding(.bottom, 40)
+            }
+            .frame(
+              maxWidth: .infinity,
+              minHeight: geo.size.height,
+              alignment: .bottom
+            )
+          }
+          .scrollIndicators(.hidden)
+          .onAppear {
+            self.scrollProxy = scrollReader
+          }
+        }
       }
-      .padding(.horizontal, 60)
-      Spacer()
-      doneButton
-      Spacer()
-        .frame(height: 40)
     }
     .background(Color.lightPink)
     .navigationBarBackButtonHidden(true)
@@ -78,6 +96,9 @@ extension EditAccountScreen {
       placeholderText: viewModel.editAccountModel.firstName,
       backgroundColor: .white
     )
+    .onChange(of: viewModel.profileModel.firstName) { _ in
+      viewModel.profileModel.firstName.limitText(18)
+    }
     .keyboardType(.default)
     .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .name)
@@ -94,6 +115,9 @@ extension EditAccountScreen {
       placeholderText: viewModel.editAccountModel.lastName,
       backgroundColor: .white
     )
+    .onChange(of: viewModel.profileModel.lastName) { _ in
+      viewModel.profileModel.firstName.limitText(18)
+    }
     .keyboardType(.default)
     .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .surname)
@@ -105,9 +129,8 @@ extension EditAccountScreen {
   
   private var profileImage: some View {
     ZStack {
-      PhotosPicker(selection: $viewModel.selectedPickerItem, matching: .images) {
         if let selectedImage = viewModel.selectedImage {
-          CircularImage(
+          SkeletonImage(
             imagePath: "",
             image: Image(uiImage: selectedImage),
             borderColor: .rouge,
@@ -115,7 +138,7 @@ extension EditAccountScreen {
             size: .init(width: 160, height: 160)
           )
         } else if let image = viewModel.profileModel.image, !image.isEmpty, let _ = URL(string: image) {
-          CircularImage(
+          SkeletonImage(
             imagePath: image,
             placeholderImage: Image(systemName: "person"),
             borderColor: .rouge,
@@ -123,7 +146,7 @@ extension EditAccountScreen {
             size: .init(width: 160, height: 160)
           )
         } else {
-          CircularImage(
+          SkeletonImage(
             imagePath: viewModel.editAccountModel.image,
             placeholderView: {
               Image(.imagePlus)
@@ -136,9 +159,29 @@ extension EditAccountScreen {
             size: .init(width: 160, height: 160)
           )
         }
-      }
     }
     .clipShape(Circle())
+    .onTapGesture {
+      viewModel.isShowPickerOptions = true
+    }
+    .confirmationDialog("", isPresented: $viewModel.isShowPickerOptions) {
+      Button(String.Button.camera) {
+        viewModel.selectedSourceType = .camera
+        viewModel.isPickerPresented = true
+      }
+      Button(String.Button.gallery) {
+        viewModel.selectedSourceType = .photoLibrary
+        viewModel.isPickerPresented = true
+      }
+      Button(String.Button.cancel, role: .cancel) {}
+    }
+    .fullScreenCover(isPresented: $viewModel.isPickerPresented) {
+      ImagePicker(
+        image: $viewModel.selectedImage,
+        isPickerPresented: $viewModel.isPickerPresented,
+        sourceType: viewModel.selectedSourceType
+      )
+    }
   }
   
   private var doneButton: some View {
@@ -153,7 +196,22 @@ extension EditAccountScreen {
         router.pop()
       }
     }
-    .disabled(!viewModel.isDoneEnabled || viewModel.isLoading)
+    .disabled(viewModel.isDisabled || viewModel.isLoading)
   }
   
+}
+
+#Preview {
+  EditAccountScreen<EditAccountViewModel>(
+    viewModel: EditAccountViewModel(
+      editAccountRepository: EditAccountDefaultRepository(),
+      model: .init(
+        firstName: "Name",
+        image: "",
+        lastName: "Surname"
+      )
+    ),
+    model: .init(),
+    doneAction: {}
+  )
 }

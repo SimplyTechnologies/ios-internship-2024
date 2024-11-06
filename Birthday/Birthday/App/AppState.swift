@@ -18,13 +18,16 @@ final class AppState: ObservableObject {
   @Published var isUserLogedIn: Bool = AppController.shared.status == .authenticated
   @Published var isShowLogger: Bool = false
   @Published var isShowPopup: Bool = false
+  @Published var isShowCongratulations: Bool = false
+  @Published var isLoading: Bool = false
   @Published var popupContent: AnyView?
+  @Published var selectedTab: TabModel = .home
+  @Published var profileTapCount: Int = 0
   
   @MainActor
   func setupNetworkLogger() {
     #if DEBUG
-    URLSessionProxyDelegate.enableAutomaticRegistration()
-    RemoteLogger.shared.isAutomaticConnectionEnabled = true
+    NetworkLogger.enableProxy()
     #endif
   }
   

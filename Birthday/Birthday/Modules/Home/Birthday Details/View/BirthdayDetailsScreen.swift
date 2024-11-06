@@ -5,8 +5,8 @@
 //  Created by MEKHAK GHAPANTSYAN on 23.10.24.
 //
 
-import SwiftUI
 import PhotosUI
+import SwiftUI
 
 struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
   
@@ -19,13 +19,15 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
       .background(Color.lightPink)
       .navigationBarBackButtonHidden(true)
       .customAlert(isPresented: $viewModel.isGeneratingMessage)
-      .loadingOverlay(isLoading: $viewModel.isDeleting)
       .onChange(of: viewModel.isShowMessage) { isShow in
         appState.isShowMessage = isShow
         if isShow {
           appState.isSuccessMessage = viewModel.isSuccessMessage
           appState.message = viewModel.toastMessage
         }
+      }
+      .onChange(of: viewModel.isDeleting) { isDeleting in
+        appState.isLoading = isDeleting
       }
   }
   
@@ -47,13 +49,7 @@ extension BirthdayDetailsScreen {
                 .padding(.bottom, 12)
             }
             if viewModel.isEditing {
-              BirthDayEditCommonView(
-                birthdayData: $viewModel.birthdayData,
-                isContentvalid: .constant(true),
-                isCreating: false
-              ) { newBirthday in
-                doneAction(birthday: newBirthday)
-              }
+              birthDayEditCommonView
             } else {
               name
                 .padding(.bottom, 24)
@@ -80,10 +76,24 @@ extension BirthdayDetailsScreen {
     .padding(.top, 20)
   }
   
+  private var birthDayEditCommonView: some View {
+    BirthDayEditCommonView(
+      birthdayData: $viewModel.birthdayData,
+      isContentvalid: $viewModel.isDoneActive,
+      isCreating: false
+    ) { newBirthday in
+      doneAction(birthday: newBirthday)
+    }
+  }
+  
   private var header: some View {
     VStack(spacing: 10) {
-      NavigationBar() {
-        router.pop()
+      NavigationBar {
+        if viewModel.isEditing {
+          viewModel.cancelEdit()
+        } else {
+          router.pop()
+        }
       }
       HStack {
         Spacer()
@@ -98,77 +108,70 @@ extension BirthdayDetailsScreen {
   }
   
   private var image: some View {
-    ZStack {
-      if let image = viewModel.birthdayData.image {
-        AsyncImage(url:URL(string: image) ) { phase in
-          if let image = phase.image {
-            image
-              .resizable()
-          } else if phase.error != nil {
-            Image(systemName: "person")
-              .resizable()
-              .foregroundStyle(Color.rouge)
-              .padding(12)
-          } else {
-            ProgressView()
-              .progressViewStyle(.circular)
-          }
-        }
-      }  else {
-        Image(systemName: "person")
-          .resizable()
-          .foregroundStyle(Color.rouge)
-          .padding(8)
-      }
-    }
-    .frame(width: 100, height: 100)
-    .clipShape(RoundedRectangle(cornerRadius: 50))
+    SkeletonImage(
+      imagePath: viewModel.birthdayData.image ?? "",
+      placeholderImage: Image(systemName: "person"),
+      borderColor: .clear,
+      size: .init(width: 100, height: 100)
+    )
   }
   
   private var selectedImage: some View {
-    PhotosPicker(
-      selection: $viewModel.selectedItem,
-      matching: .images,
-      photoLibrary: .shared()
-    ) {
-      if let image = viewModel.selectedImage {
-        Image(uiImage: image)
-          .resizable()
-          .clipShape(Circle())
-          .frame(width: 100, height: 100)
-      } else {
-        if let image = viewModel.birthdayData.image {
-          AsyncImage(url:URL(string: image)) { phase in
-            if let image = phase.image {
-              image
-                .resizable()
-                .frame(width: 100, height: 100)
-                .clipShape(RoundedRectangle(cornerRadius: 50))
-            } else if phase.error != nil {
-              Image(.addPicture)
-                .resizable()
-                .clipShape(Circle())
-                .frame(width: 100, height: 100)
-                .padding(12)
-            } else {
-              ProgressView()
-                .progressViewStyle(.circular)
-            }
-          }
-        } else {
-          Image(.addPicture)
-            .resizable()
-            .clipShape(Circle())
-            .frame(width: 100, height: 100)
-            .padding(12)
-        }
-      }
+    ZStack {
+      pickerImage
     }
-    .onChange(of: viewModel.selectedItem) { newItem in
-      Task {
-        await viewModel.convertImage(image: newItem)
-      }
+    .onTapGesture {
+      viewModel.isShowPickerOptions = true
     }
+    .confirmationDialog("", isPresented: $viewModel.isShowPickerOptions) {
+      Button(String.Button.camera) {
+        viewModel.selectedSourceType = .camera
+        viewModel.isPickerPresented = true
+      }
+      Button(String.Button.gallery) {
+        viewModel.selectedSourceType = .photoLibrary
+        viewModel.isPickerPresented = true
+      }
+      Button(String.Button.cancel, role: .cancel) {}
+    }
+    .fullScreenCover(isPresented: $viewModel.isPickerPresented) {
+      ImagePicker(
+        image: $viewModel.selectedImage,
+        isPickerPresented: $viewModel.isPickerPresented,
+        sourceType: viewModel.selectedSourceType
+      )
+    }
+  }
+  
+  @ViewBuilder
+  private var pickerImage: some View {
+    if let selectedImage = viewModel.selectedImage {
+      SkeletonImage(
+        imagePath: "",
+        image: Image(uiImage: selectedImage),
+        borderColor: .clear,
+        size: .init(width: 100, height: 100)
+      )
+    } else if let image = viewModel.birthdayData.image, !image.isEmpty, let _ = URL(string: image) {
+      SkeletonImage(
+        imagePath: image,
+        placeholderView: {
+          placeHolderImage
+        },
+        borderColor: .clear,
+        size: .init(width: 100, height: 100)
+      )
+    } else {
+      placeHolderImage
+    }
+  }
+  
+  private var placeHolderImage: some View {
+    Image(.addPicture)
+      .resizable()
+      .clipShape(Circle())
+      .frame(width: 100, height: 100)
+      .padding(12)
   }
   
   private var name: some View {
@@ -259,33 +262,37 @@ extension BirthdayDetailsScreen {
         viewModel.isGeneratingMessage = true
       }
     } label: {
-      Text(String.Birthday.generate)
-        .padding(.vertical, 8)
-        .padding(.horizontal, 20)
-        .foregroundStyle(Color.rouge)
-        .background(Color.bubblegumPink)
-        .karmaFont(style: .bold18)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+      ZStack {
+        Text(String.Birthday.generate)
+          .padding(.vertical, 8)
+          .padding(.horizontal, 20)
+          .foregroundStyle(Color.rouge)
+          .karmaFont(style: .bold18)
+          .lineLimit(1)
+          .minimumScaleFactor(0.59)
+      }
+      .frame(height: 41)
+      .background(Color.bubblegumPink)
+      .clipShape(RoundedRectangle(cornerRadius: 16))
     }
   }
   
   private var findGiftButton: some View {
     Button {
-      router.push(
-        TabBarView.HomeScreens.shops(
-          viewModel: ShopViewModel(
-            shopRepository: ShopDefaultRepository()
-          )
-        )
-      )
+      appState.selectedTab = .shops
     } label: {
-      Text(String.Birthday.gift)
-        .padding(.vertical, 8)
-        .padding(.horizontal, 20)
-        .foregroundStyle(Color.bubblegumPink)
-        .background(Color.rouge)
-        .karmaFont(style: .bold18)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+      ZStack {
+        Text(String.Birthday.gift)
+          .padding(.vertical, 8)
+          .padding(.horizontal, 20)
+          .foregroundStyle(Color.bubblegumPink)
+          .karmaFont(style: .bold18)
+          .lineLimit(1)
+          .minimumScaleFactor(0.5)
+      }
+      .frame(height: 41)
+      .background(Color.rouge)
+      .clipShape(RoundedRectangle(cornerRadius: 16))
     }
   }
   
@@ -316,7 +323,7 @@ extension BirthdayDetailsScreen {
         updatedAt: "",
         userId: 1
       ),
-      deleteAction: { },
+      deleteAction: {},
       updateAction: { _ in }
     )
   )

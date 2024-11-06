@@ -18,7 +18,7 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
       NavigationBar()
         .padding(.top, 20)
       userDetails
-        .padding(.top, 50)
+        .padding(.top, 10)
       buttons
         .padding(.top, 50)
       Spacer()
@@ -41,6 +41,7 @@ extension ProfileScreen {
       confirmAction: {
         AppController.shared.logOut()
         appState.isUserLogedIn = false
+        appState.selectedTab = .home
         appState.hidePopup()
       },
       cancelAction: {
@@ -52,11 +53,12 @@ extension ProfileScreen {
   
   private var userDetails: some View {
     VStack(spacing: 0) {
-      CircularImage(
-        imagePath: viewModel.profileData.image ?? "",
-        placeholderImage: Image(systemName: "person"),
-        size: .init(width: 100, height: 100)
-      )
+        SkeletonImage(
+          imagePath: viewModel.profileData.image ?? "",
+          placeholderImage: Image(systemName: "person"),
+          borderColor: .clear,
+          size: .init(width: 100, height: 100)
+        )
       Spacer()
         .frame(height: 32)
       

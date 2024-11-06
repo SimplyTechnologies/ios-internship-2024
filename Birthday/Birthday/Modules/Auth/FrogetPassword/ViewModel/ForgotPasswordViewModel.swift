@@ -14,19 +14,27 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
   @Published var isLoading: Bool = false
   @Published var email: String = ""
   @Published var passwordCode: String = ""
-  @Published var isCodeValid: Bool = false
+  @Published var isCodeValid: Bool = true
   @Published var isEmailValid: Bool = true
   @Published var actualCode: String = ""
+  @Published var isEmailFocused: Bool = false
+  @Published var isCodeFocused: Bool = false
   
   var isSuccessMessage: Bool = false
   var toastMessage: String = ""
+  var emailErrorMessage: String = ""
+  var codeErrorMessage: String = ""
+  let id: UUID = UUID()
   
+  var isGetCodeDisabled: Bool {
+    !isEmailValid || email.isEmpty || isLoading
+  }
+
   private let forgotPasswordRepository: ForgotPasswordRepository
-  private var cancelables = Set<AnyCancellable>()
+  private var cancellables = Set<AnyCancellable>()
   
   init(forgotPasswordRepository: ForgotPasswordRepository) {
     self.forgotPasswordRepository = forgotPasswordRepository
-    setupCodeValidation()
     setupEmailValidation()
   }
   
@@ -48,32 +56,54 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
         actualCode = code
         showToast(message: String.Toast.checkEmail, isSuccess: true)
       }
-      .store(in: &cancelables)
+      .store(in: &cancellables)
   }
   
   private func setupCodeValidation() {
     $passwordCode
-      .map { [weak self] in
-        $0 == self?.actualCode && !$0.isEmpty && $0.count == 6
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] code in
+        guard let self else { return }
+        isCodeValid = code == actualCode && !code.isEmpty && code.count == 6
+        if !isCodeValid {
+          codeErrorMessage = code.isEmpty ? String.Field.emptyCode : String.Field.invalidCode
+        }
       }
-      .assign(to: &$isCodeValid)
+      .store(in: &cancellables)
   }
   
   private func setupEmailValidation() {
     $email
-      .map {
-        $0.isValidEmail
+      .removeDuplicates()
+      .dropFirst()
+      .sink { [weak self] email in
+        guard let self else { return }
+        isEmailValid = email.isValidEmail
+        if !isEmailValid {
+          emailErrorMessage = email.isEmpty ? String.Field.emptyEmail : String.Field.invalidEmail
+        }
       }
-      .assign(to: &$isEmailValid)
+      .store(in: &cancellables)
   }
   
-  func checkCode(complition: @escaping () -> ()) {
-    isShowMessage = false
+  func checkCode(completion: () -> ()) {
     if passwordCode == actualCode {
-      complition()
+      completion()
     } else {
+      isShowMessage = false
       showToast(message: String.Toast.wrongCode, isSuccess: false)
     }
+  }
+  
+  func isShowMessageChanged(completion: @escaping (Bool) -> Void) {
+    $isShowMessage
+      .removeDuplicates()
+      .dropFirst()
+      .sink { isShow in
+        completion(isShow)
+      }
+      .store(in: &cancellables)
   }
   
 }

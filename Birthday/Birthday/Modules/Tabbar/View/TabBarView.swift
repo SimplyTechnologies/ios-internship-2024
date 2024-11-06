@@ -12,22 +12,33 @@ struct TabBarView: View {
   @StateObject private var homeRouter = NavigationRouter(.home)
   @StateObject private var shopRouter = NavigationRouter(.shop)
   @StateObject private var profileRouter = NavigationRouter(.profile)
+  @EnvironmentObject var appState: AppState
+  @Binding var selectedTab: TabModel
   
-  @State var selectedTab: TabModel = .home
+  var handler: Binding<TabModel> {
+    Binding(
+      get: { self.selectedTab },
+      set: {
+        if $0 == self.selectedTab {
+          switch selectedTab {
+          case .home: homeRouter.popToRoot()
+          case .shops: shopRouter.popToRoot()
+          case .profile: appState.profileTapCount += 1; profileRouter.popToRoot()
+          default: break
+          }
+        }
+        self.selectedTab = $0
+      }
+    )
+  }
   
-  private var addTabViewModel = CreateBirthdayViewModel(
-    newBirthdayRepository: NewBirthdayDefaultRepository()
-  )
-  
-  init() {
+  init(_ selectedTab: Binding<TabModel>) {
+    self._selectedTab = selectedTab
     customiseTabBar()
   }
   
   var body: some View {
     tabBar
-      .onChange(of: selectedTab) { _ in
-        addTabViewModel.resetScreen()
-      }
   }
   
 }
@@ -35,7 +46,7 @@ struct TabBarView: View {
 extension TabBarView {
   
   private var tabBar: some View {
-    TabView(selection: $selectedTab) {
+    TabView(selection: handler) {
       homeTab
       shopsTab
       addTab
@@ -63,6 +74,7 @@ extension TabBarView {
       }
     }
     .environmentObject(homeRouter)
+    .environmentObject(shopRouter)
     .tabItem { TabCellView(model: .home) }
     .tag(TabModel.home)
   }
@@ -89,7 +101,9 @@ extension TabBarView {
   private var addTab: some View {
     NavigationStack {
       AddBirthdayScreen(
-        viewModel: addTabViewModel
+        viewModel: CreateBirthdayViewModel(
+          newBirthdayRepository: NewBirthdayDefaultRepository()
+        )
       )
     }
     .tabItem { TabCellView(model: .addBirthday) }
@@ -218,5 +232,5 @@ extension TabBarView {
 }
 
 #Preview {
-  TabBarView()
+  TabBarView(.constant(.home))
 }

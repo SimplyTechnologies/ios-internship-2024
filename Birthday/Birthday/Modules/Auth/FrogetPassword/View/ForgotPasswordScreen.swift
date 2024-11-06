@@ -15,14 +15,16 @@ struct ForgotPasswordScreen<T: ForgotPasswordViewModeling>: View {
   
   var body: some View {
     content
-      .navigationBarBackButtonHidden(true)
-      .onChange(of: viewModel.isShowMessage) { isShow in
-        appState.isShowMessage = isShow
-        if isShow {
-          appState.isSuccessMessage = viewModel.isSuccessMessage
-          appState.message = viewModel.toastMessage
+      .onLoad {
+        viewModel.isShowMessageChanged { isShow in
+          appState.isShowMessage = isShow
+          if isShow {
+            appState.isSuccessMessage = viewModel.isSuccessMessage
+            appState.message = viewModel.toastMessage
+          }
         }
       }
+      .navigationBarBackButtonHidden(true)
   }
   
 }
@@ -34,19 +36,32 @@ extension ForgotPasswordScreen {
       NavigationBar {
         router.pop()
       }
-      VStack {
-        emailField
-          .padding(.bottom, 40)
-        getCodeButton
-        Spacer()
-        if !viewModel.actualCode.isEmpty {
-          passwordCode
-          Spacer()
-          setPasswordButton
+      GeometryReader { geo in
+        ScrollView {
+          VStack {
+            emailField
+              .padding(.bottom, 40)
+            getCodeButton
+            Spacer()
+            if !viewModel.actualCode.isEmpty {
+              passwordCode
+              Spacer()
+              setPasswordButton
+                .padding(.bottom, 40)
+            }
+          }
+          .animation(.default, value: viewModel.isEmailValid)
+          .animation(.default, value: viewModel.isCodeValid)
+          .padding(.top, 20)
+          .padding(.horizontal, 60)
+          .frame(
+            maxWidth: .infinity,
+            minHeight: geo.size.height,
+            alignment: .bottom
+          )
         }
+        .scrollIndicators(.hidden)
       }
-      .padding(.top, 20)
-      .padding(.horizontal, 60)
     }
     .background(Color.lightPink)
   }
@@ -58,12 +73,18 @@ extension ForgotPasswordScreen {
         .karmaFont(style: .bold18)
       InputField(
         text: $viewModel.email,
-        isFocused: .constant(true),
+        isFocused: $viewModel.isEmailFocused,
         isValidField: $viewModel.isEmailValid,
         placeholderText: "example@gmail.com",
         backgroundColor: .white
       )
-      .textInputAutocapitalization(.never)
+      .keyboardType(.emailAddress)
+      .modifier(
+        FieldErrorModifier(
+          title: viewModel.emailErrorMessage,
+          isHidden: viewModel.isEmailValid
+        )
+      )
     }
   }
   
@@ -75,7 +96,7 @@ extension ForgotPasswordScreen {
       UIApplication.shared.hideKeyboard()
       viewModel.getCode()
     }
-    .disabled(!viewModel.isEmailValid)
+    .disabled(viewModel.isGetCodeDisabled)
     .foregroundStyle(Color.bubblegumPink)
   }
   
@@ -87,11 +108,17 @@ extension ForgotPasswordScreen {
         .padding(.vertical, 10)
       InputField(
         text: $viewModel.passwordCode,
-        isFocused: .constant(true),
+        isFocused: $viewModel.isCodeFocused,
         isValidField: $viewModel.isCodeValid
       )
       .karmaFont(style: .bold26)
       .keyboardType(.numberPad)
+      .modifier(
+        FieldErrorModifier(
+          title: viewModel.codeErrorMessage,
+          isHidden: viewModel.isCodeValid
+        )
+      )
       .frame(width: 120)
       .padding(.horizontal, 70)
       .padding(.bottom, 20)
@@ -108,7 +135,10 @@ extension ForgotPasswordScreen {
       viewModel.checkCode {
         router.push(
           LandingScreen.Screen.resetPassword(
-            code: viewModel.passwordCode
+            viewModel: ResetPasswordViewModel(
+              forgotPasswordRepository: ForgotPasswordDefaultRepository(),
+              passwordCode: viewModel.passwordCode
+            )
           )
         )
       }

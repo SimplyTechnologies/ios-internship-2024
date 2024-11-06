@@ -15,12 +15,13 @@ final class ShopDetailsViewModel: ShopDetailsViewModeling {
   
   @Published var isLoading: Bool = false
   @Published var shop: Shop
+  
+  let id: UUID = UUID()
   @Published var toastMessage: String = ""
   @Published var isSuccessMessage: Bool = false
   @Published var isShowMessage: Bool = false
 
   var rateComplition: (Shop) -> ()
-  var id: UUID
   
   private let shopRepository: ShopRepository
   private var cancellables = Set<AnyCancellable>()
@@ -28,7 +29,6 @@ final class ShopDetailsViewModel: ShopDetailsViewModeling {
   init(shopRepository: ShopRepository, shop: Shop, rateComplition: @escaping (Shop) -> ()) {
     self.shopRepository = shopRepository
     self.shop = shop
-    self.id = UUID()
     self.rateComplition = rateComplition
   }
   
@@ -52,4 +52,10 @@ final class ShopDetailsViewModel: ShopDetailsViewModeling {
       .store(in: &cancellables)
   }
   
+  func phoneCallAction() {
+    guard let url = URL(string: "tel://\(shop.phone ?? "")"),
+          UIApplication.shared.canOpenURL(url)
+    else { return }
+    UIApplication.shared.open(url)
+  }
 }

@@ -37,12 +37,11 @@ struct ToastView: View {
         .resizable()
         .frame(width: 20, height: 20)
 
-      Spacer().frame(width: 12)
-
       Text(title)
         .foregroundStyle(Color.rouge)
         .karmaFont(style: .regular16)
         .lineLimit(4)
+        .padding(.leading, 12)
 
       Spacer()
     }

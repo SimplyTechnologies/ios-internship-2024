@@ -9,6 +9,7 @@ import Foundation
 
 protocol ProfileViewModeling: ObservableObject {
 
+  var id: UUID { get }
   var isLoading: Bool { get set }
   var profileData: ProfileModel { get set }
 

@@ -46,6 +46,12 @@ extension String {
     return outputFormatter.string(from: date)
   }
   
+  mutating func limitText(_ upper: Int) {
+    if self.count > upper {
+      self = String(self.prefix(upper))
+    }
+  }
+  
 }
 
 extension String {
@@ -60,6 +66,8 @@ extension String {
     static var done: String { "button_done".localized }
     static var cancel: String { "button_cancel".localized }
     static var delete: String { "button_delete".localized }
+    static var camera: String { "button_camera".localized }
+    static var gallery: String { "button_gallery".localized }
     
   }
   
@@ -86,6 +94,9 @@ extension String {
     static var searchNoResultTitle: String { "field_search_no_result_title".localized }
     static var searchNoResultDescription: String { "field_search_no_result_description".localized }
     static var search: String { "field_search".localized }
+    static var emptyCode: String { "field_empty_code".localized }
+    static var invalidCode: String { "field_invalid_code".localized }
+    static var generate: String { "field_generate".localized }
     
   }
   
@@ -142,6 +153,12 @@ extension String {
     static var done: String { "auth_done".localized }
     static var forgot: String { "auth_forgot".localized }
     static var logOut: String { "logout_text".localized }
+  }
+  
+  enum Firework {
+    
+    static var congratulations: String { "firework_congratulations".localized }
+    
   }
   
 }

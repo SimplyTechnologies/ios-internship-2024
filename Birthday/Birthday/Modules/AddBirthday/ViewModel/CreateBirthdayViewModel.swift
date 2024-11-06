@@ -15,19 +15,22 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
   @Published var isContentValid: Bool = false
   @Published var isLoading: Bool = false
   @Published var selectedImage: UIImage? = nil
-  @Published var selectedItem: PhotosPickerItem? = nil
   @Published var isShowMessage: Bool = false
+  @Published var isPickerPresented = false
+  @Published var isShowPickerOptions = false
+  @Published var selectedSourceType: UIImagePickerController.SourceType = .photoLibrary
   
   var toastMessage: String = ""
   var isSuccessMessage: Bool = false
   @Published var birthday: BirthdayModel = BirthdayModel()
   
   private let newBirthdayRepository: NewBirthdayRepository
-  private var cancelables = Set<AnyCancellable>()
+  private var cancellables = Set<AnyCancellable>()
   
   init(newBirthdayRepository: NewBirthdayRepository) {
     self.newBirthdayRepository = newBirthdayRepository
     setupContentValidation()
+    convertImageOnChange()
   }
   
   private func setupContentValidation() {
@@ -36,6 +39,18 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
         !(birthday.name?.isEmpty ?? true) && birthday.date != nil && birthday.relation != nil
       }
       .assign(to: &$isContentValid)
+  }
+  
+  private func convertImageOnChange() {
+    $selectedImage
+      .sink { [weak self] image in
+        guard let self, let image else { return }
+        image.convertToBase64 { [weak self] error, base64String in
+          guard let self else { return }
+          birthday.image = base64String
+        }
+      }
+      .store(in: &cancellables)
   }
   
   func createBirthday() {
@@ -64,37 +79,15 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
         let newBirthday = BirthdayModel(createBirthdayDTO: birthday)
         BirthdayPublisher.publisher.send(newBirthday)
         self.birthday = BirthdayModel()
-        self.selectedItem = nil
         self.selectedImage = nil
         showToast(message: String.Toast.createBirthday, isSuccess: true)
-      }.store(in: &cancelables)
-  }
-  
-  @MainActor
-  func convertImage(image: PhotosPickerItem?) async {
-    if let data = try? await image?.loadTransferable(type: Data.self),
-       let uiImage = UIImage(data: data)
-    {
-      selectedImage = uiImage
-      let resizedImage = uiImage.resizeImage(targetSize: CGSize(width: 100, height: 100))
-      if let jpegData = resizedImage.jpegData(compressionQuality: 0.1) {
-        birthday.image = jpegData.base64EncodedString(options: .lineLength64Characters)
-        Console.log("Base64 string created successfully.")
-      } else {
-        Console.log("Failed to convert image to JPEG.")
-      }
-    } else {
-      Console.log("Failed to convert image to data.")
-    }
+      }.store(in: &cancellables)
   }
   
   func resetScreen() {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-      guard let self else { return }
-      birthday = BirthdayModel()
-      selectedItem = nil
-      selectedImage = nil
-    }
+    birthday = BirthdayModel()
+    selectedImage = nil
+    
   }
   
 }

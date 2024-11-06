@@ -8,6 +8,7 @@
 import PopupView
 import PulseUI
 import SwiftUI
+import Nuke
 
 @main
 struct BirthdayApp: App {
@@ -19,8 +20,9 @@ struct BirthdayApp: App {
     WindowGroup {
       ZStack {
         ZStack {
+          Color.lightPink.ignoresSafeArea()
           if appState.isUserLogedIn {
-            TabBarView()
+            TabBarView($appState.selectedTab)
           } else {
             LandingScreen()
           }
@@ -32,10 +34,16 @@ struct BirthdayApp: App {
           appState.popupContent
         }
       }
-      .environmentObject(appState)
+      .isLoading(appState.isLoading)
       .onChange(of: scenePhase) { newPhase in
         if newPhase == .active {
           appState.setupNetworkLogger()
+          ImagePipeline.shared = ImagePipeline(configuration: .withDataCache)
+        }
+      }
+      .onChange(of: appState.profileTapCount) { count in
+        if count == 10 {
+          appState.isShowCongratulations = true
         }
       }
       .sheet(isPresented: $appState.isShowLogger) {
@@ -48,6 +56,7 @@ struct BirthdayApp: App {
       }
       .popup(isPresented: $appState.isShowMessage) {
         toastView
+          .padding(.bottom, appState.isUserLogedIn ? UITabBarController().height + 10 : 0)
       } customize: {
         $0
           .type(.floater())
@@ -56,7 +65,12 @@ struct BirthdayApp: App {
           .dragToDismiss(true)
           .autohideIn(4)
       }
+      .fullScreenCover(isPresented: $appState.isShowCongratulations) {
+        FireworksScreen(viewModel: FireworksViewModel())
+      }
       .animation(.easeInOut(duration: 0.3), value: appState.isShowPopup)
+      .environmentObject(appState)
+      .ignoresSafeArea(.keyboard)
     }
   }
   

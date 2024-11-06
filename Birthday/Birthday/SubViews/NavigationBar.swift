@@ -14,9 +14,8 @@ struct NavigationBar: View {
   var body: some View {
     HStack(spacing: 0) {
       if backButtonAction.isNotNil {
-        Spacer()
-          .frame(width: 38)
         backButton
+          .padding(.leading, 38)
       }
       Spacer()
       Image(.birth)

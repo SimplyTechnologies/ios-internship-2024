@@ -14,6 +14,7 @@ protocol ShopDetailsViewModeling: Toastable, ObservableObject {
   var isLoading: Bool { get set }
   var shop: Shop { get set }
   
+  func phoneCallAction()
   func rateShop(payload: RateShopPayload)
   
 }
