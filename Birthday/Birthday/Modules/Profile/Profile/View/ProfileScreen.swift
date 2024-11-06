@@ -41,6 +41,7 @@ extension ProfileScreen {
       confirmAction: {
         AppController.shared.logOut()
         appState.isUserLogedIn = false
+        appState.selectedTab = .home
         appState.hidePopup()
       },
       cancelAction: {

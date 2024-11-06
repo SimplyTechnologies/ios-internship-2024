@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShopScreen<T: ShopViewModeling>: View {
-  
+
   @StateObject var viewModel: T
   @EnvironmentObject var router: NavigationRouter
   @EnvironmentObject var appState: AppState
@@ -20,11 +20,11 @@ struct ShopScreen<T: ShopViewModeling>: View {
       }
       .navigationBarBackButtonHidden(true)
   }
-  
+
 }
 
 extension ShopScreen {
-  
+
   private var content: some View {
     VStack(spacing: 0) {
       if router.path.count > 0 {
@@ -44,50 +44,51 @@ extension ShopScreen {
     }
     .background(Color.lightPink)
   }
-  
+
   private var list: some View {
-    VStack(spacing: 0) {
+    VStack {
       if viewModel.isLoading {
         skeletonListView
+      } else if viewModel.filteredShops.isEmpty {
+        noSearchResultView
       } else {
-        if viewModel.filteredShops.isEmpty {
-          noSearchResultView
-        } else {
-          ScrollView {
-            PullToRefresh(coordinateSpaceName: "pull") {
-              viewModel.getShops()
-            }
-            .padding(.bottom, 10)
-            LazyVStack(spacing: 18) {
-              ForEach($viewModel.filteredShops, id: \.id) { $shop in
-                Button {
-                  navigateToDetails(by: shop)
-                } label: {
-                  ShopCell(model: $shop, isLoading: shop.isLoading) {
-                    viewModel.toggleFavorite(shop: shop)
-                  }
+        ScrollView {
+          PullToRefresh(coordinateSpaceName: "pull") {
+            viewModel.getShops()
+          }
+          .padding(.bottom, 10)
+          LazyVStack(spacing: 18) {
+            ForEach(viewModel.filteredShops, id: \.id) { shop in
+              Button {
+                navigateToDetails(by: shop)
+              } label: {
+                ShopCell(model: shop, isLoading: shop.isLoading) {
+                  viewModel.toggleFavorite(shop: shop)
                 }
                 .buttonStyle(PressedButtonStyle())
                 .disabled(shop.isLoading)
               }
+              .buttonStyle(PressedButtonStyle())
+              .disabled(shop.isLoading)
             }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 10)
           }
-          .scrollIndicators(.hidden)
-          .coordinateSpace(name: "pull")
+          .padding(.horizontal, 24)
+          .padding(.bottom, 10)
+          .animation(.easeInOut(duration: 0.3), value: viewModel.filteredShops)
         }
+        .scrollIndicators(.hidden)
+        .coordinateSpace(name: "pull")
       }
     }
   }
-  
+
   private var searchBar: some View {
     SearchBar(
       searchText: $viewModel.searchText,
       isFocused: $viewModel.isFocused
     )
   }
-  
+
   private var noSearchResultView: some View {
     VStack(alignment: .center, spacing: 0) {
       Spacer()
@@ -102,7 +103,7 @@ extension ShopScreen {
         .karmaFont(style: .bold26)
         .multilineTextAlignment(.center)
         .padding(.top, 12)
-      
+
       Text(String.Field.searchNoResultDescription)
         .foregroundStyle(Color.spanishGray)
         .karmaFont(style: .regular14)
@@ -113,7 +114,7 @@ extension ShopScreen {
     }
     .padding(.horizontal, 24)
   }
-  
+
   private var skeletonListView: some View {
     ScrollView {
       LazyVStack(spacing: 18) {
@@ -128,13 +129,13 @@ extension ShopScreen {
     }
     .scrollIndicators(.hidden)
   }
-  
+
   private func navigateToDetails(by shop: Shop) {
     let shopDetailsViewModel = ShopDetailsViewModel(
       shopRepository: ShopDefaultRepository(),
       shop: shop
     )
-    
+
     if router.type == .home {
       router.push(
         TabBarView.HomeScreens.shopDetails(
@@ -149,5 +150,5 @@ extension ShopScreen {
       )
     }
   }
-  
+
 }

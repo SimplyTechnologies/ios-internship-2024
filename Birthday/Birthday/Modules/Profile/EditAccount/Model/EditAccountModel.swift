@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import BirthDayAPI
 
-struct EditAccountModel: Codable {
+struct EditAccountModel: Codable, Equatable {
   
   var firstName: String
   var image: String
@@ -25,6 +25,10 @@ struct EditAccountModel: Codable {
     self.firstName = dto.firstName
     self.image = dto.image ?? ""
     self.lastName = dto.lastName
+  }
+  
+  static func == (lhs: EditAccountModel, rhs: ProfileModel) -> Bool {
+    lhs.image == rhs.image && lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName
   }
 
 }
