@@ -19,13 +19,15 @@ struct BirthdayDetailsScreen<T: BirthDayDetailsViewModeling>: View {
       .background(Color.lightPink)
       .navigationBarBackButtonHidden(true)
       .customAlert(isPresented: $viewModel.isGeneratingMessage)
-      .loadingOverlay(isLoading: $viewModel.isDeleting)
       .onChange(of: viewModel.isShowMessage) { isShow in
         appState.isShowMessage = isShow
         if isShow {
           appState.isSuccessMessage = viewModel.isSuccessMessage
           appState.message = viewModel.toastMessage
         }
+      }
+      .onChange(of: viewModel.isDeleting) { isDeleting in
+        appState.isLoading = isDeleting
       }
   }
   

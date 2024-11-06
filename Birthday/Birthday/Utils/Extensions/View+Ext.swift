@@ -36,7 +36,7 @@ extension View {
     self.overlay {
       if flag {
         ProgressView()
-          .progressViewStyle(CircularProgressViewStyle(tint: .lightPink))
+          .progressViewStyle(CircularProgressViewStyle(tint: .white))
           .controlSize(.large)
       }
     }

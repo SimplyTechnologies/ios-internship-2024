@@ -29,17 +29,12 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
   var isGetCodeDisabled: Bool {
     !isEmailValid || email.isEmpty || isLoading
   }
-  
-  var isSetPasswordDisabled: Bool {
-    !isCodeValid || passwordCode.isEmpty || isLoading
-  }
 
   private let forgotPasswordRepository: ForgotPasswordRepository
   private var cancellables = Set<AnyCancellable>()
   
   init(forgotPasswordRepository: ForgotPasswordRepository) {
     self.forgotPasswordRepository = forgotPasswordRepository
-    setupCodeValidation()
     setupEmailValidation()
   }
   
@@ -92,13 +87,23 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
       .store(in: &cancellables)
   }
   
-  func checkCode(complition: @escaping () -> ()) {
-    isShowMessage = false
+  func checkCode(completion: () -> ()) {
     if passwordCode == actualCode {
-      complition()
+      completion()
     } else {
+      isShowMessage = false
       showToast(message: String.Toast.wrongCode, isSuccess: false)
     }
+  }
+  
+  func isShowMessageChanged(completion: @escaping (Bool) -> Void) {
+    $isShowMessage
+      .removeDuplicates()
+      .dropFirst()
+      .sink { isShow in
+        completion(isShow)
+      }
+      .store(in: &cancellables)
   }
   
 }

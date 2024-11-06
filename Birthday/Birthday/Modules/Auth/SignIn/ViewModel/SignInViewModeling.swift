@@ -23,5 +23,6 @@ protocol SignInViewModeling: Toastable {
   var emailErrorMessage: String { get set }
   
   func signIn(completion: @escaping () -> Void)
+  func clearFieldsValidation()
   
 }
