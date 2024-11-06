@@ -8,8 +8,16 @@
 
 // Button
 
+"button_sign_out" = "Выйти";
+"button_change_password" = "Изменить пароль";
+"button_edit_account" = "Редактировать аккаунт";
 "button_signIn" = "Войти";
 "button_register" = "Регистрация";
+"button_done" = "Готово";
+"button_cancel" = "Отмена";
+"button_delete" = "Удалить";
+"button_camera" = "Камера";
+"button_gallery" = "Галерея";
 
 // Field
 
@@ -17,20 +25,25 @@
 "field_surname" = "Фамилия";
 "field_email" = "Электронная почта";
 "field_password" = "Пароль";
+"field_old_password" = "Старый пароль";
+"field_new_password" = "Новый пароль";
+"field_repeat_new_password" = "Повторите новый пароль";
 "field_repeat_password" = "Повторите пароль";
-"field_empty_name" = "*Поле Имя не может быть пустым.";
-"field_invalid_name" = "*Поле Имя не может содержать цифры или специальные символы.";
-"field_empty_surname" = "*Поле Фамилия не может быть пустым.";
-"field_invalid_surname" = "*Поле Фамилия не может содержать цифры или специальные символы.";
-"field_empty_email" = "*Поле Электронная почта не может быть пустым.";
-"field_invalid_email" = "*Введите корректный адрес электронной почты.";
-"field_empty_password" = "*Поле Пароль не может быть пустым.";
-"field_invalid_password" = "*Длина: минимум 8 символов, максимум 20 символов. Включите заглавные и строчные буквы, цифру, специальный символ.";
-"field_empty_repeat_password" = "*Поле Повторите пароль не может быть пустым.";
+"field_empty_name" = "*Поле имени не может быть пустым.";
+"field_invalid_name" = "*Поле имени не может содержать цифры или специальные символы.";
+"field_empty_surname" = "*Поле фамилии не может быть пустым.";
+"field_invalid_surname" = "*Поле фамилии не может содержать цифры или специальные символы.";
+"field_empty_email" = "*Поле электронной почты не может быть пустым.";
+"field_invalid_email" = "*Пожалуйста, введите действительный адрес электронной почты.";
+"field_empty_password" = "*Поле пароля не может быть пустым.";
+"field_invalid_password" = "*Длина: минимум 8 символов, максимум 20. Включите заглавные и строчные буквы, цифру и специальный символ.";
+"field_empty_repeat_password" = "*Поле повторного пароля не может быть пустым.";
 "field_invalid_repeat_password" = "*Пароли не совпадают.";
 "field_search_no_result_title" = "Ничего не найдено";
-"field_search_no_result_description" = "По вашему запросу ничего не найдено. Попробуйте использовать другие ключевые слова.";
+"field_search_no_result_description" = "Поиск не дал результатов. Попробуйте использовать другие ключевые слова.";
 "field_search" = "Поиск";
+"field_empty_code" = "Поле кода не может быть пустым.";
+"field_invalid_code" = "Пожалуйста, введите 6-значный код.";
 
 // Birthday
 
@@ -40,14 +53,17 @@
 "birthday_generate" = "Создать сообщение";
 "birthday_gift" = "Найти подарок";
 "birthday_done" = "Готово";
-"birthday_relationship_new" = "Новые отношения";
+"birthday_relationship_new" = "Новое отношение";
 "birthday_send" = "Отправить";
+"birthday_delete_message" = "Вы уверены, что хотите удалить день рождения?";
+
+"birthday_list_empty_state" = "Кажется, вы еще не добавили дни рождения! Начните добавлять дни рождения своих родных и друзей, чтобы отслеживать особые дни в вашем календаре.";
 
 // Shop
 
 "shop_phone" = "Телефон:";
 "shop_address" = "Адрес:";
-"shop_website" = "Веб-сайт";
+"shop_website" = "Веб-сайт:";
 
 // Add
 
@@ -63,14 +79,19 @@
 "auth_done" = "Готово";
 "auth_forgot" = "Забыли пароль?";
 
+// LogOut
+
+"logout_text" = "Вы уверены?";
+
 // Toast
 
-"toast_register" = "You have successfully registered! 🎉";
-"toast_change" = "You have successfully changed your Password! 🎉";
-"toast_wrong_code" = "Wrong Code";
-"toast_check_email" = "Code sent to your email! Check your inbox to continue.";
-"toast_change_password" = "Password successfully changed! 🎉";
-"toast_edit_profile" = "Profile info successfully updated! 🎉";
-"toast_create_birthday" = "BirthDay successfully created! 🎉";
-"toast_delete_birthday" = "BirthDay successfully deleted! 🎉";
-"toast_update_birthday" = "BirthDay successfully updated! 🎉";
+"toast_register" = "Вы успешно зарегистрировались! 🎉";
+"toast_change" = "Вы успешно изменили пароль! 🎉";
+"toast_wrong_code" = "Неправильный код";
+"toast_check_email" = "Код отправлен на вашу почту! Проверьте свой почтовый ящик, чтобы продолжить.";
+"toast_change_password" = "Пароль успешно изменен! 🎉";
+"toast_edit_profile" = "Информация профиля успешно обновлена! 🎉";
+"toast_create_birthday" = "День рождения успешно создан! 🎉";
+"toast_delete_birthday" = "День рождения успешно удален! 🎉";
+"toast_update_birthday" = "День рождения успешно обновлен! 🎉";
+
