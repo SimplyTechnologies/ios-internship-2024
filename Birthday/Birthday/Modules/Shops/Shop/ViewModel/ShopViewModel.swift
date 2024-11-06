@@ -77,10 +77,11 @@ final class ShopViewModel: ShopViewModeling {
   
   private func filterShops(searchText: String, shops: [Shop]) {
     guard !searchText.isEmpty else {
-      filteredShops = shops
+      filteredShops = getFilteredShops(shops)
       return
     }
-    filteredShops = shops.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased()) }
+    let searchedShops = shops.filter { ($0.name ?? "").lowercased().contains(searchText.lowercased()) }
+    filteredShops = getFilteredShops(searchedShops)
   }
   
   private func addToFavorite(shopId: Int) {
@@ -100,9 +101,7 @@ final class ShopViewModel: ShopViewModeling {
         }
       } receiveValue: { [weak self] data in
         guard let self else { return }
-        if shopId == data.addShopToFavorite.shopId {
-          filteredShops[index].isFavorite = true
-        }
+        makeFavorite(by: shopId, isFavorite: true)
       }
       .store(in: &cancellables)
   }
@@ -124,11 +123,26 @@ final class ShopViewModel: ShopViewModeling {
         }
       } receiveValue: { [weak self] data in
         guard let self else { return }
-        if shopId == data.removeShopFromFavorite.shopId {
-          filteredShops[index].isFavorite = false
-        }
+        makeFavorite(by: shopId, isFavorite: false)
       }
       .store(in: &cancellables)
+  }
+  
+  private func getFilteredShops(_ shops: [Shop]) -> [Shop] {
+    guard !shops.isEmpty else { return [] }
+    let favoriteShops = shops.sorted {
+      ($0.isFavorite ?? false) && !($1.isFavorite ?? false)
+    }
+    return favoriteShops.isEmpty ? shops : favoriteShops
+  }
+  
+  private func makeFavorite(by shopId: Int, isFavorite: Bool) {
+    if let index = filteredShops.firstIndex(where: { $0.id == shopId }) {
+      filteredShops[index].isFavorite = isFavorite
+    }
+    if let shopIndex = shops.firstIndex(where: { $0.id == shopId }) {
+      shops[shopIndex].isFavorite = isFavorite
+    }
   }
   
 }

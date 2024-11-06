@@ -10,7 +10,7 @@ import SwiftUI
 struct ShopCell: View {
   
   @State private var scale: CGFloat = 1.0
-  @Binding var model: Shop
+  var model: Shop
 
   var isLoading: Bool
   var favoriteAction: () -> Void
@@ -78,7 +78,7 @@ extension ShopCell {
 
 #Preview {
   ShopCell(
-    model: .constant(Shop.mockShop),
+    model: Shop.mockShop,
     isLoading: true,
     favoriteAction: {}
   )

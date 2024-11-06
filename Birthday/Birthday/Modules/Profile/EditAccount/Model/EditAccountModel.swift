@@ -26,5 +26,11 @@ struct EditAccountModel: Codable {
     self.image = dto.image ?? ""
     self.lastName = dto.lastName
   }
+  
+  func compareAccounts(_ profileModel: ProfileModel) -> Bool {
+    self.image == profileModel.image &&
+    self.firstName == profileModel.firstName &&
+    self.lastName == profileModel.lastName
+  }
 
 }
