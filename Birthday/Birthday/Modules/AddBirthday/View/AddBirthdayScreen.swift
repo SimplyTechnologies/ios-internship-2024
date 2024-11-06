@@ -22,6 +22,9 @@ struct AddBirthdayScreen<T: CreateBirthdayViewModeling>: View {
           appState.message = viewModel.toastMessage
         }
       }
+      .onAppear {
+        viewModel.resetScreen()
+      }
   }
   
 }
@@ -29,47 +32,49 @@ struct AddBirthdayScreen<T: CreateBirthdayViewModeling>: View {
 extension AddBirthdayScreen {
   
   private var content: some View {
-    ScrollView {
+    VStack {
       NavigationBar()
         .padding(.top, 20)
-      VStack {
-        image
-        editView
+      ScrollView {
+        VStack {
+          image
+          editView
+        }
+        .padding(.horizontal, 24)
+        .scrollIndicators(.hidden)
       }
-      .padding(.horizontal, 24)
-      .scrollIndicators(.hidden)
     }
     .background(Color.lightPink.ignoresSafeArea(.all))
   }
   
   private var image: some View {
-      ZStack {
-        Image(uiImage: viewModel.selectedImage ?? .addPicture)
-          .resizable()
-          .clipShape(Circle())
-          .frame(width: 100, height: 100)
+    ZStack {
+      Image(uiImage: viewModel.selectedImage ?? .addPicture)
+        .resizable()
+        .clipShape(Circle())
+        .frame(width: 100, height: 100)
+    }
+    .onTapGesture {
+      viewModel.isShowPickerOptions = true
+    }
+    .confirmationDialog("", isPresented: $viewModel.isShowPickerOptions) {
+      Button(String.Button.camera) {
+        viewModel.selectedSourceType = .camera
+        viewModel.isPickerPresented = true
       }
-      .onTapGesture {
-        viewModel.isShowPickerOptions = true
+      Button(String.Button.gallery) {
+        viewModel.selectedSourceType = .photoLibrary
+        viewModel.isPickerPresented = true
       }
-      .confirmationDialog("", isPresented: $viewModel.isShowPickerOptions) {
-        Button(String.Button.camera) {
-          viewModel.selectedSourceType = .camera
-          viewModel.isPickerPresented = true
-        }
-        Button(String.Button.gallery) {
-          viewModel.selectedSourceType = .photoLibrary
-          viewModel.isPickerPresented = true
-        }
-        Button(String.Button.cancel, role: .cancel) {}
-      }
-      .fullScreenCover(isPresented: $viewModel.isPickerPresented) {
-        ImagePicker(
-          image: $viewModel.selectedImage,
-          isPickerPresented: $viewModel.isPickerPresented,
-          sourceType: viewModel.selectedSourceType
-        )
-      }
+      Button(String.Button.cancel, role: .cancel) {}
+    }
+    .fullScreenCover(isPresented: $viewModel.isPickerPresented) {
+      ImagePicker(
+        image: $viewModel.selectedImage,
+        isPickerPresented: $viewModel.isPickerPresented,
+        sourceType: viewModel.selectedSourceType
+      )
+    }
   }
   
   private var editView: some View {

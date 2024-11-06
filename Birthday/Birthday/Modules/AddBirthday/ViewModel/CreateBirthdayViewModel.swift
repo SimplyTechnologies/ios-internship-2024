@@ -85,11 +85,9 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
   }
   
   func resetScreen() {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-      guard let self else { return }
-      birthday = BirthdayModel()
-      selectedImage = nil
-    }
+    birthday = BirthdayModel()
+    selectedImage = nil
+    
   }
   
 }
