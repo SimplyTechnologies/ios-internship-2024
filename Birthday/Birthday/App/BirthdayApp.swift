@@ -34,6 +34,7 @@ struct BirthdayApp: App {
           appState.popupContent
         }
       }
+      .isLoading(appState.isLoading)
       .environmentObject(appState)
       .onChange(of: scenePhase) { newPhase in
         if newPhase == .active {

@@ -52,9 +52,29 @@ extension ShopScreen {
       } else if viewModel.filteredShops.isEmpty {
         noSearchResultView
       } else {
-        ScrollView {
-          PullToRefresh(coordinateSpaceName: "pull") {
-            viewModel.getShops()
+        if viewModel.filteredShops.isEmpty {
+          noSearchResultView
+        } else {
+          ScrollView {
+            PullToRefresh(coordinateSpaceName: "pull") {
+              viewModel.getShops()
+            }
+            .padding(.bottom, 10)
+            LazyVStack(spacing: 18) {
+              ForEach($viewModel.filteredShops, id: \.id) { $shop in
+                Button {
+                  navigateToDetails(by: shop)
+                } label: {
+                  ShopCell(model: $shop, isLoading: shop.isLoading) {
+                    viewModel.toggleFavorite(shop: shop)
+                  }
+                }
+                .buttonStyle(PressedButtonStyle())
+                .disabled(shop.isLoading)
+              }
+            }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 10)
           }
           .padding(.bottom, 10)
           LazyVStack(spacing: 18) {

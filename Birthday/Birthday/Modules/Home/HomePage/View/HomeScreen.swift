@@ -35,7 +35,7 @@ extension HomeScreen {
           HStack {
             Spacer()
             Text(String.Birthday.emptyStateMessage)
-              .multilineTextAlignment(.leading)
+              .multilineTextAlignment(.center)
               .foregroundStyle(.rouge)
               .karmaFont(style: .bold18)
             Spacer()
@@ -99,6 +99,7 @@ extension HomeScreen {
       } label: {
         BirthDayCell(model: birthday)
       }
+      .buttonStyle(PressedButtonStyle())
     }
   }
   

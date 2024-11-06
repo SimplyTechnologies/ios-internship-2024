@@ -27,9 +27,6 @@ extension BirthDayCell {
       }
       Spacer()
     }
-    .frame(height: 110)
-    .background(Color.white)
-    .clipShape(RoundedRectangle(cornerRadius: 24))
   }
   
   private var image: some View {

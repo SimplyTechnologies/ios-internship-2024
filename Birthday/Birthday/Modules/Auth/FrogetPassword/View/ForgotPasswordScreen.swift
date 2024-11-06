@@ -15,14 +15,16 @@ struct ForgotPasswordScreen<T: ForgotPasswordViewModeling>: View {
   
   var body: some View {
     content
-      .navigationBarBackButtonHidden(true)
-      .onChange(of: viewModel.isShowMessage) { isShow in
-        appState.isShowMessage = isShow
-        if isShow {
-          appState.isSuccessMessage = viewModel.isSuccessMessage
-          appState.message = viewModel.toastMessage
+      .onLoad {
+        viewModel.isShowMessageChanged { isShow in
+          appState.isShowMessage = isShow
+          if isShow {
+            appState.isSuccessMessage = viewModel.isSuccessMessage
+            appState.message = viewModel.toastMessage
+          }
         }
       }
+      .navigationBarBackButtonHidden(true)
   }
   
 }
@@ -34,21 +36,32 @@ extension ForgotPasswordScreen {
       NavigationBar {
         router.pop()
       }
-      VStack {
-        emailField
-          .padding(.bottom, 40)
-        getCodeButton
-        Spacer()
-        if !viewModel.actualCode.isEmpty {
-          passwordCode
-          Spacer()
-          setPasswordButton
+      GeometryReader { geo in
+        ScrollView {
+          VStack {
+            emailField
+              .padding(.bottom, 40)
+            getCodeButton
+            Spacer()
+            if !viewModel.actualCode.isEmpty {
+              passwordCode
+              Spacer()
+              setPasswordButton
+                .padding(.bottom, 40)
+            }
+          }
+          .animation(.default, value: viewModel.isEmailValid)
+          .animation(.default, value: viewModel.isCodeValid)
+          .padding(.top, 20)
+          .padding(.horizontal, 60)
+          .frame(
+            maxWidth: .infinity,
+            minHeight: geo.size.height,
+            alignment: .bottom
+          )
         }
+        .scrollIndicators(.hidden)
       }
-      .animation(.default, value: viewModel.isEmailValid)
-      .animation(.default, value: viewModel.isCodeValid)
-      .padding(.top, 20)
-      .padding(.horizontal, 60)
     }
     .background(Color.lightPink)
   }
@@ -131,7 +144,6 @@ extension ForgotPasswordScreen {
       }
     }
     .foregroundStyle(Color.bubblegumPink)
-    .disabled(viewModel.isSetPasswordDisabled)
   }
   
 }

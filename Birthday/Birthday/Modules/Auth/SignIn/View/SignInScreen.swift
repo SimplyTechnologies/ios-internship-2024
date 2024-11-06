@@ -179,6 +179,7 @@ extension SignInScreen {
             )
           )
         )
+        viewModel.clearFieldsValidation()
       } label: {
         Text(String.Auth.forgot)
           .foregroundStyle(Color.rouge)

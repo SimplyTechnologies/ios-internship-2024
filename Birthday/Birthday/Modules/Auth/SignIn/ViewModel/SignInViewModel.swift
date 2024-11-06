@@ -35,7 +35,7 @@ class SignInViewModel: SignInViewModeling {
   
   var isValidForm: Bool {
     guard !hasEmptyField else { return false }
-    return isValidEmail && isValidPassword
+    return email.isValidEmail && password.isValidPassword
   }
   
   init(
@@ -91,6 +91,11 @@ class SignInViewModel: SignInViewModeling {
         }
       }
       .store(in: &cancellables)
+  }
+  
+  func clearFieldsValidation() {
+    isValidEmail = true
+    isValidPassword = true
   }
   
 }
