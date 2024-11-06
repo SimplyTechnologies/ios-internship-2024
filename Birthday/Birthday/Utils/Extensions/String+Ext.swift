@@ -96,6 +96,7 @@ extension String {
     static var search: String { "field_search".localized }
     static var emptyCode: String { "field_empty_code".localized }
     static var invalidCode: String { "field_invalid_code".localized }
+    static var generate: String { "field_generate".localized }
     
   }
   
