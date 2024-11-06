@@ -47,9 +47,9 @@ extension String {
   }
   
   mutating func limitText(_ upper: Int) {
-      if self.count > upper {
-        self = String(self.prefix(upper))
-      }
+    if self.count > upper {
+      self = String(self.prefix(upper))
+    }
   }
   
 }
