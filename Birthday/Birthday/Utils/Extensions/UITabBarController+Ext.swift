@@ -5,7 +5,7 @@
 //  Created by Narek on 06.11.24.
 //
 
-import Foundation
+import UIKit
 
 extension UITabBarController {
   

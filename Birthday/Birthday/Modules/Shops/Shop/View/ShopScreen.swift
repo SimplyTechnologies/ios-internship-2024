@@ -65,8 +65,6 @@ extension ShopScreen {
                 ShopCell(model: shop, isLoading: shop.isLoading) {
                   viewModel.toggleFavorite(shop: shop)
                 }
-                .buttonStyle(PressedButtonStyle())
-                .disabled(shop.isLoading)
               }
               .buttonStyle(PressedButtonStyle())
               .disabled(shop.isLoading)

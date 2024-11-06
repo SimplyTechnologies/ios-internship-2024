@@ -38,6 +38,7 @@ extension AddBirthdayScreen {
       ScrollView {
         VStack {
           image
+            .padding(.top, 10)
           editView
         }
         .padding(.horizontal, 24)

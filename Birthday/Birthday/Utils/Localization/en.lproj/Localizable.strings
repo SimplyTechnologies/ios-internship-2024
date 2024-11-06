@@ -44,6 +44,7 @@
 "field_search" = "Search";
 "field_empty_code" = "Code field can't be empty.";
 "field_invalid_code" = "Please enter a 6-digit code.";
+"field_generate" = "Add Message...";
 
 // Birthday
 

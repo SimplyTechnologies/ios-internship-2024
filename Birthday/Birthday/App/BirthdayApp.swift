@@ -56,7 +56,7 @@ struct BirthdayApp: App {
       }
       .popup(isPresented: $appState.isShowMessage) {
         toastView
-          .padding(.bottom, UITabBarController().height + 10)
+          .padding(.bottom, appState.isUserLogedIn ? UITabBarController().height + 10 : 0)
       } customize: {
         $0
           .type(.floater())
@@ -70,6 +70,7 @@ struct BirthdayApp: App {
       }
       .animation(.easeInOut(duration: 0.3), value: appState.isShowPopup)
       .environmentObject(appState)
+      .ignoresSafeArea(.keyboard)
     }
   }
   
