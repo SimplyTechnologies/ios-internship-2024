@@ -34,7 +34,7 @@ final class EditAccountViewModel: EditAccountViewModeling {
     guard !profileModel.firstName.isEmpty,
           !profileModel.lastName.isEmpty
     else { return true }
-    return editAccountModel == profileModel
+    return editAccountModel.compareAccounts(profileModel)
   }
   
   
