@@ -52,37 +52,19 @@ extension ShopScreen {
       } else if viewModel.filteredShops.isEmpty {
         noSearchResultView
       } else {
-        if viewModel.filteredShops.isEmpty {
-          noSearchResultView
-        } else {
-          ScrollView {
-            PullToRefresh(coordinateSpaceName: "pull") {
-              viewModel.getShops()
-            }
-            .padding(.bottom, 10)
-            LazyVStack(spacing: 18) {
-              ForEach($viewModel.filteredShops, id: \.id) { $shop in
-                Button {
-                  navigateToDetails(by: shop)
-                } label: {
-                  ShopCell(model: $shop, isLoading: shop.isLoading) {
-                    viewModel.toggleFavorite(shop: shop)
-                  }
-                }
-              }
-            }
-            .padding(.horizontal, 24)
-            .padding(.bottom, 10)
+        ScrollView {
+          PullToRefresh(coordinateSpaceName: "pull") {
+            viewModel.getShops()
           }
-          Spacer().frame(height: 10)
-          
+          .padding(.bottom, 10)
           LazyVStack(spacing: 18) {
-            ForEach(getDisplayedShops(), id: \.id) { shop in
+            ForEach(viewModel.getFilteredShops(), id: \.id) { shop in
               createShopCell(for: shop)
             }
           }
           .padding(.horizontal, 24)
-          Spacer().frame(height: 10)
+          .padding(.bottom, 10)
+          .animation(.easeInOut(duration: 0.3), value: viewModel.getFilteredShops())
         }
         .scrollIndicators(.hidden)
         .coordinateSpace(name: "pull")
@@ -96,24 +78,7 @@ extension ShopScreen {
       viewModel.toggleFavorite(shop: shop)
     }
     .onTapGesture {
-      let shopDetailsViewModel = ShopDetailsViewModel(
-        shopRepository: ShopDefaultRepository(),
-        shop: shop
-      )
-      
-      if router.type == .home {
-        router.push(
-          TabBarView.HomeScreens.shopDetails(
-            viewModel: shopDetailsViewModel
-          )
-        )
-      } else {
-        router.push(
-          TabBarView.ShopScreens.details(
-            viewModel: shopDetailsViewModel
-          )
-        )
-      }
+      navigateToDetails(by: shop)
     }
   }
   
@@ -163,13 +128,6 @@ extension ShopScreen {
       .padding(.top, 16)
     }
     .scrollIndicators(.hidden)
-  }
-  
-  private func getDisplayedShops() -> [Shop] {
-    let favoriteShops = viewModel.filteredShops.filter { $0.isFavorite == true }
-    let otherShops = viewModel.filteredShops.filter { $0.isFavorite != true }
-    
-    return favoriteShops.isEmpty ? viewModel.filteredShops : favoriteShops + otherShops
   }
 
   private func navigateToDetails(by shop: Shop) {

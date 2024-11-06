@@ -131,4 +131,11 @@ final class ShopViewModel: ShopViewModeling {
       .store(in: &cancellables)
   }
   
+  func getFilteredShops() -> [Shop] {
+    let favoriteShops = filteredShops.sorted {
+      ($0.isFavorite ?? false) && !($1.isFavorite ?? false)
+    }
+    return favoriteShops.isEmpty ? filteredShops : favoriteShops
+  }
+  
 }
