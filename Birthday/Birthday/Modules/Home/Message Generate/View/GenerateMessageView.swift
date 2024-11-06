@@ -16,11 +16,19 @@ struct GenerateMessageView: View {
   
   var body: some View {
     VStack(alignment: .trailing, spacing: 4) {
-      TextField("Add message...", text: $message, axis: .vertical)
+      TextField("",text: $message, axis: .vertical)
+        .placeholder(
+          when: message.isEmpty,
+          placeholder: {
+            Text(String.Field.generate)
+              .foregroundStyle(Color.rouge.opacity(0.7))
+          }
+        )
         .lineLimit(5...)
         .padding(.horizontal, 10)
         .scrollContentBackground(.hidden)
-        .foregroundStyle(Color.black)
+        .foregroundStyle(Color.rouge)
+        .tint(Color.rouge)
         .karmaFont(style: .bold14)
         .background(Color.lightPink)
         .clipShape(RoundedRectangle(cornerRadius: 8))

@@ -44,6 +44,7 @@
 "field_search" = "Поиск";
 "field_empty_code" = "Поле кода не может быть пустым.";
 "field_invalid_code" = "Пожалуйста, введите 6-значный код.";
+"field_generate" = "Добавить сообщение...";
 
 // Birthday
 
