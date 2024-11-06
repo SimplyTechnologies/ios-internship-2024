@@ -60,27 +60,40 @@ struct FireworksScreen<T: FireworksViewModeling>: View {
   
   private var speechView: some View {
     VStack(spacing: 24) {
+      Image(systemName: "rainbow")
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .symbolEffect(.variableColor.reversing)
+        .symbolRenderingMode(.multicolor)
+        .frame(width: 150)
+        .foregroundStyle(.rouge)
+      
       Text(viewModel.text)
         .foregroundStyle(.rouge)
         .karmaFont(style: .regular16)
         .lineLimit(nil)
         .multilineTextAlignment(.center)
 
-      Button {
-        if viewModel.isRecording {
-          viewModel.stopRecording()
-        } else {
-          viewModel.startRecording()
-        }
-      } label: {
-        Image(systemName: viewModel.isRecording ? "waveform.slash" : "waveform")
-          .resizable()
-          .frame(width: 24, height: 24)
-          .foregroundStyle(.white)
-          .padding()
-          .background(Color.rouge)
-          .clipShape(RoundedRectangle(cornerRadius: 8))
+      recordingButton
+    }
+    .animation(.default, value: viewModel.isRecording)
+  }
+  
+  private var recordingButton: some View {
+    Button {
+      if viewModel.isRecording {
+        viewModel.stopRecording()
+      } else {
+        viewModel.startRecording()
       }
+    } label: {
+      Image(systemName: viewModel.isRecording ? "waveform.slash" : "waveform")
+        .resizable()
+        .frame(width: 24, height: 24)
+        .foregroundStyle(.white)
+        .padding()
+        .background(Color.rouge)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
   }
   
