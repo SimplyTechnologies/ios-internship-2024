@@ -77,7 +77,7 @@ extension BirthdayDetailsScreen {
   private var birthDayEditCommonView: some View {
     BirthDayEditCommonView(
       birthdayData: $viewModel.birthdayData,
-      isContentvalid: .constant(true),
+      isContentvalid: $viewModel.isDoneActive,
       isCreating: false
     ) { newBirthday in
       doneAction(birthday: newBirthday)
@@ -87,7 +87,11 @@ extension BirthdayDetailsScreen {
   private var header: some View {
     VStack(spacing: 10) {
       NavigationBar {
-        router.pop()
+        if viewModel.isEditing {
+          viewModel.cancelEdit()
+        } else {
+          router.pop()
+        }
       }
       HStack {
         Spacer()
@@ -111,17 +115,29 @@ extension BirthdayDetailsScreen {
   }
   
   private var selectedImage: some View {
-    PhotosPicker(
-      selection: $viewModel.selectedItem,
-      matching: .images,
-      photoLibrary: .shared()
-    ) {
+    ZStack {
       pickerImage
     }
-    .onChange(of: viewModel.selectedItem) { newItem in
-      Task {
-        await viewModel.convertImage(image: newItem)
+    .onTapGesture {
+      viewModel.isShowPickerOptions = true
+    }
+    .confirmationDialog("", isPresented: $viewModel.isShowPickerOptions) {
+      Button(String.Button.camera) {
+        viewModel.selectedSourceType = .camera
+        viewModel.isPickerPresented = true
       }
+      Button(String.Button.gallery) {
+        viewModel.selectedSourceType = .photoLibrary
+        viewModel.isPickerPresented = true
+      }
+      Button(String.Button.cancel, role: .cancel) {}
+    }
+    .fullScreenCover(isPresented: $viewModel.isPickerPresented) {
+      ImagePicker(
+        image: $viewModel.selectedImage,
+        isPickerPresented: $viewModel.isPickerPresented,
+        sourceType: viewModel.selectedSourceType
+      )
     }
   }
   
@@ -141,7 +157,7 @@ extension BirthdayDetailsScreen {
           placeHolderImage
         },
         borderColor: .clear,
-        size: .init(width: 160, height: 160)
+        size: .init(width: 100, height: 100)
       )
     } else {
       placeHolderImage
@@ -244,33 +260,37 @@ extension BirthdayDetailsScreen {
         viewModel.isGeneratingMessage = true
       }
     } label: {
-      Text(String.Birthday.generate)
-        .padding(.vertical, 8)
-        .padding(.horizontal, 20)
-        .foregroundStyle(Color.rouge)
-        .background(Color.bubblegumPink)
-        .karmaFont(style: .bold18)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+      ZStack {
+        Text(String.Birthday.generate)
+          .padding(.vertical, 8)
+          .padding(.horizontal, 20)
+          .foregroundStyle(Color.rouge)
+          .karmaFont(style: .bold18)
+          .lineLimit(1)
+          .minimumScaleFactor(0.59)
+      }
+      .frame(height: 41)
+      .background(Color.bubblegumPink)
+      .clipShape(RoundedRectangle(cornerRadius: 16))
     }
   }
   
   private var findGiftButton: some View {
     Button {
-      router.push(
-        TabBarView.HomeScreens.shops(
-          viewModel: ShopViewModel(
-            shopRepository: ShopDefaultRepository()
-          )
-        )
-      )
+      appState.selectedTab = .shops
     } label: {
-      Text(String.Birthday.gift)
-        .padding(.vertical, 8)
-        .padding(.horizontal, 20)
-        .foregroundStyle(Color.bubblegumPink)
-        .background(Color.rouge)
-        .karmaFont(style: .bold18)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+      ZStack {
+        Text(String.Birthday.gift)
+          .padding(.vertical, 8)
+          .padding(.horizontal, 20)
+          .foregroundStyle(Color.bubblegumPink)
+          .karmaFont(style: .bold18)
+          .lineLimit(1)
+          .minimumScaleFactor(0.5)
+      }
+      .frame(height: 41)
+      .background(Color.rouge)
+      .clipShape(RoundedRectangle(cornerRadius: 16))
     }
   }
   

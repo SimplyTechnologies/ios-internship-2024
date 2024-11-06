@@ -19,12 +19,12 @@ final class AppState: ObservableObject {
   @Published var isShowLogger: Bool = false
   @Published var isShowPopup: Bool = false
   @Published var popupContent: AnyView?
+  @Published var selectedTab: TabModel = .home
   
   @MainActor
   func setupNetworkLogger() {
     #if DEBUG
-    URLSessionProxyDelegate.enableAutomaticRegistration()
-    RemoteLogger.shared.isAutomaticConnectionEnabled = true
+    NetworkLogger.enableProxy()
     #endif
   }
   

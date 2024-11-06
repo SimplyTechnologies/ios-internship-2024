@@ -8,7 +8,7 @@
 import BirthDayAPI
 import Foundation
 
-struct BirthdayModel: Eventable {
+struct BirthdayModel: Eventable, Equatable {
   
   private let createdAt: String?
   var date: String?
@@ -76,7 +76,7 @@ struct BirthdayModel: Eventable {
   
   init() {
     createdAt = nil
-    date = nil
+    date = Date().toISO8601String
     id = nil
     image = nil
     message = nil
@@ -86,6 +86,20 @@ struct BirthdayModel: Eventable {
     upcomingBirthday = nil
     updatedAt = nil
     userId = nil
+  }
+  
+  static func == (lhs: BirthdayModel, rhs: BirthdayModel) -> Bool {
+    lhs.image == rhs.image &&
+    lhs.name == rhs.name &&
+    lhs.message == rhs.message &&
+    lhs.createdAt == rhs.createdAt &&
+    lhs.id == rhs.id &&
+    lhs.relation == rhs.relation &&
+    lhs.upcomingAge == rhs.upcomingAge &&
+    lhs.upcomingBirthday == rhs.upcomingBirthday &&
+    lhs.userId == rhs.userId &&
+    lhs.updatedAt == rhs.updatedAt &&
+    lhs.date?.toFormattedDate() == rhs.date?.toFormattedDate()
   }
   
 }

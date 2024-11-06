@@ -18,9 +18,11 @@ final class EditAccountViewModel: EditAccountViewModeling {
   @Published var profileModel: ProfileModel = .init(firstName: "", lastName: "")
   @Published var isNameFocused: Bool = false
   @Published var isSurnameFocused: Bool = false
-  @Published var selectedPickerItem: PhotosPickerItem?
   @Published var selectedImage: UIImage? = nil
   @Published var isShowMessage: Bool = false
+  @Published var isPickerPresented = false
+  @Published var isShowPickerOptions = false
+  @Published var selectedSourceType: UIImagePickerController.SourceType = .photoLibrary
   
   
   var toastMessage: String = ""
@@ -48,12 +50,12 @@ final class EditAccountViewModel: EditAccountViewModeling {
     self.editAccountRepository = editAccountRepository
     self.editAccountModel = model
     
-    $selectedPickerItem
-      .sink { [weak self] item in
-        guard let self else { return }
-        Task { [weak self] in
-          guard let self, item.isNotNil else { return }
-          await convertImage(image: item)
+    $selectedImage
+      .sink { [weak self] image in
+        guard let self, let image else { return }
+        image.convertToBase64(size: .init(width: 160, height: 160)) { [weak self] error, base64String in
+          guard let self else { return }
+          profileModel.image = base64String
         }
       }
       .store(in: &cancellables)
@@ -91,24 +93,6 @@ final class EditAccountViewModel: EditAccountViewModeling {
         completion()
       })
       .store(in: &cancellables)
-  }
-  
-  @MainActor
-  func convertImage(image: PhotosPickerItem?) async {
-    if let data = try? await image?.loadTransferable(type: Data.self),
-       let uiImage = UIImage(data: data)
-    {
-      selectedImage = uiImage
-      let resizedImage = uiImage.resizeImage(targetSize: CGSize(width: 160, height: 160))
-      if let jpegData = resizedImage.jpegData(compressionQuality: 0.1) {
-        profileModel.image = jpegData.base64EncodedString(options: .lineLength64Characters)
-        Console.log("Base64 string created successfully.")
-      } else {
-        Console.log("Failed to convert image to JPEG.")
-      }
-    } else {
-      Console.log("Failed to convert image to data.")
-    }
   }
   
 }

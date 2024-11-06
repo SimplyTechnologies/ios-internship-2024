@@ -41,18 +41,19 @@ extension RegistrationScreen {
         NavigationBar {
           router.pop()
         }
-        ScrollViewReader { scrollReader in
-          ScrollView(.vertical, showsIndicators: false) {
-            Spacer()
-              .frame(maxHeight: 60)
-            Spacer()
-            registerForm
-            Spacer()
-            Spacer()
-              .frame(height: 40)
-          }
-          .onAppear {
-            self.scrollProxy = scrollReader
+        GeometryReader { geo in
+          ScrollViewReader { scrollReader in
+            ScrollView(.vertical, showsIndicators: false) {
+              Spacer()
+                .frame(height: geo.size.height * 0.1)
+              Spacer()
+              registerForm
+              Spacer()
+                .frame(minHeight: 40)
+            }
+            .onAppear {
+              self.scrollProxy = scrollReader
+            }
           }
         }
       }
@@ -86,15 +87,11 @@ extension RegistrationScreen {
   
   private var registerForm: some View {
     VStack(spacing: 0) {
-      Spacer()
-        .frame(height: 16)
-
       Text(String.Button.register)
         .foregroundStyle(Color.rouge)
         .karmaFont(style: .bold20)
-      
-      Spacer()
-        .frame(height: 30)
+        .padding(.top, 16)
+        .padding(.bottom, 30)
       
       VStack(spacing: 24) {
         nameField
@@ -103,9 +100,13 @@ extension RegistrationScreen {
         passwordField
         repeatPasswordField
         registerButton
-        Spacer()
-          .frame(height: 30)
+          .padding(.bottom, 30)
       }
+      .animation(.default, value: viewModel.isValidName)
+      .animation(.default, value: viewModel.isValidSurname)
+      .animation(.default, value: viewModel.isValidEmail)
+      .animation(.default, value: viewModel.isValidPassword)
+      .animation(.default, value: viewModel.isValidRepeatPassword)
       .onChange(of: focusedField) { newField in
         if let newField {
           withAnimation {
@@ -127,9 +128,8 @@ extension RegistrationScreen {
       isValidField: $viewModel.isValidName,
       placeholderText: String.Field.name
     )
-    .keyboardType(.default)
-    .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .name)
+    .textInputAutocapitalization(.words)
     .modifier(
       FieldErrorModifier(
         title: viewModel.nameErrorMessage,
@@ -137,9 +137,6 @@ extension RegistrationScreen {
       )
     )
     .id(Field.name.rawValue)
-    .onTapGesture {
-      viewModel.isNameFocused = true
-    }
   }
   
   private var surnameField: some View {
@@ -149,8 +146,7 @@ extension RegistrationScreen {
       isValidField: $viewModel.isValidSurname,
       placeholderText: String.Field.surname
     )
-    .keyboardType(.default)
-    .textInputAutocapitalization(.never)
+    .textInputAutocapitalization(.words)
     .focused($focusedField, equals: .surname)
     .modifier(
       FieldErrorModifier(
@@ -159,9 +155,6 @@ extension RegistrationScreen {
       )
     )
     .id(Field.surname.rawValue)
-    .onTapGesture {
-      viewModel.isSurnameFocused = true
-    }
   }
   
   private var emailField: some View {
@@ -172,7 +165,6 @@ extension RegistrationScreen {
       placeholderText: String.Field.email
     )
     .keyboardType(.emailAddress)
-    .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .email)
     .modifier(
       FieldErrorModifier(
@@ -181,9 +173,6 @@ extension RegistrationScreen {
       )
     )
     .id(Field.email.rawValue)
-    .onTapGesture {
-      viewModel.isEmailFocused = true
-    }
   }
   
   private var passwordField: some View {
@@ -195,8 +184,6 @@ extension RegistrationScreen {
       placeholderText: String.Field.password,
       isSecureField: true
     )
-    .keyboardType(.default)
-    .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .password)
     .modifier(
       FieldErrorModifier(
@@ -205,9 +192,6 @@ extension RegistrationScreen {
       )
     )
     .id(Field.password.rawValue)
-    .onTapGesture {
-      viewModel.isPasswordFocused = true
-    }
   }
   
   private var repeatPasswordField: some View {
@@ -219,8 +203,6 @@ extension RegistrationScreen {
       placeholderText: String.Field.repeatPassword,
       isSecureField: true
     )
-    .keyboardType(.default)
-    .textInputAutocapitalization(.never)
     .focused($focusedField, equals: .repeatPassword)
     .modifier(
       FieldErrorModifier(
@@ -229,9 +211,6 @@ extension RegistrationScreen {
       )
     )
     .id(Field.repeatPassword.rawValue)
-    .onTapGesture {
-      viewModel.isRepeatPasswordFocused = true
-    }
   }
   
   private var registerButton: some View {
@@ -247,8 +226,7 @@ extension RegistrationScreen {
               LandingScreen.Screen.signIn(
                 viewModel: SignInViewModel(
                   signInRepository: SignInDefaultRepository(),
-                  email: viewModel.email,
-                  password: viewModel.password
+                  email: viewModel.email
                 )
               )
             ]

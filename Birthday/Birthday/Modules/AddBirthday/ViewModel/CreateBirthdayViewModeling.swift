@@ -15,10 +15,11 @@ protocol CreateBirthdayViewModeling: Toastable {
   var isContentValid: Bool { get set }
   var birthday: BirthdayModel { get set }
   var selectedImage: UIImage? { get set }
-  var selectedItem: PhotosPickerItem? { get set }
+  var isPickerPresented: Bool { get set }
+  var isShowPickerOptions: Bool { get set }
+  var selectedSourceType: UIImagePickerController.SourceType { get set }
 
   func createBirthday()
-  func convertImage(image: PhotosPickerItem?) async
   func resetScreen()
   
 }

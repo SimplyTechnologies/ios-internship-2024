@@ -29,48 +29,53 @@ struct AddBirthdayScreen<T: CreateBirthdayViewModeling>: View {
 extension AddBirthdayScreen {
   
   private var content: some View {
-    VStack {
+    ScrollView {
       NavigationBar()
         .padding(.top, 20)
-      ScrollView {
+      VStack {
         image
         editView
       }
+      .padding(.horizontal, 24)
       .scrollIndicators(.hidden)
     }
-    .padding(.horizontal, 24)
-    .background(Color.lightPink)
+    .background(Color.lightPink.ignoresSafeArea(.all))
   }
   
   private var image: some View {
-    PhotosPicker(
-      selection: $viewModel.selectedItem,
-      matching: .images,
-      photoLibrary: .shared()
-    ) {
-      if let image = viewModel.selectedImage {
-        Image(uiImage: image)
-          .resizable()
-          .clipShape(Circle())
-          .frame(width: 100, height: 100)
-      } else {
-        Image(.addPicture)
+      ZStack {
+        Image(uiImage: viewModel.selectedImage ?? .addPicture)
           .resizable()
           .clipShape(Circle())
           .frame(width: 100, height: 100)
       }
-    }
-    .onChange(of: viewModel.selectedItem) { newItem in
-      Task {
-        await viewModel.convertImage(image: newItem)
+      .onTapGesture {
+        viewModel.isShowPickerOptions = true
       }
-    }
+      .confirmationDialog("", isPresented: $viewModel.isShowPickerOptions) {
+        Button(String.Button.camera) {
+          viewModel.selectedSourceType = .camera
+          viewModel.isPickerPresented = true
+        }
+        Button(String.Button.gallery) {
+          viewModel.selectedSourceType = .photoLibrary
+          viewModel.isPickerPresented = true
+        }
+        Button(String.Button.cancel, role: .cancel) {}
+      }
+      .fullScreenCover(isPresented: $viewModel.isPickerPresented) {
+        ImagePicker(
+          image: $viewModel.selectedImage,
+          isPickerPresented: $viewModel.isPickerPresented,
+          sourceType: viewModel.selectedSourceType
+        )
+      }
   }
   
   private var editView: some View {
     BirthDayEditCommonView(
       birthdayData: $viewModel.birthday,
-      isContentvalid: $viewModel.isContentValid, 
+      isContentvalid: $viewModel.isContentValid,
       isCreating: true
     ) { _ in
       viewModel.createBirthday()

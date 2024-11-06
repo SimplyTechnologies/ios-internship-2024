@@ -36,13 +36,11 @@ extension ShopScreen {
         Image(.birth)
           .padding(.top, 20)
       }
-      Spacer()
-        .frame(height: 22)
       searchBar
+        .padding(.top, 22)
         .padding(.horizontal, 24)
-      Spacer()
-        .frame(height: 10)
       list
+        .padding(.top, 10)
     }
     .background(Color.lightPink)
   }
@@ -54,9 +52,27 @@ extension ShopScreen {
       } else if viewModel.filteredShops.isEmpty {
         noSearchResultView
       } else {
-        ScrollView {
-          PullToRefresh(coordinateSpaceName: "pull") {
-            viewModel.getShops()
+        if viewModel.filteredShops.isEmpty {
+          noSearchResultView
+        } else {
+          ScrollView {
+            PullToRefresh(coordinateSpaceName: "pull") {
+              viewModel.getShops()
+            }
+            .padding(.bottom, 10)
+            LazyVStack(spacing: 18) {
+              ForEach($viewModel.filteredShops, id: \.id) { $shop in
+                Button {
+                  navigateToDetails(by: shop)
+                } label: {
+                  ShopCell(model: $shop, isLoading: shop.isLoading) {
+                    viewModel.toggleFavorite(shop: shop)
+                  }
+                }
+              }
+            }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 10)
           }
           Spacer().frame(height: 10)
           
@@ -116,18 +132,19 @@ extension ShopScreen {
         .resizable()
         .frame(width: 42, height: 42)
         .foregroundStyle(.black)
-      Spacer()
-        .frame(height: 12)
+
       Text(String.Field.searchNoResultTitle)
         .foregroundStyle(Color.black)
         .karmaFont(style: .bold26)
         .multilineTextAlignment(.center)
-      Spacer()
-        .frame(height: 12)
+        .padding(.top, 12)
+      
       Text(String.Field.searchNoResultDescription)
         .foregroundStyle(Color.spanishGray)
         .karmaFont(style: .regular14)
         .multilineTextAlignment(.center)
+        .padding(.top, 12)
+
       Spacer()
     }
     .padding(.horizontal, 24)
@@ -143,6 +160,7 @@ extension ShopScreen {
         }
       }
       .padding(.horizontal, 24)
+      .padding(.top, 16)
     }
     .scrollIndicators(.hidden)
   }
@@ -154,4 +172,25 @@ extension ShopScreen {
     return favoriteShops.isEmpty ? viewModel.filteredShops : favoriteShops + otherShops
   }
 
+  private func navigateToDetails(by shop: Shop) {
+    let shopDetailsViewModel = ShopDetailsViewModel(
+      shopRepository: ShopDefaultRepository(),
+      shop: shop
+    )
+    
+    if router.type == .home {
+      router.push(
+        TabBarView.HomeScreens.shopDetails(
+          viewModel: shopDetailsViewModel
+        )
+      )
+    } else {
+      router.push(
+        TabBarView.ShopScreens.details(
+          viewModel: shopDetailsViewModel
+        )
+      )
+    }
+  }
+  
 }

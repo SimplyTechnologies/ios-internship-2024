@@ -45,6 +45,8 @@ extension ForgotPasswordScreen {
           setPasswordButton
         }
       }
+      .animation(.default, value: viewModel.isEmailValid)
+      .animation(.default, value: viewModel.isCodeValid)
       .padding(.top, 20)
       .padding(.horizontal, 60)
     }
@@ -58,12 +60,18 @@ extension ForgotPasswordScreen {
         .karmaFont(style: .bold18)
       InputField(
         text: $viewModel.email,
-        isFocused: .constant(true),
+        isFocused: $viewModel.isEmailFocused,
         isValidField: $viewModel.isEmailValid,
         placeholderText: "example@gmail.com",
         backgroundColor: .white
       )
-      .textInputAutocapitalization(.never)
+      .keyboardType(.emailAddress)
+      .modifier(
+        FieldErrorModifier(
+          title: viewModel.emailErrorMessage,
+          isHidden: viewModel.isEmailValid
+        )
+      )
     }
   }
   
@@ -75,7 +83,7 @@ extension ForgotPasswordScreen {
       UIApplication.shared.hideKeyboard()
       viewModel.getCode()
     }
-    .disabled(!viewModel.isEmailValid)
+    .disabled(viewModel.isGetCodeDisabled)
     .foregroundStyle(Color.bubblegumPink)
   }
   
@@ -87,11 +95,17 @@ extension ForgotPasswordScreen {
         .padding(.vertical, 10)
       InputField(
         text: $viewModel.passwordCode,
-        isFocused: .constant(true),
+        isFocused: $viewModel.isCodeFocused,
         isValidField: $viewModel.isCodeValid
       )
       .karmaFont(style: .bold26)
       .keyboardType(.numberPad)
+      .modifier(
+        FieldErrorModifier(
+          title: viewModel.codeErrorMessage,
+          isHidden: viewModel.isCodeValid
+        )
+      )
       .frame(width: 120)
       .padding(.horizontal, 70)
       .padding(.bottom, 20)
@@ -117,6 +131,7 @@ extension ForgotPasswordScreen {
       }
     }
     .foregroundStyle(Color.bubblegumPink)
+    .disabled(viewModel.isSetPasswordDisabled)
   }
   
 }

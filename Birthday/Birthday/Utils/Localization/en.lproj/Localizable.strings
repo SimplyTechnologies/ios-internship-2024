@@ -16,6 +16,8 @@
 "button_done" = "Done";
 "button_cancel" = "Cancel";
 "button_delete" = "Delete";
+"button_camera" = "Camera";
+"button_gallery" = "Gallery";
 
 // Field
 
@@ -40,6 +42,8 @@
 "field_search_no_result_title" = "Nothing Found";
 "field_search_no_result_description" = "Nothing matched your search terms. Please try again with different keywords.";
 "field_search" = "Search";
+"field_empty_code" = "Code field can't be empty.";
+"field_invalid_code" = "Please enter a 6-digit code.";
 
 // Birthday
 

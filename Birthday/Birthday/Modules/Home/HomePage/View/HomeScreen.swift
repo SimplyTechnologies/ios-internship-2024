@@ -112,6 +112,7 @@ extension HomeScreen {
         }
       }
       .padding(.horizontal, 24)
+      .padding(.top, 10)
     }
     .scrollIndicators(.hidden)
   }
