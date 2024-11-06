@@ -59,6 +59,7 @@
 "birthday_delete_message" = "Are you sure, you want to delete the birthday?";
 
 "birthday_list_empty_state" = "It looks like you haven’t added any birthdays yet! Start adding birthdays of your family and friends to keep track of special days right here in your calendar.";
+
 // Shop
 
 "shop_phone" = "Phone:";
@@ -94,3 +95,7 @@
 "toast_create_birthday" = "BirthDay successfully created! 🎉";
 "toast_delete_birthday" = "BirthDay successfully deleted! 🎉";
 "toast_update_birthday" = "BirthDay successfully updated! 🎉";
+
+// Firework
+
+"firework_congratulations" = "You've accomplished something truly impressive, tackling new challenges, building valuable skills, and adding so much to the team. This is a big milestone on your journey, and your hard work, dedication, and growth are clear to see. Best of luck with your future projects—this is just the beginning of all you’ll achieve! 🚀 Keep coding, keep learning, and keep making a difference!";

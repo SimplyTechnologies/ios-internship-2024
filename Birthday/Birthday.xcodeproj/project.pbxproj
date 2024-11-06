@@ -58,6 +58,10 @@
 		CE42AB2C2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB2B2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift */; };
 		CE42AB2E2CCB7D120057ECFB /* ShopDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB2D2CCB7D120057ECFB /* ShopDetailsViewModel.swift */; };
 		CE42AB302CCB8C9A0057ECFB /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42AB2F2CCB8C9A0057ECFB /* RatingView.swift */; };
+		CE5460862CDB8F3B00A791AB /* FireworksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5460852CDB8F3B00A791AB /* FireworksViewModel.swift */; };
+		CE5460882CDB8F6400A791AB /* FireworksViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5460872CDB8F6400A791AB /* FireworksViewModeling.swift */; };
+		CE54608A2CDB8F9100A791AB /* FireworksScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5460892CDB8F9100A791AB /* FireworksScreen.swift */; };
+		CE54608C2CDB9AAC00A791AB /* UITabBarController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE54608B2CDB9AAC00A791AB /* UITabBarController+Ext.swift */; };
 		CE56BDAA2CCF594F00F7DC9A /* ChangePasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56BDA92CCF594F00F7DC9A /* ChangePasswordScreen.swift */; };
 		CE56BDAC2CCF5ACE00F7DC9A /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56BDAB2CCF5ACE00F7DC9A /* ChangePasswordViewModel.swift */; };
 		CE56BDAE2CCF5B2A00F7DC9A /* ChangePasswordViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE56BDAD2CCF5B2A00F7DC9A /* ChangePasswordViewModeling.swift */; };
@@ -200,6 +204,10 @@
 		CE42AB2B2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsViewModeling.swift; sourceTree = "<group>"; };
 		CE42AB2D2CCB7D120057ECFB /* ShopDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailsViewModel.swift; sourceTree = "<group>"; };
 		CE42AB2F2CCB8C9A0057ECFB /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		CE5460852CDB8F3B00A791AB /* FireworksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireworksViewModel.swift; sourceTree = "<group>"; };
+		CE5460872CDB8F6400A791AB /* FireworksViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireworksViewModeling.swift; sourceTree = "<group>"; };
+		CE5460892CDB8F9100A791AB /* FireworksScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireworksScreen.swift; sourceTree = "<group>"; };
+		CE54608B2CDB9AAC00A791AB /* UITabBarController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Ext.swift"; sourceTree = "<group>"; };
 		CE56BDA92CCF594F00F7DC9A /* ChangePasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordScreen.swift; sourceTree = "<group>"; };
 		CE56BDAB2CCF5ACE00F7DC9A /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		CE56BDAD2CCF5B2A00F7DC9A /* ChangePasswordViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModeling.swift; sourceTree = "<group>"; };
@@ -458,6 +466,32 @@
 			children = (
 				CE42AB2B2CCB7CF40057ECFB /* ShopDetailsViewModeling.swift */,
 				CE42AB2D2CCB7D120057ECFB /* ShopDetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE5460812CDB8EFA00A791AB /* Fireworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE5460832CDB8F1200A791AB /* ViewModel */,
+				CE5460822CDB8F0600A791AB /* View */,
+			);
+			path = Fireworks;
+			sourceTree = "<group>";
+		};
+		CE5460822CDB8F0600A791AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE5460892CDB8F9100A791AB /* FireworksScreen.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE5460832CDB8F1200A791AB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE5460852CDB8F3B00A791AB /* FireworksViewModel.swift */,
+				CE5460872CDB8F6400A791AB /* FireworksViewModeling.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -899,6 +933,7 @@
 				CE02C9F62CD025B100C091F0 /* UserDefaults+Ext.swift */,
 				CE02CA012CD03AC100C091F0 /* UIDevice+Ext.swift */,
 				93EB4A1A2CD52A600070C377 /* UIApplication+Ext.swift */,
+				CE54608B2CDB9AAC00A791AB /* UITabBarController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -914,6 +949,7 @@
 		F3C8CBB02CC78417002DE72A /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CE5460812CDB8EFA00A791AB /* Fireworks */,
 				CE56BDA52CCF587F00F7DC9A /* ChangePassword */,
 				CE42AB052CCA24390057ECFB /* Auth */,
 				F3C8CBBD2CC7894F002DE72A /* Profile */,
@@ -1266,6 +1302,7 @@
 				F30266992CD10CAB008214FC /* ForgotPasswordViewModeling.swift in Sources */,
 				F30266AD2CD20E58008214FC /* ResetPasswordScreen.swift in Sources */,
 				F3037B9F2CD393E1008BC14A /* LoadingSplashModifier.swift in Sources */,
+				CE5460862CDB8F3B00A791AB /* FireworksViewModel.swift in Sources */,
 				CE42AB222CCB61560057ECFB /* RegistrationPayload.swift in Sources */,
 				CE98D2F42CC8ED2D0017E477 /* String+Ext.swift in Sources */,
 				F3C8CBC32CC789AA002DE72A /* HomeScreen.swift in Sources */,
@@ -1274,6 +1311,7 @@
 				CE42AB302CCB8C9A0057ECFB /* RatingView.swift in Sources */,
 				CE42AAFF2CCA12790057ECFB /* ViewDidLoadModifier.swift in Sources */,
 				CE02CA092CD0D99E00C091F0 /* ToastView.swift in Sources */,
+				CE54608A2CDB8F9100A791AB /* FireworksScreen.swift in Sources */,
 				CE42AB1C2CCA703C0057ECFB /* SearchBar.swift in Sources */,
 				F3C8CBB72CC78681002DE72A /* TabView.swift in Sources */,
 				CE02C9F32CD024C700C091F0 /* AppEnvironment.swift in Sources */,
@@ -1304,6 +1342,8 @@
 				F3978D172CC9843800FFF7F5 /* BirthdayUpdatePayload.swift in Sources */,
 				CE56BDAA2CCF594F00F7DC9A /* ChangePasswordScreen.swift in Sources */,
 				F3C8CBF02CC7B3F0002DE72A /* HomeViewModeling.swift in Sources */,
+				CE54608C2CDB9AAC00A791AB /* UITabBarController+Ext.swift in Sources */,
+				CE5460882CDB8F6400A791AB /* FireworksViewModeling.swift in Sources */,
 				F354FF222CCA479600A3F6E4 /* ZodiacSign.swift in Sources */,
 				F3C8CB5D2CC66048002DE72A /* ApolloClient.swift in Sources */,
 				F354FF202CC9ADCA00A3F6E4 /* Date+Extension.swift in Sources */,
@@ -1476,12 +1516,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need to access your camera to capture a photo add and update profile picture.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need your microphone access to recognize speech.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Need to access your photo library to select a photo add and update profile picture";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We need speech recognition to convert your speech to text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1512,12 +1554,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Birthday/Resources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need to access your camera to capture a photo add and update profile picture.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need your microphone access to recognize speech.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Need to access your photo library to select a photo add and update profile picture";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We need speech recognition to convert your speech to text.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -35,11 +35,15 @@ struct BirthdayApp: App {
         }
       }
       .isLoading(appState.isLoading)
-      .environmentObject(appState)
       .onChange(of: scenePhase) { newPhase in
         if newPhase == .active {
           appState.setupNetworkLogger()
           ImagePipeline.shared = ImagePipeline(configuration: .withDataCache)
+        }
+      }
+      .onChange(of: appState.profileTapCount) { count in
+        if count == 10 {
+          appState.isShowCongratulations = true
         }
       }
       .sheet(isPresented: $appState.isShowLogger) {
@@ -52,6 +56,7 @@ struct BirthdayApp: App {
       }
       .popup(isPresented: $appState.isShowMessage) {
         toastView
+          .padding(.bottom, appState.isUserLogedIn ? UITabBarController().height + 10 : 0)
       } customize: {
         $0
           .type(.floater())
@@ -60,7 +65,12 @@ struct BirthdayApp: App {
           .dragToDismiss(true)
           .autohideIn(4)
       }
+      .fullScreenCover(isPresented: $appState.isShowCongratulations) {
+        FireworksScreen(viewModel: FireworksViewModel())
+      }
       .animation(.easeInOut(duration: 0.3), value: appState.isShowPopup)
+      .environmentObject(appState)
+      .ignoresSafeArea(.keyboard)
     }
   }
   

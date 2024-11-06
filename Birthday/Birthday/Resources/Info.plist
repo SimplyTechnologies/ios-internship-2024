@@ -8,6 +8,10 @@
 	</array>
 	<key>NSCalendarsFullAccessUsageDescription</key>
 	<string>"This app needs access to your calendar to add scheduled events."</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>We need your microphone access to recognize speech.</string>
+  <key>NSSpeechRecognitionUsageDescription</key>
+  <string>We need speech recognition to convert your speech to text.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Karma-Bold.ttf</string>

@@ -155,4 +155,10 @@ extension String {
     static var logOut: String { "logout_text".localized }
   }
   
+  enum Firework {
+    
+    static var congratulations: String { "firework_congratulations".localized }
+    
+  }
+  
 }

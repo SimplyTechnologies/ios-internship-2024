@@ -25,9 +25,8 @@ struct ProfileButton: View {
         Spacer()
       }
       .padding(.vertical, 10)
-      .background(Color.white)
-      .clipShape(RoundedRectangle(cornerRadius: 8))
     }
+    .buttonStyle(PressedButtonStyle(cornerRadius: 8))
   }
   
 }

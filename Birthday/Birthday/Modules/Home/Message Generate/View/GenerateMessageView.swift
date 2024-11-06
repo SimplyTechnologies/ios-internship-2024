@@ -9,10 +9,9 @@ import SwiftUI
 
 struct GenerateMessageView: View {
   
-  @Binding var isPresented: Bool
-  
   @State private var isSharePresented = false
   @State private var message: String = ""
+  @Binding var isPresented: Bool
   
   var body: some View {
     VStack(alignment: .trailing, spacing: 4) {
@@ -25,7 +24,7 @@ struct GenerateMessageView: View {
           }
         )
         .lineLimit(5...)
-        .padding(.horizontal, 10)
+        .padding(10)
         .scrollContentBackground(.hidden)
         .foregroundStyle(Color.rouge)
         .tint(Color.rouge)

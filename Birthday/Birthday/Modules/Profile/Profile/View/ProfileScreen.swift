@@ -18,7 +18,7 @@ struct ProfileScreen<T: ProfileViewModeling>: View {
       NavigationBar()
         .padding(.top, 20)
       userDetails
-        .padding(.top, 50)
+        .padding(.top, 10)
       buttons
         .padding(.top, 50)
       Spacer()
