@@ -76,7 +76,6 @@ extension ShopScreen {
         }
         .scrollIndicators(.hidden)
         .coordinateSpace(name: "pull")
-        .padding(.bottom, 10)
       }
     }
   }
