@@ -27,5 +27,6 @@ protocol ForgotPasswordViewModeling: Toastable {
   
   func getCode()
   func checkCode(completion: () -> ())
+  func isShowMessageChanged(completion: @escaping (Bool) -> Void)
   
 }

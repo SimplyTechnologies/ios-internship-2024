@@ -15,14 +15,16 @@ struct ForgotPasswordScreen<T: ForgotPasswordViewModeling>: View {
   
   var body: some View {
     content
-      .navigationBarBackButtonHidden(true)
-      .onChange(of: viewModel.isShowMessage) { isShow in
-        appState.isShowMessage = isShow
-        if isShow {
-          appState.isSuccessMessage = viewModel.isSuccessMessage
-          appState.message = viewModel.toastMessage
+      .onLoad {
+        viewModel.isShowMessageChanged { isShow in
+          appState.isShowMessage = isShow
+          if isShow {
+            appState.isSuccessMessage = viewModel.isSuccessMessage
+            appState.message = viewModel.toastMessage
+          }
         }
       }
+      .navigationBarBackButtonHidden(true)
   }
   
 }

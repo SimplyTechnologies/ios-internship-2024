@@ -96,4 +96,14 @@ final class ForgotPasswordViewModel: ForgotPasswordViewModeling {
     }
   }
   
+  func isShowMessageChanged(completion: @escaping (Bool) -> Void) {
+    $isShowMessage
+      .removeDuplicates()
+      .dropFirst()
+      .sink { isShow in
+        completion(isShow)
+      }
+      .store(in: &cancellables)
+  }
+  
 }
