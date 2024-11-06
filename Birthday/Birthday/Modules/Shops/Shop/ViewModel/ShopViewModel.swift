@@ -103,7 +103,9 @@ final class ShopViewModel: ShopViewModeling {
         guard let self else { return }
         if shopId == data.addShopToFavorite.shopId {
           filteredShops[index].isFavorite = true
-          filteredShops = getFilteredShops(filteredShops)
+          if let shopIndex = shops.firstIndex(where: { $0.id == shopId }) {
+            shops[shopIndex].isFavorite = true
+          }
         }
       }
       .store(in: &cancellables)
@@ -128,13 +130,16 @@ final class ShopViewModel: ShopViewModeling {
         guard let self else { return }
         if shopId == data.removeShopFromFavorite.shopId {
           filteredShops[index].isFavorite = false
-          filteredShops = getFilteredShops(filteredShops)
+          if let shopIndex = shops.firstIndex(where: { $0.id == shopId }) {
+            shops[shopIndex].isFavorite = false
+          }
         }
       }
       .store(in: &cancellables)
   }
   
   private func getFilteredShops(_ shops: [Shop]) -> [Shop] {
+    guard !shops.isEmpty else { return [] }
     let favoriteShops = shops.sorted {
       ($0.isFavorite ?? false) && !($1.isFavorite ?? false)
     }
