@@ -32,10 +32,6 @@ struct TabBarView: View {
     )
   }
   
-  private var addTabViewModel = CreateBirthdayViewModel(
-    newBirthdayRepository: NewBirthdayDefaultRepository()
-  )
-  
   init(_ selectedTab: Binding<TabModel>) {
     self._selectedTab = selectedTab
     customiseTabBar()
@@ -43,9 +39,6 @@ struct TabBarView: View {
   
   var body: some View {
     tabBar
-      .onChange(of: selectedTab) { _ in
-        addTabViewModel.resetScreen()
-      }
   }
   
 }
@@ -108,7 +101,9 @@ extension TabBarView {
   private var addTab: some View {
     NavigationStack {
       AddBirthdayScreen(
-        viewModel: addTabViewModel
+        viewModel: CreateBirthdayViewModel(
+          newBirthdayRepository: NewBirthdayDefaultRepository()
+        )
       )
     }
     .tabItem { TabCellView(model: .addBirthday) }
