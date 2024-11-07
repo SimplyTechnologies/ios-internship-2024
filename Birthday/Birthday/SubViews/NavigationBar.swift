@@ -19,11 +19,8 @@ struct NavigationBar: View {
       }
       Spacer()
       Image(.birth)
+        .padding(.trailing, backButtonAction.isNotNil ? 54 : 0)
       Spacer()
-      if backButtonAction.isNotNil {
-        Spacer()
-          .frame(width: 24 + 38)
-      }
     }
   }
 
