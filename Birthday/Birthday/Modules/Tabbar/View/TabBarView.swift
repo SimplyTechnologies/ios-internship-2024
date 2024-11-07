@@ -74,7 +74,6 @@ extension TabBarView {
       }
     }
     .environmentObject(homeRouter)
-    .environmentObject(shopRouter)
     .tabItem { TabCellView(model: .home) }
     .tag(TabModel.home)
   }

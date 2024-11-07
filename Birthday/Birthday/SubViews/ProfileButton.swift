@@ -19,7 +19,7 @@ struct ProfileButton: View {
       HStack(spacing: 0) {
         Text(title)
           .foregroundStyle(.rouge)
-          .karmaFont(style: .bold20)
+          .karmaFont(style: .bold16)
           .padding(.horizontal, 12)
           
         Spacer()

@@ -72,6 +72,7 @@ struct InputField: View {
         Text(placeholderText)
           .foregroundStyle(Color.rouge.opacity(0.74))
           .karmaFont(style: .regular14)
+          .padding(.bottom, 4)
       }
       .foregroundStyle(Color.rouge)
       .tint(Color.rouge)
@@ -93,6 +94,7 @@ struct InputField: View {
         Text(placeholderText)
           .foregroundStyle(Color.rouge.opacity(0.74))
           .karmaFont(style: .regular14)
+          .padding(.bottom, 4)
       }
       .foregroundStyle(Color.rouge)
       .tint(Color.rouge)
