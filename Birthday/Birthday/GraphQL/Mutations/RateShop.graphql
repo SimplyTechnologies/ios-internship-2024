@@ -1,5 +1,11 @@
-mutation RateShopMutation($rateShopInput: RateShopInput!) {
+mutation rateShop($rateShopInput: RateShopInput!) {
 
-  rateShop(rateShopInput: $rateShopInput)
-
+  rateShop(rateShopInput: $rateShopInput) {
+    id
+    rating
+    shopCurrentRating
+    shopId
+    userId
+  }
+  
 }

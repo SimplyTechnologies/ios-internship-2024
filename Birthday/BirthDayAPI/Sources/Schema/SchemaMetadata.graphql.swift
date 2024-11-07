@@ -25,6 +25,7 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     case "AccessToken": return BirthDayAPI.Objects.AccessToken
     case "Birthday": return BirthDayAPI.Objects.Birthday
     case "UserFavoriteShop": return BirthDayAPI.Objects.UserFavoriteShop
+    case "Rating": return BirthDayAPI.Objects.Rating
     case "Query": return BirthDayAPI.Objects.Query
     case "Shop": return BirthDayAPI.Objects.Shop
     default: return nil

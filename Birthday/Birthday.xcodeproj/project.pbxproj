@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		931C201F2CC7E9FD0087E7AD /* LandingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931C201E2CC7E9FD0087E7AD /* LandingButton.swift */; };
-		938A3AF32CD8B57F00219F5A /* RatShop.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 938A3AF22CD8B57F00219F5A /* RatShop.graphql */; };
 		938A3AF82CD8BD5200219F5A /* RateShopPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938A3AF72CD8BD5200219F5A /* RateShopPayload.swift */; };
 		9393CDE42CC9171C00D8DEA1 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE32CC9171C00D8DEA1 /* ProfileViewModel.swift */; };
 		9393CDE72CC9174A00D8DEA1 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */; };
@@ -74,7 +73,6 @@
 		CE748F0D2CDBAD3F00ED29A2 /* RemoveShopFromFavorite.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE748EFE2CDBAD3F00ED29A2 /* RemoveShopFromFavorite.graphql */; };
 		CE748F0E2CDBAD3F00ED29A2 /* CreateBirthdayMutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE748EFA2CDBAD3F00ED29A2 /* CreateBirthdayMutation.graphql */; };
 		CE748F102CDBAD3F00ED29A2 /* MutationProfile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE748EFC2CDBAD3F00ED29A2 /* MutationProfile.graphql */; };
-		CE748F122CDBADD700ED29A2 /* RateShop.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CE748F112CDBADD700ED29A2 /* RateShop.graphql */; };
 		CE98D2BF2CC775FB0017E477 /* RegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2BE2CC775FB0017E477 /* RegistrationScreen.swift */; };
 		CE98D2C62CC778780017E477 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2C52CC778780017E477 /* NavigationBar.swift */; };
 		CE98D2C82CC77C290017E477 /* Optional+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98D2C72CC77C290017E477 /* Optional+Ext.swift */; };
@@ -145,6 +143,7 @@
 		F3C8CBF22CC7B441002DE72A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBF12CC7B441002DE72A /* HomeViewModel.swift */; };
 		F3C8CBF72CC7B9EF002DE72A /* BirthdayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBF62CC7B9EF002DE72A /* BirthdayModel.swift */; };
 		F3C8CBF92CC7BB4D002DE72A /* BirthDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C8CBF82CC7BB4D002DE72A /* BirthDayCell.swift */; };
+		F3DDC4A72CDCCBD500EC687D /* RateShop.graphql in Resources */ = {isa = PBXBuildFile; fileRef = F3DDC4A52CDCC99400EC687D /* RateShop.graphql */; };
 		F3F641472CC98C5C002D0EEB /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F641462CC98C5C002D0EEB /* Relation.swift */; };
 		F3FDEB962CCB9EFE0073BFED /* GenerateMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */; };
 		F3FDEB982CCBBB850073BFED /* AlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDEB972CCBBB850073BFED /* AlertModifier.swift */; };
@@ -161,7 +160,7 @@
 
 /* Begin PBXFileReference section */
 		931C201E2CC7E9FD0087E7AD /* LandingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingButton.swift; sourceTree = "<group>"; };
-		938A3AF22CD8B57F00219F5A /* RatShop.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = RatShop.graphql; sourceTree = "<group>"; };
+		938A3AF22CD8B57F00219F5A /* RateShop.graphql */ = {isa = PBXFileReference; lastKnownFileType = file; path = RateShop.graphql; sourceTree = "<group>"; };
 		938A3AF72CD8BD5200219F5A /* RateShopPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateShopPayload.swift; sourceTree = "<group>"; };
 		9393CDE32CC9171C00D8DEA1 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		9393CDE62CC9174A00D8DEA1 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
@@ -224,7 +223,6 @@
 		CE748F012CDBAD3F00ED29A2 /* SignIn.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignIn.graphql; sourceTree = "<group>"; };
 		CE748F022CDBAD3F00ED29A2 /* SignUp.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignUp.graphql; sourceTree = "<group>"; };
 		CE748F032CDBAD3F00ED29A2 /* UpdateBirthdayMutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UpdateBirthdayMutation.graphql; sourceTree = "<group>"; };
-		CE748F112CDBADD700ED29A2 /* RateShop.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = RateShop.graphql; sourceTree = "<group>"; };
 		CE98D2BE2CC775FB0017E477 /* RegistrationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationScreen.swift; sourceTree = "<group>"; };
 		CE98D2C52CC778780017E477 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		CE98D2C72CC77C290017E477 /* Optional+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Ext.swift"; sourceTree = "<group>"; };
@@ -291,6 +289,7 @@
 		F3C8CBF12CC7B441002DE72A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F3C8CBF62CC7B9EF002DE72A /* BirthdayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayModel.swift; sourceTree = "<group>"; };
 		F3C8CBF82CC7BB4D002DE72A /* BirthDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDayCell.swift; sourceTree = "<group>"; };
+		F3DDC4A52CDCC99400EC687D /* RateShop.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = RateShop.graphql; sourceTree = "<group>"; };
 		F3F641462CC98C5C002D0EEB /* Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
 		F3FDEB952CCB9EFE0073BFED /* GenerateMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMessageView.swift; sourceTree = "<group>"; };
 		F3FDEB972CCBBB850073BFED /* AlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModifier.swift; sourceTree = "<group>"; };
@@ -550,7 +549,7 @@
 		CE748EF72CDBAD0400ED29A2 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				938A3AF22CD8B57F00219F5A /* RatShop.graphql */,
+				938A3AF22CD8B57F00219F5A /* RateShop.graphql */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -564,12 +563,12 @@
 				CE748EFB2CDBAD3F00ED29A2 /* DeleteBirthDayMutation.graphql */,
 				CE748EFC2CDBAD3F00ED29A2 /* MutationProfile.graphql */,
 				CE748EFE2CDBAD3F00ED29A2 /* RemoveShopFromFavorite.graphql */,
-				CE748F112CDBADD700ED29A2 /* RateShop.graphql */,
 				CE748EFF2CDBAD3F00ED29A2 /* ResetPasswordEmailMutation.graphql */,
 				CE748F002CDBAD3F00ED29A2 /* ResetPasswordMutation.graphql */,
 				CE748F012CDBAD3F00ED29A2 /* SignIn.graphql */,
 				CE748F022CDBAD3F00ED29A2 /* SignUp.graphql */,
 				CE748F032CDBAD3F00ED29A2 /* UpdateBirthdayMutation.graphql */,
+				F3DDC4A52CDCC99400EC687D /* RateShop.graphql */,
 			);
 			path = Mutations;
 			sourceTree = "<group>";
@@ -1255,11 +1254,10 @@
 				CE748F0E2CDBAD3F00ED29A2 /* CreateBirthdayMutation.graphql in Resources */,
 				CE748F102CDBAD3F00ED29A2 /* MutationProfile.graphql in Resources */,
 				CE98D2D62CC787780017E477 /* Karma-Regular.ttf in Resources */,
-				938A3AF32CD8B57F00219F5A /* RatShop.graphql in Resources */,
 				CE98D2D72CC787780017E477 /* Karma-SemiBold.ttf in Resources */,
 				CE98D2D82CC787780017E477 /* Karma-Bold.ttf in Resources */,
 				CE98D2D92CC787780017E477 /* Karma-Medium.ttf in Resources */,
-				CE748F122CDBADD700ED29A2 /* RateShop.graphql in Resources */,
+				F3DDC4A72CDCCBD500EC687D /* RateShop.graphql in Resources */,
 				F3C8CBAF2CC6A61D002DE72A /* Localizable.strings in Resources */,
 				CE42AB182CCA64BC0057ECFB /* GetShops.graphql in Resources */,
 				F3C8CBAC2CC6A61D002DE72A /* Assets.xcassets in Resources */,

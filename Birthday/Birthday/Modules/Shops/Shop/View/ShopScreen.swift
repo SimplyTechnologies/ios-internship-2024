@@ -132,8 +132,10 @@ extension ShopScreen {
     let shopDetailsViewModel = ShopDetailsViewModel(
       shopRepository: ShopDefaultRepository(),
       shop: shop,
-      rateComplition: { _ in
-        // TODO: - rateComplition
+      rateComplition: { shop in
+        if let index = viewModel.shops.firstIndex(where: {$0.id == shop.id}) {
+          viewModel.shops[index].rate = shop.rate
+        }
       }
     )
 

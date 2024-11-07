@@ -10,17 +10,14 @@ import SwiftUI
 import BirthDayAPI
 
 final class ShopDetailsViewModel: ShopDetailsViewModeling {
-
-  
   
   @Published var isLoading: Bool = false
   @Published var shop: Shop
-  
-  let id: UUID = UUID()
   @Published var toastMessage: String = ""
   @Published var isSuccessMessage: Bool = false
   @Published var isShowMessage: Bool = false
-
+  
+  let id: UUID = UUID()
   var rateComplition: (Shop) -> ()
   
   private let shopRepository: ShopRepository
@@ -34,21 +31,25 @@ final class ShopDetailsViewModel: ShopDetailsViewModeling {
   
   func rateShop(payload: RateShopPayload) {
     isLoading = true
+    isShowMessage = false
     shopRepository.rateShop(payload: payload)
-      .sink(receiveCompletion: { completion in
-        switch completion {
-        case .failure(let error):
-          Console.log("❌ Error: ", error)
-          self.showToast(message: error.localizedDescription, isSuccess: false)
-        default: break
-        }
-      }, receiveValue: { [weak self] success in
-        guard let self else { return }
-        if success {
+      .sink(
+        receiveCompletion: { completion in
+          switch completion {
+          case .failure(let error):
+            Console.log("❌ Error: ", error)
+            self.showToast(message: error.localizedDescription, isSuccess: false)
+          default: break
+          }
+        }, receiveValue: { [weak self] rateResult in
+          guard let self else { return }
+          let message = String(format: String.Toast.shopRate, "\(rateResult.shopCurrentRating)")
+          showToast(message: message, isSuccess: true)
+          var shop = self.shop
+          shop.rate = rateResult.shopCurrentRating
           rateComplition(shop)
         }
-        showToast(message: "Rating submitted successfully!⭐", isSuccess: true)
-      })
+      )
       .store(in: &cancellables)
   }
   
