@@ -124,7 +124,12 @@ extension ShopScreen {
   private func navigateToDetails(by shop: Shop) {
     let shopDetailsViewModel = ShopDetailsViewModel(
       shopRepository: ShopDefaultRepository(),
-      shop: shop
+      shop: shop,
+      rateComplition: { shop in
+        if let index = viewModel.shops.firstIndex(where: {$0.id == shop.id}) {
+          viewModel.shops[index].rate = shop.rate
+        }
+      }
     )
     router.push(
       TabBarView.ShopScreens.details(

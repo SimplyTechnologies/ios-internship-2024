@@ -14,6 +14,7 @@ protocol ShopRepository: GraphQLRepository {
   func getShops() -> AnyPublisher<[GetShopsQuery.Data.Shop], Error>
   func addToFavorite(_ shopId: Int) -> AnyPublisher<AddShopToFavoriteMutation.Data, Error>
   func removeFromFavorites(_ shopId: Int) -> AnyPublisher<RemoveShopFromeFavoriteMutation.Data, Error>
+  func rateShop(payload: RateShopPayload) -> AnyPublisher<RateShopMutation.Data.RateShop, Error>
   
 }
 
@@ -38,6 +39,14 @@ final class ShopDefaultRepository: ShopRepository {
       mutation: RemoveShopFromeFavoriteMutation(shopId: shopId)
     )
     .eraseToAnyPublisher()
+  }
+  
+  func rateShop(payload: RateShopPayload) -> AnyPublisher<RateShopMutation.Data.RateShop, Error> {
+    let input = RateShopInput(rating: payload.rating, shopId: payload.shopId)
+    let mutation = RateShopMutation(rateShopInput: input)
+     return performMutation(mutation: mutation)
+      .map { $0.rateShop }
+      .eraseToAnyPublisher()
   }
 
 }

@@ -140,6 +140,7 @@ extension String {
     static var change: String { "toast_change".localized }
     static var wrongCode: String { "toast_wrong_code".localized }
     static var checkEmail: String { "toast_check_email".localized }
+    static var shopRate: String { "toast_rate".localized }
     
   }
   
@@ -153,6 +154,7 @@ extension String {
     static var done: String { "auth_done".localized }
     static var forgot: String { "auth_forgot".localized }
     static var logOut: String { "logout_text".localized }
+    
   }
   
   enum Firework {

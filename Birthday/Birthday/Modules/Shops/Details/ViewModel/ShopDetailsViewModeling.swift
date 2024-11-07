@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import BirthDayAPI
 
-protocol ShopDetailsViewModeling: ObservableObject {
+protocol ShopDetailsViewModeling: Toastable {
   
   var id: UUID { get }
   var isLoading: Bool { get set }
   var shop: Shop { get set }
   
   func phoneCallAction()
+  func rateShop(payload: RateShopPayload)
   
 }

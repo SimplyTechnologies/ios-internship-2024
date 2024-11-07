@@ -1,0 +1,11 @@
+mutation rateShop($rateShopInput: RateShopInput!) {
+
+  rateShop(rateShopInput: $rateShopInput) {
+    id
+    rating
+    shopCurrentRating
+    shopId
+    userId
+  }
+  
+}

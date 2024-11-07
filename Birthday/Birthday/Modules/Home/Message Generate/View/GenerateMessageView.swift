@@ -21,6 +21,8 @@ struct GenerateMessageView: View {
           placeholder: {
             Text(String.Field.generate)
               .foregroundStyle(Color.rouge.opacity(0.7))
+              .karmaFont(style: .regular14)
+              .padding(.bottom, 4)
           }
         )
         .lineLimit(5...)

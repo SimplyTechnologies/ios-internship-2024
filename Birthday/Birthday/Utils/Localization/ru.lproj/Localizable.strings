@@ -95,6 +95,7 @@
 "toast_create_birthday" = "День рождения успешно создан! 🎉";
 "toast_delete_birthday" = "День рождения успешно удален! 🎉";
 "toast_update_birthday" = "День рождения успешно обновлен! 🎉";
+"toast_rate" = "Оценка успешно отправлена!⭐ \nСредняя оценка %@";
 
 // Firework
 

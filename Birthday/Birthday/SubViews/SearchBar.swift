@@ -72,6 +72,7 @@ struct SearchBar: View {
   var clearButton: some View {
     Button {
       searchText = ""
+      UIApplication.shared.hideKeyboard()
     } label: {
       Image(systemName: "xmark.circle.fill")
         .renderingMode(.template)

@@ -95,6 +95,7 @@
 "toast_create_birthday" = "BirthDay successfully created! 🎉";
 "toast_delete_birthday" = "BirthDay successfully deleted! 🎉";
 "toast_update_birthday" = "BirthDay successfully updated! 🎉";
+"toast_rate" = "Rating submitted successfully!⭐ \nAverage rate is %@";
 
 // Firework
 

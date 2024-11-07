@@ -51,6 +51,7 @@ extension View {
   func karmaFont(style: CustomFontStyle) -> some View {
     modifier(CustomFontModifier(style: style))
       .dynamicTypeSize(.xLarge)
+      .padding(.top, 4)
   }
   
 }

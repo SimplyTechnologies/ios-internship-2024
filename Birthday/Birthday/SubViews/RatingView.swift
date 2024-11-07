@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import BirthDayAPI
 
 struct RatingView: View {
-  
-  @Binding var rating: Double?
 
+  @Binding var rating: Double?
+  var action: () -> ()
+  let model: Shop
   var maxRating: Int = 5
 
   var body: some View {
@@ -54,6 +56,7 @@ struct RatingView: View {
       ForEach(1 ... maxRating, id: \.self) { index in
         Button {
           rating = Double(index)
+          action()
         } label: {
           starImage
             .foregroundStyle(.clear)
@@ -62,8 +65,4 @@ struct RatingView: View {
     }
   }
   
-}
-
-#Preview {
-  RatingView(rating: .constant(3.6), maxRating: 5)
 }

@@ -186,6 +186,8 @@ extension BirthDayEditCommonView {
           placeholder: {
             Text(String.Birthday.newRelationship)
               .foregroundStyle(Color.rouge.opacity(0.7))
+              .karmaFont(style: .regular14)
+              .padding(.bottom, 4)
           }
         )
         .karmaFont(style: .bold16)

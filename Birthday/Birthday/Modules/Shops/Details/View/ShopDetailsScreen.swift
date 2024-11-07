@@ -5,15 +5,24 @@
 //  Created by Narek on 25.10.24.
 //
 
+import BirthDayAPI
 import SwiftUI
 
 struct ShopDetailsScreen<T: ShopDetailsViewModeling>: View {
   
   @StateObject var viewModel: T
   @EnvironmentObject var router: NavigationRouter
+  @EnvironmentObject var appState: AppState
 
   var body: some View {
     content
+      .onChange(of: viewModel.isShowMessage) { isShow in
+        appState.isShowMessage = isShow
+        if isShow {
+          appState.isSuccessMessage = viewModel.isSuccessMessage
+          appState.message = viewModel.toastMessage
+        }
+      }
   }
   
 }
@@ -70,7 +79,15 @@ extension ShopDetailsScreen {
   }
   
   private var rate: some View {
-    RatingView(rating: $viewModel.shop.rate)
+    RatingView(
+      rating: $viewModel.shop.rate,
+      action: {
+        if let rate = viewModel.shop.rate, let id = viewModel.shop.id {
+          viewModel.rateShop(payload: RateShopPayload(rating: Int(rate), shopId: id))
+        }
+      },
+      model: viewModel.shop
+    )
   }
   
   private var phone: some View {
@@ -123,7 +140,8 @@ extension ShopDetailsScreen {
   ShopDetailsScreen(
     viewModel: ShopDetailsViewModel(
       shopRepository: ShopDefaultRepository(),
-      shop: Shop.mockShop
+      shop: Shop.mockShop,
+      rateComplition: { _ in }
     )
   )
 }
