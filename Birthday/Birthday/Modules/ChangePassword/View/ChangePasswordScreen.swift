@@ -103,9 +103,6 @@ extension ChangePasswordScreen {
       repeatPasswordField
       Spacer()
     }
-    .animation(.default, value: viewModel.isValidOldPassword)
-    .animation(.default, value: viewModel.isValidNewPassword)
-    .animation(.default, value: viewModel.isValidRepeatPassword)
     .padding(.horizontal, 60)
     .onChange(of: focusedField) { newField in
       if let newField {
@@ -121,7 +118,6 @@ extension ChangePasswordScreen {
       text: $viewModel.oldPassword,
       isFocused: $viewModel.isOldPasswordFocused,
       isValidField: $viewModel.isValidOldPassword,
-      isShow: $viewModel.isShowPasswordField,
       placeholderText: String.Field.oldPassword,
       isSecureField: true,
       backgroundColor: .white
@@ -141,7 +137,6 @@ extension ChangePasswordScreen {
       text: $viewModel.newPassword,
       isFocused: $viewModel.isNewPasswordFocused,
       isValidField: $viewModel.isValidNewPassword,
-      isShow: $viewModel.isShowPasswordField,
       placeholderText: String.Field.newPassword,
       isSecureField: true,
       backgroundColor: .white
@@ -161,7 +156,6 @@ extension ChangePasswordScreen {
       text: $viewModel.repeatPassword,
       isFocused: $viewModel.isRepeatPasswordFocused,
       isValidField: $viewModel.isValidRepeatPassword,
-      isShow: $viewModel.isShowPasswordField,
       placeholderText: String.Field.repeatNewPassword,
       isSecureField: true,
       backgroundColor: .white

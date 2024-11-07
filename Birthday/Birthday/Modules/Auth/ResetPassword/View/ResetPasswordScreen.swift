@@ -55,8 +55,6 @@ extension ResetPasswordScreen {
               doneButton
                 .padding(.bottom, 40)
             }
-            .animation(.default, value: viewModel.isPasswordValid)
-            .animation(.default, value: viewModel.isConfirmPassValid)
             .padding(.horizontal, 60)
             .frame(
               maxWidth: .infinity,
@@ -94,7 +92,6 @@ extension ResetPasswordScreen {
         text: $viewModel.password,
         isFocused: $viewModel.isPasswordFocused,
         isValidField: $viewModel.isPasswordValid,
-        isShow: $viewModel.isShowPasswordField,
         placeholderText: String.Field.newPassword,
         isSecureField: true,
         backgroundColor: .white
@@ -119,7 +116,6 @@ extension ResetPasswordScreen {
         text: $viewModel.confirmPassword,
         isFocused: $viewModel.isRepeatPasswordFocused,
         isValidField: $viewModel.isConfirmPassValid,
-        isShow: $viewModel.isShowPasswordField,
         placeholderText: String.Field.repeatNewPassword,
         isSecureField: true,
         backgroundColor: .white

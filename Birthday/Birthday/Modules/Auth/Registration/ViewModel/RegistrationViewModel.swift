@@ -31,7 +31,6 @@ class RegistrationViewModel: RegistrationViewModeling {
   @Published var isValidPassword: Bool = true
   @Published var isValidRepeatPassword: Bool = true
   @Published var isSamePasswords: Bool = true
-  @Published var isShowPasswordField: Bool = false
   
   var repeatPasswordErrorMessage: String = ""
   var passwordErrorMessage: String = ""

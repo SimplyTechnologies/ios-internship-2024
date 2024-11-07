@@ -21,7 +21,6 @@ final class ChangePasswordViewModel: ChangePasswordViewModeling {
   @Published var isValidNewPassword: Bool = true
   @Published var isValidRepeatPassword: Bool = true
   @Published var isSamePasswords = true
-  @Published var isShowPasswordField: Bool = false
   @Published var isShowMessage: Bool = false
   
   let id: UUID = UUID()

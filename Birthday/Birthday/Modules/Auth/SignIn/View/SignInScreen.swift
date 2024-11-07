@@ -107,8 +107,6 @@ extension SignInScreen {
       emailField
       passwordField
     }
-    .animation(.default, value: viewModel.isValidEmail)
-    .animation(.default, value: viewModel.isValidPassword)
   }
   
   private var emailField: some View {
@@ -134,7 +132,6 @@ extension SignInScreen {
       text: $viewModel.password,
       isFocused: $viewModel.isPasswordFocused,
       isValidField: $viewModel.isValidPassword,
-      isShow: $viewModel.isShowPasswordField,
       placeholderText: String.Field.password,
       isSecureField: true
     )

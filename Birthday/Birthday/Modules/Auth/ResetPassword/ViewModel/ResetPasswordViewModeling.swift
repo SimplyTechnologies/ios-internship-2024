@@ -23,7 +23,6 @@ protocol ResetPasswordViewModeling: ObservableObject {
   var repeatPasswordErrorMessage: String { get set }
   var passwordErrorMessage: String { get set }
   var isSamePasswords: Bool { get set }
-  var isShowPasswordField: Bool { get set }
   var isValidForm: Bool { get }
 
   func changePassword(navigationAction: @escaping () -> ())
