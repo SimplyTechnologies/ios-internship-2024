@@ -161,4 +161,12 @@ extension String {
     
   }
   
+  enum Access {
+    
+    static var access_calendar: String { "access_calendar".localized }
+    static var access_calendar_settings: String { "access_calendar_settings".localized }
+    static var access_open_settings: String { "access_open_settings".localized }
+    
+  }
+  
 }
