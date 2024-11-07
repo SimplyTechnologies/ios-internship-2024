@@ -21,6 +21,8 @@ struct BirthDayEditCommonView: View {
   
   @EnvironmentObject var appState: AppState
   
+  var eventstore = EKEventStore()
+  
   var isCreating: Bool
   var doneAction: (BirthdayModel) -> ()
   var columns = [GridItem(.flexible()),GridItem(.flexible()),GridItem(.flexible())]
@@ -33,7 +35,7 @@ struct BirthDayEditCommonView: View {
         content: {
           EventEditViewController(
             birthday: $birthdayData,
-            eventStore: EKEventStore()
+            eventStore: eventstore
           )
         }
       )
@@ -215,7 +217,7 @@ extension BirthDayEditCommonView {
   
   private var addToCalendarCheckBox: some View {
     Button {
-      isAddingEvent.toggle()
+      calendarAccess()
     } label: {
       HStack {
         RoundedRectangle(cornerRadius: 2.0)
@@ -230,6 +232,57 @@ extension BirthDayEditCommonView {
           .foregroundStyle(Color.rouge)
           .padding(.top, 2)
         Spacer()
+      }
+    }
+  }
+  
+  private var calendarPopup: some View {
+    AlertView(
+      title: String.Access.access_calendar,
+      message: String.Access.access_calendar_settings,
+      confirmButtonTitle: String.Access.access_open_settings,
+      confirmAction: {
+        guard let url = URL(string: UIApplication.openSettingsURLString),
+              UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        appState.hidePopup()
+      },
+      cancelAction: {
+        appState.hidePopup()
+      }
+    )
+  }
+  
+  private func calendarAccess() {
+    let authStatus = EKEventStore.authorizationStatus(for: .event)
+    if isAddingEvent {
+      isAddingEvent = false
+    } else {
+      switch authStatus {
+      case .authorized, .fullAccess, .writeOnly:
+        isAddingEvent = true
+      case .notDetermined:
+        askForCalendarAccess()
+      case .denied:
+        appState.showPopup {
+          AnyView(calendarPopup)
+        }
+      case .restricted:
+        break
+      @unknown default:
+        Console.log("Unknown case for calendar access")
+      }
+    }
+  }
+  
+  private func askForCalendarAccess() {
+    eventstore.requestAccess(to: .event) { granted, error in
+      DispatchQueue.main.async {
+        if granted {
+          isAddingEvent = true
+        } else {
+          Console.log("Calendar Access Denied")
+        }
       }
     }
   }
