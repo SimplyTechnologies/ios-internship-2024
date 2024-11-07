@@ -44,27 +44,29 @@ struct BirthDayEditCommonView: View {
 extension BirthDayEditCommonView {
   
   private var content: some View {
-    VStack {
-      VStack(spacing: 0) {
-        editingName
-          .padding(.bottom, 20)
-        relationshipEdit
-          .padding(.bottom, 10)
-        addButton
-          .padding(.bottom, 34)
-        if isAddingRelation {
-          addRelationField
+    ScrollView {
+      VStack {
+        VStack(spacing: 0) {
+          editingName
+            .padding(.bottom, 20)
+          relationshipEdit
+            .padding(.bottom, 10)
+          addButton
             .padding(.bottom, 34)
-        }
-        calendar
-          .padding(.bottom, 24)
-        if isCreating {
-          addToCalendarCheckBox
+          if isAddingRelation {
+            addRelationField
+              .padding(.bottom, 34)
+          }
+          calendar
             .padding(.bottom, 24)
+          if isCreating {
+            addToCalendarCheckBox
+              .padding(.bottom, 24)
+          }
+          doneButton
         }
-        doneButton
+        .padding(.bottom, 10)
       }
-      .padding(.bottom, 10)
     }
     .onLoad {
       guard let relationData = birthdayData.relation  else { return }
