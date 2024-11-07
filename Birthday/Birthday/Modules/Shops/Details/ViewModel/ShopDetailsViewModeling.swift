@@ -8,7 +8,7 @@
 import Foundation
 import BirthDayAPI
 
-protocol ShopDetailsViewModeling: Toastable, ObservableObject {
+protocol ShopDetailsViewModeling: Toastable {
   
   var id: UUID { get }
   var isLoading: Bool { get set }

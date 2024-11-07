@@ -12,13 +12,13 @@ import BirthDayAPI
 final class ShopDetailsViewModel: ShopDetailsViewModeling {
   
   @Published var isLoading: Bool = false
-  @Published var shop: Shop
-  @Published var toastMessage: String = ""
-  @Published var isSuccessMessage: Bool = false
   @Published var isShowMessage: Bool = false
+  @Published var shop: Shop
   
   let id: UUID = UUID()
   var rateComplition: (Shop) -> ()
+  var toastMessage: String = ""
+  var isSuccessMessage: Bool = false
   
   private let shopRepository: ShopRepository
   private var cancellables = Set<AnyCancellable>()
