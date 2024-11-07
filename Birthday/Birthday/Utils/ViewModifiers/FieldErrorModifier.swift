@@ -25,6 +25,7 @@ struct FieldErrorModifier: ViewModifier {
             .padding(.horizontal, 4)
         }
       }
+      .animation(.default, value: isHidden)
   }
   
 }

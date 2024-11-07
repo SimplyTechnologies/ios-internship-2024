@@ -244,8 +244,10 @@ extension BirthdayDetailsScreen {
       confirmButtonTitle: String.Button.delete,
       confirmAction: {
         guard let id = viewModel.birthdayData.id else { return }
-        viewModel.deleteBirthDay(id: id) {
-          router.pop()
+        viewModel.deleteBirthDay(id: id) { error in
+          if error.isNil {
+            router.pop()
+          }
           appState.hidePopup()
         }
       },

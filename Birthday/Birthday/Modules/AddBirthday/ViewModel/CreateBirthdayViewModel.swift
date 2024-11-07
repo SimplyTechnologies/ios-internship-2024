@@ -56,7 +56,10 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
   func createBirthday() {
     isLoading = true
     isShowMessage = false
-    guard let name = birthday.name, let date = birthday.date, let relation = birthday.relation else { return }
+    guard let name = birthday.name,
+          let date = birthday.date,
+          let relation = birthday.relation
+    else { return }
     let payload = CreateBirthdayPayload(
       message: birthday.message,
       name: name,
@@ -87,7 +90,6 @@ final class CreateBirthdayViewModel: CreateBirthdayViewModeling {
   func resetScreen() {
     birthday = BirthdayModel()
     selectedImage = nil
-    
   }
   
 }

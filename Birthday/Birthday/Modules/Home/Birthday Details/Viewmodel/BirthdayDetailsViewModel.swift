@@ -95,7 +95,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
       .store(in: &cancellables)
   }
   
-  func deleteBirthDay(id: Int, complition: @escaping () -> ()) {
+  func deleteBirthDay(id: Int, completion: @escaping (Error?) -> ()) {
     isDeleting = true
     isLoading = true
     isShowMessage = false
@@ -108,6 +108,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
         case .failure(let error):
           Console.log("❌ Error: ", error)
           showToast(message: error.localizedDescription, isSuccess: false)
+          completion(error)
         default: break
         }
       } receiveValue: { [weak self] id in
@@ -116,7 +117,7 @@ final class BirthdayDetailsViewModel: BirthDayDetailsViewModeling {
         Console.log("Deleted id: ", id)
         showToast(message: String.Toast.deleteBirthday, isSuccess: true)
         deleteAction()
-        complition()
+        completion(nil)
       }
       .store(in: &cancellables)
   }

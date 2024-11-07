@@ -102,11 +102,6 @@ extension RegistrationScreen {
         registerButton
           .padding(.bottom, 30)
       }
-      .animation(.default, value: viewModel.isValidName)
-      .animation(.default, value: viewModel.isValidSurname)
-      .animation(.default, value: viewModel.isValidEmail)
-      .animation(.default, value: viewModel.isValidPassword)
-      .animation(.default, value: viewModel.isValidRepeatPassword)
       .onChange(of: focusedField) { newField in
         if let newField {
           withAnimation {
@@ -186,7 +181,6 @@ extension RegistrationScreen {
       text: $viewModel.password,
       isFocused: $viewModel.isPasswordFocused,
       isValidField: $viewModel.isValidPassword,
-      isShow: $viewModel.isShowPasswordField,
       placeholderText: String.Field.password,
       isSecureField: true
     )
@@ -205,7 +199,6 @@ extension RegistrationScreen {
       text: $viewModel.repeatPassword,
       isFocused: $viewModel.isRepeatPasswordFocused,
       isValidField: $viewModel.isValidRepeatPassword,
-      isShow: $viewModel.isShowPasswordField,
       placeholderText: String.Field.repeatPassword,
       isSecureField: true
     )
