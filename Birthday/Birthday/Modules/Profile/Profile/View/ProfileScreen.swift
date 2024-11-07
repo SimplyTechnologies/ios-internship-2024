@@ -53,27 +53,41 @@ extension ProfileScreen {
   
   private var userDetails: some View {
     VStack(spacing: 0) {
-        SkeletonImage(
-          imagePath: viewModel.profileData.image ?? "",
-          placeholderImage: Image(systemName: "person"),
-          borderColor: .clear,
-          size: .init(width: 100, height: 100)
-        )
+      SkeletonImage(
+        imagePath: viewModel.profileData.image ?? "",
+        placeholderImage: Image(systemName: "person"),
+        borderColor: .clear,
+        size: .init(width: 100, height: 100)
+      )
       Spacer()
         .frame(height: 32)
       
-      Text(viewModel.profileData.fullname ?? "")
-        .foregroundStyle(.black)
-        .karmaFont(style: .bold20)
+      if (viewModel.profileData.fullname ?? "").count < 2 {
+        textSkeletonView
+      } else {
+        Text(viewModel.profileData.fullname ?? "")
+          .foregroundStyle(.black)
+          .karmaFont(style: .bold20)
+      }
       
       Spacer()
         .frame(height: 16)
       
-      Text(verbatim: viewModel.profileData.email ?? "")
-        .foregroundStyle(.black)
-        .karmaFont(style: .bold20)
+      if (viewModel.profileData.email ?? "").isEmpty {
+        textSkeletonView
+      } else {
+        Text(viewModel.profileData.email ?? "")
+          .foregroundStyle(.black)
+          .karmaFont(style: .bold20)
+      }
     }
     .padding(.horizontal, 16)
+  }
+  
+  private var textSkeletonView: some View {
+    SkeletonView()
+      .clipShape(RoundedRectangle(cornerRadius: 24))
+      .frame(width: 200, height: 30)
   }
   
   private var buttons: some View {
@@ -106,9 +120,10 @@ extension ProfileScreen {
       
       let screen = TabBarView.ProfileScreens.editProfile(
         viewModel: editViewModel,
-        profileModel: profileModel) {
-          viewModel.getProfileData()
-        }
+        profileModel: profileModel
+      ) {
+        viewModel.getProfileData()
+      }
       
       router.push(screen)
     }
@@ -141,4 +156,3 @@ extension ProfileScreen {
 #Preview {
   ProfileScreen(viewModel: ProfileViewModel(profileRepository: ProfileDefaultRepository()))
 }
-
