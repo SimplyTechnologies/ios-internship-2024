@@ -60,13 +60,15 @@ struct FireworksScreen<T: FireworksViewModeling>: View {
   
   private var speechView: some View {
     VStack(spacing: 24) {
-      Image(systemName: "rainbow")
-        .resizable()
-        .aspectRatio(contentMode: .fit)
-        .symbolEffect(.variableColor.reversing)
-        .symbolRenderingMode(.multicolor)
-        .frame(width: 150)
-        .foregroundStyle(.rouge)
+      if #available(iOS 17, *) {
+        Image(systemName: "rainbow")
+          .resizable()
+          .aspectRatio(contentMode: .fit)
+          .symbolEffect(.variableColor.reversing)
+          .symbolRenderingMode(.multicolor)
+          .frame(width: 150)
+          .foregroundStyle(.rouge)
+      }
       
       Text(viewModel.text)
         .foregroundStyle(.rouge)

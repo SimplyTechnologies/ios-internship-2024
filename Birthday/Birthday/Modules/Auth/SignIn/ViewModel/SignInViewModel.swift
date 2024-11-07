@@ -17,7 +17,6 @@ class SignInViewModel: SignInViewModeling {
   @Published var isPasswordFocused: Bool = false
   @Published var isValidEmail: Bool = true
   @Published var isValidPassword: Bool = true
-  @Published var isShowPasswordField: Bool = false
   @Published var isShowMessage: Bool = false
   
   var passwordErrorMessage: String = ""

@@ -50,8 +50,6 @@ extension ForgotPasswordScreen {
                 .padding(.bottom, 40)
             }
           }
-          .animation(.default, value: viewModel.isEmailValid)
-          .animation(.default, value: viewModel.isCodeValid)
           .padding(.top, 20)
           .padding(.horizontal, 60)
           .frame(

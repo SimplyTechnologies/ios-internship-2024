@@ -28,7 +28,6 @@ protocol RegistrationViewModeling: Toastable {
   var isValidRepeatPassword: Bool { get set }
   var isValidForm: Bool { get }
   var isSamePasswords: Bool { get set }
-  var isShowPasswordField: Bool { get set }
   var repeatPasswordErrorMessage: String { get set }
   var passwordErrorMessage: String { get set }
   var nameErrorMessage: String { get set }

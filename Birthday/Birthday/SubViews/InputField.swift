@@ -10,10 +10,10 @@ import SwiftUI
 struct InputField: View {
   
   @FocusState private var isTextFieldFocused: Bool
+  @State private var isShow: Bool = false
   @Binding var text: String
   @Binding var isFocused: Bool
   @Binding var isValidField: Bool
-  @Binding var isShow: Bool
 
   private let placeholderText: String
   private let isSecureField: Bool
@@ -23,7 +23,6 @@ struct InputField: View {
     text: Binding<String>,
     isFocused: Binding<Bool>,
     isValidField: Binding<Bool> = .constant(true),
-    isShow: Binding<Bool> = .constant(false),
     placeholderText: String = "",
     isSecureField: Bool = false,
     backgroundColor: Color = .lightPink
@@ -31,7 +30,6 @@ struct InputField: View {
     self._text = text
     self._isFocused = isFocused
     self._isValidField = isValidField
-    self._isShow = isShow
     self.placeholderText = placeholderText
     self.isSecureField = isSecureField
     self.backgroundColor = backgroundColor

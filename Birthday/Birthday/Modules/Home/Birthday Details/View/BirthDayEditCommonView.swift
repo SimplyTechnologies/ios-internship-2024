@@ -5,9 +5,9 @@
 //  Created by MEKHAK GHAPANTSYAN on 24.10.24.
 //
 
-import SwiftUI
 import EventKit
 import EventKitUI
+import SwiftUI
 
 struct BirthDayEditCommonView: View {
   
@@ -21,9 +21,11 @@ struct BirthDayEditCommonView: View {
   
   @EnvironmentObject var appState: AppState
   
+  var eventstore = EKEventStore()
+  
   var isCreating: Bool
   var doneAction: (BirthdayModel) -> ()
-  var columns = [GridItem(.flexible()),GridItem(.flexible()),GridItem(.flexible())]
+  var columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
   
   var body: some View {
     content
@@ -33,7 +35,7 @@ struct BirthDayEditCommonView: View {
         content: {
           EventEditViewController(
             birthday: $birthdayData,
-            eventStore: EKEventStore()
+            eventStore: eventstore
           )
         }
       )
@@ -44,7 +46,7 @@ struct BirthDayEditCommonView: View {
 extension BirthDayEditCommonView {
   
   private var content: some View {
-    VStack {
+    ScrollView {
       VStack(spacing: 0) {
         editingName
           .padding(.bottom, 20)
@@ -67,7 +69,7 @@ extension BirthDayEditCommonView {
       .padding(.bottom, 10)
     }
     .onLoad {
-      guard let relationData = birthdayData.relation  else { return }
+      guard let relationData = birthdayData.relation else { return }
       if !relationshipData.contains(relationData) {
         relationshipData.append(relationData)
       }
@@ -75,7 +77,7 @@ extension BirthDayEditCommonView {
   }
   
   private var editingName: some View {
-    VStack(alignment: .leading,spacing: 0) {
+    VStack(alignment: .leading, spacing: 0) {
       Text(String.Birthday.name)
         .foregroundStyle(Color.rouge)
         .karmaFont(style: .bold18)
@@ -94,7 +96,7 @@ extension BirthDayEditCommonView {
   }
   
   private var relationshipEdit: some View {
-    VStack (alignment: .leading){
+    VStack(alignment: .leading) {
       Text(String.Birthday.relationship)
         .padding(.leading, 26)
         .foregroundStyle(Color.rouge)
@@ -172,7 +174,7 @@ extension BirthDayEditCommonView {
         .resizable()
         .foregroundStyle(Color.rouge)
         .frame(width: 30, height: 30)
-        .rotationEffect(.degrees(isAddingRelation ? 45.0 :  0.0))
+        .rotationEffect(.degrees(isAddingRelation ? 45.0 : 0.0))
     }
   }
   
@@ -213,7 +215,7 @@ extension BirthDayEditCommonView {
   
   private var addToCalendarCheckBox: some View {
     Button {
-      isAddingEvent.toggle()
+      calendarAccess()
     } label: {
       HStack {
         RoundedRectangle(cornerRadius: 2.0)
@@ -232,26 +234,77 @@ extension BirthDayEditCommonView {
     }
   }
   
+  private var calendarPopup: some View {
+    AlertView(
+      title: String.Access.access_calendar,
+      message: String.Access.access_calendar_settings,
+      confirmButtonTitle: String.Access.access_open_settings,
+      confirmAction: {
+        guard let url = URL(string: UIApplication.openSettingsURLString),
+              UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        appState.hidePopup()
+      },
+      cancelAction: {
+        appState.hidePopup()
+      }
+    )
+  }
+  
+  private func calendarAccess() {
+    let authStatus = EKEventStore.authorizationStatus(for: .event)
+    if isAddingEvent {
+      isAddingEvent = false
+    } else {
+      switch authStatus {
+      case .authorized, .fullAccess, .writeOnly:
+        isAddingEvent = true
+      case .notDetermined:
+        askForCalendarAccess()
+      case .denied:
+        appState.showPopup {
+          AnyView(calendarPopup)
+        }
+      case .restricted:
+        break
+      @unknown default:
+        Console.log("Unknown case for calendar access")
+      }
+    }
+  }
+  
+  private func askForCalendarAccess() {
+    eventstore.requestAccess(to: .event) { granted, _ in
+      DispatchQueue.main.async {
+        if granted {
+          isAddingEvent = true
+        } else {
+          Console.log("Calendar Access Denied")
+        }
+      }
+    }
+  }
+  
 }
 
 #Preview {
   BirthDayEditCommonView(
     birthdayData:
-        .constant(
-          BirthdayModel(
-            createdAt: "",
-            date: "2021-03-10T00:00:00.000Z",
-            id: 1,
-            image: "https://randomuser.me/api/portraits/med/women/3.jpg",
-            message: "Be happy",
-            name: "John",
-            relation: .brother,
-            upcomingAge: 10,
-            upcomingBirthday: "",
-            updatedAt: "",
-            userId: 1
-          )
-        ),
+    .constant(
+      BirthdayModel(
+        createdAt: "",
+        date: "2021-03-10T00:00:00.000Z",
+        id: 1,
+        image: "https://randomuser.me/api/portraits/med/women/3.jpg",
+        message: "Be happy",
+        name: "John",
+        relation: .brother,
+        upcomingAge: 10,
+        upcomingBirthday: "",
+        updatedAt: "",
+        userId: 1
+      )
+    ),
     isContentvalid: .constant(true),
     isCreating: true,
     doneAction: { _ in

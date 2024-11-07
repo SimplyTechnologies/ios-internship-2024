@@ -27,15 +27,8 @@ extension ShopScreen {
 
   private var content: some View {
     VStack(spacing: 0) {
-      if router.path.count > 0 {
-        NavigationBar {
-          router.pop()
-        }
-        .padding(.top, 20)
-      } else {
-        Image(.birth)
-          .padding(.top, 20)
-      }
+      NavigationBar()
+      .padding(.top, 20)
       searchBar
         .padding(.top, 22)
         .padding(.horizontal, 24)
@@ -138,20 +131,11 @@ extension ShopScreen {
         }
       }
     )
-
-    if router.type == .home {
-      router.push(
-        TabBarView.HomeScreens.shopDetails(
-          viewModel: shopDetailsViewModel
-        )
+    router.push(
+      TabBarView.ShopScreens.details(
+        viewModel: shopDetailsViewModel
       )
-    } else {
-      router.push(
-        TabBarView.ShopScreens.details(
-          viewModel: shopDetailsViewModel
-        )
-      )
-    }
+    )
   }
 
 }

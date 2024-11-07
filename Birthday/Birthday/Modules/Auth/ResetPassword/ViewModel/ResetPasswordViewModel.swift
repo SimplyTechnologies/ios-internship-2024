@@ -19,7 +19,6 @@ final class ResetPasswordViewModel: ResetPasswordViewModeling {
   @Published var isPasswordFocused: Bool = false
   @Published var isRepeatPasswordFocused: Bool = false
   @Published var isSamePasswords: Bool = false
-  @Published var isShowPasswordField: Bool = false
   
   var repeatPasswordErrorMessage: String = ""
   var passwordErrorMessage: String = ""

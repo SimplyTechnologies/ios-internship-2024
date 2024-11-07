@@ -22,7 +22,6 @@ protocol ChangePasswordViewModeling: Toastable {
   var isValidRepeatPassword: Bool { get set }
   var isValidForm: Bool { get }
   var isSamePasswords: Bool { get set }
-  var isShowPasswordField: Bool { get set }
   var oldPasswordErrorMessage: String { get set }
   var newPasswordErrorMessage: String { get set }
   var repeatPasswordErrorMessage: String { get set }

@@ -25,7 +25,7 @@ protocol BirthDayDetailsViewModeling: Toastable {
   var selectedSourceType: UIImagePickerController.SourceType { get set }
   
   func updateBirthday()
-  func deleteBirthDay(id: Int, complition: @escaping () -> ())
+  func deleteBirthDay(id: Int, completion: @escaping (Error?) -> ())
   var birthdayCopy: BirthdayModel { get set }
   var isDoneActive: Bool { get set }
   func cancelEdit()
