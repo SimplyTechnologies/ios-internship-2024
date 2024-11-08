@@ -54,6 +54,7 @@ struct SearchBar: View {
         Text(String.Field.search)
           .foregroundStyle(Color.spanishGray)
           .karmaFont(style: .bold14)
+          .padding(.bottom, 4)
       }
       .foregroundStyle(Color.black)
       .tint(Color.black)
