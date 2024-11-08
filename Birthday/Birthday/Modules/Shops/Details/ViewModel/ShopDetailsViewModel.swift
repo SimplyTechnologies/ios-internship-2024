@@ -34,8 +34,10 @@ final class ShopDetailsViewModel: ShopDetailsViewModeling {
     isShowMessage = false
     shopRepository.rateShop(payload: payload)
       .sink(
-        receiveCompletion: { completion in
-          switch completion {
+        receiveCompletion: { [weak self] result in
+          guard let self else { return }
+          isLoading = false
+          switch result {
           case .failure(let error):
             Console.log("❌ Error: ", error)
             self.showToast(message: error.localizedDescription, isSuccess: false)
