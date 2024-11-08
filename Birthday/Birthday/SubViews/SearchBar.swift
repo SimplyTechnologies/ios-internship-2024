@@ -54,6 +54,7 @@ struct SearchBar: View {
         Text(String.Field.search)
           .foregroundStyle(Color.spanishGray)
           .karmaFont(style: .bold14)
+          .padding(.bottom, 4)
       }
       .foregroundStyle(Color.black)
       .tint(Color.black)
@@ -71,8 +72,10 @@ struct SearchBar: View {
 
   var clearButton: some View {
     Button {
-      searchText = ""
-      UIApplication.shared.hideKeyboard()
+      withAnimation {
+        searchText = ""
+        UIApplication.shared.hideKeyboard()
+      }
     } label: {
       Image(systemName: "xmark.circle.fill")
         .renderingMode(.template)

@@ -36,7 +36,6 @@ extension ShopDetailsScreen {
       }
       .padding(.top, 20)
       shopInfoView
-      Spacer()
     }
     .background(Color.lightPink)
     .navigationBarBackButtonHidden(true)
@@ -65,6 +64,7 @@ extension ShopDetailsScreen {
           webSite
             .padding(.top, 10)
             .padding(.bottom, 40)
+          Spacer()
         }
       }
       .scrollIndicators(.hidden)
@@ -86,7 +86,8 @@ extension ShopDetailsScreen {
           viewModel.rateShop(payload: RateShopPayload(rating: Int(rate), shopId: id))
         }
       },
-      model: viewModel.shop
+      model: viewModel.shop,
+      isLoading: viewModel.isLoading
     )
   }
   
@@ -144,4 +145,6 @@ extension ShopDetailsScreen {
       rateComplition: { _ in }
     )
   )
+  .environmentObject(AppState())
+  .environmentObject(NavigationRouter(.shop))
 }
